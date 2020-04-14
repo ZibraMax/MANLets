@@ -67,21 +67,21 @@
 					</tbody>
 					<thead>
 						<tr>
-							<th>
-								<button onclick="if (document.getElementById('modificacion').checked){resolver('FPM')} else {resolver('FP')}" onload="resolver('FP')" class="stack icon-paper-plane">Calcular</button>
+							<th style="text-align: center;">
+								<button style="text-align: center;" onclick="if (document.getElementById('modificacion').checked){resolver('FPM')} else {resolver('FP')}" onload="resolver('FP')" class="stack icon-paper-plane">Calcular</button>
 							</th>
-							<th>
-								<label>
+							<th style="text-align: center;">
+								<label >
 								  <input id='modificacion' type="checkbox" checked onchange="if (document.getElementById('modificacion').checked){resolver('FPM')} else {resolver('FP')}" onload="resolver('FP')">
 								  <span class="checkable">Modificado</span>
 								</label>
 							</th>
 						</tr>
-						<tr>
-							<td>
+						<tr style="text-align: center">
+							<td style="align-content: center;">
 								<button onclick="anteriorIteracion()" class="succes icon-paper-plane">< Iteracion Anterior</button>
 							</td>
-							<td>
+							<td style="align-content: center;">
 								<button onclick="siguienteIteracion()" class="warning icon-paper-plane">Iteracion Siguiente > </button>
 							</td>
 						</tr>
