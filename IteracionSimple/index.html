@@ -12,7 +12,9 @@
 
 	gtag('config', 'UA-163602964-1');
 	</script>
+	<meta name="viewport" content="width=device-width, initial-scale=0.5,user-scalable=no" id="viewport">
 	<link rel="shortcut icon" type="image/x-icon" href="../favicon/favicon.ico">
+	<script src="https://use.fontawesome.com/cd12fb1dd8.js"></script>
 	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 	<link rel="stylesheet" href="https://unpkg.com/picnic">
 	<link rel="stylesheet" href="../css/estilos.css">
@@ -25,8 +27,10 @@
 			<h1>MANLets - Iteracíon Simple</h1>
 		</header>
 		<footer>
-			<div style="width: 100%;float: left;">
-				<table class="primary">
+			<div class="fila">
+				
+			<div class="columnaTercios">
+				<table style="width: 100%">
 					<thead>
 						<th>
 							Parametro
@@ -74,56 +78,61 @@
 						</tr>
 					</thead>
 				</table>
+				<table style="width: 100%; font-size: 13px">
+				  <thead >
+				    <tr style="text-align: center;">
+				      <th><span >$$x_i$$</span></th>
+				      <th><span >$$x_{i+1}$$</span></th>
+				      <th><span>$$f(x_i)$$</span></th>
+				      <th><span>$$f(x_{i+1})$$</span></th>
+				      <th><span>$$e\%$$</span></th>
+				    </tr>
+				  </thead>
+				  <tbody>
+
+				    <tr>
+				      <td id="-1,xl">0</td>
+				      <td id="-1,xu">0</td>
+				      <td id="-1,fxl">0</td>
+				      <td id="-1,fxu">0</td>
+				      <td id="-1,e">0</td>
+				    </tr>
+
+				    <tr>
+				      <td id="1,xl">0</td>
+				      <td id="1,xu">0</td>
+				      <td id="1,fxl">0</td>
+				      <td id="1,fxu">0</td>
+				      <td id="1,e">0</td>
+				    </tr>
+
+				    <tr>
+				      <td id="+1,xl">0</td>
+				      <td id="+1,xu">0</td>
+				      <td id="+1,fxl">0</td>
+				      <td id="+1,fxu">0</td>
+				      <td id="+1,e">0</td>
+				    </tr>
+				  </tbody>
+				</table>
 			</div>
-		</footer>
-	</article>
-	<article class="card">
-	<div>
-		<div style=" border: 2px solid gray; border-radius: 8px;width: 620px; height: 600px;margin: 5px">
-			<div id="grafica" style="width: 610px; height: 590px;">
+		<div class="columnaTercios" style=" border: 2px solid gray; border-radius: 8px;margin: 5px">
+			<div id="grafica">
 			</div>
 		</div>
-		<div style="border: 2px solid gray; border-radius: 8px; margin-left: 20px; margin-top: 5px; position: relative;left: 620px; top: -605px; width: 670px">
-			<table style="width: 100%; font-size: 15px">
-			  <thead >
-			    <tr style="text-align: center;">
-			      <th><span >$$x_i$$</span></th>
-			      <th><span >$$x_{i+1}$$</span></th>
-			      <th><span>$$f(x_i)$$</span></th>
-			      <th><span>$$f(x_{i+1})$$</span></th>
-			      <th><span>$$e%$$</span></th>
-			    </tr>
-			  </thead>
-			  <tbody>
-
-			    <tr>
-			      <td id="-1,xl">0</td>
-			      <td id="-1,xu">0</td>
-			      <td id="-1,fxl">0</td>
-			      <td id="-1,fxu">0</td>
-			      <td id="-1,e">0</td>
-			    </tr>
-
-			    <tr>
-			      <td id="1,xl">0</td>
-			      <td id="1,xu">0</td>
-			      <td id="1,fxl">0</td>
-			      <td id="1,fxu">0</td>
-			      <td id="1,e">0</td>
-			    </tr>
-
-			    <tr>
-			      <td id="+1,xl">0</td>
-			      <td id="+1,xu">0</td>
-			      <td id="+1,fxl">0</td>
-			      <td id="+1,fxu">0</td>
-			      <td id="+1,e">0</td>
-			    </tr>
-			  </tbody>
-			</table>
-			<div id="grafica2" style="width: 600px"></div>
+		<div class="columnaTercios" style="border: 2px solid gray; border-radius: 8px; margin: 5px;">
+			<div id="grafica2"></div>
 		</div>
-	</div>
+		</div>
+		<div id="btns">
+			<a class="floatButton" onclick="anteriorIteracion()">
+			<i class="fa fa-angle-left my-float"></i>
+			</a>
+			<a class="floatButton1" onclick="siguienteIteracion()">
+			<i class="fa fa-angle-right my-float"></i>
+			</a>
+		</div>
+</footer>
 	</article>
 	<script type="text/javascript" src="../js/Modelacion_Analisis_Numerico.js"></script>
 </body>

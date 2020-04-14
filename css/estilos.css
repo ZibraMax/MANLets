@@ -128,7 +128,12 @@
 
 .columnaTercios {
   float: left;
-  width: 30%;
+  width: 32%;
+  padding: 20px;
+}
+.columnaMedios {
+  float: left;
+  width: 50%;
   padding: 20px;
 }
 .fila:after {
