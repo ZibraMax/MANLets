@@ -140,9 +140,43 @@
   .columnaTercios {
     width: 40%;
   }
+  .visible {
+  visibility: visible;
+  }
 }
 @media screen and (max-width: 900px) {
   .columnaTercios {
     width: 100%;
   }
+  .visible {
+  visibility: visible;
+  }
+}
+.floatButton1{
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:40px;
+  right:40px;
+  background-color:#ff851b;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  box-shadow: 2px 2px 3px #999;
+}
+.floatButton{
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:40px;
+  right:110px;
+  background-color:#ff851b;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  box-shadow: 2px 2px 3px #999;
+}
+
+.my-float{
+  margin-top:22px;
 }
