@@ -136,20 +136,19 @@
   display: table;
   clear: both;
 }
-@media screen and (max-width: 1160PX) {
+@media screen and (max-width: 1160px) {
   .columnaTercios {
     width: 40%;
-  }
-  .visible {
-  visibility: visible;
   }
 }
 @media screen and (max-width: 900px) {
   .columnaTercios {
     width: 100%;
   }
-  .visible {
-  visibility: visible;
+}
+@media screen and (min-width: 900px) {
+  #btns {
+    display: none;
   }
 }
 .floatButton1{
