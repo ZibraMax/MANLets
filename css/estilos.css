@@ -136,7 +136,7 @@
   display: table;
   clear: both;
 }
-@media screen and (max-width: 1159PX) {
+@media screen and (max-width: 1160PX) {
   .columnaTercios {
     width: 40%;
   }
