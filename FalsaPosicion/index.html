@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163602964-1"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-163602964-1');
+	</script>
+	<meta charset="utf-8">
+	<title>Applets</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../favicon/favicon.ico">
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/picnic">
+	<link rel="stylesheet" href="../css/estilos.css">
+	<script type="text/javascript" src="../js/math.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML.js"></script>
+</head>
+<body style="margin: 20px">
+	<article class="card">
+		<header>
+			<h1>MANLets - Método de Falsa Posición</h1>
+		</header>
+		<footer>
+			<div style="width: 100%;float: left;">
+				<table class="primary">
+					<thead>
+						<th>
+							Parametro
+						</th>
+						<th>
+							Valor
+						</th>
+					</thead>
+					<tbody>
+					<tr>
+						<td>
+							<span class="stack">$$f(x)=$$</span>
+						</td>
+						<td>
+							<input type="text" id="funcion" value="-12x^5-6x^3+10" oninput="actualizarFuncion(this.value)" >
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="stack">$$x_l=$$</span>
+							
+						</td>
+						<td>
+							<input type="text" id="sliderx0" value='0' onchange="actualizarX0(this.value)"  class="stack">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="stack">$$x_u=$$</span>
+						</td>
+						<td>
+							<input type="text" id="sliderxf" value='1' onchange="actualizarXf(this.value)"  class="stack">
+						</td>
+					</tr>
+					</tbody>
+					<thead>
+						<tr>
+							<th>
+								<button onclick="if (document.getElementById('modificacion').checked){resolver('FPM')} else {resolver('FP')}" onload="resolver('FP')" class="stack icon-paper-plane">Calcular</button>
+							</th>
+							<th>
+								<label>
+								  <input id='modificacion' type="checkbox" checked onchange="if (document.getElementById('modificacion').checked){resolver('FPM')} else {resolver('FP')}" onload="resolver('FP')">
+								  <span class="checkable">Modificado</span>
+								</label>
+							</th>
+						</tr>
+						<tr>
+							<td>
+								<button onclick="anteriorIteracion()" class="succes icon-paper-plane">< Iteracion Anterior</button>
+							</td>
+							<td>
+								<button onclick="siguienteIteracion()" class="warning icon-paper-plane">Iteracion Siguiente > </button>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<span id="pretty">$$f(x)=-12x^5-6x^3+10$$</span>
+							</td>
+						</tr>
+					</thead>
+
+				</table>
+			</div>
+		</footer>
+	</article>
+	<article class="card">
+	<div>
+		<div style=" border: 2px solid gray; border-radius: 8px;width: 620px; height: 600px;margin: 5px">
+			<div id="grafica" style="width: 610px; height: 590px;">
+			</div>
+		</div>
+		<div style="border: 2px solid gray; border-radius: 8px; margin-left: 20px; margin-top: 5px; position: relative;left: 620px; top: -605px; width: 670px">
+			<table style="width: 100%; font-size: 15px">
+			  <thead >
+			    <tr style="text-align: center;">
+			      <th><span>$$x_l$$</span></th>
+			      <th><span>$$x_u$$</span></th>
+			      <th><span>$$f(x_l)$$</span></th>
+			      <th><span>$$f(x_u)$$</span></th>
+			      <th><span>$$x_r$$</span></th>
+			      <th><span>$$f(x_r)$$</span></th>
+			      <th><span>$$e%$$</span></th>
+			    </tr>
+			  </thead>
+			  <tbody>
+
+			    <tr>
+			      <td id="-1,xl">0</td>
+			      <td id="-1,xu">0</td>
+			      <td id="-1,fxl">0</td>
+			      <td id="-1,fxu">0</td>
+			      <td id="-1,xr">0</td>
+			      <td id="-1,fxr">0</td>
+			      <td id="-1,e">0</td>
+			    </tr>
+
+			    <tr>
+			      <td id="1,xl">0</td>
+			      <td id="1,xu">0</td>
+			      <td id="1,fxl">0</td>
+			      <td id="1,fxu">0</td>
+			      <td id="1,xr">0</td>
+			      <td id="1,fxr">0</td>
+			      <td id="1,e">0</td>
+			    </tr>
+
+			    <tr>
+			      <td id="+1,xl">0</td>
+			      <td id="+1,xu">0</td>
+			      <td id="+1,fxl">0</td>
+			      <td id="+1,fxu">0</td>
+			      <td id="+1,xr">0</td>
+			      <td id="+1,fxr">0</td>
+			      <td id="+1,e">0</td>
+			    </tr>
+			  </tbody>
+			</table>
+			<div id="grafica2" style="width: 600px"></div>
+		</div>
+	</div>
+	</article>
+	<script type="text/javascript" src="../js/Modelacion_Analisis_Numerico.js"></script>
+</body>
+</html>
