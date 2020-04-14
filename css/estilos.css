@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 .slider {
   -webkit-appearance: none;
   width: 100%;
@@ -116,4 +119,30 @@
 }
 .imagenBotones {
   width: 200px;
+}
+
+
+/*Clases de responsive para celular*/
+
+/*Por defecto se abre desde el pc, luego se modifica a celular.*/
+
+.columnaTercios {
+  float: left;
+  width: 30%;
+  padding: 20px;
+}
+.fila:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media screen and (max-width: 992px) {
+  .columnaTercios {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .columnaTercios {
+    width: 100%;
+  }
 }

@@ -368,7 +368,8 @@ class MetodoDeRaiz {
 		  	title:'y'
 		  }
 		}
-		Plotly.newPlot('grafica', [trace,trace3,trace1,trace2],layout)
+		var config = {responsive: true}
+		Plotly.newPlot('grafica', [trace,trace3,trace1,trace2],layout,config)
 		this.graficarBiseccion2(i,n,false)
 	}
 	graficarBiseccion2(i,n=50,zoom=true) {
@@ -435,7 +436,8 @@ class MetodoDeRaiz {
 		  	title:'y'
 		  }
 		}
-		Plotly.newPlot('grafica2', [trace,trace3,trace1,trace2],layout)
+		var config = {responsive: true}
+		Plotly.newPlot('grafica2', [trace,trace3,trace1,trace2],layout,config)
 	}
 	falsaPosicion(pX0,pXf,tol=0.01,pModificado=false,pN=3) {
 		if (this.fx(pX0)*this.fx(pXf)<=0) {
@@ -536,7 +538,8 @@ class MetodoDeRaiz {
 		  	title:'y'
 		  }
 		}
-		Plotly.newPlot('grafica', [trace,trace1,trace2,trace3,trace4],layout)
+		var config = {responsive: true}
+		Plotly.newPlot('grafica', [trace,trace1,trace2,trace3,trace4],layout,config)
 		this.graficarFalsaPosicion2(i,n,false)
 	}
 	graficarFalsaPosicion2(i,n=50,zoom=true) {
@@ -602,7 +605,8 @@ class MetodoDeRaiz {
 		  	title:'y'
 		  }
 		}
-		Plotly.newPlot('grafica2', [trace,trace1,trace2,trace3,trace4],layout)
+		var config = {responsive: true}
+		Plotly.newPlot('grafica2', [trace,trace1,trace2,trace3,trace4],layout,config)
 	}
 	iteracionSimple(xr,tol=0.01) {
 		let numiter = 0
@@ -674,7 +678,8 @@ class MetodoDeRaiz {
 		  	title:'y'
 		  }
 		}
-		Plotly.newPlot('grafica', [trace,trace1,trace2,trace3],layout)
+		var config = {responsive: true}
+		Plotly.newPlot('grafica', [trace,trace1,trace2,trace3],layout,config)
 		this.graficarIteracionSimple2(i,n*2,false)
 	}
 	graficarIteracionSimple2(i,n=50,zoom=true) {
@@ -744,7 +749,8 @@ class MetodoDeRaiz {
 		  	title:'y'
 		  }
 		}
-		Plotly.newPlot('grafica2', [trace,trace1,trace2],layout)
+		var config = {responsive: true}
+		Plotly.newPlot('grafica2', [trace,trace1,trace2],layout,config)
 	}
 }
 class sistemasEcuaciones{

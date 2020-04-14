@@ -11,6 +11,7 @@
 	gtag('config', 'UA-163602964-1');
 	</script>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Applets</title>
 	<link rel="shortcut icon" type="image/x-icon" href="../favicon/favicon.ico">
 	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -25,8 +26,10 @@
 			<h1>MANLets - Método de Bisección</h1>
 		</header>
 		<footer>
-			<div style="width: 100%;float: left;">
-				<table class="primary">
+			<div class="fila">
+				
+			<div class="columnaTercios">
+				<table>
 					<thead>
 						<th>
 							Parametro
@@ -83,26 +86,16 @@
 						</tr>
 					</thead>
 				</table>
-			</div>
-		</footer>
-	</article>
-	<article class="card">
-	<div>
-		<div style=" border: 2px solid gray; border-radius: 8px;width: 620px; height: 600px;margin: 5px">
-			<div id="grafica" style="width: 610px; height: 590px;">
-			</div>
-		</div>
-		<div style="border: 2px solid gray; border-radius: 8px; margin-left: 20px; margin-top: 5px; position: relative;left: 620px; top: -605px; width: 670px">
-			<table style="width: 100%; font-size: 15px">
-			  <thead >
+				<table style="font-size: 13px; max-width: 100%">
+			  <thead>
 			    <tr style="text-align: center;">
-			      <th><span>$$x_l$$</span></th>
-			      <th><span>$$x_u$$</span></th>
-			      <th><span>$$f(x_l)$$</span></th>
-			      <th><span>$$f(x_u)$$</span></th>
-			      <th><span>$$x_r$$</span></th>
-			      <th><span>$$f(x_r)$$</span></th>
-			      <th><span>$$e%$$</span></th>
+			      <th><span>\(x_l\)</span></th>
+			      <th><span>\(x_u\)</span></th>
+			      <th><span>\(f(x_l)\)</span></th>
+			      <th><span>\(f(x_u)\)</span></th>
+			      <th><span>\(x_r\)</span></th>
+			      <th><span>\(f(x_r)\)</span></th>
+			      <th><span>\(e\%\)</span></th>
 			    </tr>
 			  </thead>
 			  <tbody>
@@ -138,10 +131,16 @@
 			    </tr>
 			  </tbody>
 			</table>
-			<div id="grafica2" style="width: 600px"></div>
+			</div>
+		<div class="columnaTercios" style=" border: 2px solid gray; border-radius: 8px;margin: 5px">
+			<div id="grafica" style="width: 100%; height: 100%">
+			</div>
 		</div>
-	</div>
-	</article>
+		<div class="columnaTercios" style="border: 2px solid gray; border-radius: 8px;margin: 5px">
+			<div id="grafica2"></div>
+		</div>
+		</div>
+</footer>
 	<script type="text/javascript" src="../js/Modelacion_Analisis_Numerico.js"></script>
 </body>
 </html>
