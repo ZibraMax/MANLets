@@ -1,0 +1,571 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"doc",
+				"docExterno\tstatement"
+			],
+			[
+				"Htt",
+				"HttpResponse\tclass"
+			],
+			[
+				"arre",
+				"arregloNuebo"
+			],
+			[
+				"re",
+				"revisarArreglo"
+			],
+			[
+				"in",
+				"input"
+			],
+			[
+				"stri",
+				"string"
+			],
+			[
+				"al",
+				"text-align\tproperty"
+			],
+			[
+				"col",
+				"columnaMedios"
+			],
+			[
+				"pa",
+				"padding\tproperty"
+			],
+			[
+				"pad",
+				"padding-top\tproperty"
+			],
+			[
+				"max",
+				"max-height\tproperty"
+			],
+			[
+				"wi",
+				"window"
+			],
+			[
+				"c",
+				"class\tAttr"
+			],
+			[
+				"ali",
+				"align-items\tproperty"
+			],
+			[
+				"alig",
+				"vertical-align\tproperty"
+			],
+			[
+				"colo",
+				"colorPintar"
+			],
+			[
+				"for",
+				"for\tfor (…) {…}"
+			],
+			[
+				"be",
+				"beginPath"
+			],
+			[
+				"e",
+				"else"
+			],
+			[
+				"sol",
+				"solcuionarSeidel"
+			],
+			[
+				"th",
+				"th\tTag"
+			],
+			[
+				"border",
+				"border-color\tproperty"
+			],
+			[
+				"text",
+				"text-align\tproperty"
+			],
+			[
+				"VECT",
+				"vector_solucion"
+			],
+			[
+				"vect",
+				"vectorRESULTADOS"
+			],
+			[
+				"itera",
+				"iteraccionActual"
+			],
+			[
+				"iter",
+				"iteraccionActual"
+			],
+			[
+				"matr",
+				"matricesRESULTADOS"
+			],
+			[
+				"vector",
+				"vector_solucion"
+			],
+			[
+				"con",
+				"align-content\tproperty"
+			],
+			[
+				"das",
+				"dashdot"
+			],
+			[
+				"ite",
+				"iteracionSimple"
+			],
+			[
+				"get",
+				"getElementById"
+			],
+			[
+				"actual",
+				"actualizarTabla"
+			],
+			[
+				"fl",
+				"float\tproperty"
+			],
+			[
+				"font-s",
+				"font-size\tproperty"
+			],
+			[
+				"wid",
+				"width\tproperty"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Anaconda Python Builder",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				"Syntax Check"
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"ui",
+				"UI: Select Color Scheme"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"INSTALL",
+				"Package Control: Install Package"
+			],
+			[
+				"REMOVE",
+				"Package Control: Remove Package"
+			],
+			[
+				"COLOR",
+				"UI: Select Color Scheme"
+			],
+			[
+				"PACKAGECONTROL",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"INSTAL",
+				"Install Package Control"
+			],
+			[
+				"PACKAGE",
+				"Preferences: Package Control Settings – User"
+			],
+			[
+				"brows",
+				"Preferences: Browse Packages"
+			],
+			[
+				"pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"color",
+				"UI: Select Color Scheme"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Remove Package"
+			],
+			[
+				"Guna",
+				"Guna"
+			],
+			[
+				"guna",
+				"Guna"
+			],
+			[
+				"display",
+				"Anaconda: Display object docs"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"instaa",
+				"Package Control: Install Package"
+			],
+			[
+				"live",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"INSP",
+				"Install Package Control"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 281.0,
+		"history":
+		[
+			"f",
+			"manage.py ",
+			"python",
+			"kj"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/david/Desktop/MANUA_PAGE"
+	],
+	"file_history":
+	[
+		"/C/Users/david/Desktop/MANUA_PAGE/Biseccion/index.html",
+		"/C/Users/david/Desktop/MANUA_PAGE/FalsaPosicion/index.html",
+		"/C/Users/david/Desktop/MANUA_PAGE/Gauss/index.html",
+		"/C/Users/david/Desktop/MANUA_PAGE/IteracionSimple/index.html",
+		"/C/Users/david/Desktop/MANUA_PAGE/GaussSeidel/index.html",
+		"/C/Users/david/Desktop/MANUA_PAGE/index.html",
+		"/C/Users/david/Desktop/Django/RFPD_ZibraMax/RFPD_ZibraMax/html/index.html",
+		"/C/Users/david/Desktop/Django/RFPD_ZibraMax/RFPD_ZibraMax/urls.py",
+		"/C/Users/david/Desktop/Django/RFPD_ZibraMax/RFPD_ZibraMax/views.py",
+		"/C/Users/david/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json",
+		"/C/Program Files/WindowsApps/Microsoft.WindowsTerminal_1.0.1811.0_x64__8wekyb3d8bbwe/defaults.json",
+		"/C/Users/david/Desktop/FEM/1D/da.rodriguezh/Documentacion/CodigoDocumentacion.py",
+		"/C/Users/david/Desktop/FEM/1D/da.rodriguezh/Documentacion/Documentación.html",
+		"/C/Users/david/Desktop/FEM/2D/FEMSections/FEM2D/Elemento.py",
+		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/FileIcons/theme/Guna.sublime-theme",
+		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/C/Users/david/Desktop/FEM/1D/da.rodriguezh/LEEME ANTES.txt",
+		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/Anaconda/README.md",
+		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/User/Python.sublime-settings",
+		"/C/Users/david/Desktop/Analisis Avanzado/Python/PySections/__init__.py",
+		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/Anaconda/Anaconda.sublime-settings",
+		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/MarkdownEditing/README.md",
+		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/User/Anaconda.sublime-settings",
+		"/C/Users/david/Desktop/Django/RFPD_ZibraMax/manage.py",
+		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/User/Guna-dark.sublime-settings",
+		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/Guna/themes/preset/Guna-dark.sublime-settings",
+		"/C/Users/david/Desktop/Django/RFPD_ZibraMax/RFPD_ZibraMax/__init__.py",
+		"/D/Program Files/Sublime Text 3/sublime_plugin.py",
+		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/User/Guna.sublime-settings",
+		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/Guna/Guna.sublime-settings",
+		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/Colorsublime/Colorsublime.sublime-settings",
+		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/User/Colorsublime.sublime-settings",
+		"/C/Users/david/Desktop/FEM/2D/crearDatasets_Hormiga.py",
+		"/C/Users/david/Desktop/Django/RFPD_ZibraMax/RFPD_ZibraMax/asgi.py",
+		"/C/Users/david/Desktop/Codeforces/653/input.txt",
+		"/C/Users/david/Desktop/hello.py",
+		"/C/Users/david/Desktop/Server.py",
+		"/C/Users/david/Desktop/Codeforces/653/D.py",
+		"/C/Program Files/Python37/Lib/site-packages/tornado/netutil.py",
+		"/C/Users/david/Desktop/Codeforces/653/A.py",
+		"/C/Users/david/Desktop/Codeforces/653/C.py",
+		"/C/Users/david/Desktop/Codeforces/653/B.py",
+		"/C/Users/david/Desktop/Codeforces/653/pA.PY",
+		"/G/inetpub/wwwroot/Modelacion/css/estilos.css",
+		"/D/RandomForest/predecir.py",
+		"/C/Users/david/Desktop/Codeforces/650/input3.txt",
+		"/C/Users/david/Desktop/Codeforces/650/input4.txt",
+		"/C/Users/david/Desktop/Codeforces/642/input.txt",
+		"/C/Users/david/Desktop/Codeforces/650/pA.py",
+		"/C/Users/david/Desktop/Codeforces/642/pA.py",
+		"/C/Users/david/Desktop/Codeforces/642/pB.py",
+		"/C/Users/david/Desktop/Codeforces/642/pC.py",
+		"/C/Users/david/Desktop/Codeforces/642/pD.py",
+		"/C/Users/david/Desktop/Codeforces/642/input3.txt",
+		"/C/Users/david/Desktop/Codeforces/642/input2.txt",
+		"/C/Users/david/Desktop/Codeforces/642/input4.txt",
+		"/C/Users/david/Desktop/Codeforces/650/pC.py",
+		"/C/Users/david/Desktop/Codeforces/650/input2.txt",
+		"/C/Users/david/Desktop/Codeforces/650/input.txt",
+		"/C/Users/david/Desktop/Codeforces/650/pB.py",
+		"/C/Users/david/Desktop/Codeforces/1373/pB.py",
+		"/C/Users/david/Desktop/Codeforces/1373/input.txt",
+		"/C/Users/david/Desktop/Codeforces/1373/pC.py",
+		"/C/Users/david/Desktop/Codeforces/1096/pC.py",
+		"/C/Users/david/Desktop/Codeforces/1096/pB.py",
+		"/C/Users/david/Desktop/Codeforces/1373/Pc.PY",
+		"/C/Users/david/Desktop/Codeforces/1096/1096A.py",
+		"/C/Users/david/Desktop/Codeforces/1373/pA.py",
+		"/C/Users/david/Desktop/1096A.py",
+		"/C/Users/david/Desktop/input.txt",
+		"/C/Users/david/Desktop/pB.py",
+		"/C/Users/david/Desktop/pA.py",
+		"/C/Users/david/Desktop/FEM/2D/crearDatasets_luis.py",
+		"/C/Users/david/Desktop/FEM/2D/crearDatasets_negris.py",
+		"/C/Users/david/Desktop/FEM/2D/crearDatasets_negris2.py",
+		"/C/Users/david/Desktop/FEM/2D/crearDatasets.py",
+		"/C/Users/david/Desktop/FEM/2D/setup.py",
+		"/C/Users/david/Desktop/FEM/2D/dana.txt",
+		"/C/Users/david/Downloads/triangle-master/triangle-master/triangle/tri.py",
+		"/C/Users/david/Downloads/triangle-master/triangle-master/triangle/plot.py",
+		"/C/Users/david/Downloads/refine.py",
+		"/C/Users/david/Downloads/triangle-master/triangle-master/triangle/data.py",
+		"/C/Users/david/Desktop/Algo/bboxTEST.1.area",
+		"/C/Users/david/Desktop/Algo/bboxTEST.1.node",
+		"/C/Users/david/Desktop/Algo/bbox.1.area",
+		"/C/Users/david/Desktop/Algo/bbox.1.ele",
+		"/C/Users/david/Desktop/Algo/bbox.1.node",
+		"/C/Users/david/Downloads/triangle-master/triangle-master/triangle/data/bbox.1.area",
+		"/C/Users/david/Downloads/triangle-master/triangle-master/triangle/data/bbox.1.node",
+		"/C/Users/david/Downloads/triangle-master/triangle-master/triangle/data/bbox.1.ele",
+		"/C/Users/david/Downloads/data-10.py",
+		"/C/Users/david/Downloads/triangle-master/triangle-master/.travis.yml",
+		"/C/Users/david/Downloads/triangle-master/triangle-master/setup.py",
+		"/C/Users/david/Desktop/FEM/2D/upload.bat",
+		"/C/Users/david/Desktop/FEM/2D/FEMSections/FEM2D/Mesh/delaunay.py",
+		"/C/Users/david/Desktop/FEM/2D/FEMSections/FEM2D/Elasticidad.py",
+		"/C/Users/david/Desktop/FEM/2D/FEMSections/FEM2D/FEM1V.py",
+		"/C/Users/david/Desktop/FEM/2D/FEMSections/FEM2D/FEM.py",
+		"/C/Users/david/Desktop/FEM/2D/FEMSections/FEM2D/__init__.py",
+		"/C/Users/david/Desktop/FEM/2D/FEMSections/FEM1D/Elemento.py",
+		"/C/Users/david/Desktop/FEM/2D/FEMSections/FEM1D/FEMSections.py",
+		"/C/Users/david/Desktop/FEM/2D/FEMSections/FEM1D/__init__.py",
+		"/C/Users/david/Desktop/FEM/2D/LICENSE",
+		"/C/Users/david/Desktop/10013.svg",
+		"/C/Users/david/Desktop/Acortador/jumpcutter.py",
+		"/C/Users/david/Desktop/N_Contol_Carga/N_Contol_Carga/f_Det_estado_estructura.m",
+		"/C/Program Files/Python37/Lib/site-packages/pydot.py",
+		"/C/Users/david/Desktop/FEM/2D/.pypirc",
+		"/G/HUESOS/pro.py",
+		"/D/RandomForest/final.ipynb",
+		"/C/Users/david/Desktop/N_Contol_Carga/N_Contol_Carga/f_esf_def.m",
+		"/C/Users/david/Desktop/N_Contol_Carga/N_Contol_Carga/f_TG.m",
+		"/C/Users/david/Desktop/N_Contol_Carga/N_Contol_Carga/f_Det_estado_Elem.m",
+		"/C/Users/david/Desktop/N_Contol_Carga/N_Contol_Carga/f_DetEstadoElemento.m",
+		"/C/Users/david/Desktop/señal.txt",
+		"/C/Users/david/Desktop/N_Contol_Carga/N_Contol_Carga/Newton_Control_Carga.m",
+		"/C/Users/david/Desktop/ModeloP3.$2k",
+		"/C/Users/david/Desktop/hex.vtu",
+		"/C/Users/david/Desktop/hex.vtk",
+		"/C/Users/david/Downloads/ATT00001.htm",
+		"/C/Users/david/Desktop/voronoi.py",
+		"/C/Users/david/Desktop/delaunay.py",
+		"/C/Users/david/Desktop/__init__.py",
+		"/C/Users/david/Downloads/legend.py",
+		"/C/Users/david/Downloads/mesh2D.py",
+		"/C/Users/david/Downloads/topo.m",
+		"/C/Users/david/Desktop/VGEO2/jumpcutter.py",
+		"/C/Users/david/Desktop/scripts-master/trim_silence.py"
+	],
+	"find":
+	{
+		"height": 56.0
+	},
+	"find_in_files":
+	{
+		"height": 532.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"momento",
+			"clear_output",
+			"TODO"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": true,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 180.0
+	},
+	"input":
+	{
+		"height": 180.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.YAMLMacros":
+	{
+		"height": 176.0
+	},
+	"output.anaconda_documentation":
+	{
+		"height": 212.0
+	},
+	"output.exec":
+	{
+		"height": 183.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.markdown":
+	{
+		"height": 229.0
+	},
+	"pinned_build_system": "",
+	"project": "MANUA_ST3.sublime-project",
+	"replace":
+	{
+		"height": 356.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 196.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
