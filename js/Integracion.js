@@ -19,7 +19,6 @@ var b = parseFloat(document.getElementById('sliderxf').value)
 
 var actual = undefined
 
-let LISTO = false
 
 function actualizarIntervalo() {
 	a = parseFloat(document.getElementById('sliderx0').value)

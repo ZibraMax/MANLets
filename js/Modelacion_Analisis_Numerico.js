@@ -68,12 +68,14 @@ function actualizarFuncion(funcion) {
 
 	actualizarGrafica(0)
 	iteraccionActual = 0
-	const elem = MathJax.Hub.getAllJax('pretty')[0]
+
+	const elem = document.getElementById('pretty')
 	if (actual == 'IS') {
-	    MathJax.Hub.Queue(['Text', elem, 'x='+math.parse(funcion).toTex()])
+	    elem.innerHTML = '$$x='+math.parse(funcion).toTex()+'$$'
 	} else {
-	    MathJax.Hub.Queue(['Text', elem, 'f(x)='+math.parse(funcion).toTex()])
+	    elem.innerHTML = '$$f(x)='+math.parse(funcion).toTex()+'$$'
 	}
+	MathJax.typeset()
 }
 function actualizarSoluciones(arreglo,pactual,objeto) {
 	actual = pactual
