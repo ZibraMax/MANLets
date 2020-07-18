@@ -10,16 +10,20 @@
 * David Arturo Rodriguez Herrera - da.rodriguezh@uniandes.edu.co
 */
 
-//gaussLegendre = (fn, a, b, n, l=100)
-
 
 var PUNTOS_GAUSS = 3
 var a = parseFloat(document.getElementById('sliderx0').value)
 var b = parseFloat(document.getElementById('sliderxf').value)
 
+var problema = 'GL'
 var actual = undefined
-
-
+function actualizarInterfazSegmentos() {
+	document.getElementById('numeroSegmentos').value = PUNTOS_GAUSS
+}
+function actualizarSegmentos(numero) {
+	PUNTOS_GAUSS = numero
+	actualizarIntervalo()
+}
 function actualizarIntervalo() {
 	a = parseFloat(document.getElementById('sliderx0').value)
 	b = parseFloat(document.getElementById('sliderxf').value)
@@ -37,26 +41,41 @@ function parseFuncion(str){
 	}
 }
 function actualizarFuncion(str) {
-	fx = parseFuncion(str)
-	actual = new GaussLegendre(fx)
-	actualizarIntervalo()
+	resolver(problema)
 }
 
 function actualizarLatex() {
 
 	str = document.getElementById('funcion').value
 	const elem = document.getElementById('pretty')
-	if (actual.valor) {
-	    elem.innerHTML = '$$\\textcolor{green}{\\int_{'+actual.a+'}^{'+actual.b+'}=' + math.parse(str).toTex()+'='+math.round(actual.valor,5)+'}$$'
-	} else {
-	    elem.innerHTML = '$$\\textcolor{red}{\\int_{'+actual.a+'}^{'+actual.b+'}=' + math.parse(str).toTex()+'='+math.round(actual.valor,5)+'}$$'
+	let color = '$$\\textcolor{green}'
+	let valor = math.round(actual.valor,5)
+	if (!actual.valor) {
+		color = '$$\\textcolor{red}'
+		valor = '}$$Error al evaluar la integral, revise la función y/o los limites de integración$${'
+		try {
+			if (actual.valor==0){
+				color = '$$\\textcolor{green}'
+				valor = math.round(actual.valor,5)
+			}
+		} catch(e) {
+			console.log(e)
+		}
 	}
+	elem.innerHTML = color+'{\\int_{'+actual.a+'}^{'+actual.b+'}' + math.parse(str).toTex()+'{dx}='+valor+'}$$'
     MathJax.typeset()
 }
 
-function resolver() {
+function resolver(tipo = 'GL') {
+	problema = tipo
 	fx = parseFuncion(document.getElementById('funcion').value)
-	actual = new GaussLegendre(fx)
+	if (tipo=='GL') {
+		actual = new GaussLegendre(fx)
+	} else if (tipo=='TP') {
+		actual = new Trapecio(fx)
+	} else {
+		alert('Mensaje para Arturo: Arregla los errores pendejo')
+	}
 	actualizarIntervalo()
 }
 
@@ -160,6 +179,84 @@ class GaussLegendre{
 
 		let layout = {
 		  title:'Integración por Gauss-Legendre',
+		  shapes:shapes,
+		  xaxis: {
+		  	title:'x'
+		  },
+		  yaxis: {
+		  	title:'y'
+		  }
+		}
+
+
+		var config = {responsive: true}
+		Plotly.newPlot('grafica', traces,layout,config)
+	}
+}
+
+class Trapecio{
+	constructor(fx) {
+		this.fx = fx
+	}
+	calcularIntegral(params) {
+		this.a = params.a
+		this.b = params.b
+		this.integrar(PUNTOS_GAUSS)
+	}
+	integrar(n) {
+		let h = (this.b-this.a)/(n)
+		let sum = 0
+		for(let i = 1; i < n; i++){
+			sum += this.fx(this.a+i*h)
+		}
+		this.valor = h/2*(this.fx(this.a)+2*sum+this.fx(this.b))
+	}
+	actualizarGrafica(n=100) {
+		let a = this.a
+		let b = this.b
+		let fxs = []
+		let traces = []
+		let shapes = []
+		let x = []
+
+		let labels = []
+		let trace = {}
+
+		let h = (b-a)/n
+		for(let i = -n/10; i <= n+n/10; i++){
+			x.push(a+i*h)
+			fxs.push(this.fx(a+i*h))
+		}
+
+		trace = {
+			x: x,
+			y: fxs,
+			mode: 'lines',
+			name: 'f(x)'
+		}
+		traces.push(trace)
+
+		x = []
+		fxs = []
+		h = (b-a)/PUNTOS_GAUSS
+		for(let i = 0; i <= PUNTOS_GAUSS; i++){
+			x.push(a+i*h)
+			fxs.push(this.fx(a+i*h))
+		}
+		trace = {
+			x: x,
+			y: fxs,
+			fill: 'tozeroy',
+			fillcolor: 'rgba(34, 135, 224, 0.3)',
+			opacity: 0.5,
+			mode: 'markers+lines',
+			type: 'scatter',
+			name: 'Area Integral'
+		}
+		traces.push(trace)
+
+		let layout = {
+		  title:'Integración por Trapecio',
 		  shapes:shapes,
 		  xaxis: {
 		  	title:'x'

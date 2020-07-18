@@ -116,7 +116,8 @@ function tablaNXN(n,divname,tipo='input') {
 	tabla.appendChild(tableHeader)
 	tabla.appendChild(tablebody)
 	document.getElementById(divname).appendChild(tabla)
-	MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+	
+	MathJax.typeset()
 }
 
 document.onkeydown = function(e){
