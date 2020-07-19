@@ -4,20 +4,32 @@
 		"selected_items":
 		[
 			[
-				"if",
-				"if_else"
+				"aGra",
+				"aGrafica\tnumber"
 			],
 			[
 				"for",
 				"for"
 			],
 			[
-				"fo",
-				"for"
+				"fun",
+				"function_with_name"
 			],
 			[
-				"fun",
-				"function"
+				"functo",
+				"function_with_name"
+			],
+			[
+				"function",
+				"Function\t[class: Function]"
+			],
+			[
+				"if",
+				"if_else"
+			],
+			[
+				"fo",
+				"for"
 			],
 			[
 				"funct",
@@ -176,19 +188,19 @@
 	"buffers":
 	[
 		{
-			"file": "Integracion/Trapecio/index.html",
+			"file": "js/Integracion.js",
 			"settings":
 			{
-				"buffer_size": 3683,
+				"buffer_size": 9351,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "js/Integracion.js",
+			"file": "Integracion/index.html",
 			"settings":
 			{
-				"buffer_size": 6176,
+				"buffer_size": 1310,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -349,19 +361,24 @@
 		"/C/Users/david/Desktop/MANUA_PAGE",
 		"/C/Users/david/Desktop/MANUA_PAGE/Integracion",
 		"/C/Users/david/Desktop/MANUA_PAGE/Integracion/GaussLegendre",
+		"/C/Users/david/Desktop/MANUA_PAGE/Integracion/Simpson",
 		"/C/Users/david/Desktop/MANUA_PAGE/Integracion/Trapecio",
-		"/C/Users/david/Desktop/MANUA_PAGE/js"
+		"/C/Users/david/Desktop/MANUA_PAGE/js",
+		"/C/Users/david/Desktop/MANUA_PAGE/SistemasEcuaciones",
+		"/C/Users/david/Desktop/MANUA_PAGE/SistemasEcuaciones/Gauss"
 	],
 	"file_history":
 	[
-		"/C/Users/david/Desktop/MANUA_PAGE/js/legendre.js",
+		"/C/Users/david/Desktop/MANUA_PAGE/Integracion/Simpson/index.html",
+		"/C/Users/david/Desktop/MANUA_PAGE/js/Modelacion_Analisis_Numerico.js",
 		"/C/Users/david/Desktop/MANUA_PAGE/js/Integracion.js",
-		"/C/Users/david/Desktop/MANUA_PAGE/Integracion/GaussLegendre/index.html",
+		"/C/Users/david/Desktop/MANUA_PAGE/Integracion/Trapecio/index.html",
 		"/C/Users/david/Desktop/MANUA_PAGE/Integracion/index.html",
+		"/C/Users/david/Desktop/MANUA_PAGE/js/legendre.js",
+		"/C/Users/david/Desktop/MANUA_PAGE/Integracion/GaussLegendre/index.html",
 		"/C/Users/david/Desktop/MANUA_PAGE/Raices/index.html",
 		"/C/Users/david/Desktop/MANUA_PAGE/js/creacionTablas.js",
 		"/C/Users/david/Desktop/MANUA_PAGE/index.html",
-		"/C/Users/david/Desktop/MANUA_PAGE/js/Modelacion_Analisis_Numerico.js",
 		"/C/Users/david/Desktop/MANUA_PAGE/SistemasEcuaciones/index.html",
 		"/C/Users/david/Desktop/MANUA_PAGE/Raices/Biseccion/index.html",
 		"/C/Users/david/Desktop/MANUA_PAGE/Raices/FalsaPosicion/index.html",
@@ -479,13 +496,11 @@
 		"/C/Users/david/Desktop/Acortador/jumpcutter.py",
 		"/C/Users/david/Desktop/N_Contol_Carga/N_Contol_Carga/f_Det_estado_estructura.m",
 		"/C/Program Files/Python37/Lib/site-packages/pydot.py",
-		"/C/Users/david/Desktop/FEM/2D/.pypirc",
-		"/G/HUESOS/pro.py",
-		"/D/RandomForest/final.ipynb"
+		"/C/Users/david/Desktop/FEM/2D/.pypirc"
 	],
 	"find":
 	{
-		"height": 56.0
+		"height": 60.0
 	},
 	"find_in_files":
 	{
@@ -499,6 +514,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"console.log",
+			"math",
+			"//",
+			"gaussle",
+			"GaussLegendre",
+			"calcular",
 			"mathj",
 			"mathja",
 			"mat",
@@ -535,51 +556,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "Integracion/Trapecio/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3683,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3328,
-								3328
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"open_with_edit": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false,
-							"word_separators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?"
-						},
-						"translation.x": 0.0,
-						"translation.y": 2987.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "js/Integracion.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6176,
+						"buffer_size": 9351,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4373,
-								4373
+								1206,
+								1187
 							]
 						],
 						"settings":
@@ -590,7 +579,38 @@
 							"word_separators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?"
 						},
 						"translation.x": 0.0,
-						"translation.y": 5255.0,
+						"translation.y": 480.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Integracion/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1310,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1233,
+								1233
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 564.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -601,7 +621,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 40.0
+		"height": 43.0
 	},
 	"input":
 	{
@@ -654,7 +674,7 @@
 	"project": "MANUA_ST3.sublime-project",
 	"replace":
 	{
-		"height": 76.0
+		"height": 82.0
 	},
 	"save_all_on_build": true,
 	"select_file":

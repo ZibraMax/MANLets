@@ -20,6 +20,19 @@ var actual = undefined
 function actualizarInterfazSegmentos() {
 	document.getElementById('numeroSegmentos').value = PUNTOS_GAUSS
 }
+function parabolarDesdePuntos(x1,y1,x2,y2,x3,y3) {
+	let M = math.matrix([[x1*x1,x1,1],[x2*x2,x2,1],[x3*x3,x3,1]])
+	let F = math.matrix([[y1],[y2],[y3]])
+	let U = math.multiply(math.inv(M),F)._data
+	return x => U[0][0]*x*x+U[1][0]*x + U[2][0]
+}
+
+function cubicaDesdePuntos(x1,y1,x2,y2,x3,y3,x4,y4) {
+	let M = math.matrix([[x1*x1*x1,x1*x1,x1,1],[x2*x2*x2,x2*x2,x2,1],[x3*x3*x3,x3*x3,x3,1],[x4*x4*x4,x4*x4,x4,1]])
+	let F = math.matrix([[y1],[y2],[y3],[y4]])
+	let U = math.multiply(math.inv(M),F)._data
+	return x => U[0][0]*x*x*x+U[1][0]*x*x + U[2][0]*x+U[3][0]
+}
 function actualizarSegmentos(numero) {
 	PUNTOS_GAUSS = numero
 	actualizarIntervalo()
@@ -73,6 +86,8 @@ function resolver(tipo = 'GL') {
 		actual = new GaussLegendre(fx)
 	} else if (tipo=='TP') {
 		actual = new Trapecio(fx)
+	} else if (tipo=='SP') {
+		actual = new Simpson(fx)
 	} else {
 		alert('Mensaje para Arturo: Arregla los errores pendejo')
 	}
@@ -257,6 +272,155 @@ class Trapecio{
 
 		let layout = {
 		  title:'Integración por Trapecio',
+		  shapes:shapes,
+		  xaxis: {
+		  	title:'x'
+		  },
+		  yaxis: {
+		  	title:'y'
+		  }
+		}
+
+
+		var config = {responsive: true}
+		Plotly.newPlot('grafica', traces,layout,config)
+	}
+}
+
+class Simpson{
+	constructor(fx) {
+		this.fx = fx
+	}
+	calcularIntegral(params) {
+		this.a = params.a
+		this.b = params.b
+		this.integrar(PUNTOS_GAUSS)
+	}
+	integrar(n,a=this.a,b=this.b) {
+		if (n%2==0) {
+			if (n == 0){
+				this.valor = 0
+			} else {
+				//Simpson 1/3
+				let h = (b-a)/(n)
+				let sum1 = 0
+				let sum2 = 0
+				for(let i = 1; i < n; i+=2){
+					sum1 += this.fx(a+(i)*h)
+				}
+				for(let i = 2; i < n-1; i+=2){
+					sum2 += this.fx(a+(i)*h)
+				}
+				this.valor = h/3*(this.fx(a)+4*sum1+2*sum2+this.fx(a+(n)*h))
+			}
+		} else {
+			let h3 = (this.b-this.a)/(n)
+			this.integrar(n-3,this.a,this.a + (n-3)*h3)
+			let a = this.a + (n-3)*h3
+			let b = this.a + n*h3
+			let f0 = this.fx(this.a + (n-3)*h3)
+			let f1 = this.fx(this.a + (n-2)*h3)
+			let f2 = this.fx(this.a + (n-1)*h3)
+			let f3 = this.fx(this.a + (n)*h3)
+			let valor = ((b-a)/8)*(f0+3*f1+3*f2+f3)
+			this.valor += valor
+		}
+	}
+	actualizarGrafica(n=100) {
+		let a = this.a
+		let b = this.b
+		let fxs = []
+		let traces = []
+		let shapes = []
+		let x = []
+
+		let labels = []
+		let trace = {}
+
+		let h = (b-a)/n
+		for(let i = -n/10; i <= n+n/10; i++){
+			x.push(a+i*h)
+			fxs.push(this.fx(a+i*h))
+		}
+
+		trace = {
+			x: x,
+			y: fxs,
+			mode: 'lines',
+			name: 'f(x)'
+		}
+		traces.push(trace)
+		h = (b-a)/PUNTOS_GAUSS
+
+		let flag = 1 - (PUNTOS_GAUSS%2 == 0)
+		PUNTOS_GAUSS = PUNTOS_GAUSS-3*flag
+		let puntosGrafica = 8
+		for(let i = 0; i < PUNTOS_GAUSS; i+=2){
+			let x0 = this.a+i*h
+			let x1 = this.a+(i+1)*h
+			let x2 = this.a+(i+2)*h
+			let y0 = this.fx(x0)
+			let y1 = this.fx(x1)
+			let y2 = this.fx(x2)
+			let x = []
+			let fxs = []
+			
+			let aGrafica = x0
+			let bGrafica = x2
+
+			let hGrafica = (bGrafica-aGrafica)/puntosGrafica
+			let efedeequis = parabolarDesdePuntos(x0,y0,x1,y1,x2,y2)
+
+			for(let j = 0; j < puntosGrafica+1; j++){
+				x.push(aGrafica+j*hGrafica)
+				fxs.push(efedeequis(aGrafica+j*hGrafica))
+			}
+			let trace = {
+				x: x,
+				y: fxs,
+				fill: 'tozeroy',
+				fillcolor: 'rgba(34, 135, 224, 0.3)',
+				opacity: 0.5,
+				name: 'Parábola ' + (i/2+1)
+			}
+			traces.push(trace)
+		}
+		if (flag) {
+			let i = PUNTOS_GAUSS
+			let x0 = this.a+i*h
+			let x1 = this.a+(i+1)*h
+			let x2 = this.a+(i+2)*h
+			let x3 = this.a+(i+3)*h
+			let y0 = this.fx(x0)
+			let y1 = this.fx(x1)
+			let y2 = this.fx(x2)
+			let y3 = this.fx(x3)
+			let x = []
+			let fxs = []
+			
+			let aGrafica = x0
+			let bGrafica = x3
+
+			let hGrafica = (bGrafica-aGrafica)/puntosGrafica
+			let efedeequis = cubicaDesdePuntos(x0,y0,x1,y1,x2,y2,x3,y3)
+
+			for(let j = 0; j < puntosGrafica+1; j++){
+				x.push(aGrafica+j*hGrafica)
+				fxs.push(efedeequis(aGrafica+j*hGrafica))
+			}
+			let trace = {
+				x: x,
+				y: fxs,
+				fill: 'tozeroy',
+				fillcolor: 'rgba(228, 164, 12, 0.3)',
+				opacity: 0.5,
+				name: 'Cúbica ' + (i/2+1)
+			}
+			traces.push(trace)
+		}
+		PUNTOS_GAUSS = PUNTOS_GAUSS+3*flag
+		let layout = {
+		  title:'Integración por Simpson',
 		  shapes:shapes,
 		  xaxis: {
 		  	title:'x'

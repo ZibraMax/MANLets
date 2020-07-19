@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163602964-1"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-163602964-1');
+	</script>
+
+	<!-- Viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=0.5,user-scalable=no" id="viewport">
+
+	<!-- Iconos -->
+	<script src="https://use.fontawesome.com/cd12fb1dd8.js"></script>
+	<meta charset="utf-8">
+
+
+	<!-- Titulo -->
+	<title>Applets</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="../../favicon/favicon.ico">
+
+	<!-- Plotly -->
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+	<!-- Picnic y css-->
+	<link rel="stylesheet" href="https://unpkg.com/picnic">
+	<link rel="stylesheet" href="../../css/estilos.css">
+
+	<!-- Math.js-->
+	<script type="text/javascript" src="../../js/math.js"></script>
+
+	<!-- MathJax para LaTex -->
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body style="margin: 20px">
+	<article class="card">
+		<header>
+			<h1>MANLets - Reglas de Simpson</h1>
+		</header>
+		<footer>
+			<div class="fila">
+				<div class="columnaMedios" style=" border: 2px solid gray; border-radius: 8px;margin: 5px;">
+					<div id="grafica"></div>
+				</div>
+				<div class="columnaMedios">
+					<table style="width: 100%">
+						<thead>
+							<th>
+								Parámetro
+							</th>
+							<th>
+								Valor
+							</th>
+						</thead>
+						<tbody>
+						<tr>
+							<td>
+								<span class="stack">$$f(x)=$$</span>
+							</td>
+							<td>
+								<input type="text" id="funcion" value="-12x^5-6x^3+10" oninput="actualizarFuncion(this.value)" >
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<span class="stack">$$\color{black}a=$$</span>
+								
+							</td>
+							<td>
+								<input type="text" id="sliderx0" value='0' oninput="actualizarIntervalo()"  class="stack">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<span class="stack">$$b=$$</span>
+							</td>
+							<td>
+								<input type="text" id="sliderxf" value='1' oninput="actualizarIntervalo()"  class="stack">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<span class="stack" style="text-align: center;">Número de segmentos</span>
+							</td>
+							<td>
+								<input type="text" id="numeroSegmentos" value='3' oninput="actualizarSegmentos(parseFloat(this.value))"  class="stack">
+							</td>
+						</tr>
+						</tbody>
+						<thead>
+							<tr>
+								<th colspan="2" >
+									<button onclick="resolver('SP')" class="stack icon-paper-plane" style="text-align: center;">Calcular</button>
+								</th>
+							</tr>
+							<tr style="text-align: center;">
+								<td style="align-content: center;">
+									<button onclick="if(PUNTOS_GAUSS>2){menosPuntos();actualizarInterfazSegmentos()}" class="succes icon-paper-plane" >< Disminuir Puntos</button>
+								</td>
+								<td style="align-content: center;">
+									<button onclick="masPuntos();actualizarInterfazSegmentos()" class="warning icon-paper-plane" >Aumentar Puntos > </button>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<span id="pretty">$$\int_{0}^{1}{-12x^5-6x^3+10}{dx}=$$</span>
+								</td>
+							</tr>
+						</thead>
+					</table>
+			</div>
+		</div>
+		<div id="btns">
+			<a class="floatButton" onclick="if(PUNTOS_GAUSS>2){menosPuntos();actualizarInterfazSegmentos()}">
+			<i class="fa fa-angle-left my-float"></i>
+			</a>
+			<a class="floatButton1" onclick="masPuntos();actualizarInterfazSegmentos()">
+			<i class="fa fa-angle-right my-float"></i>
+			</a>
+		</div>
+</footer>
+	<script type="text/javascript" src="../../js/Integracion.js"></script>
+</body>
+</html>
