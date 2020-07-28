@@ -188,37 +188,41 @@
 	"buffers":
 	[
 		{
-			"file": "js/Integracion.js",
+			"file": "js/Interpolacion.js",
 			"settings":
 			{
-				"buffer_size": 9351,
+				"buffer_size": 915,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Integracion/index.html",
+			"file": "/C/Users/david/Desktop/index.html",
 			"settings":
 			{
-				"buffer_size": 1310,
+				"buffer_size": 2444,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Windows",
+				"name": "<head>"
 			}
 		},
 		{
-			"file": "index.html",
+			"contents": "Package Control Messages\n========================\n\nGitGutter\n---------\n\n  1.11.3:\n  ======\n  \n    Fix:\n     - line annotation background (#552)\n  \n  \n  💛 Git Gutter? Want to support development?\n  \n  I've teamed up with Wes Bos to offer the following discounts:\n  \n  +------------------------------------------------+\n  |                                                |\n  |   Use the coupon code GITGUTTER for $10 off    |\n  |                                                |\n  +------------------------------------------------+\n  \n  🏅 ⭐ ES6 ⭐\n  \n  👉 ES6.io/friend/GITGUTTER\n  \n  🏅 ⭐ Sublime Text Book ⭐\n  \n  👉 SublimeTextBook.com/friend/GITGUTTER\n  \n  🏅 ⭐ React For Beginners ⭐\n  \n  👉 ReactForBeginners.com/friend/GITGUTTER\n  \n  \n  Join 15,000 other developers already learning with Wes Bos.\n  \n  These are fantastic resources - 100% money back guarantee! 🌟\n",
 			"settings":
 			{
-				"buffer_size": 1354,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"buffer_size": 860,
+				"line_ending": "Windows",
+				"name": "Package Control Messages",
+				"read_only": true,
+				"scratch": true
 			}
 		},
 		{
-			"file": "css/estilos.css",
+			"file": "Interpolacion/Gauss/index.html",
 			"settings":
 			{
-				"buffer_size": 3377,
+				"buffer_size": 2252,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		}
@@ -376,27 +380,22 @@
 	"expanded_folders":
 	[
 		"/C/Users/david/Desktop/MANUA_PAGE",
-		"/C/Users/david/Desktop/MANUA_PAGE/css",
-		"/C/Users/david/Desktop/MANUA_PAGE/Integracion",
-		"/C/Users/david/Desktop/MANUA_PAGE/Integracion/GaussLegendre",
-		"/C/Users/david/Desktop/MANUA_PAGE/Integracion/Simpson",
-		"/C/Users/david/Desktop/MANUA_PAGE/Integracion/Trapecio",
-		"/C/Users/david/Desktop/MANUA_PAGE/js",
-		"/C/Users/david/Desktop/MANUA_PAGE/SistemasEcuaciones",
-		"/C/Users/david/Desktop/MANUA_PAGE/SistemasEcuaciones/Gauss"
+		"/C/Users/david/Desktop/MANUA_PAGE/Interpolacion",
+		"/C/Users/david/Desktop/MANUA_PAGE/Interpolacion/Gauss",
+		"/C/Users/david/Desktop/MANUA_PAGE/js"
 	],
 	"file_history":
 	[
+		"/C/Users/david/Desktop/MANUA_PAGE/js/Integracion.js",
+		"/C/Users/david/Desktop/MANUA_PAGE/index.html",
+		"/C/Users/david/Desktop/MANUA_PAGE/Integracion/index.html",
 		"/C/Users/david/Desktop/MANUA_PAGE/Integracion/Simpson/index.html",
 		"/C/Users/david/Desktop/MANUA_PAGE/js/Modelacion_Analisis_Numerico.js",
-		"/C/Users/david/Desktop/MANUA_PAGE/js/Integracion.js",
 		"/C/Users/david/Desktop/MANUA_PAGE/Integracion/Trapecio/index.html",
-		"/C/Users/david/Desktop/MANUA_PAGE/Integracion/index.html",
 		"/C/Users/david/Desktop/MANUA_PAGE/js/legendre.js",
 		"/C/Users/david/Desktop/MANUA_PAGE/Integracion/GaussLegendre/index.html",
 		"/C/Users/david/Desktop/MANUA_PAGE/Raices/index.html",
 		"/C/Users/david/Desktop/MANUA_PAGE/js/creacionTablas.js",
-		"/C/Users/david/Desktop/MANUA_PAGE/index.html",
 		"/C/Users/david/Desktop/MANUA_PAGE/SistemasEcuaciones/index.html",
 		"/C/Users/david/Desktop/MANUA_PAGE/Raices/Biseccion/index.html",
 		"/C/Users/david/Desktop/MANUA_PAGE/Raices/FalsaPosicion/index.html",
@@ -518,7 +517,7 @@
 	],
 	"find":
 	{
-		"height": 60.0
+		"height": 58.0
 	},
 	"find_in_files":
 	{
@@ -532,6 +531,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"<!DOCTYPE html>\n<html lang=\"es-ES\">\n<head>\n\t<!-- Global site tag (gtag.js) - Google Analytics -->\n\t<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-163602964-1\"></script>\n\t<script>\n\twindow.dataLayer = window.dataLayer || [];\n\tfunction gtag(){dataLayer.push(arguments);}\n\tgtag('js', new Date());\n\n\tgtag('config', 'UA-163602964-1');\n\t</script>\n\n\t<!-- Viewport -->\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=0.5,user-scalable=no\" id=\"viewport\">\n\n\t<!-- Iconos -->\n\t<script src=\"https://use.fontawesome.com/cd12fb1dd8.js\"></script>\n\t<meta charset=\"utf-8\">\n\n\n\t<!-- Titulo -->\n\t<title>Applets</title>\n\n\t<!-- Favicon -->\n\t<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"../../favicon/favicon.ico\">\n\n\t<!-- Plotly -->\n\t<script src=\"https://cdn.plot.ly/plotly-latest.min.js\"></script>\n\n\t<!-- Picnic y css-->\n\t<link rel=\"stylesheet\" href=\"https://unpkg.com/picnic\">\n\t<link rel=\"stylesheet\" href=\"../../css/estilos.css\">\n\n\t<!-- Math.js-->\n\t<script type=\"text/javascript\" src=\"../../js/math.js\"></script>\n\n\t<!-- MathJax para LaTex -->\n\t<script id=\"MathJax-script\" async src=\"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js\"></script>\n</head>\n<body style=\"margin: 20px\">\n\t<article class=\"card\">\n\t\t<header>\n\t\t\t<h1>MANLets - Cuadratura de Gauss-Legendre</h1>\n\t\t</header>\n\t\t<footer>\n\t\t\t<div class=\"fila\">\n\t\t\t\t<div class=\"columnaMedios\" style=\" border: 2px solid gray; border-radius: 8px;margin: 5px;\">\n\t\t\t\t\t<div id=\"grafica\"></div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"columnaMedios\">\n\t\t\t\t\t<table style=\"width: 100%\">\n\t\t\t\t\t\t<thead>\n\t\t\t\t\t\t\t<th>\n\t\t\t\t\t\t\t\tParámetro\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th>\n\t\t\t\t\t\t\t\tValor\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t</thead>\n\t\t\t\t\t\t<tbody>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"stack\">$$f(x)=$$</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<input type=\"text\" id=\"funcion\" value=\"-12x^5-6x^3+10\" oninput=\"actualizarFuncion(this.value)\" >\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"stack\">$$\\color{black}a=$$</span>\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<input type=\"text\" id=\"sliderx0\" value='0' oninput=\"actualizarIntervalo()\"  class=\"stack\">\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"stack\">$$b=$$</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<input type=\"text\" id=\"sliderxf\" value='1' oninput=\"actualizarIntervalo()\"  class=\"stack\">\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t</tbody>\n\t\t\t\t\t\t<thead>\n\t\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t\t<th colspan=\"2\" >\n\t\t\t\t\t\t\t\t\t<button onclick=\"resolver()\" class=\"stack icon-paper-plane\" style=\"text-align: center;\">Calcular</button>\n\t\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t\t<tr style=\"text-align: center;\">\n\t\t\t\t\t\t\t\t<td style=\"align-content: center;\">\n\t\t\t\t\t\t\t\t\t<button onclick=\"menosPuntos()\" class=\"succes icon-paper-plane\" >< Disminuir Puntos</button>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td style=\"align-content: center;\">\n\t\t\t\t\t\t\t\t\t<button onclick=\"masPuntos()\" class=\"warning icon-paper-plane\" >Aumentar Puntos > </button>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t\t<td colspan=\"2\">\n\t\t\t\t\t\t\t\t\t<span id=\"pretty\">$$\\int_{0}^{1}{-12x^5-6x^3+10}{dx}=$$</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t</thead>\n\t\t\t\t\t</table>\n\t\t\t</div>\n\t\t</div>\n\t\t<div id=\"btns\">\n\t\t\t<a class=\"floatButton\" onclick=\"menosPuntos()\">\n\t\t\t<i class=\"fa fa-angle-left my-float\"></i>\n\t\t\t</a>\n\t\t\t<a class=\"floatButton1\" onclick=\"masPuntos()\">\n\t\t\t<i class=\"fa fa-angle-right my-float\"></i>\n\t\t\t</a>\n\t\t</div>\n</footer>\n\t<script type=\"text/javascript\" src=\"../../js/legendre.js\"></script>\n\t<script type=\"text/javascript\" src=\"../../js/Integracion.js\"></script>\n</body>\n</html>",
 			"console.log",
 			"math",
 			"//",
@@ -569,35 +569,35 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "js/Integracion.js",
+					"file": "js/Interpolacion.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9351,
+						"buffer_size": 915,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1206,
-								1187
+								846,
+								846
 							]
 						],
 						"settings":
 						{
 							"git_gutter_is_enabled": true,
+							"open_with_edit": true,
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false,
 							"word_separators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?"
 						},
 						"translation.x": 0.0,
-						"translation.y": 480.0,
+						"translation.y": 726.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
@@ -605,93 +605,96 @@
 				},
 				{
 					"buffer": 1,
-					"file": "Integracion/index.html",
+					"file": "/C/Users/david/Desktop/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1310,
+						"buffer_size": 2444,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1233,
-								1233
+								959,
+								959
 							]
 						],
 						"settings":
 						{
-							"git_gutter_is_enabled": true,
+							"auto_name": "<head>",
+							"git_gutter_is_enabled": false,
 							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"word_separators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?"
 						},
 						"translation.x": 0.0,
-						"translation.y": 3.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1354,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								333,
-								333
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 36.0,
+						"translation.y": 1177.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "css/estilos.css",
-					"semi_transient": true,
+					"buffer": 2,
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3377,
+						"buffer_size": 860,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1990,
-								1990
+								71,
+								71
+							]
+						],
+						"settings":
+						{
+							"auto_indent": false,
+							"default_dir": "C:\\Users\\david\\Desktop\\MANUA_PAGE",
+							"git_gutter_is_enabled": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_width": 2,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Interpolacion/Gauss/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2252,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1523,
+								1523
 							]
 						],
 						"settings":
 						{
 							"git_gutter_is_enabled": true,
-							"syntax": "Packages/CSS/CSS.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"open_with_edit": true,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3392.0,
+						"translation.y": 684.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -699,7 +702,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 43.0
+		"height": 42.0
 	},
 	"input":
 	{
@@ -752,7 +755,7 @@
 	"project": "MANUA_ST3.sublime-project",
 	"replace":
 	{
-		"height": 82.0
+		"height": 80.0
 	},
 	"save_all_on_build": true,
 	"select_file":

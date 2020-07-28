@@ -65,7 +65,7 @@ function actualizarLatex() {
 	let valor = math.round(actual.valor,5)
 	if (!actual.valor) {
 		color = '$$\\textcolor{red}'
-		valor = '}$$Error al evaluar la integral, revise la función y/o los limites de integración$${'
+		valor = '}$$<p style="text-align:center;color:red">Error al evaluar la integral, revise la función y/o los limites de integración</p>$${'
 		try {
 			if (actual.valor==0){
 				color = '$$\\textcolor{green}'
