@@ -12,6 +12,12 @@
 	[
 		{
 			"path": "."
+		},
+		{
+			"path": "C:\\Users\\david\\Downloads"
+		},
+		{
+			"path": "C:\\Users\\david\\Desktop"
 		}
 	]
 }

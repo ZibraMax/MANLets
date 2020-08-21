@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"eb",
+				"e_b_2\tstatement"
+			],
+			[
 				"aGra",
 				"aGrafica\tnumber"
 			],
@@ -188,46 +192,16 @@
 	"buffers":
 	[
 		{
-			"file": "js/Interpolacion.js",
+			"file": "/C/Users/david/Desktop/Tarea 1 MAN/archivo.py",
 			"settings":
 			{
-				"buffer_size": 915,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/david/Desktop/index.html",
-			"settings":
-			{
-				"buffer_size": 2444,
-				"encoding": "UTF-8",
-				"line_ending": "Windows",
-				"name": "<head>"
-			}
-		},
-		{
-			"contents": "Package Control Messages\n========================\n\nGitGutter\n---------\n\n  1.11.3:\n  ======\n  \n    Fix:\n     - line annotation background (#552)\n  \n  \n  💛 Git Gutter? Want to support development?\n  \n  I've teamed up with Wes Bos to offer the following discounts:\n  \n  +------------------------------------------------+\n  |                                                |\n  |   Use the coupon code GITGUTTER for $10 off    |\n  |                                                |\n  +------------------------------------------------+\n  \n  🏅 ⭐ ES6 ⭐\n  \n  👉 ES6.io/friend/GITGUTTER\n  \n  🏅 ⭐ Sublime Text Book ⭐\n  \n  👉 SublimeTextBook.com/friend/GITGUTTER\n  \n  🏅 ⭐ React For Beginners ⭐\n  \n  👉 ReactForBeginners.com/friend/GITGUTTER\n  \n  \n  Join 15,000 other developers already learning with Wes Bos.\n  \n  These are fantastic resources - 100% money back guarantee! 🌟\n",
-			"settings":
-			{
-				"buffer_size": 860,
-				"line_ending": "Windows",
-				"name": "Package Control Messages",
-				"read_only": true,
-				"scratch": true
-			}
-		},
-		{
-			"file": "Interpolacion/Gauss/index.html",
-			"settings":
-			{
-				"buffer_size": 2252,
+				"buffer_size": 1333,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		}
 	],
-	"build_system": "Packages/Python/Python.sublime-build",
+	"build_system": "Packages/LaTeXTools/LaTeX.sublime-build",
 	"build_system_choices":
 	[
 		[
@@ -249,6 +223,54 @@
 				"Packages/Python/Python.sublime-build",
 				"Syntax Check"
 			]
+		],
+		[
+			[
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					""
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Traditional"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"PdfLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"XeLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"LuaLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - PdfLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - XeLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - LuaLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Script Builder"
+				]
+			],
+			[
+				"Packages/LaTeXTools/LaTeX.sublime-build",
+				"PdfLaTeX"
+			]
 		]
 	],
 	"build_varint": "",
@@ -259,8 +281,28 @@
 		"selected_items":
 		[
 			[
+				"colot",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"COLORS",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
 				"color",
 				"UI: Select Color Scheme"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
 			],
 			[
 				"LiveReload: Enable/disable plugins",
@@ -275,16 +317,8 @@
 				"Package Control: Install Package"
 			],
 			[
-				"insta",
-				"Package Control: Install Package"
-			],
-			[
 				"instal",
 				"Package Control: Install Package"
-			],
-			[
-				"remove",
-				"Package Control: Remove Package"
 			],
 			[
 				"re",
@@ -379,13 +413,57 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/david/Desktop/MANUA_PAGE",
-		"/C/Users/david/Desktop/MANUA_PAGE/Interpolacion",
-		"/C/Users/david/Desktop/MANUA_PAGE/Interpolacion/Gauss",
-		"/C/Users/david/Desktop/MANUA_PAGE/js"
+		"/C/Users/david/Desktop/MANLets"
 	],
 	"file_history":
 	[
+		"/C/Users/david/Downloads/universidaddelosandes.tex",
+		"/D/Universidad de los Andes/Maria Alejandra Zapata Ocampo - PROYECTO FINAL DE DISEÑO/Datos/Rasters Zona.txt",
+		"/C/Users/david/Desktop/Tareas MAN/main.tex",
+		"/F/Backup/Desktop/FEM/1D/da.rodriguezh/Documentacion/CodigoDocumentacion.py",
+		"/C/Users/david/Desktop/archivo.py",
+		"/D/Universidad de los Andes/Maria Alejandra Zapata Ocampo - PROYECTO FINAL DE DISEÑO/Logo/Codigo_Generador_Logo_Todos.tex",
+		"/D/Universidad de los Andes/Maria Alejandra Zapata Ocampo - PROYECTO FINAL DE DISEÑO/Logo/Codigo_Generador_Logo.tex",
+		"/D/Universidad de los Andes/Maria Alejandra Zapata Ocampo - PROYECTO FINAL DE DISEÑO/Logo/CrearFigura.bat",
+		"/C/Users/david/Desktop/Random city.tex",
+		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/User/LaTeXTools.sublime-settings",
+		"/D/Universidad de los Andes/Maria Alejandra Zapata Ocampo - PROYECTO FINAL DE DISEÑO/ArcGIS/Capas/Red_Vial-shp/fuente.txt",
+		"/D/Universidad de los Andes/Maria Alejandra Zapata Ocampo - PROYECTO FINAL DE DISEÑO/ArcGIS/Capas/MapaConcesionesPuertos/fuente.txt",
+		"/D/Universidad de los Andes/[MAN-Moniitores] - General/Tarea 3/HW03.tex",
+		"/D/Universidad de los Andes/[MAN-Moniitores] - General/Tarea 1/HW01.tex",
+		"/C/Users/david/Desktop/Tarea 2 MAN/HW02.tex",
+		"/C/Users/david/Desktop/Tarea 2 MAN/t/t.tex",
+		"/D/Universidad de los Andes/[MAN-Moniitores] - General/Tarea 2/HW02.tex",
+		"/C/Users/david/Desktop/svg2tikz/svg2tikz/svg2tikz.py",
+		"/C/Users/david/Desktop/svg2tikz/svg2tikz/test.tex",
+		"/C/Users/david/Desktop/test.tex",
+		"/C/Users/david/Desktop/svg2tikz/svg2tikz/tikz.tex",
+		"/C/Users/david/Desktop/Coevaluacion/script.py",
+		"/C/Users/david/Desktop/Coevaluacion/script.puy",
+		"/C/Users/david/Desktop/Temporal/test.py",
+		"/C/Users/david/Desktop/MANLets/MANUA_ST3.sublime-project",
+		"/C/Users/david/Downloads/WADark-0.4.930-Windows/WADark-Windows/info.json",
+		"/C/Users/david/Downloads/PBL (2013).pdf",
+		"/C/Program Files/Python37/Lib/site-packages/numpy/__init__.py",
+		"/C/Program Files/Python37/Lib/site-packages/numpy/core/numeric.py",
+		"/C/Program Files/Python37/Lib/site-packages/numpy/lib/user_array.py",
+		"/C/Program Files/Python37/Lib/site-packages/numpy/doc/structured_arrays.py",
+		"/C/Program Files/Python37/Lib/site-packages/numpy/lib/arraysetops.py",
+		"/C/Program Files/Python37/Lib/site-packages/numpy/linalg/linalg.py",
+		"/C/Program Files/Python37/Lib/site-packages/numpy/matlib.py",
+		"/C/Program Files/Python37/Lib/site-packages/numpy/dual.py",
+		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/Anaconda/Anaconda.sublime-settings",
+		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/User/Anaconda.sublime-settings",
+		"/C/Program Files/Python37/Lib/site-packages/numpy/linalg/__init__.py",
+		"/C/Program Files/Python37/Lib/site-packages/numpy/linalg/setup.py",
+		"/C/Users/david/Desktop/test.text/main.tex",
+		"/C/Users/david/Desktop/test.text/main.log",
+		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/LaTeXTools/LaTeXTools.sublime-settings",
+		"/C/Users/david/Desktop/test.text/test.tex",
+		"/C/Users/david/Desktop/MANLets/js/Interpolacion.js",
+		"/C/Users/david/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json",
+		"/C/Users/david/Desktop/MANLets/Interpolacion/Gauss/index.html",
+		"/C/Users/david/Desktop/index.html",
 		"/C/Users/david/Desktop/MANUA_PAGE/js/Integracion.js",
 		"/C/Users/david/Desktop/MANUA_PAGE/index.html",
 		"/C/Users/david/Desktop/MANUA_PAGE/Integracion/index.html",
@@ -408,7 +486,6 @@
 		"/C/Users/david/Desktop/MANUA_PAGE/EDO_Orden1/index.html",
 		"/C/Users/david/Desktop/MANUA_PAGE/Biseccion/index.html",
 		"/C/Users/david/Desktop/MANUA_PAGE/js/algo.py",
-		"/C/Users/david/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json",
 		"/C/Users/david/AppData/Local/Temp/Rar$DIa4624.43098/Makefile",
 		"/C/Users/david/Desktop/MANUA_PAGE/FalsaPosicion/index.html",
 		"/C/Users/david/Desktop/MANUA_PAGE/Gauss/index.html",
@@ -426,9 +503,7 @@
 		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/Anaconda/README.md",
 		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/User/Python.sublime-settings",
 		"/C/Users/david/Desktop/Analisis Avanzado/Python/PySections/__init__.py",
-		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/Anaconda/Anaconda.sublime-settings",
 		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/MarkdownEditing/README.md",
-		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/User/Anaconda.sublime-settings",
 		"/C/Users/david/Desktop/Django/RFPD_ZibraMax/manage.py",
 		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/User/Guna-dark.sublime-settings",
 		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/Guna/themes/preset/Guna-dark.sublime-settings",
@@ -469,55 +544,11 @@
 		"/C/Users/david/Desktop/Codeforces/1373/pB.py",
 		"/C/Users/david/Desktop/Codeforces/1373/input.txt",
 		"/C/Users/david/Desktop/Codeforces/1373/pC.py",
-		"/C/Users/david/Desktop/Codeforces/1096/pC.py",
-		"/C/Users/david/Desktop/Codeforces/1096/pB.py",
-		"/C/Users/david/Desktop/Codeforces/1373/Pc.PY",
-		"/C/Users/david/Desktop/Codeforces/1096/1096A.py",
-		"/C/Users/david/Desktop/Codeforces/1373/pA.py",
-		"/C/Users/david/Desktop/1096A.py",
-		"/C/Users/david/Desktop/input.txt",
-		"/C/Users/david/Desktop/pB.py",
-		"/C/Users/david/Desktop/pA.py",
-		"/C/Users/david/Desktop/FEM/2D/crearDatasets_luis.py",
-		"/C/Users/david/Desktop/FEM/2D/crearDatasets_negris.py",
-		"/C/Users/david/Desktop/FEM/2D/crearDatasets_negris2.py",
-		"/C/Users/david/Desktop/FEM/2D/crearDatasets.py",
-		"/C/Users/david/Desktop/FEM/2D/setup.py",
-		"/C/Users/david/Desktop/FEM/2D/dana.txt",
-		"/C/Users/david/Downloads/triangle-master/triangle-master/triangle/tri.py",
-		"/C/Users/david/Downloads/triangle-master/triangle-master/triangle/plot.py",
-		"/C/Users/david/Downloads/refine.py",
-		"/C/Users/david/Downloads/triangle-master/triangle-master/triangle/data.py",
-		"/C/Users/david/Desktop/Algo/bboxTEST.1.area",
-		"/C/Users/david/Desktop/Algo/bboxTEST.1.node",
-		"/C/Users/david/Desktop/Algo/bbox.1.area",
-		"/C/Users/david/Desktop/Algo/bbox.1.ele",
-		"/C/Users/david/Desktop/Algo/bbox.1.node",
-		"/C/Users/david/Downloads/triangle-master/triangle-master/triangle/data/bbox.1.area",
-		"/C/Users/david/Downloads/triangle-master/triangle-master/triangle/data/bbox.1.node",
-		"/C/Users/david/Downloads/triangle-master/triangle-master/triangle/data/bbox.1.ele",
-		"/C/Users/david/Downloads/data-10.py",
-		"/C/Users/david/Downloads/triangle-master/triangle-master/.travis.yml",
-		"/C/Users/david/Downloads/triangle-master/triangle-master/setup.py",
-		"/C/Users/david/Desktop/FEM/2D/upload.bat",
-		"/C/Users/david/Desktop/FEM/2D/FEMSections/FEM2D/Mesh/delaunay.py",
-		"/C/Users/david/Desktop/FEM/2D/FEMSections/FEM2D/Elasticidad.py",
-		"/C/Users/david/Desktop/FEM/2D/FEMSections/FEM2D/FEM1V.py",
-		"/C/Users/david/Desktop/FEM/2D/FEMSections/FEM2D/FEM.py",
-		"/C/Users/david/Desktop/FEM/2D/FEMSections/FEM2D/__init__.py",
-		"/C/Users/david/Desktop/FEM/2D/FEMSections/FEM1D/Elemento.py",
-		"/C/Users/david/Desktop/FEM/2D/FEMSections/FEM1D/FEMSections.py",
-		"/C/Users/david/Desktop/FEM/2D/FEMSections/FEM1D/__init__.py",
-		"/C/Users/david/Desktop/FEM/2D/LICENSE",
-		"/C/Users/david/Desktop/10013.svg",
-		"/C/Users/david/Desktop/Acortador/jumpcutter.py",
-		"/C/Users/david/Desktop/N_Contol_Carga/N_Contol_Carga/f_Det_estado_estructura.m",
-		"/C/Program Files/Python37/Lib/site-packages/pydot.py",
-		"/C/Users/david/Desktop/FEM/2D/.pypirc"
+		"/C/Users/david/Desktop/Codeforces/1096/pC.py"
 	],
 	"find":
 	{
-		"height": 58.0
+		"height": 38.0
 	},
 	"find_in_files":
 	{
@@ -531,6 +562,27 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"=",
+			"ifth",
+			"if",
+			"block",
+			"pgfmathrandominteger",
+			"basicblock",
+			"\\",
+			"basicblock",
+			"builder_set",
+			"todo",
+			"FIXME",
+			"cross",
+			"viewer",
+			"viewer\\",
+			"viewer",
+			"command",
+			": ",
+			"\t\t        \n",
+			"Campbell",
+			"\n                // Make changes here to the cmd.exe profile.\n                \"guid\": \"{3adecb97-51cd-4284-b074-2dccb44b2732}\",\n                \"name\": \"Git\",\n                \"commandline\": \"D:/Program Files/Git/git-bash.exe\",\n                \"hidden\": false\n            },",
+			"            \n",
 			"<!DOCTYPE html>\n<html lang=\"es-ES\">\n<head>\n\t<!-- Global site tag (gtag.js) - Google Analytics -->\n\t<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-163602964-1\"></script>\n\t<script>\n\twindow.dataLayer = window.dataLayer || [];\n\tfunction gtag(){dataLayer.push(arguments);}\n\tgtag('js', new Date());\n\n\tgtag('config', 'UA-163602964-1');\n\t</script>\n\n\t<!-- Viewport -->\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=0.5,user-scalable=no\" id=\"viewport\">\n\n\t<!-- Iconos -->\n\t<script src=\"https://use.fontawesome.com/cd12fb1dd8.js\"></script>\n\t<meta charset=\"utf-8\">\n\n\n\t<!-- Titulo -->\n\t<title>Applets</title>\n\n\t<!-- Favicon -->\n\t<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"../../favicon/favicon.ico\">\n\n\t<!-- Plotly -->\n\t<script src=\"https://cdn.plot.ly/plotly-latest.min.js\"></script>\n\n\t<!-- Picnic y css-->\n\t<link rel=\"stylesheet\" href=\"https://unpkg.com/picnic\">\n\t<link rel=\"stylesheet\" href=\"../../css/estilos.css\">\n\n\t<!-- Math.js-->\n\t<script type=\"text/javascript\" src=\"../../js/math.js\"></script>\n\n\t<!-- MathJax para LaTex -->\n\t<script id=\"MathJax-script\" async src=\"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js\"></script>\n</head>\n<body style=\"margin: 20px\">\n\t<article class=\"card\">\n\t\t<header>\n\t\t\t<h1>MANLets - Cuadratura de Gauss-Legendre</h1>\n\t\t</header>\n\t\t<footer>\n\t\t\t<div class=\"fila\">\n\t\t\t\t<div class=\"columnaMedios\" style=\" border: 2px solid gray; border-radius: 8px;margin: 5px;\">\n\t\t\t\t\t<div id=\"grafica\"></div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"columnaMedios\">\n\t\t\t\t\t<table style=\"width: 100%\">\n\t\t\t\t\t\t<thead>\n\t\t\t\t\t\t\t<th>\n\t\t\t\t\t\t\t\tParámetro\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th>\n\t\t\t\t\t\t\t\tValor\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t</thead>\n\t\t\t\t\t\t<tbody>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"stack\">$$f(x)=$$</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<input type=\"text\" id=\"funcion\" value=\"-12x^5-6x^3+10\" oninput=\"actualizarFuncion(this.value)\" >\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"stack\">$$\\color{black}a=$$</span>\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<input type=\"text\" id=\"sliderx0\" value='0' oninput=\"actualizarIntervalo()\"  class=\"stack\">\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"stack\">$$b=$$</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<input type=\"text\" id=\"sliderxf\" value='1' oninput=\"actualizarIntervalo()\"  class=\"stack\">\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t</tbody>\n\t\t\t\t\t\t<thead>\n\t\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t\t<th colspan=\"2\" >\n\t\t\t\t\t\t\t\t\t<button onclick=\"resolver()\" class=\"stack icon-paper-plane\" style=\"text-align: center;\">Calcular</button>\n\t\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t\t<tr style=\"text-align: center;\">\n\t\t\t\t\t\t\t\t<td style=\"align-content: center;\">\n\t\t\t\t\t\t\t\t\t<button onclick=\"menosPuntos()\" class=\"succes icon-paper-plane\" >< Disminuir Puntos</button>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td style=\"align-content: center;\">\n\t\t\t\t\t\t\t\t\t<button onclick=\"masPuntos()\" class=\"warning icon-paper-plane\" >Aumentar Puntos > </button>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t\t<td colspan=\"2\">\n\t\t\t\t\t\t\t\t\t<span id=\"pretty\">$$\\int_{0}^{1}{-12x^5-6x^3+10}{dx}=$$</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t</thead>\n\t\t\t\t\t</table>\n\t\t\t</div>\n\t\t</div>\n\t\t<div id=\"btns\">\n\t\t\t<a class=\"floatButton\" onclick=\"menosPuntos()\">\n\t\t\t<i class=\"fa fa-angle-left my-float\"></i>\n\t\t\t</a>\n\t\t\t<a class=\"floatButton1\" onclick=\"masPuntos()\">\n\t\t\t<i class=\"fa fa-angle-right my-float\"></i>\n\t\t\t</a>\n\t\t</div>\n</footer>\n\t<script type=\"text/javascript\" src=\"../../js/legendre.js\"></script>\n\t<script type=\"text/javascript\" src=\"../../js/Integracion.js\"></script>\n</body>\n</html>",
 			"console.log",
 			"math",
@@ -569,132 +621,36 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "js/Interpolacion.js",
+					"file": "/C/Users/david/Desktop/Tarea 1 MAN/archivo.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 915,
+						"buffer_size": 1333,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								846,
-								846
+								260,
+								260
 							]
 						],
 						"settings":
 						{
-							"git_gutter_is_enabled": true,
-							"open_with_edit": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"word_separators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?"
-						},
-						"translation.x": 0.0,
-						"translation.y": 726.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/C/Users/david/Desktop/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2444,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								959,
-								959
-							]
-						],
-						"settings":
-						{
-							"auto_name": "<head>",
 							"git_gutter_is_enabled": false,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"word_separators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1177.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 860,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								71,
-								71
-							]
-						],
-						"settings":
-						{
-							"auto_indent": false,
-							"default_dir": "C:\\Users\\david\\Desktop\\MANUA_PAGE",
-							"git_gutter_is_enabled": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_width": 2,
-							"word_wrap": true
+							"syntax": "Packages/Python/Python.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "Interpolacion/Gauss/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2252,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1523,
-								1523
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"open_with_edit": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 684.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -702,7 +658,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 42.0
+		"height": 38.0
 	},
 	"input":
 	{
@@ -747,6 +703,10 @@
 	{
 		"height": 0.0
 	},
+	"output.latextools":
+	{
+		"height": 241.0
+	},
 	"output.markdown":
 	{
 		"height": 229.0
@@ -755,7 +715,7 @@
 	"project": "MANUA_ST3.sublime-project",
 	"replace":
 	{
-		"height": 80.0
+		"height": 72.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -793,7 +753,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 254.0,
+	"side_bar_width": 258.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
