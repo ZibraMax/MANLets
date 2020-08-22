@@ -152,7 +152,7 @@ function actualizarTabla() {
 	let K = RESULTADOS[0]
 	let V = RESULTADOS[1]
 	let U = RESULTADOS[2]
-	let tabla = '\\begin{pmatrix}'
+	let tabla = '\\tiny\\begin{pmatrix}'
 	for (var i = 0; i < K.length; i++) {
 		for (var j = 0; j < K.length; j++) {
 			let sep = '&'
