@@ -1,5 +1,5 @@
-let XI = [1,0.5,2]
-let YI = XI.map(x => 10*x**2-1*x-4)
+for (var XI=[],i=-20;i<22;++i) XI[i]=i;
+let YI = XI.map(x => 10*x**2-1*x-4+1000*(Math.random())*(Math.random() < 0.5 ? -1 : 1))
 ORDEN = 1
 R2 = '-'
 var traces = [{

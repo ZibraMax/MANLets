@@ -4,16 +4,24 @@
 		"selected_items":
 		[
 			[
+				"max",
+				"max-width\tproperty"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"for",
+				"for\tfor (…) {…}"
+			],
+			[
 				"eb",
 				"e_b_2\tstatement"
 			],
 			[
 				"aGra",
 				"aGrafica\tnumber"
-			],
-			[
-				"for",
-				"for"
 			],
 			[
 				"fun",
@@ -88,10 +96,6 @@
 				"padding-top\tproperty"
 			],
 			[
-				"max",
-				"max-height\tproperty"
-			],
-			[
 				"wi",
 				"window"
 			],
@@ -160,10 +164,6 @@
 				"vector_solucion"
 			],
 			[
-				"con",
-				"align-content\tproperty"
-			],
-			[
 				"das",
 				"dashdot"
 			],
@@ -192,10 +192,22 @@
 	"buffers":
 	[
 		{
-			"file": "/C/Users/david/Desktop/Tarea 1 MAN/archivo.py",
+			"contents": "for (var XI=[],i=-30;i<31;++i) XI.push(i);\nlet YI = [...XI]\nlet ZI =  []\nvar FUNCION = (x,y) => -0.34*x-0.34*y+5\n\nfor (var i = 0; i < XI.length; i++) {\n\tZI.push(FUNCION(XI[i],XI[i])+10*(Math.random())*(Math.random() < 0.5 ? -1 : 1))\n}\nvar trace1 = {\n\tx:XI, y: YI, z: ZI,\n\tmode: 'markers',\n\tmarker: {\n\t\tsize: 12,\n\t\tline: {\n\t\tcolor: 'rgba(217, 217, 217, 0.14)',\n\t\twidth: 0.5},\n\t\topacity: 0.8},\n\ttype: 'scatter3d'\n};\n\nvar data = [trace1];\nvar layout = {margin: {l: 0,r: 0,b: 0,t: 0}};\n\nPlotly.newPlot('myPlot', data, layout);",
+			"file": "js/Regresion_superficies.js",
+			"file_size": 555,
+			"file_write_time": 132425856913425324,
 			"settings":
 			{
-				"buffer_size": 1333,
+				"buffer_size": 522,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/david/Desktop/Asections - Diagrama de Interacción/main.js",
+			"settings":
+			{
+				"buffer_size": 29126,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -413,10 +425,21 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/david/Desktop/MANLets"
+		"/C/Users/david/Desktop/MANLets",
+		"/C/Users/david/Desktop/MANLets/Interpolacion",
+		"/C/Users/david/Desktop/MANLets/Interpolacion/Regresion_Multiple",
+		"/C/Users/david/Desktop/MANLets/js"
 	],
 	"file_history":
 	[
+		"/F/Escritorio 2/DISEÑO ESTRUCTURAL - ARTURO/Tarea 4/Asections - Diagrama de Interacción/main.js",
+		"/C/Users/david/Desktop/MANLets/js/Regresion.js",
+		"/C/Users/david/Desktop/MANLets/Interpolacion/Regresion_Multiple/index.html",
+		"/C/Users/david/Desktop/MANLets/Interpolacion/Polinomial_Regresion/index.html",
+		"/C/Users/david/Desktop/MANLets/Interpolacion/index.html",
+		"/C/Users/david/Desktop/MANLets/js/Integracion.js",
+		"/C/Users/david/Desktop/MANLets/js/Interpolacion.js",
+		"/C/Users/david/Desktop/Tarea 1 MAN/archivo.py",
 		"/C/Users/david/Downloads/universidaddelosandes.tex",
 		"/D/Universidad de los Andes/Maria Alejandra Zapata Ocampo - PROYECTO FINAL DE DISEÑO/Datos/Rasters Zona.txt",
 		"/C/Users/david/Desktop/Tareas MAN/main.tex",
@@ -460,7 +483,6 @@
 		"/C/Users/david/Desktop/test.text/main.log",
 		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/LaTeXTools/LaTeXTools.sublime-settings",
 		"/C/Users/david/Desktop/test.text/test.tex",
-		"/C/Users/david/Desktop/MANLets/js/Interpolacion.js",
 		"/C/Users/david/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json",
 		"/C/Users/david/Desktop/MANLets/Interpolacion/Gauss/index.html",
 		"/C/Users/david/Desktop/index.html",
@@ -537,18 +559,11 @@
 		"/C/Users/david/Desktop/Codeforces/642/input3.txt",
 		"/C/Users/david/Desktop/Codeforces/642/input2.txt",
 		"/C/Users/david/Desktop/Codeforces/642/input4.txt",
-		"/C/Users/david/Desktop/Codeforces/650/pC.py",
-		"/C/Users/david/Desktop/Codeforces/650/input2.txt",
-		"/C/Users/david/Desktop/Codeforces/650/input.txt",
-		"/C/Users/david/Desktop/Codeforces/650/pB.py",
-		"/C/Users/david/Desktop/Codeforces/1373/pB.py",
-		"/C/Users/david/Desktop/Codeforces/1373/input.txt",
-		"/C/Users/david/Desktop/Codeforces/1373/pC.py",
-		"/C/Users/david/Desktop/Codeforces/1096/pC.py"
+		"/C/Users/david/Desktop/Codeforces/650/pC.py"
 	],
 	"find":
 	{
-		"height": 38.0
+		"height": 40.0
 	},
 	"find_in_files":
 	{
@@ -562,6 +577,15 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"sap",
+			"late",
+			"regresion_pol",
+			"INTERPOLA",
+			"r2",
+			"interpolar",
+			"REGRESIÓN",
+			"REGRESI",
+			"REGRESION",
 			"=",
 			"ifth",
 			"if",
@@ -626,25 +650,26 @@
 			[
 				{
 					"buffer": 0,
-					"file": "/C/Users/david/Desktop/Tarea 1 MAN/archivo.py",
+					"file": "js/Regresion_superficies.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1333,
+						"buffer_size": 522,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								260,
-								260
+								311,
+								311
 							]
 						],
 						"settings":
 						{
-							"git_gutter_is_enabled": false,
-							"syntax": "Packages/Python/Python.sublime-syntax"
+							"git_gutter_is_enabled": true,
+							"open_with_edit": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -652,13 +677,43 @@
 					},
 					"stack_index": 0,
 					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/david/Desktop/Asections - Diagrama de Interacción/main.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 29126,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								419,
+								419
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": false,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 6480.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
 				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 38.0
+		"height": 40.0
 	},
 	"input":
 	{
@@ -715,7 +770,7 @@
 	"project": "MANUA_ST3.sublime-project",
 	"replace":
 	{
-		"height": 72.0
+		"height": 76.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -753,7 +808,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 258.0,
+	"side_bar_width": 254.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
