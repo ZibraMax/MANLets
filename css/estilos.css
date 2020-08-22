@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
 }
+a { color: #000000; }
 .slider {
   -webkit-appearance: none;
   width: 100%;
@@ -119,6 +120,7 @@
 }
 .imagenBotones {
   width: 200px;
+  height: 200px;
 }
 
 
