@@ -214,3 +214,7 @@ a { color: #000000; }
 .casillaCentrada {
   text-align: center;
 }
+.casillaCentrada {
+  background-color : #d18090;
+  text-align: left;
+}

@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"fun",
+				"fun\tFunction"
+			],
+			[
+				"grafic",
+				"graficaGradiente"
+			],
+			[
+				"app",
+				"appendChild"
+			],
+			[
+				"le",
+				"length"
+			],
+			[
+				"res",
+				"RESULTADOS"
+			],
+			[
+				"fu",
+				"fun\tFunction"
+			],
+			[
+				"coe",
+				"coeff"
+			],
+			[
 				"max",
 				"max-width\tproperty"
 			],
@@ -22,10 +50,6 @@
 			[
 				"aGra",
 				"aGrafica\tnumber"
-			],
-			[
-				"fun",
-				"function_with_name"
 			],
 			[
 				"functo",
@@ -192,22 +216,37 @@
 	"buffers":
 	[
 		{
-			"contents": "for (var XI=[],i=-30;i<31;++i) XI.push(i);\nlet YI = [...XI]\nlet ZI =  []\nvar FUNCION = (x,y) => -0.34*x-0.34*y+5\n\nfor (var i = 0; i < XI.length; i++) {\n\tZI.push(FUNCION(XI[i],XI[i])+10*(Math.random())*(Math.random() < 0.5 ? -1 : 1))\n}\nvar trace1 = {\n\tx:XI, y: YI, z: ZI,\n\tmode: 'markers',\n\tmarker: {\n\t\tsize: 12,\n\t\tline: {\n\t\tcolor: 'rgba(217, 217, 217, 0.14)',\n\t\twidth: 0.5},\n\t\topacity: 0.8},\n\ttype: 'scatter3d'\n};\n\nvar data = [trace1];\nvar layout = {margin: {l: 0,r: 0,b: 0,t: 0}};\n\nPlotly.newPlot('myPlot', data, layout);",
-			"file": "js/Regresion_superficies.js",
-			"file_size": 555,
-			"file_write_time": 132425856913425324,
+			"file": "js/Integracion.js",
 			"settings":
 			{
-				"buffer_size": 522,
+				"buffer_size": 9394,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/Users/david/Desktop/Asections - Diagrama de Interacción/main.js",
+			"file": "js/Modelacion_Analisis_Numerico.js",
 			"settings":
 			{
-				"buffer_size": 29126,
+				"buffer_size": 26893,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Raices/IteracionSimple/index.html",
+			"settings":
+			{
+				"buffer_size": 4441,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "css/estilos.css",
+			"settings":
+			{
+				"buffer_size": 3531,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -292,6 +331,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"gu",
+				"Guna"
+			],
 			[
 				"colot",
 				"Colorsublime: Install Theme"
@@ -426,19 +469,49 @@
 	"expanded_folders":
 	[
 		"/C/Users/david/Desktop/MANLets",
-		"/C/Users/david/Desktop/MANLets/Interpolacion",
-		"/C/Users/david/Desktop/MANLets/Interpolacion/Regresion_Multiple",
-		"/C/Users/david/Desktop/MANLets/js"
+		"/C/Users/david/Desktop/MANLets/css",
+		"/C/Users/david/Desktop/MANLets/js",
+		"/C/Users/david/Desktop/MANLets/Raices",
+		"/C/Users/david/Desktop/MANLets/Raices/Biseccion",
+		"/C/Users/david/Desktop/MANLets/Raices/FalsaPosicion",
+		"/C/Users/david/Desktop/MANLets/Raices/IteracionSimple"
 	],
 	"file_history":
 	[
-		"/F/Escritorio 2/DISEÑO ESTRUCTURAL - ARTURO/Tarea 4/Asections - Diagrama de Interacción/main.js",
-		"/C/Users/david/Desktop/MANLets/js/Regresion.js",
+		"/C/Users/david/Desktop/MANLets/js/Modelacion_Analisis_Numerico.js",
+		"/C/Users/david/Desktop/MANLets/Raices/Biseccion/index.html",
+		"/C/Users/david/Desktop/MANLets/Raices/FalsaPosicion/index.html",
+		"/C/Users/david/Desktop/MANLets/Raices/IteracionSimple/index.html",
+		"/C/Users/david/Desktop/MANLets/Optimizacion/Gradiente/index.html",
+		"/C/Users/david/Desktop/MANLets/js/Regresion_superficies.js",
+		"/C/Users/david/Desktop/MANLets/js/Optimizacion_gradiente.js",
+		"/C/Users/david/Desktop/source.js",
+		"/C/Users/david/Desktop/MANLets/css/estilos.css",
+		"/C/Users/david/Desktop/source.html",
+		"/C/Users/david/Desktop/index.py",
+		"/C/Users/david/Desktop/MANLets/index.html",
+		"/C/Users/david/Desktop/MANLets/Raices/index.html",
+		"/C/Users/david/Desktop/MANLets/Interpolacion/Polinomica/index.html",
 		"/C/Users/david/Desktop/MANLets/Interpolacion/Regresion_Multiple/index.html",
-		"/C/Users/david/Desktop/MANLets/Interpolacion/Polinomial_Regresion/index.html",
+		"/C/Users/david/Desktop/MANLets/Interpolacion/Splines/index.html",
+		"/C/Users/david/Desktop/MANLets/Integracion/GaussLegendre/index.html",
+		"/C/Users/david/Desktop/MANLets/Integracion/Simpson/index.html",
+		"/C/Users/david/Desktop/MANLets/Integracion/Trapecio/index.html",
+		"/C/Users/david/Desktop/MANLets/SistemasEcuaciones/Gauss/index.html",
+		"/C/Users/david/Desktop/MANLets/SistemasEcuaciones/GaussSeidel/index.html",
 		"/C/Users/david/Desktop/MANLets/Interpolacion/index.html",
-		"/C/Users/david/Desktop/MANLets/js/Integracion.js",
+		"/C/Users/david/Desktop/MANLets/Integracion/index.html",
+		"/C/Users/david/Desktop/MANLets/SistemasEcuaciones/index.html",
+		"/C/Users/david/Desktop/MANLets/Interpolacion/Polinomial_Regresion/index.html",
+		"/C/Users/david/Desktop/MANLets/js/Splines.js",
+		"/C/Users/david/Desktop/MANLets/js/Regresion.js",
+		"/C/Users/david/Desktop/MANLets/js/Spline.js",
+		"/C/Users/david/Desktop/MANLets/js/legendre.js",
 		"/C/Users/david/Desktop/MANLets/js/Interpolacion.js",
+		"/C/Users/david/Downloads/3d (1).html",
+		"/C/Users/david/Desktop/Asections - Diagrama de Interacción/main.js",
+		"/F/Escritorio 2/DISEÑO ESTRUCTURAL - ARTURO/Tarea 4/Asections - Diagrama de Interacción/main.js",
+		"/C/Users/david/Desktop/MANLets/js/Integracion.js",
 		"/C/Users/david/Desktop/Tarea 1 MAN/archivo.py",
 		"/C/Users/david/Downloads/universidaddelosandes.tex",
 		"/D/Universidad de los Andes/Maria Alejandra Zapata Ocampo - PROYECTO FINAL DE DISEÑO/Datos/Rasters Zona.txt",
@@ -532,38 +605,11 @@
 		"/C/Users/david/Desktop/Django/RFPD_ZibraMax/RFPD_ZibraMax/__init__.py",
 		"/D/Program Files/Sublime Text 3/sublime_plugin.py",
 		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/User/Guna.sublime-settings",
-		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/Guna/Guna.sublime-settings",
-		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/Colorsublime/Colorsublime.sublime-settings",
-		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/User/Colorsublime.sublime-settings",
-		"/C/Users/david/Desktop/FEM/2D/crearDatasets_Hormiga.py",
-		"/C/Users/david/Desktop/Django/RFPD_ZibraMax/RFPD_ZibraMax/asgi.py",
-		"/C/Users/david/Desktop/Codeforces/653/input.txt",
-		"/C/Users/david/Desktop/hello.py",
-		"/C/Users/david/Desktop/Server.py",
-		"/C/Users/david/Desktop/Codeforces/653/D.py",
-		"/C/Program Files/Python37/Lib/site-packages/tornado/netutil.py",
-		"/C/Users/david/Desktop/Codeforces/653/A.py",
-		"/C/Users/david/Desktop/Codeforces/653/C.py",
-		"/C/Users/david/Desktop/Codeforces/653/B.py",
-		"/C/Users/david/Desktop/Codeforces/653/pA.PY",
-		"/G/inetpub/wwwroot/Modelacion/css/estilos.css",
-		"/D/RandomForest/predecir.py",
-		"/C/Users/david/Desktop/Codeforces/650/input3.txt",
-		"/C/Users/david/Desktop/Codeforces/650/input4.txt",
-		"/C/Users/david/Desktop/Codeforces/642/input.txt",
-		"/C/Users/david/Desktop/Codeforces/650/pA.py",
-		"/C/Users/david/Desktop/Codeforces/642/pA.py",
-		"/C/Users/david/Desktop/Codeforces/642/pB.py",
-		"/C/Users/david/Desktop/Codeforces/642/pC.py",
-		"/C/Users/david/Desktop/Codeforces/642/pD.py",
-		"/C/Users/david/Desktop/Codeforces/642/input3.txt",
-		"/C/Users/david/Desktop/Codeforces/642/input2.txt",
-		"/C/Users/david/Desktop/Codeforces/642/input4.txt",
-		"/C/Users/david/Desktop/Codeforces/650/pC.py"
+		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/Guna/Guna.sublime-settings"
 	],
 	"find":
 	{
-		"height": 40.0
+		"height": 66.0
 	},
 	"find_in_files":
 	{
@@ -577,6 +623,35 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"resolver",
+			"simple",
+			"RESOLVER",
+			"actualizar",
+			"calcular(",
+			"calc",
+			"actualizarFuncion",
+			"div",
+			"Plotly",
+			"graficaGradiente",
+			"class=\"columnaMedios\">\n\t\t\t\t<!--Grafica Direccion Gradiente-->\n\t\t\t\t<div id=\"graficaDireccion\">\n\t\t\t\t\t\n\t\t\t\t</div>\n\n\t\t\t</div>",
+			"graficaDireccion",
+			"columna",
+			"MetodoDeRaiz",
+			"actualizarFuncion",
+			"funcion",
+			"parse",
+			"parseF",
+			"parse",
+			"actualizarFuncion",
+			"icon",
+			"imagenBotones",
+			"gra",
+			"grafic",
+			"gra",
+			"actualizarTabla",
+			"graficar",
+			"console.log",
+			"layout",
 			"sap",
 			"late",
 			"regresion_pol",
@@ -645,67 +720,128 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "js/Regresion_superficies.js",
+					"file": "js/Integracion.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 522,
+						"buffer_size": 9394,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								311,
-								311
+								1924,
+								1924
 							]
 						],
 						"settings":
 						{
 							"git_gutter_is_enabled": true,
-							"open_with_edit": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1575.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "js/Modelacion_Analisis_Numerico.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 26893,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								953,
+								953
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 639.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "/C/Users/david/Desktop/Asections - Diagrama de Interacción/main.js",
+					"buffer": 2,
+					"file": "Raices/IteracionSimple/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 29126,
+						"buffer_size": 4441,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								419,
-								419
+								1721,
+								1730
 							]
 						],
 						"settings":
 						{
-							"git_gutter_is_enabled": false,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 6480.0,
+						"translation.y": 1647.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "css/estilos.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3531,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3529,
+								3529
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 7146.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -713,7 +849,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 40.0
+		"height": 49.0
 	},
 	"input":
 	{
@@ -766,11 +902,15 @@
 	{
 		"height": 229.0
 	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
 	"pinned_build_system": "",
 	"project": "MANUA_ST3.sublime-project",
 	"replace":
 	{
-		"height": 76.0
+		"height": 94.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -808,7 +948,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 254.0,
+	"side_bar_width": 363.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

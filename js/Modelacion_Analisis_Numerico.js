@@ -1,6 +1,6 @@
 /* Modelación y Análisis Numérico
 * Este archivo hace parte de un proyecto para el aprendizaje interactivo de metodos numéricos.
-* En este archivo se encuentra el nucleo de calculo de los metodos
+* En este archivo se encuentra el nucleo de calculo de los metodos de raices
 * 
 *
 * Este archivo requiere la libreria math.js
@@ -30,29 +30,51 @@ function anteriorIteracion() {
 function resolver(cac) {
 	actual = cac
 	actualizarFuncion(document.getElementById('funcion').value)
+	actualizarX0(document.getElementById('sliderx0').value)
+	if (!actual == 'IS') {
+		actualizarXf(document.getElementById('sliderxf').value)
+	}
+	triggerBotones(true)
 }
 function cambiarEstado(valor) {
 	estado = (valor == 'true')
 	resolver(actual)
 }
-function actualizarX0(x) {
-	if (funcionActual.fx(parseFloat(x))*funcionActual.fx(xfG)<=0) {
-		x0G = parseFloat(x)
-		actualizarFuncion(document.getElementById('funcion').value)
+function alertaIntervalo(param=false) {
+	if (!param) {
+		document.querySelectorAll('input').forEach(x=>x.classList.add("casillaCentrada"))
+		triggerBotones(false)
 	} else {
-		alert('El intervalo no cumple con la condicion de que  f(x0)*f(xf)<=0, por favor modificalo')
+		document.querySelectorAll('input').forEach(x=>x.classList.remove("casillaCentrada"))
+	}
+
+}
+function actualizarX0(x) {
+	if (funcionActual.fx(parseFloat(x))*funcionActual.fx(xfG)<=0 || actual == 'IS') {
 		x0G = parseFloat(x)
 		actualizarFuncion(document.getElementById('funcion').value)
+		alertaIntervalo(true)
+	} else {
+		//alert('El intervalo no cumple con la condicion de que  f(x0)*f(xf)<=0, por favor modificalo')
+		x0G = parseFloat(x)
+		actualizarFuncion(document.getElementById('funcion').value)
+		alertaIntervalo()
 	}
 }
 function actualizarXf(x) {
 	if (funcionActual.fx(parseFloat(x))*funcionActual.fx(x0G)<=0 && x>x0G) {
 		xfG = parseFloat(x)
+		alertaIntervalo(true)
 	} else {
 		xfG = parseFloat(x)
-		alert('El intervalo no cumple con la condicion de que  f(x0)*f(xf)<=0, por favor modificalo')
+		//alert('El intervalo no cumple con la condicion de que  f(x0)*f(xf)<=0, por favor modificalo')
 		actualizarFuncion(document.getElementById('funcion').value)
+		alertaIntervalo()
 	}
+}
+function triggerBotones(param) {
+	console.log('hola', param)
+	document.querySelectorAll('#iteraciones').forEach(x => x.disabled = !param)
 }
 function actualizarFuncion(funcion) {
 	funcionActual = new MetodoDeRaiz(funcion,0,true)
@@ -65,7 +87,7 @@ function actualizarFuncion(funcion) {
 	} else {
 		funcionActual.iteracionSimple(x0G,0.00001)
 	}
-
+	triggerBotones(false)
 	actualizarGrafica(0)
 	iteraccionActual = 0
 
@@ -474,6 +496,7 @@ class MetodoDeRaiz {
 			actualizarSoluciones(iteraciones,'FP',this)
 			return [xr,iteraciones]
 		} else {
+			triggerBotones(false)
 			console.log('El intervalo no cumple con la condicion de que  f(x0)*f(xf)<=0, por favor modificalo')
 		}
 	}
@@ -611,10 +634,12 @@ class MetodoDeRaiz {
 		Plotly.newPlot('grafica2', [trace,trace1,trace2,trace3,trace4],layout,config)
 	}
 	iteracionSimple(xr,tol=0.01) {
+		console.log(xr)
 		let numiter = 0
 		let error = 1
 		let xri = xr
 		let iteraciones = []
+		iteraciones.push([xri,this.fx(xri),error])
 		while (error > tol && numiter < 300) {
 			xri = this.fx(xri)
 			error = math.abs((this.fx(xri) - xri)/this.fx(xri))
@@ -622,7 +647,7 @@ class MetodoDeRaiz {
 			iteraciones.push([xri,this.fx(xri),error])
 		}
 		actualizarSoluciones(iteraciones,'IS',this)
-		return [xr,iteraciones]
+		return [xri,iteraciones]
 	}
 	graficarIteracionSimple(i,n=50,zoom=true) {
 		let x = []
@@ -947,3 +972,4 @@ function dibujarSolucionesSeidel(j) {
 	}
 	drawEstructura(v,inicial=false,j,inicio=j,colorPintar='blue')
 }
+triggerBotones(false)

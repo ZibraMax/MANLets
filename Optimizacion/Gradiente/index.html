@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163602964-1"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-163602964-1');
+	</script>
+	<meta name="viewport" content="width=device-width, initial-scale=0.5,user-scalable=no" id="viewport">
+  <script src="https://kit.fontawesome.com/2416ed6962.js" crossorigin="anonymous"></script>
+	<meta charset="utf-8">
+	<title>Applets</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../../favicon/favicon.ico">
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/picnic">
+	<link rel="stylesheet" href="../../css/estilos.css">
+	<script type="text/javascript" src="../../js/math.js"></script>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body style="margin: 20px">
+	<article class="card">
+		<header>
+			<h1><a href="../index.html" class="fas fa-arrow-left"></a> <a href="../../index.html" class="fas fa-home"></a> MANLets - Optimización 2D</h1>
+		</header>
+		<footer>
+			<div class="columnaMedios">
+				<!--Parametros-->
+				<table style="width: 100%">
+					<thead>
+						<th colspan="2">
+							Parametro
+						</th>
+						<th colspan="2">
+							Valor
+						</th>
+					</thead>
+					<tbody>
+					<tr>
+						<td colspan="2">
+							<span class="stack">$$f(x)=$$</span>
+						</td>
+						<td colspan="2">
+							<input type="text" id="funcion" value="2x*y+2x-x^2-2y^2" >
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="stack">$$x_0=$$</span>
+							
+						</td>
+						<td>
+							<input type="text" id="x0" value='-5' class="stack">
+						</td>
+						<td>
+							<span class="stack">$$x_f=$$</span>
+						</td>
+						<td>
+							<input type="text" id="xf" value='5' class="stack">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="stack">$$y_0=$$</span>
+						</td>
+						<td>
+							<input type="text" id="y0" value='-5' class="stack">
+						</td>
+						<td>
+							<span class="stack">$$y_f=$$</span>
+						</td>
+						<td>
+							<input type="text" id="yf" value='5' class="stack">
+						</td>
+					</tr>
+					</tbody>
+					<thead>
+						<tr>
+							<th colspan="4" >
+								<button data-tooltip="Este procedimiento puede tardar unos segundos debido a la cantidad de calculos." onclick="calcular()" class="tooltip-top stack icon-paper-plane" style="text-align: center;">Calcular <i class="fas fa-exclamation-triangle"></i></button>
+							</th>
+						</tr>
+						<tr style="text-align: center;">
+							<td style="align-content: center;" colspan="2">
+								<button onclick="anteriorIteracion()" class="succes icon-paper-plane" >< Iteracion Anterior</button>
+							</td>
+							<td style="align-content: center;" colspan="2">
+								<button onclick="siguienteIteracion()" class="warning icon-paper-plane" >Iteracion Siguiente > </button>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4">
+								<span id="pretty1"></span>
+							</td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+
+			<div class="columnaMedios">
+				<!--Grafica General-->
+				<div id="graficaGeneral">
+					
+				</div>
+
+			</div>
+
+			<div class="columnaMedios">
+				<!--Grafica Gradiente-->
+				<div id="graficaGradiente">
+					
+				</div>
+
+			</div>
+
+			<div class="columnaMedios">
+				<!--Grafica Direccion Gradiente-->
+				<div id="graficaDireccion">
+					
+				</div>
+
+			</div>
+
+		<!-- Botones Celular -->
+		<div id="btns">
+			<a class="floatButton" onclick="anteriorIteracion()">
+			<i class="fa fa-angle-left my-float"></i>
+			</a>
+			<a class="floatButton1" onclick="siguienteIteracion()">
+			<i class="fa fa-angle-right my-float"></i>
+			</a>
+		</div>
+		</footer>
+	<script type="text/javascript" src="../../js/Optimizacion_gradiente.js"></script>
+</body>
+</html>
