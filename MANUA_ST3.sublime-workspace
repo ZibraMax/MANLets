@@ -215,42 +215,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "js/Integracion.js",
-			"settings":
-			{
-				"buffer_size": 9394,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/Modelacion_Analisis_Numerico.js",
-			"settings":
-			{
-				"buffer_size": 26893,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Raices/IteracionSimple/index.html",
-			"settings":
-			{
-				"buffer_size": 4441,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "css/estilos.css",
-			"settings":
-			{
-				"buffer_size": 3531,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "Packages/LaTeXTools/LaTeX.sublime-build",
 	"build_system_choices":
@@ -468,25 +432,19 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/david/Desktop/MANLets",
-		"/C/Users/david/Desktop/MANLets/css",
-		"/C/Users/david/Desktop/MANLets/js",
-		"/C/Users/david/Desktop/MANLets/Raices",
-		"/C/Users/david/Desktop/MANLets/Raices/Biseccion",
-		"/C/Users/david/Desktop/MANLets/Raices/FalsaPosicion",
-		"/C/Users/david/Desktop/MANLets/Raices/IteracionSimple"
 	],
 	"file_history":
 	[
-		"/C/Users/david/Desktop/MANLets/js/Modelacion_Analisis_Numerico.js",
+		"/C/Users/david/Desktop/MANLets/js/Integracion.js",
+		"/C/Users/david/Desktop/MANLets/css/estilos.css",
 		"/C/Users/david/Desktop/MANLets/Raices/Biseccion/index.html",
-		"/C/Users/david/Desktop/MANLets/Raices/FalsaPosicion/index.html",
 		"/C/Users/david/Desktop/MANLets/Raices/IteracionSimple/index.html",
+		"/C/Users/david/Desktop/MANLets/Raices/FalsaPosicion/index.html",
+		"/C/Users/david/Desktop/MANLets/js/Modelacion_Analisis_Numerico.js",
 		"/C/Users/david/Desktop/MANLets/Optimizacion/Gradiente/index.html",
 		"/C/Users/david/Desktop/MANLets/js/Regresion_superficies.js",
 		"/C/Users/david/Desktop/MANLets/js/Optimizacion_gradiente.js",
 		"/C/Users/david/Desktop/source.js",
-		"/C/Users/david/Desktop/MANLets/css/estilos.css",
 		"/C/Users/david/Desktop/source.html",
 		"/C/Users/david/Desktop/index.py",
 		"/C/Users/david/Desktop/MANLets/index.html",
@@ -511,7 +469,6 @@
 		"/C/Users/david/Downloads/3d (1).html",
 		"/C/Users/david/Desktop/Asections - Diagrama de Interacción/main.js",
 		"/F/Escritorio 2/DISEÑO ESTRUCTURAL - ARTURO/Tarea 4/Asections - Diagrama de Interacción/main.js",
-		"/C/Users/david/Desktop/MANLets/js/Integracion.js",
 		"/C/Users/david/Desktop/Tarea 1 MAN/archivo.py",
 		"/C/Users/david/Downloads/universidaddelosandes.tex",
 		"/D/Universidad de los Andes/Maria Alejandra Zapata Ocampo - PROYECTO FINAL DE DISEÑO/Datos/Rasters Zona.txt",
@@ -609,7 +566,7 @@
 	],
 	"find":
 	{
-		"height": 66.0
+		"height": 49.0
 	},
 	"find_in_files":
 	{
@@ -720,130 +677,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "js/Integracion.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9394,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1924,
-								1924
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1575.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "js/Modelacion_Analisis_Numerico.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 26893,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								953,
-								953
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 639.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "Raices/IteracionSimple/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4441,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1721,
-								1730
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1647.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "css/estilos.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3531,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3529,
-								3529
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/CSS/CSS.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 7146.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				}
 			]
 		}
 	],
