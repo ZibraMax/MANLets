@@ -4,10 +4,12 @@
 * 
 *
 * Este archivo requiere la libreria math.js
+* AQUI SOLO HAY METODOS DE RAICES Y SISTEMAS DE ECUACIONES
 *
-*
-*
-* David Arturo Rodriguez Herrera - da.rodriguezh@uniandes.edu.co
+* Cuando escribí esto, sólo Dios y yo entendíamos lo que estaba haciendo
+* Ahora ya solo lo sabe Dios.
+* 
+* David Arturo Rodriguez Herrera - da.rodriguezh@uniandes.edu.co - artur@asections.com
 */
 var actual = ''
 var slider = document.getElementById('slider')
@@ -65,7 +67,7 @@ function alertaIntervalo(param=false) {
 
 }
 function actualizarX0(x) {
-	if (funcionActual.fx(parseFloat(x))*funcionActual.fx(xfG)<=0 || actual == 'IS' || actual == 'N') {
+	if (funcionActual.fx(parseFloat(x))*funcionActual.fx(xfG)<=0 || actual == 'IS' || actual == 'N' || actual == 'SC') {
 		x0G = parseFloat(x)
 		actualizarFuncion(document.getElementById('funcion').value)
 		alertaIntervalo(true)
@@ -103,6 +105,8 @@ function actualizarFuncion(funcion) {
 		funcionActual.biseccion(x0G,xfG,0.00001)
 	} else if (actual == 'N') {
 		funcionActual.newton(x0G,0.00000001)
+	} else if (actual == 'SC') {
+		funcionActual.secante(x0G,xfG,0.00000001)
 	} else {
 		funcionActual.iteracionSimple(x0G,0.00001)
 	}
@@ -138,6 +142,9 @@ function actualizarGrafica(i) {
 	} else if (actual == 'N') {
 		funcionActual.graficarNewton(i,50,estado)
 		actualizarTablaN(i)
+	} else if (actual == 'SC') {
+		funcionActual.graficarSecante(i,50,estado)
+		actualizarTablaSC(i)
 	} else {
 		funcionActual.graficarIteracionSimple(i,50,estado)
 		actualizarTablaIS(i)
@@ -242,6 +249,96 @@ function actualizarTabla(i) {
 	document.getElementById('+1,xr').innerHTML = math.round(xr11,3)
 	document.getElementById('+1,fxr').innerHTML = math.round(fxr11,3)
 	document.getElementById('+1,e').innerHTML = math.round(e11,3)
+	}
+}
+
+function actualizarTablaSC(i) {
+
+	if (i==-1) {
+		document.getElementById('-1,xl').innerHTML = 0
+		document.getElementById('-1,xu').innerHTML = 0
+		document.getElementById('-1,fxl').innerHTML = 0
+		document.getElementById('-1,fxu').innerHTML = 0
+		document.getElementById('-1,xr').innerHTML = 0
+		document.getElementById('-1,fxr').innerHTML = 0
+
+		document.getElementById('1,xl').innerHTML = 0
+		document.getElementById('1,xu').innerHTML = 0
+		document.getElementById('1,fxl').innerHTML = 0
+		document.getElementById('1,fxu').innerHTML = 0
+		document.getElementById('1,xr').innerHTML = 0
+		document.getElementById('1,fxr').innerHTML = 0
+
+		document.getElementById('+1,xl').innerHTML = 0
+		document.getElementById('+1,xu').innerHTML = 0
+		document.getElementById('+1,fxl').innerHTML = 0
+		document.getElementById('+1,fxu').innerHTML = 0
+		document.getElementById('+1,xr').innerHTML = 0
+		document.getElementById('+1,fxr').innerHTML = 0
+	} else {
+		let xl = ''
+	let xu = ''
+	let fxl = ''
+	let fxu = ''
+	let xr = ''
+	let fxr = ''
+
+	let xl1 = ''
+	let xu1 = ''
+	let fxl1 = ''
+	let fxu1 = ''
+	let xr1 = ''
+	let fxr1 = ''
+
+	let xl11 = ''
+	let xu11 = ''
+	let fxl11 = ''
+	let fxu11 = ''
+	let xr11 = ''
+	let fxr11 = ''
+
+	if (i>0) {
+		xl1 = resultadoActual[i-1][0]
+		xu1 = resultadoActual[i-1][1]
+		fxl1 = funcionActual.fx(resultadoActual[i-1][0])
+		fxu1 = funcionActual.fx(resultadoActual[i-1][1])
+		xr1 = resultadoActual[i-1][3]
+		fxr1 = resultadoActual[i-1][4]*100
+	}
+	if (iteraccionActual<resultadoActual.length-1) {
+		xl11 = resultadoActual[i+1][0]
+		xu11 = resultadoActual[i+1][1]
+		fxl11 = funcionActual.fx(resultadoActual[i+1][0])
+		fxu11 = funcionActual.fx(resultadoActual[i+1][1])
+		xr11 = resultadoActual[i+1][3]
+		fxr11 = resultadoActual[i+1][4]*100
+	}
+	xl = resultadoActual[i][0]
+	xu = resultadoActual[i][1]
+	fxl = funcionActual.fx(resultadoActual[i][0])
+	fxu = funcionActual.fx(resultadoActual[i][1])
+	xr = resultadoActual[i][3]
+	fxr = resultadoActual[i][4]*100
+	document.getElementById('-1,xl').innerHTML = math.round(xl1,3)
+	document.getElementById('-1,xu').innerHTML = math.round(xu1,3)
+	document.getElementById('-1,fxl').innerHTML = math.round(fxl1,3)
+	document.getElementById('-1,fxu').innerHTML = math.round(fxu1,3)
+	document.getElementById('-1,xr').innerHTML = math.round(xr1,3)
+	document.getElementById('-1,fxr').innerHTML = math.round(fxr1,3)
+
+	document.getElementById('1,xl').innerHTML = math.round(xl,3)
+	document.getElementById('1,xu').innerHTML = math.round(xu,3)
+	document.getElementById('1,fxl').innerHTML = math.round(fxl,3)
+	document.getElementById('1,fxu').innerHTML = math.round(fxu,3)
+	document.getElementById('1,xr').innerHTML = math.round(xr,3)
+	document.getElementById('1,fxr').innerHTML = math.round(fxr,3)
+
+	document.getElementById('+1,xl').innerHTML = math.round(xl11,3)
+	document.getElementById('+1,xu').innerHTML = math.round(xu11,3)
+	document.getElementById('+1,fxl').innerHTML = math.round(fxl11,3)
+	document.getElementById('+1,fxu').innerHTML = math.round(fxu11,3)
+	document.getElementById('+1,xr').innerHTML = math.round(xr11,3)
+	document.getElementById('+1,fxr').innerHTML = math.round(fxr11,3)
 	}
 }
 
@@ -504,6 +601,208 @@ class MetodoDeRaiz {
 			this.fx = (x) => {return dFx(x)-pB}
 		}
 	}
+	secante(x0,xf,tol=0.00001,maxIter=300) {
+		let error = 1
+		let xr = x0
+		let xr1 = xf
+		let iteraciones = []
+		let numiter = 0
+		iteraciones.push([xr,xr1,this.fx(xr),this.dfdx(xr),error])
+		while (error > tol && numiter < maxIter) {
+			let xr1_parcial = xr
+			xr = xr - (this.fx(xr)*(xr-xr1))/(this.fx(xr)-this.fx(xr1))
+			xr1 = xr1_parcial
+			error = math.abs((xr - xr1)/xr)
+			iteraciones.push([xr,xr1,this.fx(xr),this.dfdx(xr),error])
+			numiter++
+		}
+		actualizarSoluciones(iteraciones,'SC',this)
+		return [xr,iteraciones]
+	}
+
+	graficarSecante(i,n=50,zoom=true) {
+		let x = []
+		let y = []
+		let j = 1*(zoom*i)
+		let min = 9*10**10
+		let max = 9*10**-10
+		let minx = 9*10**10
+		let maxx = 9*10**-10
+
+		let dx = (resultadoActual[j][1]-resultadoActual[j][0])/n
+
+		for (var k = -10; k < n+10; k++) {
+			x.push(resultadoActual[j][0]+k*dx)
+			y.push(this.fx(resultadoActual[j][0]+k*dx))
+		}
+		min = math.min(y)
+		max = math.max(y)
+		minx = math.min(x)
+		maxx = math.max(x)
+		let trace = {
+		  x: x,
+		  y: y,
+		  mode: 'lines',
+		  name: 'Grafica'
+		}
+		let trace1 = {
+		  x: [resultadoActual[i][0],resultadoActual[i][0]],
+		  y: [min,max],
+		  mode: 'lines',
+		  name: 'Xi',
+		  line: {
+			dash: 'dashdot',
+		  }
+		}
+		let trace4 = {
+		  x: [resultadoActual[i][1],resultadoActual[i][1]],
+		  y: [min,max],
+		  mode: 'lines',
+		  name: 'Xi-1',
+		  line: {
+			dash: 'dashdot',
+		  }
+		}
+		let deriveichon = (x,x1,x2) => {
+			let m = (this.fx(x2)-this.fx(x1))/(x2-x1)
+			return this.fx(x1)+m*(x-x1)
+		}
+		let trace2 = {
+		  x: [minx,maxx],
+		  y: [deriveichon(minx,resultadoActual[i][1],resultadoActual[i][0]),deriveichon(maxx,resultadoActual[i][1],resultadoActual[i][0])],
+		  mode: 'lines',
+		  name: 'Pendiente',
+		  line: {
+		  	dash: 'dot'
+		  }
+		}
+		let trace3 = {
+		  x: [resultadoActual[i][0]],
+		  y: [this.fx(resultadoActual[i][0])],
+		  mode: 'markers',
+		  name: 'f(Xi)',
+		}
+		let layout = {
+		  title:'Iteracion ' + (parseInt(i)+1),
+		  xaxis: {
+		  	title:'x'
+		  },
+		  yaxis: {
+		  	title:'y'
+		  }
+		}
+		var config = {responsive: true}
+		Plotly.newPlot('grafica', [trace,trace1,trace4,trace2,trace3],layout,config)
+		this.graficarSecante2(i,n,false)
+	}
+
+	graficarSecante2(i,n=50,zoom=true) {
+		let x = []
+		let y = []
+		let j = 1*(zoom*i)
+		let min = 9*10**10
+		let max = 9*10**-10
+		let minx = 9*10**10
+		let maxx = 9*10**-10
+		let Xgeneral = []
+		let Ygeneral = []
+		for (var m = 0; m < resultadoActual.length; m++) {
+			Xgeneral.push(resultadoActual[m][1])
+			Ygeneral.push(this.fx(resultadoActual[m][1]))
+		}
+		Ygeneral.push(this.fx(resultadoActual[m-1][0]))
+		Xgeneral.push(resultadoActual[m-1][0])
+		minx = math.min(Xgeneral)
+		maxx = math.max(Xgeneral)
+		console.log(minx,maxx)
+		let dx = math.abs(maxx-minx)/n
+		let xderivada = []
+		let yderivada = []
+		for (var k = -10; k < n+10; k++) {
+			x.push(minx+k*dx)
+			y.push(this.fx(minx+k*dx))
+		}
+		min = math.min(Ygeneral)-10*dx
+		max = math.max(Ygeneral)+10*dx
+		let t1x = []
+		let t1y = []
+
+		t1x.push(resultadoActual[0][1])
+		t1y.push(0)
+		xderivada.push(resultadoActual[0][1])
+		yderivada.push(this.fx(resultadoActual[0][1]))
+		
+		for (var k = 0; k <= i; k++) {
+			t1x.push(resultadoActual[k][0])
+			t1y.push(0)
+			xderivada.push(resultadoActual[k][0])
+			yderivada.push(this.fx(resultadoActual[k][0]))
+		}
+		let trace = {
+		  x: x,
+		  y: y,
+		  mode: 'lines',
+		  name: 'Grafica'
+		}
+		let tracexi = {
+		  x: [resultadoActual[i][0],resultadoActual[i][0]],
+		  y: [min,max],
+		  mode: 'lines',
+		  name: 'Xi',
+		  line: {
+			dash: 'dashdot',
+		  }
+		}
+		let tracexi1 = {
+		  x: [resultadoActual[i][1],resultadoActual[i][1]],
+		  y: [min,max],
+		  mode: 'lines',
+		  name: 'Xi-1',
+		  line: {
+			dash: 'dashdot',
+		  }
+		}
+		let deriveichon = (x,x1,x2) => {
+			let m = (this.fx(x2)-this.fx(x1))/(x2-x1)
+			return this.fx(x1)+m*(x-x1)
+		}
+		let trace2 = {
+		  x: [minx-10*dx,maxx+10*dx],
+		  y: [deriveichon(minx-10*dx,resultadoActual[i][1],resultadoActual[i][0]),deriveichon(maxx+10*dx,resultadoActual[i][1],resultadoActual[i][0])],
+		  mode: 'lines',
+		  name: 'Pendiente',
+		  line: {
+		  	dash: 'dot'
+		  }
+		}
+		
+		let trace3 = {
+		  x: xderivada,
+		  y: yderivada,
+		  mode: 'markers',
+		  name: 'f(xi)'
+		}
+		let trace1 = {
+		  x: t1x,
+		  y: t1y,
+		  mode: 'markers',
+		  name: 'Xi',
+		}
+
+
+		let layout = {
+		  title:'Iteraciones General ',
+		  xaxis: {
+		  	title:'x'
+		  },
+		  yaxis: {
+		  	title:'y'
+		  }
+		}
+		var config = {responsive: true}
+		Plotly.newPlot('grafica2', [trace,tracexi,tracexi1,trace1,trace2,trace3],layout,config)
+	}
+
 	newton(x0,tol=0.0001,maxIter = 300) {
 		let error = 1
 		let xr = x0

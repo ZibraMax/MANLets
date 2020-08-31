@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="utf-8">
+  <title>Applets</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163602964-1"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-163602964-1');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=0.5,user-scalable=no" id="viewport">
+  <link rel="shortcut icon" type="image/x-icon" href="../../favicon/favicon.ico">
+  <script src="https://kit.fontawesome.com/2416ed6962.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/picnic">
+  <link rel="stylesheet" href="../../css/estilos.css">
+  <script type="text/javascript" src="../../js/math.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body style="margin: 20px">
+  <article class="card">
+    <header>
+      <h1><a href="../index.html" class="fas fa-arrow-left"></a> <a href="../../index.html" class="fas fa-home"></a> MANLets - Método de la Secante</h1>
+    </header>
+    <footer>
+      <div class="fila">
+        
+      <div class="columnaTercios">
+        <table style="width: 100%">
+          <thead>
+            <th>
+              Parametro
+            </th>
+            <th>
+              Valor
+            </th>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <span class="stack">$$f(x)=$$</span>
+            </td>
+            <td>
+              <input type="text" id="funcion" value="e^(-x)-x" oninput="actual='SC';actualizarFuncion(this.value)" >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span class="stack">$$x_i=$$</span>
+            </td>
+            <td>
+              <input type="text" id="sliderx0" value='1' onchange="actualizarX0(this.value)"  class="stack">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span class="stack">$$x_{i-1}=$$</span>
+            </td>
+            <td>
+              <input type="text" id="sliderxf" value='0' onchange="actualizarXf(this.value)"  class="stack">
+            </td>
+          </tr>
+          </tbody>
+          <thead>
+            <tr style="text-align: center;">
+              <th colspan='2' style="text-align: center;">
+                <button style="text-align: center;" onclick="resolver('SC')" class="stack icon-paper-plane">Calcular</button>
+              </th>
+            </tr>
+            <tr style="text-align: center;">
+              <td style="text-align: center;">
+                <button id="iteraciones" style="text-align: center;" onclick="anteriorIteracion()" class="succes icon-paper-plane">< Iteracion Anterior</button>
+              </td>
+              <td style="text-align: center;">
+                <button id="iteraciones" onclick="siguienteIteracion()" class="warning icon-paper-plane">Iteracion Siguiente > </button>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <span id="pretty">$$f(x)=e^{-x}-x$$</span>
+              </td>
+            </tr>
+          </thead>
+        </table>
+        <table style="width: 100%; font-size: 13px">
+          <thead >
+            <tr style="text-align: center;">
+              <th><span >$$x_i$$</span></th>
+              <th><span >$$x_{i-1}$$</span></th>
+              <th><span>$$f(x_{i})$$</span></th>
+              <th><span>$$f(x_{i-1})$$</span></th>
+              <th><span>$$f'(x_{i})$$</span></th>
+              <th><span>$$e\%$$</span></th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr>
+              <td id="-1,xl">0</td>
+              <td id="-1,xu">0</td>
+              <td id="-1,fxl">0</td>
+              <td id="-1,fxu">0</td>
+              <td id="-1,xr">0</td>
+              <td id="-1,fxr">0</td>
+            </tr>
+
+            <tr>
+              <td id="1,xl">0</td>
+              <td id="1,xu">0</td>
+              <td id="1,fxl">0</td>
+              <td id="1,fxu">0</td>
+              <td id="1,xr">0</td>
+              <td id="1,fxr">0</td>
+            </tr>
+
+            <tr>
+              <td id="+1,xl">0</td>
+              <td id="+1,xu">0</td>
+              <td id="+1,fxl">0</td>
+              <td id="+1,fxu">0</td>
+              <td id="+1,xr">0</td>
+              <td id="+1,fxr">0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <div class="columnaTercios" style=" border: 2px solid gray; border-radius: 8px;margin: 5px">
+      <div id="grafica">
+      </div>
+    </div>
+    <div class="columnaTercios" style="border: 2px solid gray; border-radius: 8px; margin: 5px;">
+      <div id="grafica2"></div>
+    </div>
+    </div>
+    <div id="btns">
+      <a class="floatButton" onclick="anteriorIteracion()">
+      <i class="fa fa-angle-left my-float"></i>
+      </a>
+      <a class="floatButton1" onclick="siguienteIteracion()">
+      <i class="fa fa-angle-right my-float"></i>
+      </a>
+    </div>
+</footer>
+  </article>
+  <script type="text/javascript" src="../../js/Modelacion_Analisis_Numerico.js"></script>
+</body>
+</html>
