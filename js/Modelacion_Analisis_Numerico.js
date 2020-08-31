@@ -38,7 +38,7 @@ function resolver(cac) {
 	actual = cac
 	actualizarFuncion(document.getElementById('funcion').value)
 	actualizarX0(document.getElementById('sliderx0').value)
-	if (!actual == 'IS') {
+	if (!actual == 'IS' && !actual == 'N') {
 		actualizarXf(document.getElementById('sliderxf').value)
 	}
 	triggerBotones(true)
@@ -65,7 +65,7 @@ function alertaIntervalo(param=false) {
 
 }
 function actualizarX0(x) {
-	if (funcionActual.fx(parseFloat(x))*funcionActual.fx(xfG)<=0 || actual == 'IS') {
+	if (funcionActual.fx(parseFloat(x))*funcionActual.fx(xfG)<=0 || actual == 'IS' || actual == 'N') {
 		x0G = parseFloat(x)
 		actualizarFuncion(document.getElementById('funcion').value)
 		alertaIntervalo(true)
@@ -101,6 +101,8 @@ function actualizarFuncion(funcion) {
 		}
 	} else if (actual == 'BS') {
 		funcionActual.biseccion(x0G,xfG,0.00001)
+	} else if (actual == 'N') {
+		funcionActual.newton(x0G,0.00000001)
 	} else {
 		funcionActual.iteracionSimple(x0G,0.00001)
 	}
@@ -111,6 +113,9 @@ function actualizarFuncion(funcion) {
 	const elem = document.getElementById('pretty')
 	if (actual == 'IS') {
 	    elem.innerHTML = '$$x='+math.parse(funcion).toTex()+'$$'
+	} else if (actual == 'N') {
+		let derivada = funcionActual.nodoDerivada.toTex()
+	    elem.innerHTML = '$$f(x)='+math.parse(funcion).toTex()+";f'(x)="+derivada+'$$'
 	} else {
 	    elem.innerHTML = '$$f(x)='+math.parse(funcion).toTex()+'$$'
 	}
@@ -130,6 +135,9 @@ function actualizarGrafica(i) {
 	} else if (actual == 'FP' || actual == 'FPM') {
 		funcionActual.graficarFalsaPosicion(i,50,estado)
 		actualizarTablaFP(i)
+	} else if (actual == 'N') {
+		funcionActual.graficarNewton(i,50,estado)
+		actualizarTablaN(i)
 	} else {
 		funcionActual.graficarIteracionSimple(i,50,estado)
 		actualizarTablaIS(i)
@@ -382,7 +390,55 @@ function actualizarTablaIS(i) {
 	document.getElementById('+1,fxu').innerHTML = math.round(fxu11,3)
 	document.getElementById('+1,e').innerHTML = math.round(e11,3)
 }
+function actualizarTablaN(i) {
+	let xl = ''
+	let xu = ''
+	let fxl = ''
+	let fxu = ''
+	let e = ''
 
+	let xl1 = ''
+	let xu1 = ''
+	let fxl1 = ''
+	let fxu1 = ''
+
+	let xl11 = ''
+	let xu11 = ''
+	let fxl11 = ''
+	let fxu11 = ''
+
+	if (i>0) {
+		xl1 = resultadoActual[i-1][0]
+		xu1 = resultadoActual[i-1][1]
+		fxl1 = resultadoActual[i-1][2]
+		fxu1 = resultadoActual[i-1][3]
+	}
+	if (iteraccionActual<resultadoActual.length-1) {
+		xl11 = resultadoActual[i+1][0]
+		xu11 = resultadoActual[i+1][1]
+		fxl11 = resultadoActual[i+1][2]
+		fxu11 = resultadoActual[i+1][3]
+	}
+	xl = resultadoActual[i][0]
+	xu = resultadoActual[i][1]
+	fxl = resultadoActual[i][2]
+	fxu = resultadoActual[i][3]
+
+	document.getElementById('-1,xl').innerHTML = math.round(xl1,3)
+	document.getElementById('-1,xu').innerHTML = math.round(xu1,3)
+	document.getElementById('-1,fxl').innerHTML = math.round(fxl1,3)
+	document.getElementById('-1,fxu').innerHTML = math.round(fxu1,3)
+
+	document.getElementById('1,xl').innerHTML = math.round(xl,3)
+	document.getElementById('1,xu').innerHTML = math.round(xu,3)
+	document.getElementById('1,fxl').innerHTML = math.round(fxl,3)
+	document.getElementById('1,fxu').innerHTML = math.round(fxu,3)
+
+	document.getElementById('+1,xl').innerHTML = math.round(xl11,3)
+	document.getElementById('+1,xu').innerHTML = math.round(xu11,3)
+	document.getElementById('+1,fxl').innerHTML = math.round(fxl11,3)
+	document.getElementById('+1,fxu').innerHTML = math.round(fxu11,3)
+}
 const Tipo = {
 	ATRAS: 'Atras',
 	ADELANTE: 'Adelante',
@@ -440,10 +496,184 @@ class DiferenciasFinitas1D{
 class MetodoDeRaiz {
 	constructor(dFx,pB=0,mathi=false) {
 		if (mathi) {
-			this.fx = (x) => {return math.evaluate(dFx,{x: x}) }
+			this.nodoF = math.parse(dFx)
+			this.nodoDerivada = math.derivative(this.nodoF,'x')
+			this.fx = (x) => this.nodoF.evaluate({x: x})
+			this.dfdx = (x) => this.nodoDerivada.evaluate({x: x})
 		} else {
 			this.fx = (x) => {return dFx(x)-pB}
 		}
+	}
+	newton(x0,tol=0.0001,maxIter = 300) {
+		let error = 1
+		let xr = x0
+		let iteraciones = []
+		let numiter = 0
+		iteraciones.push([xr,this.fx(xr),this.dfdx(xr),error])
+		while (error > tol && numiter < maxIter) {
+			
+			xr = xr-(this.fx(xr))/(this.dfdx(xr))
+
+			let xri = xr-(this.fx(xr))/(this.dfdx(xr))
+
+			error = math.abs((xr - xri)/xri)
+			numiter++
+			iteraciones.push([xr,this.fx(xr),this.dfdx(xr),error])
+		}
+		actualizarSoluciones(iteraciones,'N',this)
+		return [xr,iteraciones]
+	}
+	graficarNewton(i,n=50,zoom=true) {
+		let x = []
+		let y = []
+		let j = 1*(zoom*i)
+		let min = 9*10**10
+		let max = 9*10**-10
+		let minx = 9*10**10
+		let maxx = 9*10**-10
+
+		let dx = (resultadoActual[j+1][0]-resultadoActual[j][0])/n
+
+		for (var k = -10; k < n+10; k++) {
+			x.push(resultadoActual[j][0]+k*dx)
+			y.push(this.fx(resultadoActual[j][0]+k*dx))
+		}
+		min = math.min(y)
+		max = math.max(y)
+		minx = math.min(x)
+		maxx = math.max(x)
+		let trace = {
+		  x: x,
+		  y: y,
+		  mode: 'lines',
+		  name: 'Grafica'
+		}
+		let trace1 = {
+		  x: [resultadoActual[i][0],resultadoActual[i][0]],
+		  y: [min,max],
+		  mode: 'lines',
+		  name: 'Xi',
+		  line: {
+			dash: 'dashdot',
+		  }
+		}
+		let trace4 = {
+		  x: [resultadoActual[i+1][0],resultadoActual[i+1][0]],
+		  y: [min,max],
+		  mode: 'lines',
+		  name: 'Xi+1',
+		  line: {
+			dash: 'dashdot',
+		  }
+		}
+		let deriveichon = (x,x0) => {
+			return this.fx(x0)+this.dfdx(x0)*(x-x0)
+		}
+		let trace2 = {
+		  x: [minx,maxx],
+		  y: [deriveichon(minx,resultadoActual[i][0]),deriveichon(maxx,resultadoActual[i][0])],
+		  mode: 'lines',
+		  name: 'Pendiente',
+		  line: {
+		  	dash: 'dot'
+		  }
+		}
+		let trace3 = {
+		  x: [resultadoActual[i][0]],
+		  y: [this.fx(resultadoActual[i][0])],
+		  mode: 'markers',
+		  name: 'f(Xi)',
+		}
+		let layout = {
+		  title:'Iteracion ' + (parseInt(i)+1),
+		  xaxis: {
+		  	title:'x'
+		  },
+		  yaxis: {
+		  	title:'y'
+		  }
+		}
+		var config = {responsive: true}
+		Plotly.newPlot('grafica', [trace,trace1,trace4,trace2,trace3],layout,config)
+		this.graficarNewton2(i,n,false)
+	}
+	graficarNewton2(i,n=50,zoom=true) {
+		let x = []
+		let y = []
+		let j = 1*(zoom*i)
+		let min = 9*10**10
+		let max = 9*10**-10
+		let minx = 9*10**10
+		let maxx = 9*10**-10
+		let Xgeneral = []
+		let Ygeneral = []
+		for (var m = 0; m < resultadoActual.length; m++) {
+			Xgeneral.push(resultadoActual[m][0])
+			Ygeneral.push(this.fx(resultadoActual[m][0]))
+		}
+		min = math.min(Ygeneral)
+		max = math.max(Ygeneral)
+		minx = math.min(Xgeneral)
+		maxx = math.max(Xgeneral)
+		let dx = math.abs(maxx-minx)/n
+		let xderivada = []
+		let yderivada = []
+		for (var k = -10; k < n+10; k++) {
+			x.push(minx+k*dx)
+			y.push(this.fx(minx+k*dx))
+		}
+		let t1x = []
+		let t1y = []
+		for (var k = 0; k <= i; k++) {
+			t1x.push(resultadoActual[k][0])
+			t1y.push(0)
+			xderivada.push(resultadoActual[k][0])
+			yderivada.push(this.fx(resultadoActual[k][0]))
+		}
+		let trace = {
+		  x: x,
+		  y: y,
+		  mode: 'lines',
+		  name: 'Grafica'
+		}
+		let deriveichon = (x,x0) => {
+			return this.fx(x0)+this.dfdx(x0)*(x-x0)
+		}
+		let trace2 = {
+		  x: [minx-10*dx,maxx+10*dx],
+		  y: [deriveichon(minx-10*dx,resultadoActual[i][0]),deriveichon(maxx+10*dx,resultadoActual[i][0])],
+		  mode: 'lines',
+		  name: 'Pendiente',
+		  line: {
+		  	dash: 'dot'
+		  }
+		}
+		
+		let trace3 = {
+		  x: xderivada,
+		  y: yderivada,
+		  mode: 'markers',
+		  name: 'f(xi)'
+		}
+		let trace1 = {
+		  x: t1x,
+		  y: t1y,
+		  mode: 'markers',
+		  name: 'Xi',
+		}
+
+
+		let layout = {
+		  title:'Iteraciones General ',
+		  xaxis: {
+		  	title:'x'
+		  },
+		  yaxis: {
+		  	title:'y'
+		  }
+		}
+		var config = {responsive: true}
+		Plotly.newPlot('grafica2', [trace,trace1,trace2,trace3],layout,config)
 	}
 	biseccion(pX0,pXf,tol=0.01) {
 		if (this.fx(pX0)*this.fx(pXf)<=0) {
