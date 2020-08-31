@@ -69,11 +69,11 @@
 					<thead>
 						<tr>
 							<th style="text-align: center;">
-								<button style="text-align: center;" onclick="if (document.getElementById('modificacion').checked){resolver('FPM')} else {resolver('FP')}" onload="resolver('FP')" class="stack icon-paper-plane">Calcular</button>
+								<button style="text-align: center;" onclick="resolver('FP')"class="stack icon-paper-plane">Calcular</button>
 							</th>
 							<th style="text-align: center;">
 								<label >
-								  <input id='modificacion' type="checkbox" checked onchange="if (document.getElementById('modificacion').checked){resolver('FPM')} else {resolver('FP')}" onload="resolver('FP')">
+								  <input id='modificacion' type="checkbox" onchange="modificado = !modificado;resolver('FP')">
 								  <span class="checkable">Modificado</span>
 								</label>
 							</th>
@@ -84,6 +84,11 @@
 							</td>
 							<td style="align-content: center;">
 								<button id="iteraciones" onclick="siguienteIteracion()" class="warning icon-paper-plane">Iteracion Siguiente > </button>
+							</td>
+						</tr>
+						<tr style="text-align: center;">
+							<td style="align-content: center;" colspan="2">
+								<span id="iteracionesText"></span>
 							</td>
 						</tr>
 						<tr>
@@ -99,10 +104,10 @@
 			    <tr style="text-align: center;">
 			      <th><span>$$x_l$$</span></th>
 			      <th><span>$$x_u$$</span></th>
-			      <th><span>$$f(x_l)$$</span></th>
-			      <th><span>$$f(x_u)$$</span></th>
+			      <th><span>$$g(x_l)$$</span></th>
+			      <th><span>$$g(x_u)$$</span></th>
 			      <th><span>$$x_r$$</span></th>
-			      <th><span>$$f(x_r)$$</span></th>
+			      <th><span>$$g(x_r)$$</span></th>
 			      <th><span>$$e\%$$</span></th>
 			    </tr>
 			  </thead>

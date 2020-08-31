@@ -215,6 +215,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/C/Users/david/Desktop/4624413.txt",
+			"settings":
+			{
+				"buffer_size": 38828,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "Packages/LaTeXTools/LaTeX.sublime-build",
 	"build_system_choices":
@@ -432,9 +440,21 @@
 	},
 	"expanded_folders":
 	[
+		"/C/Users/david/Desktop/MANLets",
+		"/C/Users/david/Desktop/MANLets/Raices"
 	],
 	"file_history":
 	[
+		"/C/Users/david/Desktop/EsfuerzosBalanceado1centro2.tex",
+		"/D/Universidad de los Andes/Maria Alejandra Zapata Ocampo - PROYECTO FINAL DE DISEÑO/Logo/Codigo_Generador_Logo.tex",
+		"/C/Users/david/Desktop/PE1/main.tex",
+		"/C/Users/david/Desktop/PE1/EsfuerzosBalanceado1extremo.tex",
+		"/C/Users/david/Desktop/PE1/main.toc",
+		"/C/Users/david/Desktop/test.tex",
+		"/C/Users/david/Desktop/ASections/index.html",
+		"/C/Users/david/Desktop/MANLets/index.html",
+		"/C/Users/david/Desktop/MANLets/Raices/index.html",
+		"/C/Users/david/Desktop/MANLets/.cpanel.yml",
 		"/C/Users/david/Desktop/MANLets/js/Integracion.js",
 		"/C/Users/david/Desktop/MANLets/css/estilos.css",
 		"/C/Users/david/Desktop/MANLets/Raices/Biseccion/index.html",
@@ -447,8 +467,6 @@
 		"/C/Users/david/Desktop/source.js",
 		"/C/Users/david/Desktop/source.html",
 		"/C/Users/david/Desktop/index.py",
-		"/C/Users/david/Desktop/MANLets/index.html",
-		"/C/Users/david/Desktop/MANLets/Raices/index.html",
 		"/C/Users/david/Desktop/MANLets/Interpolacion/Polinomica/index.html",
 		"/C/Users/david/Desktop/MANLets/Interpolacion/Regresion_Multiple/index.html",
 		"/C/Users/david/Desktop/MANLets/Interpolacion/Splines/index.html",
@@ -476,7 +494,6 @@
 		"/F/Backup/Desktop/FEM/1D/da.rodriguezh/Documentacion/CodigoDocumentacion.py",
 		"/C/Users/david/Desktop/archivo.py",
 		"/D/Universidad de los Andes/Maria Alejandra Zapata Ocampo - PROYECTO FINAL DE DISEÑO/Logo/Codigo_Generador_Logo_Todos.tex",
-		"/D/Universidad de los Andes/Maria Alejandra Zapata Ocampo - PROYECTO FINAL DE DISEÑO/Logo/Codigo_Generador_Logo.tex",
 		"/D/Universidad de los Andes/Maria Alejandra Zapata Ocampo - PROYECTO FINAL DE DISEÑO/Logo/CrearFigura.bat",
 		"/C/Users/david/Desktop/Random city.tex",
 		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/User/LaTeXTools.sublime-settings",
@@ -489,7 +506,6 @@
 		"/D/Universidad de los Andes/[MAN-Moniitores] - General/Tarea 2/HW02.tex",
 		"/C/Users/david/Desktop/svg2tikz/svg2tikz/svg2tikz.py",
 		"/C/Users/david/Desktop/svg2tikz/svg2tikz/test.tex",
-		"/C/Users/david/Desktop/test.tex",
 		"/C/Users/david/Desktop/svg2tikz/svg2tikz/tikz.tex",
 		"/C/Users/david/Desktop/Coevaluacion/script.py",
 		"/C/Users/david/Desktop/Coevaluacion/script.puy",
@@ -556,17 +572,11 @@
 		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/User/Python.sublime-settings",
 		"/C/Users/david/Desktop/Analisis Avanzado/Python/PySections/__init__.py",
 		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/MarkdownEditing/README.md",
-		"/C/Users/david/Desktop/Django/RFPD_ZibraMax/manage.py",
-		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/User/Guna-dark.sublime-settings",
-		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/Guna/themes/preset/Guna-dark.sublime-settings",
-		"/C/Users/david/Desktop/Django/RFPD_ZibraMax/RFPD_ZibraMax/__init__.py",
-		"/D/Program Files/Sublime Text 3/sublime_plugin.py",
-		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/User/Guna.sublime-settings",
-		"/C/Users/david/AppData/Roaming/Sublime Text 3/Packages/Guna/Guna.sublime-settings"
+		"/C/Users/david/Desktop/Django/RFPD_ZibraMax/manage.py"
 	],
 	"find":
 	{
-		"height": 49.0
+		"height": 46.0
 	},
 	"find_in_files":
 	{
@@ -580,6 +590,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"sb",
 			"resolver",
 			"simple",
 			"RESOLVER",
@@ -677,14 +688,44 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/C/Users/david/Desktop/4624413.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 38828,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 49.0
+		"height": 46.0
 	},
 	"input":
 	{
@@ -745,7 +786,7 @@
 	"project": "MANUA_ST3.sublime-project",
 	"replace":
 	{
-		"height": 94.0
+		"height": 88.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -783,7 +824,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 363.0,
+	"side_bar_width": 237.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

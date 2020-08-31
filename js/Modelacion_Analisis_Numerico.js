@@ -14,8 +14,15 @@ var slider = document.getElementById('slider')
 var sliderx0 = document.getElementById('sliderx0')
 var sliderxf = document.getElementById('sliderxf')
 var estado = true
-var x0G = 0
-var xfG = 1
+var x0G = parseFloat(sliderx0.value)
+var modificado = false
+var xfG = 0
+try {
+  xfG = parseFloat(sliderxf.value)
+}
+catch(err) {
+}
+
 let funcionActual = undefined
 var resultadoActual = []
 iteraccionActual = 0
@@ -42,10 +49,18 @@ function cambiarEstado(valor) {
 }
 function alertaIntervalo(param=false) {
 	if (!param) {
-		document.querySelectorAll('input').forEach(x=>x.classList.add("casillaCentrada"))
+		document.querySelectorAll('input').forEach(x=>x.classList.add("casillaCentradaROJO"))
 		triggerBotones(false)
+		document.getElementById('iteracionesText').innerHTML = 'El intervalo no es válido para esta funcion'
+		actualizarTabla(-1)
 	} else {
-		document.querySelectorAll('input').forEach(x=>x.classList.remove("casillaCentrada"))
+		document.querySelectorAll('input').forEach(x=>x.classList.remove("casillaCentradaROJO"))
+		try {
+			document.getElementById('iteracionesText').innerHTML = ''
+		}
+		catch(err) {
+
+		}
 	}
 
 }
@@ -79,9 +94,11 @@ function triggerBotones(param) {
 function actualizarFuncion(funcion) {
 	funcionActual = new MetodoDeRaiz(funcion,0,true)
 	if (actual == 'FP') {
-		funcionActual.falsaPosicion(x0G,xfG,0.00001)
-	} else if (actual == 'FPM') {
-		funcionActual.falsaPosicion(x0G,xfG,0.00001,true,2)
+		if (modificado) {
+			funcionActual.falsaPosicion(x0G,xfG,0.00000001,modificado,2)
+		} else {
+			funcionActual.falsaPosicion(x0G,xfG,0.00000001)
+		}
 	} else if (actual == 'BS') {
 		funcionActual.biseccion(x0G,xfG,0.00001)
 	} else {
@@ -112,14 +129,40 @@ function actualizarGrafica(i) {
 		actualizarTabla(i)
 	} else if (actual == 'FP' || actual == 'FPM') {
 		funcionActual.graficarFalsaPosicion(i,50,estado)
-		actualizarTabla(i)
+		actualizarTablaFP(i)
 	} else {
 		funcionActual.graficarIteracionSimple(i,50,estado)
 		actualizarTablaIS(i)
 	}
 }
 function actualizarTabla(i) {
-	let xl = ''
+
+	if (i==-1) {
+		document.getElementById('-1,xl').innerHTML = 0
+		document.getElementById('-1,xu').innerHTML = 0
+		document.getElementById('-1,fxl').innerHTML = 0
+		document.getElementById('-1,fxu').innerHTML = 0
+		document.getElementById('-1,xr').innerHTML = 0
+		document.getElementById('-1,fxr').innerHTML = 0
+		document.getElementById('-1,e').innerHTML = 0
+
+		document.getElementById('1,xl').innerHTML = 0
+		document.getElementById('1,xu').innerHTML = 0
+		document.getElementById('1,fxl').innerHTML = 0
+		document.getElementById('1,fxu').innerHTML = 0
+		document.getElementById('1,xr').innerHTML = 0
+		document.getElementById('1,fxr').innerHTML = 0
+		document.getElementById('1,e').innerHTML = 0
+
+		document.getElementById('+1,xl').innerHTML = 0
+		document.getElementById('+1,xu').innerHTML = 0
+		document.getElementById('+1,fxl').innerHTML = 0
+		document.getElementById('+1,fxu').innerHTML = 0
+		document.getElementById('+1,xr').innerHTML = 0
+		document.getElementById('+1,fxr').innerHTML = 0
+		document.getElementById('+1,e').innerHTML = 0
+	} else {
+		let xl = ''
 	let xu = ''
 	let fxl = ''
 	let fxu = ''
@@ -168,7 +211,6 @@ function actualizarTabla(i) {
 	xr = resultadoActual[i][2]
 	fxr = funcionActual.fx(resultadoActual[i][2])
 	e = resultadoActual[i][3]*100
-
 	document.getElementById('-1,xl').innerHTML = math.round(xl1,3)
 	document.getElementById('-1,xu').innerHTML = math.round(xu1,3)
 	document.getElementById('-1,fxl').innerHTML = math.round(fxl1,3)
@@ -192,6 +234,95 @@ function actualizarTabla(i) {
 	document.getElementById('+1,xr').innerHTML = math.round(xr11,3)
 	document.getElementById('+1,fxr').innerHTML = math.round(fxr11,3)
 	document.getElementById('+1,e').innerHTML = math.round(e11,3)
+	}
+}
+
+function actualizarTablaFP(i) {
+
+	let xl = ''
+	let xu = ''
+	let fxl = ''
+	let fxu = ''
+	let xr = ''
+	let fxr = ''
+	let e = ''
+
+	let xl1 = ''
+	let xu1 = ''
+	let fxl1 = ''
+	let fxu1 = ''
+	let xr1 = ''
+	let fxr1 = ''
+	let e1 = ''
+
+	let xl11 = ''
+	let xu11 = ''
+	let fxl11 = ''
+	let fxu11 = ''
+	let xr11 = ''
+	let fxr11 = ''
+	let e11 = ''
+
+	if (i>0) {
+		xl1 = resultadoActual[i-1][0]
+		xu1 = resultadoActual[i-1][1]
+		fxl1 = funcionActual.fx(resultadoActual[i-1][0])*2/resultadoActual[i-1][4]
+		fxu1 = funcionActual.fx(resultadoActual[i-1][1])*2/resultadoActual[i-1][5]
+		xr1 = resultadoActual[i-1][2]
+		fxr1 = funcionActual.fx(resultadoActual[i-1][2])
+		e1 = resultadoActual[i-1][3]*100
+	}
+	if (iteraccionActual<resultadoActual.length-1) {
+		xl11 = resultadoActual[i+1][0]
+		xu11 = resultadoActual[i+1][1]
+		fxl11 = funcionActual.fx(resultadoActual[i+1][0])*2/resultadoActual[i+1][4]
+		fxu11 = funcionActual.fx(resultadoActual[i+1][1])*2/resultadoActual[i+1][5]
+		xr11 = resultadoActual[i+1][2]
+		fxr11 = funcionActual.fx(resultadoActual[i+1][2])
+		e11 = resultadoActual[i+1][3]*100
+	}
+	xl = resultadoActual[i][0]
+	xu = resultadoActual[i][1]
+	fxl = funcionActual.fx(resultadoActual[i][0])*2/resultadoActual[i][4]
+	fxu = funcionActual.fx(resultadoActual[i][1])*2/resultadoActual[i][5]
+	xr = resultadoActual[i][2]
+	fxr = funcionActual.fx(resultadoActual[i][2])
+	e = resultadoActual[i][3]*100
+	document.getElementById('-1,xl').innerHTML = math.round(xl1,3)
+	document.getElementById('-1,xu').innerHTML = math.round(xu1,3)
+	document.getElementById('-1,fxl').innerHTML = math.round(fxl1,3)
+	document.getElementById('-1,fxu').innerHTML = math.round(fxu1,3)
+	document.getElementById('-1,xr').innerHTML = math.round(xr1,3)
+	document.getElementById('-1,fxr').innerHTML = math.round(fxr1,3)
+	document.getElementById('-1,e').innerHTML = math.round(e1,3)
+
+	document.getElementById('1,xl').innerHTML = math.round(xl,3)
+	document.getElementById('1,xu').innerHTML = math.round(xu,3)
+	document.getElementById('1,fxl').innerHTML = math.round(fxl,3)
+	document.getElementById('1,fxu').innerHTML = math.round(fxu,3)
+	document.getElementById('1,xr').innerHTML = math.round(xr,3)
+	document.getElementById('1,fxr').innerHTML = math.round(fxr,3)
+	document.getElementById('1,e').innerHTML = math.round(e,3)
+
+	document.getElementById('+1,xl').innerHTML = math.round(xl11,3)
+	document.getElementById('+1,xu').innerHTML = math.round(xu11,3)
+	document.getElementById('+1,fxl').innerHTML = math.round(fxl11,3)
+	document.getElementById('+1,fxu').innerHTML = math.round(fxu11,3)
+	document.getElementById('+1,xr').innerHTML = math.round(xr11,3)
+	document.getElementById('+1,fxr').innerHTML = math.round(fxr11,3)
+	document.getElementById('+1,e').innerHTML = math.round(e11,3)
+
+	if (resultadoActual[i][4]>2) {
+		document.getElementById('1,fxl').classList.add("iteracionModificada")
+	} else {
+		document.getElementById('1,fxl').classList.remove("iteracionModificada")
+	}
+
+	if (resultadoActual[i][5]>2) {
+		document.getElementById('1,fxu').classList.add("iteracionModificada")
+	} else {
+		document.getElementById('1,fxu').classList.remove("iteracionModificada")
+	}
 }
 
 function actualizarTablaIS(i) {
@@ -473,15 +604,28 @@ class MetodoDeRaiz {
 			let divisorx0 = 2
 			let divisorxf = 2
 			while (error > tol) {
-				xr = xf-(this.fx(xf)/(divisorxf/2)*(x0-xf))/(this.fx(x0)/(divisorx0/2)-this.fx(xf)/(divisorxf/2))
-				iteraciones.push([x0,xf,xr])
+				let fx0 = this.fx(x0)/(divisorx0/2)
+				let fxf =this.fx(xf)/(divisorxf/2)
+				
+				xr = xf - (fxf*(x0-xf))/(fx0-fxf)
+
 				let fxr = this.fx(xr)
-				if (this.fx(x0)/(divisorx0/2)*fxr <= 0) {
+
+				iteraciones.push([x0,xf,xr])
+
+				if (fx0*fxr <= 0) {
 					xf = xr
 				} else {
 					x0 = xr
 				}
-				error = math.abs(((xf-(this.fx(xf)/(divisorxf/2)*(x0-xf))/(this.fx(x0)/(divisorx0/2)-this.fx(xf)/(divisorxf/2)))-xr)/(xf-(this.fx(xf)/(divisorxf/2)*(x0-xf))/(this.fx(x0)/(divisorx0/2)-this.fx(xf)/(divisorxf/2))))
+				fx0 = this.fx(x0)/(divisorx0/2)
+				fxf =this.fx(xf)/(divisorxf/2)
+				let xr1 = xf - (fxf*(x0-xf))/(fx0-fxf)
+
+				error = math.abs((xr1-xr)/xr1)
+				iteraciones[iteraciones.length-1].push(error) 
+				iteraciones[iteraciones.length-1].push(divisorx0)
+				iteraciones[iteraciones.length-1].push(divisorxf)
 				if (pModificado && iteraciones.length>=pN) {
 					if (x0 == iteraciones[iteraciones.length-pN][0]) {
 						divisorx0 += 2 
@@ -489,9 +633,11 @@ class MetodoDeRaiz {
 					} else if (xf == iteraciones[iteraciones.length-pN][1]) {
 						divisorxf += 2
 						divisorx0 = 2
+					} else {
+						divisorx0 = 2 
+						divisorxf = 2
 					}
-				}
-				iteraciones[iteraciones.length-1].push(error) 
+				} 
 			}
 			actualizarSoluciones(iteraciones,'FP',this)
 			return [xr,iteraciones]
@@ -546,7 +692,7 @@ class MetodoDeRaiz {
 		}
 		let trace4 = {
 		  x: [resultadoActual[i][0],resultadoActual[i][1]],
-		  y: [this.fx(resultadoActual[i][0]),this.fx(resultadoActual[i][1])],
+		  y: [this.fx(resultadoActual[i][0])/resultadoActual[i][4]*2,this.fx(resultadoActual[i][1])/resultadoActual[i][5]*2],
 		  mode: 'lines',
 		  name: 'Pendiente',
 		  line: {
@@ -613,7 +759,7 @@ class MetodoDeRaiz {
 		}
 		let trace4 = {
 		  x: [resultadoActual[i][0],resultadoActual[i][1]],
-		  y: [this.fx(resultadoActual[i][0]),this.fx(resultadoActual[i][1])],
+		  y: [this.fx(resultadoActual[i][0])*2/resultadoActual[i][4],this.fx(resultadoActual[i][1])*2/resultadoActual[i][5]],
 		  mode: 'lines',
 		  name: 'Pendiente',
 		  line: {
