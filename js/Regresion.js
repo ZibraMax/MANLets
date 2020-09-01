@@ -148,7 +148,7 @@ function actualizarLatex(coeficientes) {
 			if (((coeficientes.length-1)-i) == 1) {
 				stringLatex+=signo + math.round(coeficientes[i],3)+'x'
 			} else {
-				stringLatex+=signo + math.round(coeficientes[i],3)+'x^'+((coeficientes.length-1)-i)
+				stringLatex+=signo + math.round(coeficientes[i],3)+'x^{'+((coeficientes.length-1)-i+'}')
 			}
 		} else {
 			stringLatex+=signo + math.round(coeficientes[i],3)

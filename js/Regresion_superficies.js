@@ -107,7 +107,7 @@ function actualizarLatex(coeficientes) {
 		}
 		let exp = ''
 		if (i>2) {
-			exp = '^'+(Math.floor((i+1)/2))
+			exp = '^{'+(Math.floor((i+1)/2))+'}'
 		}
 		stringLatex += signo + coeff + variable+ exp 
 	}
