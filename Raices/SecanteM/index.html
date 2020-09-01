@@ -26,7 +26,7 @@
 <body style="margin: 20px">
   <article class="card">
     <header>
-      <h1><a href="../index.html" class="fas fa-arrow-left"></a> <a href="../../index.html" class="fas fa-home"></a> MANLets - Método de la Secante</h1>
+      <h1><a href="../index.html" class="fas fa-arrow-left"></a> <a href="../../index.html" class="fas fa-home"></a> MANLets - Método de la Secante Modificado</h1>
     </header>
     <footer>
       <div class="fila">
@@ -47,7 +47,7 @@
               <span class="stack">$$f(x)=$$</span>
             </td>
             <td>
-              <input type="text" id="funcion" value="e^(-x)-x" oninput="actual='SC';actualizarFuncion(this.value)" >
+              <input type="text" id="funcion" value="e^(-x)-x" oninput="actual='SCM';actualizarFuncion(this.value)" >
             </td>
           </tr>
           <tr>
@@ -60,17 +60,17 @@
           </tr>
           <tr>
             <td>
-              <span class="stack">$$x_{i-1}=$$</span>
+              <span class="stack">$$\delta x=$$</span>
             </td>
             <td>
-              <input type="text" id="sliderxf" value='0' onchange="actualizarXf(this.value)"  class="stack">
+              <input type="number" min="0.0001" id="sliderxf" value='0.05' onchange="actualizarXf(this.value)"  class="stack">
             </td>
           </tr>
           </tbody>
           <thead>
             <tr style="text-align: center;">
               <th colspan='2' style="text-align: center;">
-                <button style="text-align: center;" onclick="resolver('SC')" class="stack icon-paper-plane">Calcular</button>
+                <button style="text-align: center;" onclick="resolver('SCM')" class="stack icon-paper-plane">Calcular</button>
               </th>
             </tr>
             <tr style="text-align: center;">
@@ -79,6 +79,11 @@
               </td>
               <td style="text-align: center;">
                 <button id="iteraciones" onclick="siguienteIteracion()" class="warning icon-paper-plane">Iteracion Siguiente > </button>
+              </td>
+            </tr>
+            <tr style="text-align: center;">
+              <td style="align-content: center;" colspan="2">
+                <span id="iteracionesText"></span>
               </td>
             </tr>
             <tr>
@@ -92,9 +97,9 @@
           <thead >
             <tr style="text-align: center;">
               <th><span >$$x_i$$</span></th>
-              <th><span >$$x_{i-1}$$</span></th>
+              <th><span >$$x_{i}+\delta x$$</span></th>
               <th><span>$$f(x_{i})$$</span></th>
-              <th><span>$$f(x_{i-1})$$</span></th>
+              <th><span>$$f(x_{i}+\delta x)$$</span></th>
               <th><span>$$f'(x_{i})$$</span></th>
               <th><span>$$e\%$$</span></th>
             </tr>

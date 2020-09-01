@@ -54,6 +54,9 @@ function alertaIntervalo(param=false) {
 		document.querySelectorAll('input').forEach(x=>x.classList.add("casillaCentradaROJO"))
 		triggerBotones(false)
 		document.getElementById('iteracionesText').innerHTML = 'El intervalo no es válido para esta funcion'
+		if (actual == 'SCM') {
+			document.getElementById('iteracionesText').innerHTML = 'Delta x no puede ser 0'
+		}
 		actualizarTabla(-1)
 	} else {
 		document.querySelectorAll('input').forEach(x=>x.classList.remove("casillaCentradaROJO"))
@@ -67,7 +70,7 @@ function alertaIntervalo(param=false) {
 
 }
 function actualizarX0(x) {
-	if (funcionActual.fx(parseFloat(x))*funcionActual.fx(xfG)<=0 || actual == 'IS' || actual == 'N' || actual == 'SC') {
+	if (funcionActual.fx(parseFloat(x))*funcionActual.fx(xfG)<=0 || actual == 'IS' || actual == 'N' || actual == 'SC' || actual == 'SCM') {
 		x0G = parseFloat(x)
 		actualizarFuncion(document.getElementById('funcion').value)
 		alertaIntervalo(true)
@@ -79,15 +82,20 @@ function actualizarX0(x) {
 	}
 }
 function actualizarXf(x) {
-	if (funcionActual.fx(parseFloat(x))*funcionActual.fx(x0G)<=0 && x>x0G) {
-		xfG = parseFloat(x)
-		alertaIntervalo(true)
+	xfG = parseFloat(x)
+	if ((funcionActual.fx(parseFloat(x))*funcionActual.fx(x0G)<=0 && x>x0G) || actual == 'SC' || actual == 'SCM') {
+		if (actual == 'SCM' && x==0) {
+			alertaIntervalo()
+		} else {
+			alertaIntervalo(true)
+		}
 	} else {
 		xfG = parseFloat(x)
 		//alert('El intervalo no cumple con la condicion de que  f(x0)*f(xf)<=0, por favor modificalo')
 		actualizarFuncion(document.getElementById('funcion').value)
 		alertaIntervalo()
 	}
+	xfG = parseFloat(x)
 }
 function triggerBotones(param) {
 	console.log('hola', param)
@@ -107,6 +115,8 @@ function actualizarFuncion(funcion) {
 		funcionActual.newton(x0G,0.00000001)
 	} else if (actual == 'SC') {
 		funcionActual.secante(x0G,xfG,0.00000001)
+	} else if (actual == 'SCM') {
+		funcionActual.secanteM(x0G,xfG,0.00000001)
 	} else {
 		funcionActual.iteracionSimple(x0G,0.00001)
 	}
@@ -142,7 +152,7 @@ function actualizarGrafica(i) {
 	} else if (actual == 'N') {
 		funcionActual.graficarNewton(i,50,estado)
 		actualizarTablaN(i)
-	} else if (actual == 'SC') {
+	} else if (actual == 'SC' || actual == 'SCM') {
 		funcionActual.graficarSecante(i,50,estado)
 		actualizarTablaSC(i)
 	} else {
@@ -601,6 +611,23 @@ class MetodoDeRaiz {
 			this.fx = (x) => {return dFx(x)-pB}
 		}
 	}
+	secanteM(x0,dx,tol=0.00001,maxIter=300) {
+		let xr = x0
+		let iteraciones = []
+		let numiter = 0
+		let xr1 = xr - (dx*this.fx(xr))/(this.fx(xr+dx) - this.fx(xr))
+		let error = math.abs((xr1 - xr)/xr1)
+		iteraciones.push([xr,xr+dx,this.fx(xr),this.dfdx(xr),error])
+		while (error > tol && numiter < maxIter) {
+			xr = xr - (dx*this.fx(xr))/(this.fx(xr+dx) - this.fx(xr))
+			xr1 = xr - (dx*this.fx(xr))/(this.fx(xr+dx) - this.fx(xr))
+			error = math.abs((xr1 - xr)/xr1)
+			iteraciones.push([xr,xr+dx,this.fx(xr),this.dfdx(xr),error])
+			numiter++
+		}
+		actualizarSoluciones(iteraciones,'SCM',this)
+		return [xr,iteraciones]
+	}
 	secante(x0,xf,tol=0.00001,maxIter=300) {
 		let error = 1
 		let xr = x0
@@ -714,7 +741,6 @@ class MetodoDeRaiz {
 		Xgeneral.push(resultadoActual[m-1][0])
 		minx = math.min(Xgeneral)
 		maxx = math.max(Xgeneral)
-		console.log(minx,maxx)
 		let dx = math.abs(maxx-minx)/n
 		let xderivada = []
 		let yderivada = []
