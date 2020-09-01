@@ -712,10 +712,12 @@ class MetodoDeRaiz {
 		let layout = {
 		  title:'Iteracion ' + (parseInt(i)+1),
 		  xaxis: {
-		  	title:'x'
+		  	title:'x',
+		  	tickformat: '.3f'
 		  },
 		  yaxis: {
-		  	title:'y'
+		  	title:'y',
+		  	tickformat: '.3f'
 		  }
 		}
 		var config = {responsive: true}
@@ -819,10 +821,12 @@ class MetodoDeRaiz {
 		let layout = {
 		  title:'Iteraciones General ',
 		  xaxis: {
-		  	title:'x'
+		  	title:'x',
+		  	tickformat: '.3f'
 		  },
 		  yaxis: {
-		  	title:'y'
+		  	title:'y',
+		  	tickformat: '.3f'
 		  }
 		}
 		var config = {responsive: true}
@@ -912,10 +916,12 @@ class MetodoDeRaiz {
 		let layout = {
 		  title:'Iteracion ' + (parseInt(i)+1),
 		  xaxis: {
-		  	title:'x'
+		  	title:'x',
+		  	tickformat: '.3f'
 		  },
 		  yaxis: {
-		  	title:'y'
+		  	title:'y',
+		  	tickformat: '.3f'
 		  }
 		}
 		var config = {responsive: true}
@@ -991,10 +997,12 @@ class MetodoDeRaiz {
 		let layout = {
 		  title:'Iteraciones General ',
 		  xaxis: {
-		  	title:'x'
+		  	title:'x',
+		  	tickformat: '.3f'
 		  },
 		  yaxis: {
-		  	title:'y'
+		  	title:'y',
+		  	tickformat: '.3f'
 		  }
 		}
 		var config = {responsive: true}
@@ -1072,10 +1080,12 @@ class MetodoDeRaiz {
 		let layout = {
 		  title:'Iteracion ' + (parseInt(i)+1),
 		  xaxis: {
-		  	title:'x'
+		  	title:'x',
+		  	tickformat: '.3f'
 		  },
 		  yaxis: {
-		  	title:'y'
+		  	title:'y',
+		  	tickformat: '.3f'
 		  }
 		}
 		var config = {responsive: true}
@@ -1140,10 +1150,12 @@ class MetodoDeRaiz {
 		let layout = {
 		  title:'Iteraciones General ',
 		  xaxis: {
-		  	title:'x'
+		  	title:'x',
+		  	tickformat: '.3f'
 		  },
 		  yaxis: {
-		  	title:'y'
+		  	title:'y',
+		  	tickformat: '.3f'
 		  }
 		}
 		var config = {responsive: true}
@@ -1258,10 +1270,12 @@ class MetodoDeRaiz {
 		let layout = {
 		  title:'Iteracion ' + (parseInt(i)+1),
 		  xaxis: {
-		  	title:'x'
+		  	title:'x',
+		  	tickformat: '.3f'
 		  },
 		  yaxis: {
-		  	title:'y'
+		  	title:'y',
+		  	tickformat: '.3f'
 		  }
 		}
 		var config = {responsive: true}
@@ -1325,10 +1339,12 @@ class MetodoDeRaiz {
 		let layout = {
 		  title:'Iteraciones General ',
 		  xaxis: {
-		  	title:'x'
+		  	title:'x',
+		  	tickformat: '.3f'
 		  },
 		  yaxis: {
-		  	title:'y'
+		  	title:'y',
+		  	tickformat: '.3f'
 		  }
 		}
 		var config = {responsive: true}
@@ -1400,10 +1416,12 @@ class MetodoDeRaiz {
 		let layout = {
 		  title:'Iteracion ' + (parseInt(i)+1),
 		  xaxis: {
-		  	title:'x'
+		  	title:'x',
+		  	tickformat: '.3f'
 		  },
 		  yaxis: {
-		  	title:'y'
+		  	title:'y',
+		  	tickformat: '.3f'
 		  }
 		}
 		var config = {responsive: true}
@@ -1471,10 +1489,12 @@ class MetodoDeRaiz {
 		let layout = {
 		  title:'Iteracion ' + (parseInt(i)+1),
 		  xaxis: {
-		  	title:'x'
+		  	title:'x',
+		  	tickformat: '.3f'
 		  },
 		  yaxis: {
-		  	title:'y'
+		  	title:'y',
+		  	tickformat: '.3f'
 		  }
 		}
 		var config = {responsive: true}

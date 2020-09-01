@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"len",
+				"length-1"
+			],
+			[
 				"che",
 				"checked"
 			],
@@ -227,24 +231,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "Raices/Biseccion/index.html",
-			"settings":
-			{
-				"buffer_size": 5310,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/Optimizacion_Newton.js",
-			"settings":
-			{
-				"buffer_size": 8485,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "Packages/LaTeXTools/LaTeX.sublime-build",
 	"build_system_choices":
@@ -462,19 +448,19 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/david/Desktop/MANLets",
-		"/C/Users/david/Desktop/MANLets/Optimizacion",
-		"/C/Users/david/Desktop/MANLets/Optimizacion/Gradiente",
-		"/C/Users/david/Desktop/MANLets/Optimizacion/Newton",
-		"/C/Users/david/Desktop/MANLets/Raices"
+		"/C/Users/david/Desktop/MANLets"
 	],
 	"file_history":
 	[
-		"/C/Users/david/Desktop/MANLets/Optimizacion/Newton/index.html",
 		"/C/Users/david/Desktop/MANLets/js/Modelacion_Analisis_Numerico.js",
-		"/C/Users/david/Desktop/MANLets/index.html",
 		"/C/Users/david/Desktop/MANLets/Optimizacion/index.html",
+		"/C/Users/david/Desktop/MANLets/js/SeccionDorada.js",
+		"/C/Users/david/Desktop/MANLets/Optimizacion/Seccion_Dorada/index.html",
+		"/C/Users/david/Desktop/MANLets/Optimizacion/Newton/index.html",
+		"/C/Users/david/Desktop/MANLets/Raices/Biseccion/index.html",
 		"/C/Users/david/Desktop/MANLets/js/Optimizacion_Newton.js",
+		"/C/Users/david/Desktop/MANLets/js/Optimizacion_gradiente.js",
+		"/C/Users/david/Desktop/MANLets/index.html",
 		"/C/Users/david/Desktop/MANLets/js/Optimizacion_Newton",
 		"/C/Users/david/Desktop/MANLets/Raices/index.html",
 		"/C/Users/david/Desktop/MANLets/css/estilos.css",
@@ -486,8 +472,6 @@
 		"/C/Users/david/Desktop/MANLets/js/Regresion_superficies.js",
 		"/C/Users/david/Desktop/MANLets/js/Regresion.js",
 		"/C/Users/david/Desktop/MANLets/js/Interpolacion.js",
-		"/C/Users/david/Desktop/MANLets/js/Optimizacion_gradiente.js",
-		"/C/Users/david/Desktop/MANLets/Raices/Biseccion/index.html",
 		"/C/Users/david/Desktop/AR_T1_201316522_LopezSaenz.tex",
 		"/C/Users/david/Desktop/main.tex",
 		"/C/Users/david/AppData/Local/Temp/Rar$DIa3608.15889/Tarea 1_jc.restrepot_intento_2020-08-23-20-34-28.txt",
@@ -595,13 +579,11 @@
 		"/C/Users/david/Desktop/MANUA_PAGE/Biseccion/index.html",
 		"/C/Users/david/Desktop/MANUA_PAGE/js/algo.py",
 		"/C/Users/david/AppData/Local/Temp/Rar$DIa4624.43098/Makefile",
-		"/C/Users/david/Desktop/MANUA_PAGE/FalsaPosicion/index.html",
-		"/C/Users/david/Desktop/MANUA_PAGE/Gauss/index.html",
-		"/C/Users/david/Desktop/MANUA_PAGE/IteracionSimple/index.html"
+		"/C/Users/david/Desktop/MANUA_PAGE/FalsaPosicion/index.html"
 	],
 	"find":
 	{
-		"height": 64.0
+		"height": 59.0
 	},
 	"find_in_files":
 	{
@@ -615,6 +597,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"graficar",
+			"unidi",
 			"value",
 			"j",
 			"res",
@@ -748,74 +732,14 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "Raices/Biseccion/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5310,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4447,
-								4447
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 4896.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "js/Optimizacion_Newton.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8485,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8277,
-								8277
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 10420.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 47.0
+		"height": 42.0
 	},
 	"input":
 	{
@@ -876,7 +800,7 @@
 	"project": "MANUA_ST3.sublime-project",
 	"replace":
 	{
-		"height": 90.0
+		"height": 80.0
 	},
 	"save_all_on_build": true,
 	"select_file":
