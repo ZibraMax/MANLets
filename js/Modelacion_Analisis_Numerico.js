@@ -633,6 +633,7 @@ class MetodoDeRaiz {
 		let xr1 = xf
 		let iteraciones = []
 		let numiter = 0
+		//TODO Arreglar error
 		iteraciones.push([xr,xr1,this.fx(xr),this.dfdx(xr),error])
 		while (error > tol && numiter < maxIter) {
 			let xr1_parcial = xr

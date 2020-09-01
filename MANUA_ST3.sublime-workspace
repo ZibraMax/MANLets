@@ -237,73 +237,10 @@
 			}
 		},
 		{
-			"file": "Raices/FalsaPosicion/index.html",
+			"file": "js/Optimizacion_Newton.js",
 			"settings":
 			{
-				"buffer_size": 5566,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Raices/IteracionSimple/index.html",
-			"settings":
-			{
-				"buffer_size": 4765,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Raices/Newton/index.html",
-			"settings":
-			{
-				"buffer_size": 5156,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "index.html",
-			"settings":
-			{
-				"buffer_size": 1594,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Raices/Secante/index.html",
-			"settings":
-			{
-				"buffer_size": 5737,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Raices/SecanteM/index.html",
-			"settings":
-			{
-				"buffer_size": 5979,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Raices/index.html",
-			"settings":
-			{
-				"buffer_size": 2416,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "css/estilos.css",
-			"settings":
-			{
-				"buffer_size": 3764,
+				"buffer_size": 8485,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -526,20 +463,31 @@
 	"expanded_folders":
 	[
 		"/C/Users/david/Desktop/MANLets",
-		"/C/Users/david/Desktop/MANLets/css"
+		"/C/Users/david/Desktop/MANLets/Optimizacion",
+		"/C/Users/david/Desktop/MANLets/Optimizacion/Gradiente",
+		"/C/Users/david/Desktop/MANLets/Optimizacion/Newton",
+		"/C/Users/david/Desktop/MANLets/Raices"
 	],
 	"file_history":
 	[
+		"/C/Users/david/Desktop/MANLets/Optimizacion/Newton/index.html",
+		"/C/Users/david/Desktop/MANLets/js/Modelacion_Analisis_Numerico.js",
+		"/C/Users/david/Desktop/MANLets/index.html",
+		"/C/Users/david/Desktop/MANLets/Optimizacion/index.html",
+		"/C/Users/david/Desktop/MANLets/js/Optimizacion_Newton.js",
+		"/C/Users/david/Desktop/MANLets/js/Optimizacion_Newton",
+		"/C/Users/david/Desktop/MANLets/Raices/index.html",
 		"/C/Users/david/Desktop/MANLets/css/estilos.css",
+		"/C/Users/david/Desktop/MANLets/Raices/SecanteM/index.html",
+		"/C/Users/david/Desktop/MANLets/Raices/Secante/index.html",
+		"/C/Users/david/Desktop/MANLets/Raices/Newton/index.html",
+		"/C/Users/david/Desktop/MANLets/Raices/IteracionSimple/index.html",
+		"/C/Users/david/Desktop/MANLets/Raices/FalsaPosicion/index.html",
 		"/C/Users/david/Desktop/MANLets/js/Regresion_superficies.js",
 		"/C/Users/david/Desktop/MANLets/js/Regresion.js",
 		"/C/Users/david/Desktop/MANLets/js/Interpolacion.js",
 		"/C/Users/david/Desktop/MANLets/js/Optimizacion_gradiente.js",
-		"/C/Users/david/Desktop/MANLets/Raices/index.html",
-		"/C/Users/david/Desktop/MANLets/Raices/SecanteM/index.html",
 		"/C/Users/david/Desktop/MANLets/Raices/Biseccion/index.html",
-		"/C/Users/david/Desktop/MANLets/js/Modelacion_Analisis_Numerico.js",
-		"/C/Users/david/Desktop/MANLets/Raices/Secante/index.html",
 		"/C/Users/david/Desktop/AR_T1_201316522_LopezSaenz.tex",
 		"/C/Users/david/Desktop/main.tex",
 		"/C/Users/david/AppData/Local/Temp/Rar$DIa3608.15889/Tarea 1_jc.restrepot_intento_2020-08-23-20-34-28.txt",
@@ -547,9 +495,6 @@
 		"/C/Users/david/Downloads/gradebook_202020_ICYA2001T_02_Tarea201_2020-08-31-10-47-11/Tarea 1_af.castroj_intento_2020-08-24-23-27-08.txt",
 		"/C/Users/david/Downloads/tibebgirls-master/tibebgirls-master/js/tibebgirls.js",
 		"/C/Users/david/Desktop/MANLets/js/matrizRigidez.js",
-		"/C/Users/david/Desktop/MANLets/Raices/Newton/index.html",
-		"/C/Users/david/Desktop/MANLets/Raices/IteracionSimple/index.html",
-		"/C/Users/david/Desktop/MANLets/Raices/FalsaPosicion/index.html",
 		"/C/Users/david/Desktop/MANLets/.cpanel.yml",
 		"/C/Users/david/Desktop/4624413.txt",
 		"/C/Users/david/Desktop/EsfuerzosBalanceado1centro2.tex",
@@ -559,7 +504,6 @@
 		"/C/Users/david/Desktop/PE1/main.toc",
 		"/C/Users/david/Desktop/test.tex",
 		"/C/Users/david/Desktop/ASections/index.html",
-		"/C/Users/david/Desktop/MANLets/index.html",
 		"/C/Users/david/Desktop/MANLets/js/Integracion.js",
 		"/C/Users/david/Desktop/MANLets/Optimizacion/Gradiente/index.html",
 		"/C/Users/david/Desktop/source.js",
@@ -653,11 +597,7 @@
 		"/C/Users/david/AppData/Local/Temp/Rar$DIa4624.43098/Makefile",
 		"/C/Users/david/Desktop/MANUA_PAGE/FalsaPosicion/index.html",
 		"/C/Users/david/Desktop/MANUA_PAGE/Gauss/index.html",
-		"/C/Users/david/Desktop/MANUA_PAGE/IteracionSimple/index.html",
-		"/C/Users/david/Desktop/Django/RFPD_ZibraMax/RFPD_ZibraMax/html/index.html",
-		"/C/Users/david/Desktop/Django/RFPD_ZibraMax/RFPD_ZibraMax/urls.py",
-		"/C/Users/david/Desktop/Django/RFPD_ZibraMax/RFPD_ZibraMax/views.py",
-		"/C/Program Files/WindowsApps/Microsoft.WindowsTerminal_1.0.1811.0_x64__8wekyb3d8bbwe/defaults.json"
+		"/C/Users/david/Desktop/MANUA_PAGE/IteracionSimple/index.html"
 	],
 	"find":
 	{
@@ -675,6 +615,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"value",
+			"j",
+			"res",
 			"floa",
 			"floatButton",
 			"latex",
@@ -805,7 +748,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -821,8 +764,8 @@
 						"selection":
 						[
 							[
-								4943,
-								4622
+								4447,
+								4447
 							]
 						],
 						"settings":
@@ -832,256 +775,39 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 5202.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "Raices/FalsaPosicion/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5566,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5187,
-								5187
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 5304.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "Raices/IteracionSimple/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4765,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4388,
-								4388
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 4182.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "Raices/Newton/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5156,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4457,
-								4457
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4301.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1594,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								980,
-								980
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 714.0,
+						"translation.y": 4896.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "Raices/Secante/index.html",
+					"buffer": 1,
+					"file": "js/Optimizacion_Newton.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5737,
+						"buffer_size": 8485,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5336,
-								5336
+								8277,
+								8277
 							]
 						],
 						"settings":
 						{
 							"git_gutter_is_enabled": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 4624.0,
+						"translation.y": 10420.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "Raices/SecanteM/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5979,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5578,
-								5578
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4964.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "Raices/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2416,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								222,
-								222
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "css/estilos.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3764,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3475,
-								3478
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/CSS/CSS.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 6564.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
