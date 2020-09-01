@@ -159,7 +159,7 @@ a { color: #000000; }
     display: block;
   }
 }
-@media screen and (max-width: 1536px) and (max-height: 2048px) {
+@media screen and (max-width: 1338px) and (max-height: 2048px) {
   .columnaTercios {
     width: 100%;
   }
