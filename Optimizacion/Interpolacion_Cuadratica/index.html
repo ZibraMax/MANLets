@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163602964-1"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-163602964-1');
+	</script>
+	<meta name="viewport" content="width=device-width, initial-scale=0.5,user-scalable=no" id="viewport">
+  <script src="https://kit.fontawesome.com/2416ed6962.js" crossorigin="anonymous"></script>
+	<meta charset="utf-8">
+	<title>Applets</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../../favicon/favicon.ico">
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/picnic">
+	<link rel="stylesheet" href="../../css/estilos.css">
+	<script type="text/javascript" src="../../js/math.js"></script>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body style="margin: 20px">
+	<article class="card">
+		<header>
+			<h1><a href="../index.html" class="fas fa-arrow-left"></a> <a href="../../index.html" class="fas fa-home"></a> MANLets - Interpolación Cuadrática</h1>
+		</header>
+		<footer>
+			<div class="fila">
+				
+			<div class="columnaTercios">
+				<table style="width: 100%">
+					<thead>
+						<th>
+							Parametro
+						</th>
+						<th>
+							Valor
+						</th>
+					</thead>
+					<tbody>
+					<tr>
+						<td>
+							<span class="stack">$$f(x)=$$</span>
+						</td>
+						<td>
+							<input type="text" id="funcion" value="2*sin(x)-(x^2)/10" oninput="actualizarFuncion(this.value)" >
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="stack">$$x_0=$$</span>
+							
+						</td>
+						<td>
+							<input type="text" id="sliderx0" value='0' onchange="actualizarX0(this.value)"  class="stack">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="stack">$$x_1=$$</span>
+						</td>
+						<td>
+							<input type="text" id="sliderxf" value='1' onchange="actualizarXf(this.value)"  class="stack">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="stack">$$x_2=$$</span>
+						</td>
+						<td>
+							<input type="text" id="sliderx3" value='4' onchange="actualizarX3(this.value)"  class="stack">
+						</td>
+					</tr>
+					</tbody>
+					<thead>
+						<tr>
+							<th colspan="2" >
+								<button onclick="resolver()" class="stack icon-paper-plane" style="text-align: center;">Calcular</button>
+							</th>
+						</tr>
+						<tr style="text-align: center;">
+							<td style="align-content: center;">
+								<button id="iteraciones" onclick="anteriorIteracion()" class="succes icon-paper-plane" >< Iteracion Anterior</button>
+							</td>
+							<td style="align-content: center;">
+								<button id="iteraciones" onclick="siguienteIteracion()" class="warning icon-paper-plane" >Iteracion Siguiente > </button>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<span id="pretty">$$$$</span>
+							</td>
+						</tr>
+					</thead>
+				</table>
+				<table style="font-size: 13px; width: 100%">
+			  <thead>
+			    <tr style="text-align: center;">
+			      <th><span>\(x_0\)</span></th>
+			      <th><span>\(x_1\)</span></th>
+			      <th><span>\(x_2\)</span></th>
+			      <th><span>\(f(x_0)\)</span></th>
+			      <th><span>\(f(x_1)\)</span></th>
+			      <th><span>\(f(x_2)\)</span></th>
+			      <th><span>\(x_3\)</span></th>
+			      <th><span>\(f(x_3)\)</span></th>
+			      <th><span>\(e\%\)</span></th>
+			    </tr>
+			  </thead>
+			  <tbody>
+
+			    <tr>
+			      <td id="-1,xl">0</td>
+			      <td id="-1,xu">0</td>
+			      <td id="-1,fxl">0</td>
+			      <td id="-1,fxu">0</td>
+			      <td id="-1,xr">0</td>
+			      <td id="-1,fxr">0</td>
+			      <td id="-1,e">0</td>
+			      <td id="-1,e2">0</td>
+			      <td id="-1,e3">0</td>
+			    </tr>
+
+			    <tr>
+			      <td id="1,xl">0</td>
+			      <td id="1,xu">0</td>
+			      <td id="1,fxl">0</td>
+			      <td id="1,fxu">0</td>
+			      <td id="1,xr">0</td>
+			      <td id="1,fxr">0</td>
+			      <td id="1,e">0</td>
+			      <td id="1,e2">0</td>
+			      <td id="1,e3">0</td>
+			    </tr>
+
+			    <tr>
+			      <td id="+1,xl">0</td>
+			      <td id="+1,xu">0</td>
+			      <td id="+1,fxl">0</td>
+			      <td id="+1,fxu">0</td>
+			      <td id="+1,xr">0</td>
+			      <td id="+1,fxr">0</td>
+			      <td id="+1,e">0</td>
+			      <td id="+1,e2">0</td>
+			      <td id="+1,e3">0</td>
+			    </tr>
+			  </tbody>
+			</table>
+			</div>
+		<div class="columnaTercios" style=" border: 2px solid gray; border-radius: 8px;margin: 5px;">
+			<div id="grafica">
+			</div>
+		</div>
+		<div class="columnaTercios" style="border: 2px solid gray; border-radius: 8px;margin: 5px;">
+			<div id="grafica2"></div>
+		</div>
+		</div>
+		<div>
+			<a data-tooltip="Reportar Bug" href="mailto:da.rodriguezh@uniandes.edu.co?cc=arturo@asections.com&subject=BUG%20APPLETS&body=Hola! Encontre un bug: A continuacion te mando un screenshot y una descripcion de lo que pas'o" class="floatButtonBug tooltip-left">
+			<i class="fa fa-bug my-float"></i>
+			</a>
+		</div>
+		<div id="btns">
+			<a class=" floatButton" onclick="anteriorIteracion()">
+				<i class="fa fa-angle-left my-float"></i>
+			</a>
+			<a class="floatButton1" onclick="siguienteIteracion()">
+			<i class="fa fa-angle-right my-float"></i>
+			</a>
+		</div>
+</footer>
+	<script type="text/javascript" src="../../js/OptiCuadratica.js"></script>
+</body>
+</html>

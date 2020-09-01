@@ -231,6 +231,33 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "Optimizacion/Interpolacion_Cuadratica/index.html",
+			"settings":
+			{
+				"buffer_size": 5584,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/OPtiCuadratica.js",
+			"settings":
+			{
+				"buffer_size": 12404,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/Regresion.js",
+			"settings":
+			{
+				"buffer_size": 7696,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "Packages/LaTeXTools/LaTeX.sublime-build",
 	"build_system_choices":
@@ -448,30 +475,32 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/david/Desktop/MANLets"
+		"/C/Users/david/Desktop/MANLets",
+		"/C/Users/david/Desktop/MANLets/js",
+		"/C/Users/david/Desktop/MANLets/Optimizacion"
 	],
 	"file_history":
 	[
-		"/C/Users/david/Desktop/MANLets/js/Modelacion_Analisis_Numerico.js",
+		"/C/Users/david/Desktop/MANLets/js/Interpolacion.js",
 		"/C/Users/david/Desktop/MANLets/Optimizacion/index.html",
 		"/C/Users/david/Desktop/MANLets/js/SeccionDorada.js",
 		"/C/Users/david/Desktop/MANLets/Optimizacion/Seccion_Dorada/index.html",
+		"/C/Users/david/Desktop/MANLets/js/Modelacion_Analisis_Numerico.js",
+		"/C/Users/david/Desktop/MANLets/index.html",
+		"/C/Users/david/Desktop/MANLets/Raices/IteracionSimple/index.html",
+		"/C/Users/david/Desktop/MANLets/Raices/Secante/index.html",
+		"/C/Users/david/Desktop/MANLets/Raices/FalsaPosicion/index.html",
 		"/C/Users/david/Desktop/MANLets/Optimizacion/Newton/index.html",
 		"/C/Users/david/Desktop/MANLets/Raices/Biseccion/index.html",
 		"/C/Users/david/Desktop/MANLets/js/Optimizacion_Newton.js",
 		"/C/Users/david/Desktop/MANLets/js/Optimizacion_gradiente.js",
-		"/C/Users/david/Desktop/MANLets/index.html",
 		"/C/Users/david/Desktop/MANLets/js/Optimizacion_Newton",
 		"/C/Users/david/Desktop/MANLets/Raices/index.html",
 		"/C/Users/david/Desktop/MANLets/css/estilos.css",
 		"/C/Users/david/Desktop/MANLets/Raices/SecanteM/index.html",
-		"/C/Users/david/Desktop/MANLets/Raices/Secante/index.html",
 		"/C/Users/david/Desktop/MANLets/Raices/Newton/index.html",
-		"/C/Users/david/Desktop/MANLets/Raices/IteracionSimple/index.html",
-		"/C/Users/david/Desktop/MANLets/Raices/FalsaPosicion/index.html",
 		"/C/Users/david/Desktop/MANLets/js/Regresion_superficies.js",
 		"/C/Users/david/Desktop/MANLets/js/Regresion.js",
-		"/C/Users/david/Desktop/MANLets/js/Interpolacion.js",
 		"/C/Users/david/Desktop/AR_T1_201316522_LopezSaenz.tex",
 		"/C/Users/david/Desktop/main.tex",
 		"/C/Users/david/AppData/Local/Temp/Rar$DIa3608.15889/Tarea 1_jc.restrepot_intento_2020-08-23-20-34-28.txt",
@@ -597,6 +626,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"xf3",
+			"$",
+			"g",
+			"gx",
+			"layout",
+			"yaxis: {\n\t\t  \ttitle:'y',\n\t\t  }",
+			"yaxis: {",
 			"graficar",
 			"unidi",
 			"value",
@@ -732,8 +768,101 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "Optimizacion/Interpolacion_Cuadratica/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5584,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1322,
+								1322
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"open_with_edit": true,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 174.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "js/OPtiCuadratica.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12404,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10623,
+								10623
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"open_with_edit": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 9905.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "js/Regresion.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7696,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 783.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
 			]
 		}
 	],
