@@ -9,7 +9,7 @@
 * Cuando escribí esto, sólo Dios y yo entendíamos lo que estaba haciendo
 * Ahora ya solo lo sabe Dios.
 * 
-* David Arturo Rodriguez Herrera - da.rodriguezh@uniandes.edu.co - artur@asections.com
+* David Arturo Rodriguez Herrera - da.rodriguezh@uniandes.edu.co - arturo@asections.com
 */
 var actual = ''
 var slider = document.getElementById('slider')
@@ -98,7 +98,6 @@ function actualizarXf(x) {
 	xfG = parseFloat(x)
 }
 function triggerBotones(param) {
-	console.log('hola', param)
 	document.querySelectorAll('#iteraciones').forEach(x => x.disabled = !param)
 }
 function actualizarFuncion(funcion) {
