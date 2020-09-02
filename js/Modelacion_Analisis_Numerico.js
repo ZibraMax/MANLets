@@ -43,6 +43,7 @@ function resolver(cac) {
 	if (!actual == 'IS' && !actual == 'N') {
 		actualizarXf(document.getElementById('sliderxf').value)
 	}
+	actualizarFuncion(document.getElementById('funcion').value)
 	triggerBotones(true)
 }
 function cambiarEstado(valor) {
@@ -517,18 +518,18 @@ function actualizarTablaN(i) {
 		xl1 = resultadoActual[i-1][0]
 		xu1 = resultadoActual[i-1][1]
 		fxl1 = resultadoActual[i-1][2]
-		fxu1 = resultadoActual[i-1][3]
+		fxu1 = resultadoActual[i-1][3]*100
 	}
 	if (iteraccionActual<resultadoActual.length-1) {
 		xl11 = resultadoActual[i+1][0]
 		xu11 = resultadoActual[i+1][1]
 		fxl11 = resultadoActual[i+1][2]
-		fxu11 = resultadoActual[i+1][3]
+		fxu11 = resultadoActual[i+1][3]*100
 	}
 	xl = resultadoActual[i][0]
 	xu = resultadoActual[i][1]
 	fxl = resultadoActual[i][2]
-	fxu = resultadoActual[i][3]
+	fxu = resultadoActual[i][3]*100
 
 	document.getElementById('-1,xl').innerHTML = math.round(xl1,3)
 	document.getElementById('-1,xu').innerHTML = math.round(xu1,3)
@@ -616,31 +617,37 @@ class MetodoDeRaiz {
 		let numiter = 0
 		let xr1 = xr - (dx*this.fx(xr))/(this.fx(xr+dx) - this.fx(xr))
 		let error = math.abs((xr1 - xr)/xr1)
-		iteraciones.push([xr,xr+dx,this.fx(xr),this.dfdx(xr),error])
+		let derivada = (this.fx(xr+dx)-this.fx(xr))/(dx)
+		iteraciones.push([xr,xr+dx,this.fx(xr),derivada,error])
 		while (error > tol && numiter < maxIter) {
 			xr = xr - (dx*this.fx(xr))/(this.fx(xr+dx) - this.fx(xr))
 			xr1 = xr - (dx*this.fx(xr))/(this.fx(xr+dx) - this.fx(xr))
 			error = math.abs((xr1 - xr)/xr1)
-			iteraciones.push([xr,xr+dx,this.fx(xr),this.dfdx(xr),error])
+			derivada = (this.fx(xr+dx)-this.fx(xr))/(dx)
+			iteraciones.push([xr,xr+dx,this.fx(xr),derivada,error])
 			numiter++
 		}
 		actualizarSoluciones(iteraciones,'SCM',this)
 		return [xr,iteraciones]
 	}
 	secante(x0,xf,tol=0.00001,maxIter=300) {
-		let error = 1
 		let xr = x0
 		let xr1 = xf
 		let iteraciones = []
 		let numiter = 0
+		let derivada = (this.fx(xr1)-this.fx(xr))/(xr1-xr)
 		//TODO Arreglar error
-		iteraciones.push([xr,xr1,this.fx(xr),this.dfdx(xr),error])
+		let xnuevo = xr - (this.fx(xr)*(xr-xr1))/(this.fx(xr)-this.fx(xr1))
+		let error = math.abs((xr - xnuevo)/xnuevo)
+		iteraciones.push([xr,xr1,this.fx(xr),derivada,error])
 		while (error > tol && numiter < maxIter) {
 			let xr1_parcial = xr
 			xr = xr - (this.fx(xr)*(xr-xr1))/(this.fx(xr)-this.fx(xr1))
 			xr1 = xr1_parcial
-			error = math.abs((xr - xr1)/xr)
-			iteraciones.push([xr,xr1,this.fx(xr),this.dfdx(xr),error])
+			xnuevo = xr - (this.fx(xr)*(xr-xr1))/(this.fx(xr)-this.fx(xr1))
+			error = math.abs((xr - xnuevo)/xnuevo)
+			derivada = (this.fx(xr1)-this.fx(xr))/(xr1-xr)
+			iteraciones.push([xr,xr1,this.fx(xr),derivada,error])
 			numiter++
 		}
 		actualizarSoluciones(iteraciones,'SC',this)
@@ -834,16 +841,17 @@ class MetodoDeRaiz {
 	}
 
 	newton(x0,tol=0.0001,maxIter = 300) {
-		let error = 1
 		let xr = x0
 		let iteraciones = []
 		let numiter = 0
+		let xri = xr-(this.fx(xr))/(this.dfdx(xr))
+		let error = math.abs((xr - xri)/xri)
 		iteraciones.push([xr,this.fx(xr),this.dfdx(xr),error])
 		while (error > tol && numiter < maxIter) {
 			
 			xr = xr-(this.fx(xr))/(this.dfdx(xr))
 
-			let xri = xr-(this.fx(xr))/(this.dfdx(xr))
+			xri = xr-(this.fx(xr))/(this.dfdx(xr))
 
 			error = math.abs((xr - xri)/xri)
 			numiter++
@@ -1351,11 +1359,10 @@ class MetodoDeRaiz {
 		Plotly.newPlot('grafica2', [trace,trace1,trace2,trace3,trace4],layout,config)
 	}
 	iteracionSimple(xr,tol=0.01) {
-		console.log(xr)
 		let numiter = 0
-		let error = 1
 		let xri = xr
 		let iteraciones = []
+		let error = math.abs((this.fx(xri)-xri)/(this.fx(xri)))
 		iteraciones.push([xri,this.fx(xri),error])
 		while (error > tol && numiter < 300) {
 			xri = this.fx(xri)

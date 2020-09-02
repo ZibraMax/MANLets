@@ -232,28 +232,19 @@
 	"buffers":
 	[
 		{
-			"file": "Optimizacion/Interpolacion_Cuadratica/index.html",
+			"file": "/C/Users/david/Downloads/Modelacion_Analisis_Numerico.js",
 			"settings":
 			{
-				"buffer_size": 5584,
+				"buffer_size": 47401,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "js/OPtiCuadratica.js",
+			"file": "js/Modelacion_Analisis_Numerico.js",
 			"settings":
 			{
-				"buffer_size": 12404,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/Regresion.js",
-			"settings":
-			{
-				"buffer_size": 7696,
+				"buffer_size": 47401,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -476,19 +467,21 @@
 	"expanded_folders":
 	[
 		"/C/Users/david/Desktop/MANLets",
-		"/C/Users/david/Desktop/MANLets/js",
-		"/C/Users/david/Desktop/MANLets/Optimizacion"
+		"/C/Users/david/Desktop/MANLets/js"
 	],
 	"file_history":
 	[
+		"/C/Users/david/Desktop/MANLets/js/Modelacion_Analisis_Numerico.js",
+		"/C/Users/david/Desktop/MANLets/Raices/Secante/index.html",
+		"/C/Users/david/Desktop/MANLets/Optimizacion/Interpolacion_Cuadratica/index.html",
+		"/C/Users/david/Desktop/MANLets/js/Regresion.js",
+		"/C/Users/david/Desktop/MANLets/js/OPtiCuadratica.js",
 		"/C/Users/david/Desktop/MANLets/js/Interpolacion.js",
 		"/C/Users/david/Desktop/MANLets/Optimizacion/index.html",
 		"/C/Users/david/Desktop/MANLets/js/SeccionDorada.js",
 		"/C/Users/david/Desktop/MANLets/Optimizacion/Seccion_Dorada/index.html",
-		"/C/Users/david/Desktop/MANLets/js/Modelacion_Analisis_Numerico.js",
 		"/C/Users/david/Desktop/MANLets/index.html",
 		"/C/Users/david/Desktop/MANLets/Raices/IteracionSimple/index.html",
-		"/C/Users/david/Desktop/MANLets/Raices/Secante/index.html",
 		"/C/Users/david/Desktop/MANLets/Raices/FalsaPosicion/index.html",
 		"/C/Users/david/Desktop/MANLets/Optimizacion/Newton/index.html",
 		"/C/Users/david/Desktop/MANLets/Raices/Biseccion/index.html",
@@ -500,7 +493,6 @@
 		"/C/Users/david/Desktop/MANLets/Raices/SecanteM/index.html",
 		"/C/Users/david/Desktop/MANLets/Raices/Newton/index.html",
 		"/C/Users/david/Desktop/MANLets/js/Regresion_superficies.js",
-		"/C/Users/david/Desktop/MANLets/js/Regresion.js",
 		"/C/Users/david/Desktop/AR_T1_201316522_LopezSaenz.tex",
 		"/C/Users/david/Desktop/main.tex",
 		"/C/Users/david/AppData/Local/Temp/Rar$DIa3608.15889/Tarea 1_jc.restrepot_intento_2020-08-23-20-34-28.txt",
@@ -606,13 +598,11 @@
 		"/C/Users/david/Desktop/MANUA_PAGE/GaussSeidel/index.html",
 		"/C/Users/david/Desktop/MANUA_PAGE/EDO_Orden1/index.html",
 		"/C/Users/david/Desktop/MANUA_PAGE/Biseccion/index.html",
-		"/C/Users/david/Desktop/MANUA_PAGE/js/algo.py",
-		"/C/Users/david/AppData/Local/Temp/Rar$DIa4624.43098/Makefile",
-		"/C/Users/david/Desktop/MANUA_PAGE/FalsaPosicion/index.html"
+		"/C/Users/david/Desktop/MANUA_PAGE/js/algo.py"
 	],
 	"find":
 	{
-		"height": 59.0
+		"height": 45.0
 	},
 	"find_in_files":
 	{
@@ -626,6 +616,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"resolver",
 			"xf3",
 			"$",
 			"g",
@@ -773,30 +764,28 @@
 			[
 				{
 					"buffer": 0,
-					"file": "Optimizacion/Interpolacion_Cuadratica/index.html",
+					"file": "/C/Users/david/Downloads/Modelacion_Analisis_Numerico.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5584,
+						"buffer_size": 47401,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1322,
-								1322
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"git_gutter_is_enabled": true,
-							"open_with_edit": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"git_gutter_is_enabled": false,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 174.0,
+						"translation.y": 19731.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -804,43 +793,11 @@
 				},
 				{
 					"buffer": 1,
-					"file": "js/OPtiCuadratica.js",
+					"file": "js/Modelacion_Analisis_Numerico.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12404,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								10623,
-								10623
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"open_with_edit": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 9905.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "js/Regresion.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7696,
+						"buffer_size": 47401,
 						"regions":
 						{
 						},
@@ -854,13 +811,14 @@
 						"settings":
 						{
 							"git_gutter_is_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 783.0,
+						"translation.y": 19456.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -868,7 +826,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 42.0
+		"height": 45.0
 	},
 	"input":
 	{
@@ -929,7 +887,7 @@
 	"project": "MANUA_ST3.sublime-project",
 	"replace":
 	{
-		"height": 80.0
+		"height": 86.0
 	},
 	"save_all_on_build": true,
 	"select_file":
