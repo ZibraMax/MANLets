@@ -16,11 +16,12 @@ var slider = document.getElementById('slider')
 var sliderx0 = document.getElementById('sliderx0')
 var sliderxf = document.getElementById('sliderxf')
 var estado = true
-var x0G = parseFloat(sliderx0.value)
+var x0G = 0
 var modificado = false
 var xfG = 0
 try {
-  xfG = parseFloat(sliderxf.value)
+	x0G = parseFloat(sliderx0.value)
+	xfG = parseFloat(sliderxf.value)
 }
 catch(err) {
 }

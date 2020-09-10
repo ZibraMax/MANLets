@@ -231,6 +231,33 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/C/Users/david/Desktop/Tesis/NLFEM/NLFEM/Mesh/delaunay.py",
+			"settings":
+			{
+				"buffer_size": 2207,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/david/Desktop/Tesis/NLFEM/NLFEM/Mesh/Geometria.py",
+			"settings":
+			{
+				"buffer_size": 4637,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "https://geografiaconflictocolombiano.es.tl/Problematica-Carceles-en-Bogot%E1.htm\nhttps://idiger.maps.arcgis.com/apps/webappviewer/index.html?id=70acbce1a3cf4bbfad219be0cf5035f0\n",
+			"settings":
+			{
+				"buffer_size": 177,
+				"line_ending": "Windows",
+				"name": "https://geografiaconflictocolombiano.es.tl/Problem"
+			}
+		}
 	],
 	"build_system": "Packages/LaTeXTools/LaTeX.sublime-build",
 	"build_system_choices":
@@ -461,10 +488,21 @@
 	"expanded_folders":
 	[
 		"/C/Users/david/Desktop/Tesis/NLFEM",
-		"/C/Users/david/Desktop/Tesis/NLFEM/Documentos"
+		"/C/Users/david/Desktop/Tesis/NLFEM/NLFEM",
+		"/C/Users/david/Desktop/Tesis/NLFEM/NLFEM/Mesh"
 	],
 	"file_history":
 	[
+		"/C/Users/david/Downloads/MP V.6.0.0/MP V.6.0.0/Crack PTC Mathcad Prime 6.0.0/readme_win64.txt",
+		"/C/Users/david/Desktop/elsarticle/tests/elsarticle-template-num-names.tex",
+		"/C/Users/david/Desktop/elsarticle/tests/elsarticle-template-harv.tex",
+		"/C/Users/david/Desktop/elsarticle/tests/elsarticle-template-num.tex",
+		"/C/Users/david/Desktop/haah/main.tex",
+		"/C/Users/david/Desktop/Tesis/NLFEM/NLFEM/Mesh/__init__.py",
+		"/C/Users/david/Desktop/Tesis/NLFEM/NLFEM/TriangularC.py",
+		"/C/Users/david/Desktop/MANLets/Integracion/Simpson/index.html",
+		"/C/Users/david/Desktop/Tesis/NLFEM/NLFEM/Mesh/delaunay.py",
+		"/C/Users/david/Desktop/MANLets/.gitignore",
 		"/C/Users/david/Desktop/Tesis/NLFEM/Documentos/Principal/main.tex",
 		"/C/Users/david/Desktop/Tesis/NLFEM/Documentos/Capitulo 1/main.tex",
 		"/C/Users/david/Desktop/Tesis/NLFEM/Documentos/Cosa1/main.tex",
@@ -477,11 +515,9 @@
 		"/C/Users/david/Desktop/Tesis/NLFEM/NLFEM/FEM.py",
 		"/C/Users/david/Desktop/Tesis/NLFEM/NLFEM/Elemento.py",
 		"/C/Users/david/Desktop/Tesis/NLFEM/NLFEM/FEM1V.py",
-		"/C/Users/david/Desktop/Tesis/NLFEM/NLFEM/Mesh/delaunay.py",
 		"/C/Users/david/Desktop/Tesis/NLFEM/NLFEM/Elasticidad.py",
 		"/C/Users/david/Desktop/Tesis/NLFEM/NLFEM/__init__.py",
 		"/C/Users/david/Desktop/Tesis/NLFEM/NLFEM/TriangularL.py",
-		"/C/Users/david/Desktop/Tesis/NLFEM/NLFEM/TriangularC.py",
 		"/C/Users/david/Desktop/Tesis/NLFEM/NLFEM/SerendipityC.py",
 		"/C/Users/david/Desktop/Tesis/NLFEM/NLFEM/integradorTriangular.py",
 		"/C/Users/david/Desktop/Tesis/NLFEM/NLFEM/integradorRectangular.py",
@@ -546,7 +582,6 @@
 		"/C/Users/david/Desktop/MANLets/Interpolacion/Polinomica/index.html",
 		"/C/Users/david/Desktop/MANLets/Interpolacion/Regresion_Multiple/index.html",
 		"/C/Users/david/Desktop/MANLets/Interpolacion/Splines/index.html",
-		"/C/Users/david/Desktop/MANLets/Integracion/Simpson/index.html",
 		"/C/Users/david/Desktop/MANLets/Integracion/Trapecio/index.html",
 		"/C/Users/david/Desktop/MANLets/SistemasEcuaciones/Gauss/index.html",
 		"/C/Users/david/Desktop/MANLets/SistemasEcuaciones/GaussSeidel/index.html",
@@ -585,18 +620,11 @@
 		"/C/Users/david/Desktop/Temporal/test.py",
 		"/C/Users/david/Desktop/MANLets/MANUA_ST3.sublime-project",
 		"/C/Users/david/Downloads/WADark-0.4.930-Windows/WADark-Windows/info.json",
-		"/C/Users/david/Downloads/PBL (2013).pdf",
-		"/C/Program Files/Python37/Lib/site-packages/numpy/__init__.py",
-		"/C/Program Files/Python37/Lib/site-packages/numpy/core/numeric.py",
-		"/C/Program Files/Python37/Lib/site-packages/numpy/lib/user_array.py",
-		"/C/Program Files/Python37/Lib/site-packages/numpy/doc/structured_arrays.py",
-		"/C/Program Files/Python37/Lib/site-packages/numpy/lib/arraysetops.py",
-		"/C/Program Files/Python37/Lib/site-packages/numpy/linalg/linalg.py",
-		"/C/Program Files/Python37/Lib/site-packages/numpy/matlib.py"
+		"/C/Users/david/Downloads/PBL (2013).pdf"
 	],
 	"find":
 	{
-		"height": 62.0
+		"height": 49.0
 	},
 	"find_in_files":
 	{
@@ -610,6 +638,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"enumerate",
+			"plt",
+			"plt.",
+			"roots",
+			"generarGeometria",
 			"isBetween",
 			"space",
 			"spac",
@@ -732,12 +765,7 @@
 			"calcular",
 			"mathj",
 			"mathja",
-			"mat",
-			"../",
-			"MathJax",
-			"funcion",
-			"class",
-			"modal"
+			"mat"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -755,14 +783,106 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/C/Users/david/Desktop/Tesis/NLFEM/NLFEM/Mesh/delaunay.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2207,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1919,
+								1953
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 807.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/david/Desktop/Tesis/NLFEM/NLFEM/Mesh/Geometria.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4637,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								467,
+								467
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"open_with_edit": true,
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 19.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 177,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								177,
+								177
+							]
+						],
+						"settings":
+						{
+							"auto_name": "https://geografiaconflictocolombiano.es.tl/Problem",
+							"default_dir": "C:\\Users\\david\\Desktop\\Tesis\\NLFEM\\NLFEM\\Mesh",
+							"git_gutter_is_enabled": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 62.0
+		"height": 49.0
 	},
 	"input":
 	{
@@ -823,7 +943,7 @@
 	"project": "MANUA_ST3.sublime-project",
 	"replace":
 	{
-		"height": 86.0
+		"height": 94.0
 	},
 	"save_all_on_build": true,
 	"select_file":
