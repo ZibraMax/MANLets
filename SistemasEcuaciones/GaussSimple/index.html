@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="../../css/estilos.css">
   <script src="https://kit.fontawesome.com/2416ed6962.js" crossorigin="anonymous"></script>
 	<meta charset="utf-8">
-	<title>Applets - Método de Gauss Jordan</title>
+	<title>Applets - Método de Gauss Simple</title>
 	<script type="text/javascript" src="../../js/math.js"></script>
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -26,10 +26,10 @@
 <body style="margin: 20px">
 	<article class="card">
 		<header>
-			<h1><a href="../index.html" class="fas fa-arrow-left"></a> <a href="../../index.html" class="fas fa-home"></a> MANLets - Método de Gauss Jordan</h1>
+			<h1><a href="../index.html" class="fas fa-arrow-left"></a> <a href="../../index.html" class="fas fa-home"></a> MANLets - Método de Gauss Simple</h1>
 		</header>
 		<footer>
-			<div style="max-width: 80%" id="tabla">
+			<div style="max-width: 80%;" id="tabla">
 				
 			</div>
 			<div style="width: 80%">
@@ -50,7 +50,7 @@
 	    	<input type="number" id="tamnomatriz" value="3">
 	    </section>
 	    <footer>
-	      <label class="button" onclick="Nmatriz = parseInt(document.getElementById('tamnomatriz').value);tablaNXN(Nmatriz,'tabla');rellenarMatrizAleatorio();cerrarModal();;triggerBotones(false);metodoActual='jordan'">Aceptar</label>
+	      <label class="button" onclick="Nmatriz = parseInt(document.getElementById('tamnomatriz').value);tablaNXN(Nmatriz,'tabla');rellenarMatrizAleatorio();cerrarModal();triggerBotones(false);metodoActual='gauss'">Aceptar</label>
 	    </footer>
 	  </article>
 	</div>

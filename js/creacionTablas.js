@@ -11,7 +11,7 @@ function tablaNXN(n,divname,tipo='input') {
 		if (i == 0) {
 			coli.innerHTML = 'Eq\\Var'
 		} else {
-			coli.innerHTML = '$$x_{'+i+'}$$'
+			coli.innerHTML = '\\(x_{'+i+'}\\)'
 			fila = document.createElement('tr')
 			for (var j = 0; j < n+1; j++) {
 				if (j==0) {
@@ -27,6 +27,7 @@ function tablaNXN(n,divname,tipo='input') {
 					}
 					inputsirto.setAttribute('style','width: 100%')
 					inputsirto.setAttribute('type','number')
+					inputsirto.setAttribute('oninput','triggerBotones(false)')
 					inputsirto.setAttribute('id',(i-1)+','+(j-1))
 					celdai.appendChild(inputsirto)
 				}
@@ -40,6 +41,7 @@ function tablaNXN(n,divname,tipo='input') {
 				Fi.setAttribute('value','0')
 			}
 			Fi.setAttribute('type','number')
+			Fi.setAttribute('oninput','triggerBotones(false)')
 			Fi.setAttribute('id','F'+(i-1))
 			celdai.appendChild(Fi)
 			fila.appendChild(celdai)
@@ -48,7 +50,8 @@ function tablaNXN(n,divname,tipo='input') {
 		tableHeader.appendChild(coli)
 	}
 	let ff = document.createElement('th')
-	ff.innerHTML='$$F$$'
+	ff.setAttribute('id','letraF')
+	ff.innerHTML='\\(F\\)'
 	tableHeader.appendChild(ff)
 
 	filasolver = document.createElement('tr')
@@ -73,7 +76,9 @@ function tablaNXN(n,divname,tipo='input') {
 	boton1 = document.createElement('button')
 	boton1.setAttribute('onclick','anteriorIteracionSE()')
 	boton1.setAttribute('class','succes icon-paper-plane')
-	boton1.innerHTML = '< Iteracion Anterior'
+	boton1.setAttribute('id','iteraciones')
+
+	boton1.innerHTML = '< Paso Anterior'
 	LabelbotonSiguiente.appendChild(boton1)
 
 
@@ -84,7 +89,9 @@ function tablaNXN(n,divname,tipo='input') {
 	boton1 = document.createElement('button')
 	boton1.setAttribute('onclick','siguienteIteracionSE()')
 	boton1.setAttribute('class','warning icon-paper-plane')
-	boton1.innerHTML = 'Iteracion Siguiente >'
+	boton1.setAttribute('id','iteraciones')
+
+	boton1.innerHTML = 'Paso Siguiente >'
 	LabelbotonAnterior.appendChild(boton1)
 
 	labellist = document.createElement('label')
@@ -94,15 +101,13 @@ function tablaNXN(n,divname,tipo='input') {
 	tdDistance.setAttribute('colspan',''+(n+2-2*tamañoBoton))
 	tdDistance.setAttribute('style','text-align: center')
 
-
-	spansicro.setAttribute('class','checkable')
-	spansicro.innerHTML = 'Jordan'
-	list = document.createElement('input')
-	list.setAttribute('type','checkbox')
-	list.setAttribute('id','tipo')
-	list.setAttribute('onchange',"if (document.getElementById('tipo').checked){metodoActual = 'jordan'} else {metodoActual = 'gauss'}")
+	list = document.createElement('button')
+	list.innerHTML = 'Nueva Matriz'
+	list.setAttribute('onclick','recargarPagina()')
+	list.setAttribute('class',"warning icon-paper-plane")
 
 	labellist.appendChild(list)
+
 	labellist.appendChild(spansicro)
 	tdDistance.appendChild(labellist)
 	filaIteraciones.appendChild(LabelbotonSiguiente)
