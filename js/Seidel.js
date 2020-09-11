@@ -38,8 +38,8 @@ class sistemasEcuaciones{
 				sol[j] = (this.F[j]-sum)/(this.M[j][j])
 			}
 			i++
-			soluciones.push([...sol])
 			error = math.max(math.abs(math.add(soluciones[soluciones.length-1],math.multiply(soluciones[soluciones.length-2],-1))))
+			soluciones.push([...sol])
 		}
 		return soluciones
 	}
@@ -163,7 +163,11 @@ function solveGauss(M,F) {
 		s1+='\\end{pmatrix}'
 		soluciones.push([...sol])
 		matrices.push(M)
-		error = math.max(math.abs(math.add(soluciones[soluciones.length-1],math.multiply(soluciones[soluciones.length-2],-1))))
+		errores = []
+		for (var i = 0; i < soluciones[soluciones.length-1].length; i++) {
+			errores.push(math.abs((soluciones[soluciones.length-1][i]-soluciones[soluciones.length-2][i])/soluciones[soluciones.length-1][i]))
+		}
+		error = math.max(errores)
 		LATEXITOS.push('U^{'+(L-1)+'}'+s2+'\\rightarrow U^{' + (L) + '}=' + s + s1+'\\varepsilon_a='+math.round(error*100,4)+'\\%')
 	}
 	return [matrices,soluciones]

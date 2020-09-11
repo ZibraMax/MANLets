@@ -128,7 +128,7 @@ function solveGauss(matrix,vector_solucion) {
 	if (actualSE.metodo == 'gauss') {
 		for (var i = 0; i < matrix.length; i++) {
 			for (var j = i + 1; j < matrix.length; j++) {
-				LATEXITOS.push('F'+(j+1)+'=F'+(j+1)+'-F'+(i+1)+'\\cdot '+math.round((matrix[j][i])/(matrix[i][i]),3))
+				LATEXITOS.push('')
 				vector_solucion[j] = vector_solucion[j] -(matrix[j][i])/(matrix[i][i])*vector_solucion[i]
 				matrix[j] = sumarVectores(matrix[j],multiplicacionVectores(matrix[i],-(matrix[j][i])/(matrix[i][i])))
 				vectorRESULTADOS.push([...vector_solucion])
@@ -137,7 +137,7 @@ function solveGauss(matrix,vector_solucion) {
 		}
 	} else {
 		for (var i = 0; i < matrix.length; i++) {
-			LATEXITOS.push('F'+(i+1)+'=F'+(i+1)+'\\cdot '+math.round(1/matrix[i][i],3))
+			LATEXITOS.push('')
 			vector_solucion[i] = vector_solucion[i]/(matrix[i][i])
 			matrix[i] = multiplicacionVectores(matrix[i],1/(matrix[i][i]))
 			vectorRESULTADOS.push([...vector_solucion])
@@ -147,7 +147,7 @@ function solveGauss(matrix,vector_solucion) {
 			for (var j = 0; j < matrix[i].length; j++) {
 				if (i==j) {
 				} else {
-					LATEXITOS.push('F'+(j+1)+'=F'+(j+1)+'-F'+(i+1)+'\\cdot '+math.round((matrix[j][i])/(matrix[i][i]),3))
+					LATEXITOS.push('')
 					vector_solucion[j] = vector_solucion[j] -(matrix[j][i])/(matrix[i][i])*vector_solucion[i]
 					matrix[j] = sumarVectores(matrix[j],multiplicacionVectores(matrix[i],-(matrix[j][i])/(matrix[i][i])))
 					vectorRESULTADOS.push([...vector_solucion])
