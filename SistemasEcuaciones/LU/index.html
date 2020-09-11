@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163602964-1"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-163602964-1');
+	</script>
+	<meta name="viewport" content="width=device-width, initial-scale=0.5,user-scalable=no" id="viewport">
+	<link rel="shortcut icon" type="image/x-icon" href="../../favicon/favicon.ico">
+	<link rel="stylesheet" href="https://unpkg.com/picnic">
+	<link rel="stylesheet" href="../../css/estilos.css">
+  <script src="https://kit.fontawesome.com/2416ed6962.js" crossorigin="anonymous"></script>
+	<meta charset="utf-8">
+	<title>Applets - Descomposición L-U</title>
+	<script type="text/javascript" src="../../js/math.js"></script>
+
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body style="margin: 20px">
+	<article class="card">
+		<header>
+			<h1><a href="../index.html" class="fas fa-arrow-left"></a> <a href="../../index.html" class="fas fa-home"></a> MANLets - Descomposición L-U</h1>
+		</header>
+		<footer>
+			<div style="max-width: 80%" id="tabla">
+				
+			</div>
+			<div style="width: 80%">
+				<span id="pretty"></span>
+			</div>
+		</footer>
+	</article>
+	<div class="modal">
+	  <input id="modal_1" type="checkbox" />
+	  <label for="modal_1" class="overlay"></label>
+	  <article>
+	    <header>
+	      <h3>Bienvenido a MANLets</h3>
+	      <label for="modal_1" class="close">&times;</label>
+	    </header>
+	    <section class="content">
+	    	Inserte el tamaño de la matriz
+	    	<input type="number" id="tamnomatriz" value="3">
+	    </section>
+	    <footer>
+	      <label class="button" onclick="Nmatriz = parseInt(document.getElementById('tamnomatriz').value);tablaNXN(Nmatriz,'tabla');rellenarMatrizAleatorio();cerrarModal();triggerBotones(false);metodoActual='jordan'">Aceptar</label>
+	    </footer>
+	  </article>
+	</div>
+
+	<div class="modal">
+	  <input id="modal_2" type="checkbox" />
+	  <label for="modal_2" class="overlay"></label>
+	  <article>
+	    <header>
+	      <h3>Bienvenido a MANLets</h3>
+	      <label for="modal_2" class="close">&times;</label>
+	    </header>
+	    <section class="content">
+	    	Se ha calculado correctamente, puedes avanzar en iteraciones con los botones Iteracion Anterior/Siguiente
+	    </section>
+	    <footer>
+	      <label class="button" onclick="cerrarModal()">Aceptar</label>
+	    </footer>
+	  </article>
+	</div>
+	<script type="text/javascript" src="../../js/creacionTablas.js"></script>
+	<script type="text/javascript" src="../../js/LU.js"></script>
+	<script type="text/javascript">var mods = document.querySelectorAll('#modal_1');
+	[].forEach.call(mods, function(mod){ mod.checked = true; });</script>
+</body>
+</html>

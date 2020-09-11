@@ -23,26 +23,6 @@ class sistemasEcuaciones{
 			//document.getElementById('F'+i).value = this.U._data[i]
 		}
 	}
-	solcuionarSeidel(tol=0.001) {
-		let sol = [0,0,0,0,0,0,0,0,0,0,0,0]
-		let soluciones = []
-		soluciones.push([...sol])
-		let error = 1
-		let i = 0
-		while (error > tol) {
-			for (var j = 0; j < sol.length; j++) {
-				let sum = 0
-				for (var k = 0; k < sol.length; k++) {
-					sum += (j!=k)*this.M[j][k]*soluciones[soluciones.length-1][k]
-				}
-				sol[j] = (this.F[j]-sum)/(this.M[j][j])
-			}
-			i++
-			soluciones.push([...sol])
-			error = math.max(math.abs(math.add(soluciones[soluciones.length-1],math.multiply(soluciones[soluciones.length-2],-1))))
-		}
-		return soluciones
-	}
 }
 function cargarMatriz() {
 	let a = []
@@ -72,6 +52,7 @@ function resolverSE() {
 	[].forEach.call(mods, function(mod){ mod.checked = true; });
 	triggerBotones(true)
 	latexSolucion()
+	anteriorIteracionSE()
 }
 function anteriorIteracionSE() {
 	iteraccionActual = iteraccionActual - 1*(iteraccionActual>0)
@@ -98,9 +79,14 @@ function siguienteIteracionSE() {
 function latexSolucion() {
 	if (iteraccionActual==(matrizResultados.length-1)) {
 		if (actualSE.metodo=='jordan') {
-			document.getElementById('letraF').innerHTML = '\\(U\\)'
+			document.getElementById('letraF').innerHTML = '\\(F\\)'
 		}
-		actualizarLatex(LATEXITOS[iteraccionActual])
+		let s = 'U = \\begin{pmatrix}'
+		for (var i = 0; i < actualSE.U._data.length; i++) {
+			s+=math.round(actualSE.U._data[i],4)+'\\\\'
+		}
+		s+='\\end{pmatrix}'
+		actualizarLatex(LATEXITOS[iteraccionActual]+'\\rightarrow '+s)
 	} else {
 		document.getElementById('letraF').innerHTML = '\\(F\\)'
 		actualizarLatex(LATEXITOS[iteraccionActual])
@@ -127,46 +113,85 @@ function rellenarMatrizAleatorio(n=30) {
 	}
 }
 function solveGauss(M,F) {
-	let tol = 0.00001
-	let sol = Array(F.length).fill(0)
-	let soluciones = []
-	let matrices = []
-	soluciones.push([...sol])
-	let error = 1
-	let L  = 0
-	while (error > tol) {
-		L++
-		let s2 = '\\begin{pmatrix}'
-		for (var i = 0; i < sol.length; i++) {
-			s2 += math.round(sol[i],3)+'\\\\'
-		}
-		s2+='\\end{pmatrix}'
-		let s = '\\begin{pmatrix}'
-		for (var i = 0; i < sol.length; i++) {
-			let sum = 0
-			for (var k = 0; k < sol.length; k++) {
-				sum += (i!=k)*M[i][k]*soluciones[soluciones.length-1][k]
-			}
-			s+='U_{'+(i+1)+'}=\\frac{'+F[i]+'-'+math.round(sum,3)+'}{'+M[i][i]+'}'+'\\\\'
-		}
-		s+='\\end{pmatrix}'
-		let s1 = '=\\begin{pmatrix}'
-
-		for (var j = 0; j < sol.length; j++) {
-			let sum = 0
-			for (var k = 0; k < sol.length; k++) {
-				sum += (j!=k)*M[j][k]*soluciones[soluciones.length-1][k]
-			}
-			sol[j] = (F[j]-sum)/(M[j][j])
-			s1 += math.round(sol[j],3)+'\\\\'
-		}
-		s1+='\\end{pmatrix}'
-		soluciones.push([...sol])
-		matrices.push(M)
-		error = math.max(math.abs(math.add(soluciones[soluciones.length-1],math.multiply(soluciones[soluciones.length-2],-1))))
-		LATEXITOS.push('U^{'+(L-1)+'}'+s2+'\\rightarrow U^{' + (L) + '}=' + s + s1+'\\varepsilon_a='+math.round(error*100,4)+'\\%')
+	var n = M.length
+	var L = []
+	var U = []
+	var P = []
+	for (var i = 0; i < n; i++) {
+		L.push(new Array(n).fill(0))
+		U.push(new Array(n).fill(0))
+		L[i][0]=M[i][0]
+		U[0][i]=M[0][i]/L[0][0]
 	}
-	return [matrices,soluciones]
+    for (var i = 0; i < M.length; i++) {
+    	L[i][0] = M[i][0]
+    	U[i][i] = 1
+    }
+
+	for (var j = 1; j < M.length; j++) {
+	    U[0][j] = M[0][j] / L[0][0]
+	}
+
+    for (var i = 1; i < M.length; i++) {
+    	for (var j = 1; j <= i; j++) {
+    		let SUM = 0
+    		for (var k = 0; k <= j-1; k++) {
+    			SUM+=L[i][k]*U[k][j]
+    		}
+    		L[i][j] = M[i][j] - SUM
+    	}
+    	for (var j = i+1; j < M.length; j++) {
+    		let SUM = 0
+    		for (var k = 0; k <= i-1; k++) {
+    			SUM+=L[i][k]*U[k][j]
+    		}
+    		U[i][j]=(M[i][j]-SUM)/(L[i][i])
+    	}
+    }
+	return solucionarLU(L,U,F,M,[...F])
+}
+function solucionarLU(matrix,matrix2,vector_solucion,MATRIZORIGINAL,EFE) {
+	matricesRESULTADOS = []
+	vectorRESULTADOS = []
+	vectorRESULTADOS.push([...EFE])
+	matricesRESULTADOS.push([...MATRIZORIGINAL])
+
+	for (var i = 0; i < matrix.length; i++) {
+		L = M2Tex(matrix)  + '\\cdot \\{x\\}=' + M2TexV(vector_solucion) + '\\rightarrow '
+		LATEXITOS.push(L+'F'+(i+1)+'=F'+(i+1)+'\\cdot '+math.round(1/matrix[i][i],3))
+		vector_solucion[i] = vector_solucion[i]/(matrix[i][i])
+		matrix[i] = multiplicacionVectores(matrix[i],1/(matrix[i][i]))
+		vectorRESULTADOS.push([...EFE])
+		matricesRESULTADOS.push([...MATRIZORIGINAL])
+		for (var j = i; j < matrix[i].length; j++) {
+			if (i==j) {
+			} else {
+				L = M2Tex(matrix)  + '\\cdot \\{x\\}=' + M2TexV(vector_solucion) + '\\rightarrow '
+				LATEXITOS.push(L+'F'+(j+1)+'=F'+(j+1)+'-F'+(i+1)+'\\cdot '+math.round((matrix[j][i])/(matrix[i][i]),3))
+				vector_solucion[j] = vector_solucion[j] -(matrix[j][i])/(matrix[i][i])*vector_solucion[i]
+				matrix[j] = sumarVectores(matrix[j],multiplicacionVectores(matrix[i],-(matrix[j][i])/(matrix[i][i])))
+				vectorRESULTADOS.push([...EFE])
+				matricesRESULTADOS.push([...MATRIZORIGINAL])
+			}
+		}
+	}
+	for (var i = matrix2.length-1; i >=0; i--) {
+		U = M2Tex(matrix2) +'\\cdot \\{x\\}=' + M2TexV(vector_solucion) + '\\rightarrow '
+		LATEXITOS.push(U+ 'F'+(i+1)+'=F'+(i+1)+'\\cdot '+math.round(1/matrix2[i][i],3))
+		vector_solucion[i] = vector_solucion[i]/(matrix2[i][i])
+		matrix2[i] = multiplicacionVectores(matrix2[i],1/(matrix2[i][i]))
+		vectorRESULTADOS.push([...EFE])
+		matricesRESULTADOS.push([...MATRIZORIGINAL])
+		for (var j = i - 1; j >=0; j--) {
+			U = M2Tex(matrix2) +'\\cdot \\{x\\}=' + M2TexV(vector_solucion) + '\\rightarrow '
+			LATEXITOS.push(U+ 'F'+(j+1)+'=F'+(j+1)+'-F'+(i+1)+'\\cdot '+math.round((matrix2[j][i])/(matrix2[i][i]),3))
+			vector_solucion[j] = vector_solucion[j] -(matrix2[j][i])/(matrix2[i][i])*vector_solucion[i]
+			matrix2[j] = sumarVectores(matrix2[j],multiplicacionVectores(matrix2[i],-(matrix2[j][i])/(matrix2[i][i])))
+			vectorRESULTADOS.push([...EFE])
+			matricesRESULTADOS.push([...MATRIZORIGINAL])
+		}
+	}
+	return [matricesRESULTADOS,vectorRESULTADOS]
 }
 function sumarVectores(v1,v2) {
 	let a = []
@@ -196,25 +221,6 @@ function seidelIteracionSiguiente() {
 	iteraccionActual = iteraccionActual + 10*(iteraccionActual<vectorResultados.length-10)
 	dibujarSolucionesSeidel(iteraccionActual)
 }
-function dibujarSolucionesSeidel(j) {
-	v = vectorResultados
-	for (var i = 0; i < v[j].length; i++) {
-		if (v[j-1]==undefined) {
-			document.getElementById('x'+i+'ii').innerHTML = 0
-			document.getElementById('x'+i+'i').innerHTML = math.round(v[j][i],3)
-			document.getElementById('x'+i+'iii').innerHTML = math.round(v[j+1][i],3)
-		} else if (v[j+1]==undefined) {
-			document.getElementById('x'+i+'ii').innerHTML = math.round(v[j-1][i],3)
-			document.getElementById('x'+i+'i').innerHTML = math.round(v[j][i],3)
-			document.getElementById('x'+i+'iii').innerHTML = 0
-		} else if (v[j]!=undefined) {
-			document.getElementById('x'+i+'ii').innerHTML = math.round(v[j-1][i],3)
-			document.getElementById('x'+i+'i').innerHTML = math.round(v[j][i],3)
-			document.getElementById('x'+i+'iii').innerHTML =  math.round(v[j+1][i],3)
-		}
-	}
-	drawEstructura(v,inicial=false,j,inicio=j,colorPintar='blue')
-}
 function recargarPagina() {
 	window.location.reload(true)
 }
@@ -226,4 +232,12 @@ function triggerBotones(param) {
 	document.querySelectorAll('#iteraciones').forEach(x => x.disabled = !param)
 	actualizarLatex('\\text{Presione el boton calcular}')
 }
-
+function M2Tex(M) {
+	M = M.map(X => X.map(x => math.round(x,3)))
+	M = M.map(x => x.join('&'))
+	return '\\begin{pmatrix}'+M.join('\\\\')+'\\end{pmatrix}'
+}
+function M2TexV(M) {
+	M = M.map(x => math.round(x,3))
+	return '\\begin{pmatrix}'+M.join('\\\\')+'\\end{pmatrix}'
+}
