@@ -52,8 +52,20 @@
             <td>
               <span class="stack">$$f(x)=$$</span>
             </td>
-            <td>
-              <span id="math-field">e^{-x}-x</span>
+            <td id="cuelloBotella">
+              <span id="math-field" class="mathquill-math-field">e^{-x}-x</span>
+              <div class="botonesMath" style="width: 100%" role="group" id="botonesMath" aria-label="math functions" >
+                <button type="button" class="btn btn-default" onClick='input("\\sqrt")'>\(\sqrt{x}\)</button>
+                <button type="button" class="btn btn-default" onClick='input("\\nthroot")'>\(\sqrt[n]{x}\)</button>
+                  <button type="button" class="btn btn-default" onClick= 'input("log")'>\(\ln\)</button>
+                  <button type="button" class="btn btn-default" onClick='input("^")'>\(x^n\)</button>
+                  <button type="button" class="btn btn-default" onClick='input("\\frac")'>\(\frac{a}{b}\)</button>
+                  <button type="button" class="btn btn-default" onClick='input("(")'>\(()\)</button>
+
+                  <button type="button" class="btn btn-default" onClick='input("sin")'>\(\sin\)</button>
+                  <button type="button" class="btn btn-default" onClick='input("cos")'>\(\cos\)</button>
+                  <button type="button" class="btn btn-default" onClick='input("tan")'>\(\tan\)</button>
+              </div>
             </td>
           </tr>
           <tr>
@@ -160,5 +172,8 @@
 </footer>
   </article>
   <script type="text/javascript" src="../../js/Modelacion_Analisis_Numerico.js"></script>
+  <script type="text/javascript">
+    actual = 'SC'
+  </script>
 </body>
 </html>
