@@ -21,6 +21,12 @@
 	<script type="text/javascript" src="../../js/math.js"></script>
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css"/> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js"></script>
+    <script type="text/javascript" src="../../js/math-expressions.js"></script>
+
 </head>
 <body style="margin: 20px">
 	<article class="card">
@@ -46,7 +52,7 @@
 							<span class="stack">$$f(x)=$$</span>
 						</td>
 						<td>
-							<input type="text" id="funcion" value="-12x^5-6x^3+10" oninput="actual='BS';actualizarFuncion(this.value)" >
+							 <span id="math-field">-12x^5-6x^3+10</span>
 						</td>
 					</tr>
 					<tr>

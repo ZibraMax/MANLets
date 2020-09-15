@@ -26,6 +26,22 @@ try {
 catch(err) {
 }
 
+
+var mathFieldSpan = document.getElementById('math-field');
+var MQ = MathQuill.getInterface(2);
+var mathField = MQ.MathField(mathFieldSpan, {
+    spaceBehavesLikeTab: true,
+    handlers: {
+        edit: function() {
+            try{
+            	console.log(MathExpression.fromLatex(mathField.latex()).toString())
+            	actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+            }
+            catch(e){console.log(e)}
+        }
+    }
+});
+
 let funcionActual = undefined
 var resultadoActual = []
 iteraccionActual = 0
@@ -39,12 +55,12 @@ function anteriorIteracion() {
 }
 function resolver(cac) {
 	actual = cac
-	actualizarFuncion(document.getElementById('funcion').value)
+	actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
 	actualizarX0(document.getElementById('sliderx0').value)
 	if (!actual == 'IS' && !actual == 'N') {
 		actualizarXf(document.getElementById('sliderxf').value)
 	}
-	actualizarFuncion(document.getElementById('funcion').value)
+	actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
 	triggerBotones(true)
 }
 function cambiarEstado(valor) {
@@ -74,12 +90,12 @@ function alertaIntervalo(param=false) {
 function actualizarX0(x) {
 	if (funcionActual.fx(parseFloat(x))*funcionActual.fx(xfG)<=0 || actual == 'IS' || actual == 'N' || actual == 'SC' || actual == 'SCM') {
 		x0G = parseFloat(x)
-		actualizarFuncion(document.getElementById('funcion').value)
+		actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
 		alertaIntervalo(true)
 	} else {
 		//alert('El intervalo no cumple con la condicion de que  f(x0)*f(xf)<=0, por favor modificalo')
 		x0G = parseFloat(x)
-		actualizarFuncion(document.getElementById('funcion').value)
+		actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
 		alertaIntervalo()
 	}
 }
@@ -94,7 +110,7 @@ function actualizarXf(x) {
 	} else {
 		xfG = parseFloat(x)
 		//alert('El intervalo no cumple con la condicion de que  f(x0)*f(xf)<=0, por favor modificalo')
-		actualizarFuncion(document.getElementById('funcion').value)
+		actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
 		alertaIntervalo()
 	}
 	xfG = parseFloat(x)
