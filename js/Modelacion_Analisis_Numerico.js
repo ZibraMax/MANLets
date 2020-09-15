@@ -34,10 +34,10 @@ var mathField = MQ.MathField(mathFieldSpan, {
     handlers: {
         edit: function() {
             try{
-            	console.log(MathExpression.fromLatex(mathField.latex()).toString())
+            	triggerBotones(false)
             	actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
             }
-            catch(e){console.log(e)}
+            catch(e){}
         }
     }
 });
@@ -1547,5 +1547,18 @@ class MetodoDeRaiz {
 }
 if (navigator.userAgent.match(/Mobile/)) {
 	document.getElementById('cuelloBotella').innerHTML = '<input type="text" id="funcion" value="-12x^5-6x^3+10" onchange="actualizarFuncion(this.value)">';
+}
+function input(str) {
+	mathField.cmd(str)
+	mathField.focus()
+}
+var FORMULAS = true
+function formulas() {
+	FORMULAS=!FORMULAS
+	if (!FORMULAS) {
+		document.getElementById('botonesMath').classList.remove('botonesMath')
+	} else {
+		document.getElementById('botonesMath').classList.add('botonesMath')
+	}
 }
 triggerBotones(false)
