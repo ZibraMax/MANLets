@@ -55,12 +55,20 @@ function anteriorIteracion() {
 }
 function resolver(cac) {
 	actual = cac
-	actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+	try {
+		actualizarFuncion(document.getElementById('funcion').value)
+	} catch {
+		actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+	}
 	actualizarX0(document.getElementById('sliderx0').value)
 	if (!actual == 'IS' && !actual == 'N') {
 		actualizarXf(document.getElementById('sliderxf').value)
 	}
-	actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+	try {
+		actualizarFuncion(document.getElementById('funcion').value)
+	} catch {
+		actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+	}
 	triggerBotones(true)
 }
 function cambiarEstado(valor) {
@@ -90,12 +98,20 @@ function alertaIntervalo(param=false) {
 function actualizarX0(x) {
 	if (funcionActual.fx(parseFloat(x))*funcionActual.fx(xfG)<=0 || actual == 'IS' || actual == 'N' || actual == 'SC' || actual == 'SCM') {
 		x0G = parseFloat(x)
+		try {
+		actualizarFuncion(document.getElementById('funcion').value)
+	} catch {
 		actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+	}
 		alertaIntervalo(true)
 	} else {
 		//alert('El intervalo no cumple con la condicion de que  f(x0)*f(xf)<=0, por favor modificalo')
 		x0G = parseFloat(x)
+		try {
+		actualizarFuncion(document.getElementById('funcion').value)
+	} catch {
 		actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+	}
 		alertaIntervalo()
 	}
 }
@@ -110,7 +126,11 @@ function actualizarXf(x) {
 	} else {
 		xfG = parseFloat(x)
 		//alert('El intervalo no cumple con la condicion de que  f(x0)*f(xf)<=0, por favor modificalo')
+		try {
+		actualizarFuncion(document.getElementById('funcion').value)
+	} catch {
 		actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+	}
 		alertaIntervalo()
 	}
 	xfG = parseFloat(x)
@@ -1524,5 +1544,8 @@ class MetodoDeRaiz {
 		var config = {responsive: true}
 		Plotly.newPlot('grafica2', [trace,trace1,trace2],layout,config)
 	}
+}
+if (navigator.userAgent.match(/Mobile/)) {
+	document.getElementById('cuelloBotella').innerHTML = '<input type="text" id="funcion" value="-12x^5-6x^3+10" onchange="actualizarFuncion(this.value)">';
 }
 triggerBotones(false)
