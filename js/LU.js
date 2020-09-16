@@ -3,6 +3,8 @@ matrizResultados =[]
 LATEXITOS = ['\\text{Avance en pasos para ver resultados}']
 vectorResultados = []
 Nmatriz = 3
+matricesL = []
+matricesU = []
 var iteraccionActual = 0
 class sistemasEcuaciones{
 	constructor(M,F,metodo='gauss') {
@@ -116,39 +118,39 @@ function solveGauss(M,F) {
 	var n = M.length
 	var L = []
 	var U = []
-	var P = []
 	for (var i = 0; i < n; i++) {
 		L.push(new Array(n).fill(0))
 		U.push(new Array(n).fill(0))
-		L[i][0]=M[i][0]
-		U[0][i]=M[0][i]/L[0][0]
 	}
-    for (var i = 0; i < M.length; i++) {
-    	L[i][0] = M[i][0]
-    	U[i][i] = 1
-    }
-
-	for (var j = 1; j < M.length; j++) {
-	    U[0][j] = M[0][j] / L[0][0]
+	for (var i = 0; i < n; i++) {
+		L[i][0] = M[i][0]
+		U[i][i] = 1
 	}
-
-    for (var i = 1; i < M.length; i++) {
-    	for (var j = 1; j <= i; j++) {
-    		let SUM = 0
-    		for (var k = 0; k <= j-1; k++) {
-    			SUM+=L[i][k]*U[k][j]
-    		} 
-    		L[i][j] = M[i][j] - SUM
-    	}
-    	for (var j = i+1; j < M.length; j++) {
-    		let SUM = 0
-    		for (var k = 0; k <= i-1; k++) {
-    			SUM+=L[i][k]*U[k][j]
-    		}
-    		U[i][j]=(M[i][j]-SUM)/(L[i][i])
-    	}
-    }
-    console.log(L,U)
+	for (var j = 1; j < n; j++) {
+		U[0][j] = M[0][j]/L[0][0]
+	}
+	for (var j = 1; j < n-1; j++) {
+		for (var i = j; i < n; i++) {
+			let suma = 0
+			for (var k = 0; k < j; k++) {
+				suma += L[i][k]*U[k][j]
+			}
+			L[i][j] = M[i][j]-suma
+		}
+		for (var k = j + 1; k < n; k++) {
+			let suma = 0
+			for (var i = 0; i < j; i++) {
+				suma += L[j][i]*U[i][k]
+			}
+			U[j][k] = (M[j][k]-suma)/L[j][j]
+		}
+	}
+	let suma = 0
+	for (var k = 0; k < n-1; k++) {
+	    suma += L[n-1][k] * U[k][n-1]
+	}
+	L[n-1][n-1] = M[n-1][n-1] - suma
+	console.log(L,U)
 	return solucionarLU(L,U,F,M,[...F])
 }
 function solucionarLU(matrix,matrix2,vector_solucion,MATRIZORIGINAL,EFE) {
@@ -158,7 +160,7 @@ function solucionarLU(matrix,matrix2,vector_solucion,MATRIZORIGINAL,EFE) {
 	matricesRESULTADOS.push([...MATRIZORIGINAL])
 
 	for (var i = 0; i < matrix.length; i++) {
-		L = M2Tex(matrix)  + '\\cdot \\{x\\}=' + M2TexV(vector_solucion) + '\\rightarrow '
+		L = '\\text{Matriz L: (Eliminación Adelante)}'+M2Tex(matrix)  + '\\cdot \\{x\\}=' + M2TexV(vector_solucion) + '\\rightarrow '
 		LATEXITOS.push(L+'F'+(i+1)+'=F'+(i+1)+'\\cdot '+math.round(1/matrix[i][i],5))
 		vector_solucion[i] = vector_solucion[i]/(matrix[i][i])
 		matrix[i] = multiplicacionVectores(matrix[i],1/(matrix[i][i]))
@@ -167,7 +169,7 @@ function solucionarLU(matrix,matrix2,vector_solucion,MATRIZORIGINAL,EFE) {
 		for (var j = i; j < matrix[i].length; j++) {
 			if (i==j) {
 			} else {
-				L = M2Tex(matrix)  + '\\cdot \\{x\\}=' + M2TexV(vector_solucion) + '\\rightarrow '
+				L = '\\text{Matriz L: (Eliminación Adelante)}'+M2Tex(matrix)  + '\\cdot \\{x\\}=' + M2TexV(vector_solucion) + '\\rightarrow '
 				LATEXITOS.push(L+'F'+(j+1)+'=F'+(j+1)+'-F'+(i+1)+'\\cdot '+math.round((matrix[j][i])/(matrix[i][i]),5))
 				vector_solucion[j] = vector_solucion[j] -(matrix[j][i])/(matrix[i][i])*vector_solucion[i]
 				matrix[j] = sumarVectores(matrix[j],multiplicacionVectores(matrix[i],-(matrix[j][i])/(matrix[i][i])))
@@ -177,14 +179,14 @@ function solucionarLU(matrix,matrix2,vector_solucion,MATRIZORIGINAL,EFE) {
 		}
 	}
 	for (var i = matrix2.length-1; i >=0; i--) {
-		U = M2Tex(matrix2) +'\\cdot \\{x\\}=' + M2TexV(vector_solucion) + '\\rightarrow '
+		U = '\\text{Matriz U: (Eliminación Atras)}'+M2Tex(matrix2) +'\\cdot \\{x\\}=' + M2TexV(vector_solucion) + '\\rightarrow '
 		LATEXITOS.push(U+ 'F'+(i+1)+'=F'+(i+1)+'\\cdot '+math.round(1/matrix2[i][i],5))
 		vector_solucion[i] = vector_solucion[i]/(matrix2[i][i])
 		matrix2[i] = multiplicacionVectores(matrix2[i],1/(matrix2[i][i]))
 		vectorRESULTADOS.push([...EFE])
 		matricesRESULTADOS.push([...MATRIZORIGINAL])
 		for (var j = i - 1; j >=0; j--) {
-			U = M2Tex(matrix2) +'\\cdot \\{x\\}=' + M2TexV(vector_solucion) + '\\rightarrow '
+			U = '\\text{Matriz U: (Eliminación Atras)}'+M2Tex(matrix2) +'\\cdot \\{x\\}=' + M2TexV(vector_solucion) + '\\rightarrow '
 			LATEXITOS.push(U+ 'F'+(j+1)+'=F'+(j+1)+'-F'+(i+1)+'\\cdot '+math.round((matrix2[j][i])/(matrix2[i][i]),5))
 			vector_solucion[j] = vector_solucion[j] -(matrix2[j][i])/(matrix2[i][i])*vector_solucion[i]
 			matrix2[j] = sumarVectores(matrix2[j],multiplicacionVectores(matrix2[i],-(matrix2[j][i])/(matrix2[i][i])))
