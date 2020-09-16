@@ -135,8 +135,14 @@ function solveGauss(matrix,vector_solucion) {
 				matricesRESULTADOS.push([...matrix])
 			}
 		}
-		for (var i = matrix.length-1; i >= 0; i--) {
-			for (var j = matrix.length-1; j >= i + 1; j--) {
+		for (var i = matrix.length-1; i >=0; i--) {
+			vector_solucion[i] = vector_solucion[i]/(matrix[i][i])
+			matrix[i] = multiplicacionVectores(matrix[i],1/(matrix[i][i]))
+			vectorRESULTADOS.push([...vector_solucion])
+			matricesRESULTADOS.push([...matrix])
+			LATEXITOS.push('')
+
+			for (var j = i - 1; j >=0; j--) {
 				LATEXITOS.push('')
 				vector_solucion[j] = vector_solucion[j] -(matrix[j][i])/(matrix[i][i])*vector_solucion[i]
 				matrix[j] = sumarVectores(matrix[j],multiplicacionVectores(matrix[i],-(matrix[j][i])/(matrix[i][i])))
