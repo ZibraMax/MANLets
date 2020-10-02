@@ -25,7 +25,7 @@
 <body style="margin: 20px">
 	<article class="card">
 		<header>
-			<h1><a href="../index.html" class="fas fa-arrow-left"></a> <a href="../../index.html" class="fas fa-home"></a> MANLets - Optimización 2D</h1>
+			<h1><a href="../index.html" class="fas fa-arrow-left"></a> <a href="../../index.html" class="fas fa-home"></a> MANLets - Máxima Inclinación</h1>
 		</header>
 		<footer>
 			<div class="columnaMedios">
@@ -42,7 +42,7 @@
 					<tbody>
 					<tr>
 						<td colspan="2">
-							<span class="stack">$$f(x)=$$</span>
+							<span class="stack">$$f(x,y)=$$</span>
 						</td>
 						<td colspan="2">
 							<input type="text" id="funcion" value="2x*y+2x-x^2-2y^2" >
@@ -86,10 +86,10 @@
 						</tr>
 						<tr style="text-align: center;">
 							<td style="align-content: center;" colspan="2">
-								<button onclick="anteriorIteracion()" class="succes icon-paper-plane" >< Iteracion Anterior</button>
+								<button id="iteraciones" onclick="anteriorIteracion()" class="succes icon-paper-plane" >< Iteracion Anterior</button>
 							</td>
 							<td style="align-content: center;" colspan="2">
-								<button onclick="siguienteIteracion()" class="warning icon-paper-plane" >Iteracion Siguiente > </button>
+								<button id="iteraciones" onclick="siguienteIteracion()" class="warning icon-paper-plane" >Iteracion Siguiente > </button>
 							</td>
 						</tr>
 						<tr>

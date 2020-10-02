@@ -1,15 +1,26 @@
+class Estado {
+  constructor() {
+  	this.tiempo = new Date()
+  }
+
+  asignarMatriz(M) {
+  	this.M = M
+  }
+}
+objetos = []
 let actualSE = undefined
-matrizResultados =[]
+matrizResultados = new Array(100)
 LATEXITOS = ['\\text{Avance en pasos para ver resultados}']
 vectorResultados = []
 Nmatriz = 3
-matricesL = []
-matricesU = []
+matricesL = new Array(100)
+matricesU = new Array(100)
 var iteraccionActual = 0
 class sistemasEcuaciones{
 	constructor(M,F,metodo='gauss') {
 		this.M = M
 		this.F = F
+		this.Ls = []
 		this.metodo = metodo
 		this.solcuionarInversa()
 		this.dibujarSoluciones()
@@ -114,44 +125,69 @@ function rellenarMatrizAleatorio(n=30) {
 		document.getElementById('F'+i).value = parseInt(math.random()*n)
 	}
 }
+function matrizVacia(n) {
+	var A = []
+	for (var i = 0; i < n; i++) {
+		let fila = []
+		for (var j = 0; j < n; j++) {
+			fila.push(0)
+		}
+		A.push(fila)
+	}
+	return A
+}
+let L = undefined
+let U = undefined
 function solveGauss(M,F) {
 	var n = M.length
-	var L = []
-	var U = []
+	L = math.matrix(matrizVacia(n))
+	U = math.matrix(matrizVacia(n))
+	COUNT = 0
 	for (var i = 0; i < n; i++) {
-		L.push(new Array(n).fill(0))
-		U.push(new Array(n).fill(0))
+		L._data[i][0] = M[i][0]
+		U._data[i][i] = 1
 	}
-	for (var i = 0; i < n; i++) {
-		L[i][0] = M[i][0]
-		U[i][i] = 1
-	}
+	matricesL[COUNT] = L
+	matricesU[COUNT] = U
+	COUNT++
 	for (var j = 1; j < n; j++) {
-		U[0][j] = M[0][j]/L[0][0]
+		U._data[0][j] = M[0][j]/L._data[0][0]
+		matricesL[COUNT] = L
+		matricesU[COUNT] = U
+		COUNT++
 	}
 	for (var j = 1; j < n-1; j++) {
 		for (var i = j; i < n; i++) {
 			let suma = 0
 			for (var k = 0; k < j; k++) {
-				suma += L[i][k]*U[k][j]
+				suma += L._data[i][k]*U._data[k][j]
 			}
-			L[i][j] = M[i][j]-suma
+			L._data[i][j] = M[i][j]-suma
+			matricesL[COUNT] = L
+			matricesU[COUNT] = U
+			COUNT++
 		}
 		for (var k = j + 1; k < n; k++) {
 			let suma = 0
 			for (var i = 0; i < j; i++) {
-				suma += L[j][i]*U[i][k]
+				suma += L._data[j][i]*U._data[i][k]
 			}
-			U[j][k] = (M[j][k]-suma)/L[j][j]
+			U._data[j][k] = (M[j][k]-suma)/L._data[j][j]
+			matricesL[COUNT] = L
+		matricesU[COUNT] = U
+		COUNT++
 		}
 	}
 	let suma = 0
 	for (var k = 0; k < n-1; k++) {
-	    suma += L[n-1][k] * U[k][n-1]
+	    suma += L._data[n-1][k] * U._data[k][n-1]
+	    matricesL[COUNT] = L
+		matricesU[COUNT] = U
+		COUNT++
 	}
-	L[n-1][n-1] = M[n-1][n-1] - suma
+	L._data[n-1][n-1] = M[n-1][n-1] - suma
 	console.log(L,U)
-	return solucionarLU(L,U,F,M,[...F])
+	return solucionarLU(L._data,U._data,F,M,[...F])
 }
 function solucionarLU(matrix,matrix2,vector_solucion,MATRIZORIGINAL,EFE) {
 	matricesRESULTADOS = []
