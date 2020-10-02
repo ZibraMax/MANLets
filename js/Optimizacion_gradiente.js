@@ -122,7 +122,7 @@ function grad(f) {
 
 function calcular() {
     iteraccionActual = 0
-    actualizarFuncion(document.getElementById('funcion').value)
+    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
     actualizarRangos()
     actualizarLatex()
 
@@ -143,7 +143,7 @@ function actualizarLatex() {
     let str1 = fnode.toTex()
     let str2 = gradfnodex.toTex()
 
-    document.getElementById('pretty1').innerHTML = '$$\\small f(x,y)='+str1 +';\\Delta(f)=\\{'+str2+','+gradfnodey.toTex()+'\\}$$'
+    document.getElementById('pretty1').innerHTML = '$$\\small \\Delta(f)=\\{'+str2+','+gradfnodey.toTex()+'\\}$$'
     MathJax.typeset()
 }
 function optimizacionLineal(f,a,b,tol=0.000000000001) {
@@ -155,30 +155,43 @@ function optimizacionLineal(f,a,b,tol=0.000000000001) {
     let error = 1
     let iteraciones = []
     while(error > tol) {
-      let d = R*(xu-xl)
-      let x1 = xl + d
-      let x2 = xu - d
-      let fx1 = f(x1)
-      let fx2 = f(x2)
-      iteraciones.push([xl,xu,d,fx1,fx2])
-      if (fx1>fx2) {
-        xr = x1
-        xl = x2
-        x2 = x1
-      } else {
-        xr = x2
-        xu = x1
-        x1 = x2
-      }
-      error = 0.3819*Math.abs((xu-xl)/(xr))
+        let d = R*(xu-xl)
+        let x1 = xl + d
+        let x2 = xu - d
+        let fx1 = f(x1)
+        let fx2 = f(x2)
+        maximizando = document.getElementById('maximizarRadio').checked
+        iteraciones.push([xl,xu,d,fx1,fx2])
+        if (maximizando) {
+            if (fx1>fx2) {
+                xr = x1
+                xl = x2
+                x2 = x1
+            } else {
+                xr = x2
+                xu = x1
+                x1 = x2
+            }  
+        } else {
+            if (fx1<fx2) {
+                xr = x1
+                xl = x2
+                x2 = x1
+            } else {
+                xr = x2
+                xu = x1
+                x1 = x2
+            }
+        }
+        error = 0.3819*Math.abs((xu-xl)/(xr))
     }
     return xr
 }
 
 function optimizar(f,ax,bx,ay,by) {
     ITERACIONES = []
-    let x0 = -1
-    let y0 = 1
+    let x0 = parseFloat(document.getElementById('x_0').value)
+    let y0 = parseFloat(document.getElementById('y_0').value)
     let h = 1
     let maggradPunto = 1
     let tol = 1*10**-6
@@ -270,11 +283,12 @@ function actualizar(i) {
     }
     Plotly.plot(graficaGeneral, [trace,traceInicial],layout)
     Plotly.plot(graficaGradiente, [trace2])
-
+    document.getElementById('niter').innerHTML = 'P='+[math.round(RESULTADOS[i][1],2),math.round(RESULTADOS[i][2],2)]
+    document.getElementById('error').innerHTML = 'Error= ' + math.round(RESULTADOS[i+1][6]*100,4) + '%'
 }
 
 function siguienteIteracion() {
-    iteraccionActual = iteraccionActual + 1*(iteraccionActual<RESULTADOS.length-1)
+    iteraccionActual = iteraccionActual + 1*(iteraccionActual<RESULTADOS.length-2)
     actualizar(iteraccionActual)
 }
 function anteriorIteracion() {
@@ -285,7 +299,20 @@ function triggerBotones(param) {
     document.querySelectorAll('#iteraciones').forEach(x => x.disabled = !param)
 }
 
-
+var mathFieldSpan = document.getElementById('math-field');
+var MQ = MathQuill.getInterface(2);
+var mathField = MQ.MathField(mathFieldSpan, {
+    spaceBehavesLikeTab: true,
+    handlers: {
+        edit: function() {
+            try{
+                triggerBotones(false)
+                actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+            }
+            catch(e){}
+        }
+    }
+});
 
 
 var f = undefined
