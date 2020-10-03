@@ -283,7 +283,7 @@ function actualizar(i) {
     }
     Plotly.plot(graficaGeneral, [trace,traceInicial],layout)
     Plotly.plot(graficaGradiente, [trace2])
-    document.getElementById('niter').innerHTML = 'P='+[math.round(RESULTADOS[i][1],2),math.round(RESULTADOS[i][2],2)]
+    document.getElementById('niter').innerHTML = 'Óptimo: '+[math.round(RESULTADOS[i][1],2),math.round(RESULTADOS[i][2],2)]
     document.getElementById('error').innerHTML = 'Error= ' + math.round(RESULTADOS[i+1][6]*100,4) + '%'
 }
 
