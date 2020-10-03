@@ -258,12 +258,12 @@ class OPtimizacionCuadratica {
     this.fx = (x) => this.nodoF.evaluate({x: x})
   }
   cuadratica(x0,x1,x2,tol=0.000001,maxIter=300) {
-    let f = this.fx
     let R = (Math.sqrt(5)-1)/2
     let x3 = -1
     let i = 0
     let error = 1
     let iteraciones = []
+    let f = this.fx
     while(error > tol && i < maxIter) {
       x3 = (f(x0)*(x1*x1-x2*x2)+f(x1)*(x2*x2-x0*x0)+f(x2)*(x0*x0-x1*x1))/(2*f(x0)*(x1-x2)+2*f(x1)*(x2-x0)+2*f(x2)*(x0-x1))
       iteraciones.push([x0,x1,x2,f(x0),f(x1),f(x2),x3,f(x3)])

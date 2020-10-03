@@ -85,8 +85,18 @@
 					</tbody>
 					<thead>
 						<tr>
-							<th colspan="2" >
+							<th>
 								<button onclick="resolver()" class="stack icon-paper-plane" style="text-align: center;">Calcular</button>
+							</th>
+							<th>
+								<label style="width: 40%">
+								  <input id="maximizarRadio" type='radio' checked name="radiodemo" onchange="triggerBotones(false)">
+								  <span class="checkable">Máximo⠀⠀</span>
+								</label>
+								<label style="width: 40%">
+								  <input type='radio' name="radiodemo" onchange="triggerBotones(false)">
+								  <span class="checkable">Mínimo</span>
+								</label>
 							</th>
 						</tr>
 						<tr style="text-align: center;">

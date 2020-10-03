@@ -197,6 +197,7 @@ class SeccionDorada {
     let i = 0
     let error = 1
     let iteraciones = []
+    let maximizando = document.getElementById('maximizarRadio').checked
     while(error > tol && i < maxIter) {
       let d = R*(xu-xl)
       let x1 = xl + d
@@ -204,14 +205,26 @@ class SeccionDorada {
       let fx1 = f(x1)
       let fx2 = f(x2)
       iteraciones.push([xl,xu,d,fx1,fx2])
-      if (fx1>fx2) {
-        xr = x1
-        xl = x2
-        x2 = x1
+      if (maximizando) {
+        if (fx1>fx2) {
+          xr = x1
+          xl = x2
+          x2 = x1
+        } else {
+          xr = x2
+          xu = x1
+          x1 = x2
+        }
       } else {
-        xr = x2
-        xu = x1
-        x1 = x2
+        if (fx1<fx2) {
+          xr = x1
+          xl = x2
+          x2 = x1
+        } else {
+          xr = x2
+          xu = x1
+          x1 = x2
+        }
       }
       i++
       error = 0.3819*Math.abs((xu-xl)/(xr))
