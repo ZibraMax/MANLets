@@ -29,7 +29,7 @@ function graficarContornos2D(f,ax,bx,ay,by,n=100) {
           }}
     Plotly.newPlot(divGeneral, data,layout,{responsive: true});
 }
-function graficarDireccion(f,a,b,n=100) {
+function graficarDireccion(f,a,b,n=100,TITULO='x') {
     let x = new Array(n)
     let y = new Array(n)
 
@@ -44,10 +44,10 @@ function graficarDireccion(f,a,b,n=100) {
         y: y,
         type: 'lines'}];
     let layout = {title: "Region de búsqueda unidimensional",xaxis: {
-            title:'h'
+            title:TITULO
           },
           yaxis: {
-            title:'f(h)'
+            title:'f('+TITULO+')'
           }}
 
     Plotly.newPlot(divDireccion, data,layout,{responsive: true});
@@ -229,12 +229,14 @@ function darFuncionTransformacion(RESULTADOI) {
 }
 function actualizar(i) {
     [h,x0,y0,fx,hmin,hmax,error] = RESULTADOS[i]
+    t='y'
     if (i%2) {
         G = (h) => f(x0,h)
     } else {
         G = (h) => f(h,y0)
+        t='x'
     }
-    graficarDireccion(G,hmin,hmax,n=100)
+    graficarDireccion(G,hmin,hmax,n=100,TITULO=t)
     trace = {
         x: [],
         y: [],

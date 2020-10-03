@@ -6,6 +6,22 @@ var funcionActual = undefined
 let iteraccionActual = 0
 var resultadoActual = []
 
+var mathFieldSpan = document.getElementById('math-field');
+var MQ = MathQuill.getInterface(2);
+var mathField = MQ.MathField(mathFieldSpan, {
+    spaceBehavesLikeTab: true,
+    handlers: {
+        edit: function() {
+            try{
+              triggerBotones(false)
+              actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+            }
+            catch(e){}
+        }
+    }
+});
+
+
 function siguienteIteracion() {
   iteraccionActual = iteraccionActual + 1*(iteraccionActual<resultadoActual.length-1)
   actualizarGrafica(iteraccionActual)
@@ -19,11 +35,19 @@ function triggerBotones(param) {
 }
 function actualizarX0(x) {
   x0G = parseFloat(x)
-  actualizarFuncion(document.getElementById('funcion').value)
+  try {
+    actualizarFuncion(document.getElementById('funcion').value)
+  } catch {
+    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+  }
 }
 function actualizarXf(x) {
   xfG = parseFloat(x)
-  actualizarFuncion(document.getElementById('funcion').value)
+  try {
+    actualizarFuncion(document.getElementById('funcion').value)
+  } catch {
+    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+  }
 }
 function actualizarFuncion(funcion) {
   funcionActual = new SeccionDorada(funcion)
@@ -47,7 +71,11 @@ function actualizarGrafica(i) {
   actualizarTabla(i)
 }
 function resolver() {
-  actualizarFuncion(document.getElementById('funcion').value)
+  try {
+    actualizarFuncion(document.getElementById('funcion').value)
+  } catch {
+    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+  }
   actualizarX0(document.getElementById('sliderx0').value)
   actualizarXf(document.getElementById('sliderxf').value)
   triggerBotones(true)
@@ -326,5 +354,8 @@ class SeccionDorada {
     var config = {responsive: true}
     Plotly.newPlot('grafica2', [trace,trace1,trace2,trace3],layout,config)
   }
+}
+if (navigator.userAgent.match(/Mobile/)) {
+  document.getElementById('cuelloBotella').innerHTML = '<input type="text" id="funcion" value="2sin(x)-(x^2)/10" onchange="actualizarFuncion(this.value)">';
 }
 triggerBotones(false)

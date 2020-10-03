@@ -8,7 +8,20 @@ var xf3 = parseFloat(sliderx3.value)
 var funcionActual = undefined
 let iteraccionActual = 0
 var resultadoActual = []
-
+var mathFieldSpan = document.getElementById('math-field');
+var MQ = MathQuill.getInterface(2);
+var mathField = MQ.MathField(mathFieldSpan, {
+    spaceBehavesLikeTab: true,
+    handlers: {
+        edit: function() {
+            try{
+              triggerBotones(false)
+              actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+            }
+            catch(e){}
+        }
+    }
+});
 function siguienteIteracion() {
   iteraccionActual = iteraccionActual + 1*(iteraccionActual<resultadoActual.length-1)
   actualizarGrafica(iteraccionActual)
@@ -23,19 +36,31 @@ function triggerBotones(param) {
 function actualizarX0(x,paila=false) {
   x0G = parseFloat(x)
   if (!paila) {
+    try {
     actualizarFuncion(document.getElementById('funcion').value)
+  } catch {
+    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+  }
   }
 }
 function actualizarXf(x,paila=false) {
   xfG = parseFloat(x)
   if (!paila) {
+    try {
     actualizarFuncion(document.getElementById('funcion').value)
+  } catch {
+    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+  }
   }
 }
 function actualizarX3(x,paila=false) {
   xf3 = parseFloat(x)
   if (!paila) {
+    try {
     actualizarFuncion(document.getElementById('funcion').value)
+  } catch {
+    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+  }
   }
 }
 function actualizarFuncion(funcion) {
@@ -63,7 +88,11 @@ function resolver() {
   actualizarX0(document.getElementById('sliderx0').value,paila=true)
   actualizarXf(document.getElementById('sliderxf').value,paila=true)
   actualizarX3(document.getElementById('sliderx3').value,paila=true)
-  actualizarFuncion(document.getElementById('funcion').value)
+  try {
+    actualizarFuncion(document.getElementById('funcion').value)
+  } catch {
+    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+  }
   triggerBotones(true)
 }
 function actualizarTabla(i) {
@@ -439,5 +468,8 @@ class OPtimizacionCuadratica {
     var config = {responsive: true}
     Plotly.newPlot('grafica2', [trace,trace1,trace2,trace3,trace4,trace5],layout,config)
   }
+}
+if (navigator.userAgent.match(/Mobile/)) {
+  document.getElementById('cuelloBotella').innerHTML = '<input type="text" id="funcion" value="2*sin(x)-(x^2)/10" onchange="actualizarFuncion(this.value)">';
 }
 triggerBotones(false)

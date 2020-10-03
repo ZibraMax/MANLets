@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=0.5,user-scalable=no" id="viewport">
   <script src="https://kit.fontawesome.com/2416ed6962.js" crossorigin="anonymous"></script>
 	<meta charset="utf-8">
-	<title>Applets- Sección Dorada</title>
+	<title>Applets - Sección Dorada</title>
 	<link rel="shortcut icon" type="image/x-icon" href="../../favicon/favicon.ico">
 	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 	<link rel="stylesheet" href="https://unpkg.com/picnic">
@@ -21,6 +21,11 @@
 	<script type="text/javascript" src="../../js/math.js"></script>
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css"/> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js"></script>
+    <script type="text/javascript" src="../../js/math-expressions.js"></script>
 </head>
 <body style="margin: 20px">
 	<article class="card">
@@ -45,8 +50,19 @@
 						<td>
 							<span class="stack">$$f(x)=$$</span>
 						</td>
-						<td>
-							<input type="text" id="funcion" value="2*sin(x)-(x^2)/10" oninput="actualizarFuncion(this.value)" >
+						<td id="cuelloBotella">
+							<span id="math-field" class="mathquill-math-field">2\sin (x)-\frac{(x^2)}{10}</span>
+						 	<div class="botonesMath" style="width: 100%" role="group" id="botonesMath" aria-label="math functions" >
+								<button type="button" class="btn btn-default" onClick='input("\\sqrt")'>\(\sqrt{x}\)</button>
+								<button type="button" class="btn btn-default" onClick='input("\\nthroot")'>\(\sqrt[n]{x}\)</button>
+							    <button type="button" class="btn btn-default" onClick= 'input("log")'>\(\ln\)</button>
+							    <button type="button" class="btn btn-default" onClick='input("^")'>\(x^n\)</button>
+							    <button type="button" class="btn btn-default" onClick='input("\\frac")'>\(\frac{a}{b}\)</button>
+							    <button type="button" class="btn btn-default" onClick='input("(")'>\(()\)</button>
+							    <button type="button" class="btn btn-default" onClick='input("sin")'>\(\sin\)</button>
+							    <button type="button" class="btn btn-default" onClick='input("cos")'>\(\cos\)</button>
+							    <button type="button" class="btn btn-default" onClick='input("tan")'>\(\tan\)</button>
+							</div>
 						</td>
 					</tr>
 					<tr>
