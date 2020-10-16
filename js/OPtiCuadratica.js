@@ -4,7 +4,7 @@ var sliderxf = document.getElementById('sliderxf')
 var xfG = parseFloat(sliderxf.value)
 var sliderx3 = document.getElementById('sliderx3')
 var xf3 = parseFloat(sliderx3.value)
-
+//test
 var funcionActual = undefined
 let iteraccionActual = 0
 var resultadoActual = []
