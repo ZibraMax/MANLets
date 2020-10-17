@@ -1561,4 +1561,10 @@ function formulas() {
 		document.getElementById('botonesMath').classList.add('botonesMath')
 	}
 }
+
+$('#cositasLindas').toolbar({
+	content: '#toolbar-options',
+	animation: 'grow'
+	});
+
 triggerBotones(false)

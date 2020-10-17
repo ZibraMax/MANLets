@@ -371,4 +371,13 @@ class SeccionDorada {
 if (navigator.userAgent.match(/Mobile/)) {
   document.getElementById('cuelloBotella').innerHTML = '<input type="text" id="funcion" value="2sin(x)-(x^2)/10" onchange="actualizarFuncion(this.value)">';
 }
+
+$('#cositasLindas').toolbar({
+  content: '#toolbar-options',
+  animation: 'grow'
+  });
+function input(str) {
+  mathField.cmd(str)
+  mathField.focus()
+}
 triggerBotones(false)

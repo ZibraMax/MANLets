@@ -313,7 +313,14 @@ var mathField = MQ.MathField(mathFieldSpan, {
         }
     }
 });
-
+$('#cositasLindas').toolbar({
+  content: '#toolbar-options',
+  animation: 'grow'
+  });
+function input(str) {
+  mathField.cmd(str)
+  mathField.focus()
+}
 
 var f = undefined
 var fnode = undefined
