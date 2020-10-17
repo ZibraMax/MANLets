@@ -39,10 +39,19 @@ function graficarDireccion(f,a,b,n=100,TITULO='x') {
         x[i] = a + i*h
         y[i] = f(a + i*h)
     }
+    let trace4 = {
+          x: [RESULTADOS[iteraccionActual+1][0],RESULTADOS[iteraccionActual+1][0]],
+          y: [math.min(y),math.max(y)],
+          mode: 'lines',
+          name: 'Óptimo',
+          line: {
+          dash: 'dashdot',
+          }
+        }
     var data = [{
         x: x,
         y: y,
-        type: 'lines'}];
+        type: 'lines'},trace4];
     let layout = {title: "Region de búsqueda unidimensional",xaxis: {
             title:TITULO
           },
@@ -52,60 +61,42 @@ function graficarDireccion(f,a,b,n=100,TITULO='x') {
 
     Plotly.newPlot(divDireccion, data,layout,{responsive: true});
 }
-function graficarGradiente(f,ax,bx,ay,by,n=30) {
+function graficarGradiente(f,ax,bx,ay,by,n=300) {
+    let x = new Array(n)
+    let y = new Array(n) 
+    let z = new Array(n)
+
     let hx = (bx-ax)/n
     let hy = (by-ay)/n
 
-    let X = []
-    let Y = []
-    let Z = []
-
-    let U = []
-    let V = []
-    let W = []
-
-    for (var i = 0; i < n; i++) {
-        for (var j = 0; j < n; j++) {
-            X.push(ax + hx*i)
-            Y.push(ay + hy*j)
-            Z.push(2.5)
-            let dxdy = f(X[X.length-1],Y[Y.length-1])
-            U.push(dxdy[0])
-            V.push(dxdy[1])
-            W.push(0)
-        }
+    for(let i = 0; i < n; i++) {
+        x[i] = ax + hx*i
+        y[i] = ay + hy*i
+        z[i] = new Array(n);
     }
-    trace1 = {
-        type: 'cone', 
-        u: U,
-        v: V,
-        w: W,
-        x: X,
-        y: Y,
-        z: Z,
-        anchor: 'tail', 
-        sizeref: 3,
-        colorbar: {
-            len: 0.75, 
-            ticklen: 4, 
-            thickness: 20
-        }, 
-        sizemode: 'scaled', 
-        showscale: true, 
-        colorscale: [['0.0', 'rgb(20, 29, 67)'], ['0.05', 'rgb(25, 52, 80)'], ['0.1', 'rgb(28, 76, 96)'], ['0.15', 'rgb(23, 100, 110)'], ['0.2', 'rgb(16, 125, 121)'], ['0.25', 'rgb(44, 148, 127)'], ['0.3', 'rgb(92, 166, 133)'], ['0.35', 'rgb(140, 184, 150)'], ['0.4', 'rgb(182, 202, 175)'], ['0.45', 'rgb(220, 223, 208)'], ['0.5', 'rgb(253, 245, 243)'], ['0.55', 'rgb(240, 215, 203)'], ['0.6', 'rgb(230, 183, 162)'], ['0.65', 'rgb(221, 150, 127)'], ['0.7', 'rgb(211, 118, 105)'], ['0.75', 'rgb(194, 88, 96)'], ['0.8', 'rgb(174, 63, 95)'], ['0.85', 'rgb(147, 41, 96)'], ['0.9', 'rgb(116, 25, 93)'], ['0.95', 'rgb(82, 18, 77)'], ['1.0', 'rgb(51, 13, 53)']]
-    };
-    data = [trace1];
-    layout = {
-        scene: {
-            aspectratio: {
-                x: 1, 
-                y: 1, 
-                z: 0.9
-            }
-        },
-        title: 'Gradiente'
-        };
-    Plotly.newPlot(divGradiente,{data: data,layout: layout},{responsive: true});
+    let u = []
+    for(let i = 0; i < n; i++) {
+        let linea = []
+        for(let j = 0; j < n; j++) {
+            let mgrad = f(x[j],y[i])
+            z[i][j] = (mgrad[0]**2+mgrad[1]**2)**0.5;
+            linea.push('Grad_x: '+ math.round(mgrad[0],3) + ' Grad_y: '+math.round(mgrad[1],3))
+        }
+        u.push(linea)
+    }
+    var data = [{
+        z: z,
+        x: x,
+        y: y,
+        text: u,
+        type: 'contour'}];
+    let layout = {title: "Gradiente",xaxis: {
+            title:'x'
+          },
+          yaxis: {
+            title:'y'
+          }}
+    Plotly.newPlot(divGradiente, data,layout,{responsive: true});
 }
 
 function actualizarFuncion(str) {
@@ -208,10 +199,10 @@ function optimizar(f,ax,bx,ay,by) {
 
         G = (h) => f(h,y0)
         x0Prima = optimizacionLineal(G,ax,bx)
-        ITERACIONES.push([h,x0Prima,y0,fxprevio,ax,bx,error])
+        ITERACIONES.push([x0Prima,x0Prima,y0,fxprevio,ax,bx,error])
         G = (h) => f(x0Prima,h)
         y0Prima = optimizacionLineal(G,ay,by)
-        ITERACIONES.push([h,x0Prima,y0Prima,fxprevio,ay,by,error])
+        ITERACIONES.push([y0Prima,x0Prima,y0Prima,fxprevio,ay,by,error])
 
         let fx = f(x0Prima,y0Prima)
 
@@ -253,8 +244,7 @@ function actualizar(i) {
     trace2 = {
         x: [],
         y: [],
-        z: [],
-        type: 'scatter3d',
+        type: 'scatter',
         mode: 'lines+markers',
         marker:{symbol: 203,size: 5}
     }
@@ -275,7 +265,6 @@ function actualizar(i) {
 
         trace2.x.push(x0)
         trace2.y.push(y0)
-        trace2.z.push(2.5)
     }
     try {
         Plotly.deleteTraces(graficaGeneral, [1,2])
@@ -288,7 +277,9 @@ function actualizar(i) {
     Plotly.plot(graficaGeneral, [trace,traceInicial],layout)
     Plotly.plot(graficaGradiente, [trace2])
     document.getElementById('niter').innerHTML = 'Óptimo: '+[math.round(RESULTADOS[i][1],2),math.round(RESULTADOS[i][2],2)]
-    document.getElementById('error').innerHTML = 'Error= ' + math.round(RESULTADOS[i+1][6]*100,4) + '%'
+    let gradientePunto = gradf(RESULTADOS[i][1],RESULTADOS[i][2])
+    let magGrad = math.round((gradientePunto[0]**2+gradientePunto[1]**2)**0.5,3)
+    document.getElementById('error').innerHTML = '|∇|='+magGrad + '<br>ε=' + math.round(RESULTADOS[i+1][6]*100,3) + '%'
 }
 
 function siguienteIteracion() {
