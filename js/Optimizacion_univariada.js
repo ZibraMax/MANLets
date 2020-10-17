@@ -143,7 +143,7 @@ function actualizarLatex() {
     let str1 = fnode.toTex()
     let str2 = gradfnodex.toTex()
 
-    document.getElementById('pretty1').innerHTML = '$$\\small \\Delta(f)=\\{'+str2+','+gradfnodey.toTex()+'\\}$$'
+    document.getElementById('pretty1').innerHTML = '$$\\small \\nabla f=\\{'+str2+','+gradfnodey.toTex()+'\\}$$'
     MathJax.typeset()
 }
 function optimizacionLineal(f,a,b,tol=0.000000000001) {

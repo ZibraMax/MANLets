@@ -355,6 +355,15 @@ class SeccionDorada {
       mode: 'markers',
       name: 'Xopt',
     }
+    let trace4 = {
+        x: [resultadoActual[i][5],resultadoActual[i][5]],
+        y: [0,this.fx(resultadoActual[i][5])],
+        mode: 'lines',
+        name: 'Óptimo',
+        line: {
+        dash: 'dashdot',
+        }
+      }
     let layout = {
       title:'Iteraciones General ',
       xaxis: {
@@ -365,7 +374,7 @@ class SeccionDorada {
       }
     }
     var config = {responsive: true}
-    Plotly.newPlot('grafica2', [trace,trace1,trace2,trace3],layout,config)
+    Plotly.newPlot('grafica2', [trace,trace1,trace2,trace3,trace4],layout,config)
   }
 }
 if (navigator.userAgent.match(/Mobile/)) {
