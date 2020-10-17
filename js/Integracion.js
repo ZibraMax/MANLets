@@ -17,6 +17,23 @@ var b = parseFloat(document.getElementById('sliderxf').value)
 
 var problema = 'GL'
 var actual = undefined
+
+var mathFieldSpan = document.getElementById('math-field');
+var MQ = MathQuill.getInterface(2);
+var mathField = MQ.MathField(mathFieldSpan, {
+    spaceBehavesLikeTab: true,
+    handlers: {
+        edit: function() {
+            try{
+            	triggerBotones(false)
+            	actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+            }
+            catch(e){}
+        }
+    }
+});
+
+
 function actualizarInterfazSegmentos() {
 	document.getElementById('numeroSegmentos').value = PUNTOS_GAUSS
 }
@@ -37,6 +54,8 @@ function actualizarSegmentos(numero) {
 	PUNTOS_GAUSS = numero
 	actualizarIntervalo()
 }
+
+
 function actualizarIntervalo() {
 	a = parseFloat(document.getElementById('sliderx0').value)
 	b = parseFloat(document.getElementById('sliderxf').value)
@@ -58,8 +77,11 @@ function actualizarFuncion(str) {
 }
 
 function actualizarLatex() {
-
-	str = document.getElementById('funcion').value
+	try {
+		str = document.getElementById('funcion').value
+	} catch {
+		str = MathExpression.fromLatex(mathField.latex()).toString()
+	}
 	const elem = document.getElementById('pretty')
 	let color = '$$\\textcolor{green}'
 	let valor = math.round(actual.valor,5)
@@ -81,7 +103,11 @@ function actualizarLatex() {
 
 function resolver(tipo = 'GL') {
 	problema = tipo
-	fx = parseFuncion(document.getElementById('funcion').value)
+	try {
+		fx = parseFuncion(document.getElementById('funcion').value)
+	} catch {
+		fx = parseFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+	}
 	if (tipo=='GL') {
 		actual = new GaussLegendre(fx)
 	} else if (tipo=='TP') {
@@ -434,4 +460,12 @@ class Simpson{
 		var config = {responsive: true}
 		Plotly.newPlot('grafica', traces,layout,config)
 	}
+}
+$('#cositasLindas').toolbar({
+	content: '#toolbar-options',
+	animation: 'grow'
+	});
+function input(str) {
+	mathField.cmd(str)
+	mathField.focus()
 }
