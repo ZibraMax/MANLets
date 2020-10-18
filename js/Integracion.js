@@ -14,7 +14,8 @@
 var PUNTOS_GAUSS = 3
 var a = parseFloat(document.getElementById('sliderx0').value)
 var b = parseFloat(document.getElementById('sliderxf').value)
-
+var NMAX = 40
+var NMIN = 1
 var problema = 'GL'
 var actual = undefined
 
@@ -52,7 +53,16 @@ function cubicaDesdePuntos(x1,y1,x2,y2,x3,y3,x4,y4) {
 }
 function actualizarSegmentos(numero) {
 	PUNTOS_GAUSS = numero
+	if (numero<NMIN) {
+		PUNTOS_GAUSS = NMIN
+	} else if (numero>NMAX) {
+		PUNTOS_GAUSS = NMAX
+	}
+	if (!numero) {
+		PUNTOS_GAUSS = ''
+	}
 	actualizarIntervalo()
+	actualizarInterfazSegmentos()
 }
 
 
@@ -93,15 +103,30 @@ function actualizarLatex() {
 				color = '$$\\textcolor{green}'
 				valor = math.round(actual.valor,5)
 			}
+
 		} catch(e) {
 			console.log(e)
 		}
+	}
+	if (PUNTOS_GAUSS=='') {
+		color = '$$\\textcolor{red}'
+		valor = ''
 	}
 	elem.innerHTML = color+'{\\int_{'+actual.a+'}^{'+actual.b+'}' + math.parse(str).toTex()+'{dx}='+valor+'}$$'
     MathJax.typeset()
 }
 
 function resolver(tipo = 'GL') {
+	if (tipo=='GL') {
+		NMAX = 40
+		NMIN = 1
+	} else if (tipo == 'TP') {
+		NMAX = 400000
+		NMIN = 1
+	} else {
+		NMAX = 400000
+		NMIN = 2
+	}
 	problema = tipo
 	try {
 		fx = parseFuncion(document.getElementById('funcion').value)
@@ -122,10 +147,20 @@ function resolver(tipo = 'GL') {
 
 function menosPuntos() {
 	PUNTOS_GAUSS -= 1*(PUNTOS_GAUSS>1)
+	if (PUNTOS_GAUSS<NMIN) {
+		PUNTOS_GAUSS = NMIN
+	} else if (PUNTOS_GAUSS>NMAX) {
+		PUNTOS_GAUSS = NMAX
+	}
 	actualizarIntervalo()
 }
 function masPuntos() {
 	PUNTOS_GAUSS += 1
+	if (PUNTOS_GAUSS<NMIN) {
+		PUNTOS_GAUSS = NMIN
+	} else if (PUNTOS_GAUSS>NMAX) {
+		PUNTOS_GAUSS = NMAX
+	}
 	actualizarIntervalo()
 }
 
@@ -136,7 +171,7 @@ class GaussLegendre{
 	calcularIntegral(params) {
 		this.a = params.a
 		this.b = params.b
-		let arreglo = gaussLegendre(this.fx, this.a, this.b, PUNTOS_GAUSS)
+		let arreglo = gaussLegendre(this.fx, this.a, this.b, PUNTOS_GAUSS,PUNTOS_GAUSS*100)
 		this.valor= arreglo[0]
 		this.xs = arreglo[1]
 		this.ws = arreglo[2]
@@ -180,27 +215,14 @@ class GaussLegendre{
 			name: 'f(x)'
 		}
 		traces.push(trace)
-
 		let maximoy = math.abs(math.max(fxs))-math.abs(math.min(fxs))
 		let maximox = math.abs(b-a)
-		for(let i = 0, length1 = xs.length; i < length1; i++){
-			let radioy = ws[i]*1/5*maximoy //TODO cambiar
-			let radiox = ws[i]*1/20*maximox
-			let shape = {
-		      type: 'circle',
-		      xref: 'x',
-		      yref: 'y',
-		      fillcolor: 'rgba(50, 171, 96, 0.7)',
-		      x0: xs[i]-radiox,
-		      y0: -radioy,
-		      x1: xs[i]+radiox,
-		      y1: radioy,
-		      line: {
-		        color: 'rgba(50, 171, 96, 1)'
-		      }
-		    }
-		    shapes.push(shape)
-		}
+		let sumaW = math.sum(ws)
+		try {
+			maximoy = myPlot.layout.yaxis.range[1]-myPlot.layout.yaxis.range[0]
+			maximox = myPlot.layout.xaxis.range[1]-myPlot.layout.xaxis.range[0]
+		} catch {}
+		let ar = maximox/maximoy
 
 		x = []
 		fxs = []
@@ -220,7 +242,6 @@ class GaussLegendre{
 
 		let layout = {
 		  title:'Integración por Gauss-Legendre',
-		  shapes:shapes,
 		  xaxis: {
 		  	title:'x'
 		  },

@@ -104,6 +104,14 @@
 								<input type="text" id="sliderxf" value='1' oninput="actualizarIntervalo()"  class="stack">
 							</td>
 						</tr>
+						<tr>
+							<td>
+								<span class="stack" style="text-align: center;">Número de puntos</span>
+							</td>
+							<td>
+								<input type="number" id="numeroSegmentos" value='3' oninput="actualizarSegmentos(parseFloat(this.value))"  class="stack">
+							</td>
+						</tr>
 						</tbody>
 						<thead>
 							<tr>
@@ -113,10 +121,10 @@
 							</tr>
 							<tr style="text-align: center;">
 								<td style="align-content: center;">
-									<button onclick="menosPuntos()" class="succes icon-paper-plane" >< Disminuir Puntos</button>
+									<button onclick="menosPuntos();actualizarInterfazSegmentos()" class="succes icon-paper-plane" >< Disminuir Puntos</button>
 								</td>
 								<td style="align-content: center;">
-									<button onclick="masPuntos()" class="warning icon-paper-plane" >Aumentar Puntos > </button>
+									<button onclick="masPuntos();actualizarInterfazSegmentos()" class="warning icon-paper-plane" >Aumentar Puntos > </button>
 								</td>
 							</tr>
 							<tr>
