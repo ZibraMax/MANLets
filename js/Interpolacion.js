@@ -211,6 +211,10 @@ document.onkeydown = function(e){
 }
 
 function exportarExcelModal() {
-	var mods = document.querySelectorAll('.modal > [type=checkbox]');
+	var mods = document.querySelectorAll('.modal1 > [type=checkbox]');
+    [].forEach.call(mods, function(mod){ mod.checked = true; });
+}
+function importarExcelModal() {
+	var mods = document.querySelectorAll('.modal2 > [type=checkbox]');
     [].forEach.call(mods, function(mod){ mod.checked = true; });
 }

@@ -232,7 +232,7 @@ document.onkeydown = function(e){
 }
 
 function exportarExcelModal() {
-	var mods = document.querySelectorAll('.modal > [type=checkbox]');
+	var mods = document.querySelectorAll('.modal1 > [type=checkbox]');
     [].forEach.call(mods, function(mod){ mod.checked = true; });
 }
 
@@ -250,6 +250,10 @@ function actualizarOrden() {
 	let Y = myPlot.data[0].y
 	FUNCION = interpolar(X,Y)
 	graficar(myPlot.layout.xaxis.range[0], myPlot.layout.xaxis.range[1],FUNCION)
+}
+function importarExcelModal() {
+	var mods = document.querySelectorAll('.modal2 > [type=checkbox]');
+    [].forEach.call(mods, function(mod){ mod.checked = true; });
 }
 
 function actualizarR2(f) {
