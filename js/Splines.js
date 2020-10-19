@@ -1,5 +1,7 @@
-for (var XI=[],i=-20;i<22;++i) XI[i]=i;
-let YI = XI.map(x => 10*x**2-1*x-4+1000*(Math.random())*(Math.random() < 0.5 ? -1 : 1))
+let Nnn =5
+
+for (var XI=[],i=-Nnn;i<Nnn;++i) XI[i]=i;
+let YI = XI.map(x => 10*x**2-1*x-4+300*(Math.random())*(Math.random() < 0.5 ? -1 : 1))
 ORDEN = 1
 R2 = '-'
 var traces = [{
@@ -14,7 +16,12 @@ var traces = [{
 traces.push({
   x: XI,
   y: YI,
-  name: 'Splines, Órden ' + 3
+  name: 'Órden ' + 3
+})
+traces.push({
+  x: XI,
+  y: YI,
+  name: 'Órden ' + 2
 })
 
 
@@ -22,7 +29,7 @@ traces.push({
 var FUNCION = undefined
 var myPlot = document.getElementById('myPlot')
 let layout = {
-		  title:'Interpolación con Splines Cúbicos',
+		  title:'Interpolación con Splines',
 		  xaxis: {
 		  	title:'x'
 		  },
@@ -63,34 +70,50 @@ Plotly.d3.select(".plotly").on('click', function(d, i) {
 	graficar(myPlot.layout.xaxis.range[0], myPlot.layout.xaxis.range[1],FUNCION)
 });
 var spline = undefined
+var spline2 = undefined
+
 function interpolar (x,y) {
 	spline = new Spline(x, y);
+	spline2 = new SplineO2(x, y);
+
 	let lambdita = x => {
 		return spline.at(x)
 	}
+	let lambdita2 = x => {
+		return spline2.at(x)
+	}
 	actualizarR2(lambdita)
 	//actualizarLatex(U)
-	return lambdita
+	return [lambdita,lambdita2]
 }
 
 function graficar(a,b,funcion,n=10000,excel=false) {
-	let arreglo = darResultados(a,b,funcion,n=n)
+	let arreglo = darResultados(a,b,funcion[0],n=n)
+	let arreglo2 = darResultados(a,b,funcion[1],n=n)
 	var data_update = {
 		x: arreglo[0],
 		y: arreglo[1],
-		name: 'Splines, Órden ' + 3
+		name: 'Órden ' + 3
+	};
+	var data_update2 = {
+		x: arreglo2[0],
+		y: arreglo2[1],
+		name: 'Órden ' + 2
 	};
 	actualizarTabla()
 	if(excel==false) {
-		Plotly.deleteTraces('myPlot', 1)
+		Plotly.deleteTraces('myPlot', [1,2])
 	}
-	Plotly.plot('myPlot', [data_update])
+	Plotly.plot('myPlot', [data_update,data_update2])
 }
 function actualizarTabla() {
-	let data = darResultados(myPlot.layout.xaxis.range[0], myPlot.layout.xaxis.range[1],FUNCION,9)
+	let data = darResultados(myPlot.layout.xaxis.range[0], myPlot.layout.xaxis.range[1],FUNCION[0],9)
+	let data2 = darResultados(myPlot.layout.xaxis.range[0], myPlot.layout.xaxis.range[1],FUNCION[1],9)
+
 	for(let i = 0, length1 = data[0].length; i < length1; i++){
 		document.getElementById('X'+(i+1)).innerHTML = math.round(data[0][i],3)
 		document.getElementById('Y'+(i+1)).innerHTML = math.round(data[1][i],3)
+		document.getElementById('Y'+(i+1)+'C').innerHTML = math.round(data2[1][i],3)
 
 	}
 }
@@ -151,7 +174,7 @@ $(document).ready(function(){
                   	X.push(fila.X)
                   	Y.push(fila.Y)
                   }
-	                  Plotly.deleteTraces('myPlot',[0,1])
+	                  Plotly.deleteTraces('myPlot',[0,1,2])
 	                  var traces = [{
 						  x: X,
 						  y: Y,
@@ -173,17 +196,20 @@ $(document).ready(function(){
 });
 function exportarExcel(a=0,b=1,n=100) {
 
-	let data = darResultados(a,b,FUNCION,n)
+	let data = darResultados(a,b,FUNCION[0],n)
 	data = data[0].map((_, colIndex) => data.map(row => row[colIndex]));
+	let data2 = darResultados(a,b,FUNCION[1],n)
+	data2 = data2[0].map((_, colIndex) => data2.map(row => row[colIndex]));
 	var wb = XLSX.utils.book_new()
 	wb.Props = {
                 Title: "FuncionInterpolada",
                 Subject: "",
                 Author: "",
                 CreatedDate: new Date()};
-    wb.SheetNames.push("Funcion 1");
-    var ws = XLSX.utils.aoa_to_sheet(data);
-    wb.Sheets["Funcion 1"] = ws;
+    wb.SheetNames.push("Funcion Cubica")
+	wb.SheetNames.push("Funcion Cuadratica")
+    wb.Sheets["Funcion Cubica"] = XLSX.utils.aoa_to_sheet(data)
+    wb.Sheets["Funcion Cuadratica"] = XLSX.utils.aoa_to_sheet(data2)
 
     var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
     function s2ab(s) { 
@@ -205,7 +231,11 @@ document.onkeydown = function(e){
 }
 
 function exportarExcelModal() {
-	var mods = document.querySelectorAll('.modal > [type=checkbox]');
+	var mods = document.querySelectorAll('.modal1 > [type=checkbox]');
+    [].forEach.call(mods, function(mod){ mod.checked = true; });
+}
+function importarExcelModal() {
+	var mods = document.querySelectorAll('.modal2 > [type=checkbox]');
     [].forEach.call(mods, function(mod){ mod.checked = true; });
 }
 
