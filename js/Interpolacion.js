@@ -166,7 +166,19 @@ $(document).ready(function(){
 						  name: 'Puntos a Interpolar'
 						}];
 					Plotly.plot('myPlot', traces)
-					FUNCION = interpolar(X,Y)
+					let objetos = []
+					for(let i = 0, length1 = X.length; i < length1; i++){
+						objetos.push({
+							x:X[i],
+							y:Y[i]
+						})
+					}
+					objetos.sort(function (a, b) {
+					  return a.x - b.x;
+					});
+					let EQUIS = objetos.map(x=>x.x)
+					let YE = objetos.map(x=>x.y)
+					FUNCION = interpolar(EQUIS,YE)
 					graficar(myPlot.layout.xaxis.range[0], myPlot.layout.xaxis.range[1],FUNCION,100,true)
                 })
               document.getElementById('archivoEntrada').value = ''
