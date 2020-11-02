@@ -83,7 +83,7 @@ function interpolar (x,y) {
 		let signo2 = U[i+2][0] <0 ? '' : '+'
 		TT+= '&f(x)_{'+(parseInt(i/3)+1)+'}='+math.round(U[i][0],2)+'x^2'+signo1 +math.round(U[i+1][0],2)+'x'+signo2+math.round(U[i+2][0],2) +'\\\\'
 	}
-	TT += '\\text{Cúbicas:} \\'
+	TT += '\\\\\\text{Cúbicas:} \\'
 	U = spline.U
 	let derivadas = spline.darSegundasDerivadas()
 	let contador = -1
