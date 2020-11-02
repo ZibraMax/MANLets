@@ -140,7 +140,7 @@ function resolver(tipo = 'GL') {
 	} else if (tipo=='SP') {
 		actual = new Simpson(fx)
 	} else {
-		alert('Mensaje para Arturo: Arregla los errores pendejo')
+		alert('Mensaje para Arturo: Arregla los errores')
 	}
 	actualizarIntervalo()
 }

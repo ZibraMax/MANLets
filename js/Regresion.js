@@ -1,3 +1,62 @@
+var mathFields = []
+var mathFieldSpans = []
+var ECUACIONES = []
+
+var MQ = MathQuill.getInterface(2);
+ECUACIONES.push('1')
+ECUACIONES.push('x')
+ECUACIONES.push('x^2')
+for (var i = 0; i < ECUACIONES.length; i++) {
+	mathFieldSpans.push(document.getElementsByName('z'+(i+1))[0])
+	let mathField = MQ.MathField(mathFieldSpans[mathFieldSpans.length-1], {
+	    spaceBehavesLikeTab: true,
+	    handlers: {
+	        edit: function() {
+	            try{
+	            	actualizarFunciones()
+	            }
+	            catch(e){}
+	        }
+	    }
+	})
+	mathFields.push(mathField)
+}
+function updateFuncion(i) {
+	ECUACIONES[i] = mathFields[i].latex()
+}
+function crearTabla() {
+	let TABLA = document.getElementById('ecuaciones')
+	TABLA.innerHTML = ''
+	let PLANTILLA = (i)=> '<tr><td>\\(z_'+i+'=\\)</td><td id="ecuacion'+i+'"></td><td><label onclick="borrarEcuacion('+i+')">&times;</label></td></tr>'
+	let ULTIMA_FILA = '<tr><td colspan="3" class="casillaCentrada"><label onclick="agregarEcuacion()" style="color: gray;"><i class="fas fa-plus-circle fa-2x"></i></label></td></tr>'
+	mathFieldSpans = []
+	mathFields = []
+	for (var i = 0; i < ECUACIONES.length; i++) {
+		TABLA.innerHTML+=PLANTILLA(i+1)
+	}
+	TABLA.innerHTML+=ULTIMA_FILA
+	for (var i = 0; i < ECUACIONES.length; i++) {
+		let config = {spaceBehavesLikeTab: true,handlers: {edit: function() {actualizarFunciones()}}}
+		let ecuacion = ECUACIONES[i]
+		var mathFieldSpan = $('<span onclick ="ecuacionActual('+(i+1)+')" id="math-field" name="z'+(i+1)+'" class="mathquill-editable-math-field"></span>');
+		var mathField = MQ.MathField(mathFieldSpan[0],config);
+		mathFieldSpan.appendTo(document.getElementById('ecuacion'+(i+1)));
+		mathField.write(ecuacion)
+		mathField.reflow();
+		mathFields.push(mathField)
+		mathFieldSpans.push(document.getElementsByName('z'+(i+1))[0])
+	}
+	try {
+		MathJax.typeset()
+	} catch {
+
+	}
+}
+function actualizarFunciones() {
+	for (var i = 0; i < mathFields.length; i++) {
+		updateFuncion(i)
+	}
+}
 for (var XI=[],i=-20;i<22;++i) XI[i]=i;
 let YI = XI.map(x => 10*x**2-1*x-4+1000*(Math.random())*(Math.random() < 0.5 ? -1 : 1))
 ORDEN = 1
@@ -125,7 +184,37 @@ function borrarDatos() {
 
 	//Plotly.deleteTraces('myPlot', [0,1])
 }
+FUNCIONES = []
+function parserFunciones() {
+	FUNCIONES = []
+	for (var i = 0; i < ECUACIONES.length; i++) {
+		let nodoF = math.parse(MathExpression.fromLatex(ECUACIONES[i]).toString())
+		let fx = (x) => nodoF.evaluate({x: x})
+		FUNCIONES.push(fx)
+	}
+	return FUNCIONES
 
+}
+function regresionGeneral(x,y) {
+	FUNCIONES = parserFunciones()
+	let Z = math.zeros(x.length,FUNCIONES.length)._data
+	let F = []
+	for (var i = 0; i < Z.length; i++) {
+		for (var j = 0; j < Z[i].length; j++) {
+			Z[i][j]=FUNCIONES[j](x[i])
+		}
+		F.push([y[i]])
+	}
+	Z = math.matrix(Z)
+	F = math.matrix(F)
+	let IZQUIERDA = math.multiply(math.transpose(Z),Z)
+	let DERECHA = math.multiply(math.transpose(Z),F);
+
+	MATRIZ_GENERAL = IZQUIERDA._data
+	VECTOR_GENERAL = DERECHA._data
+	let U = math.multiply(math.inv(IZQUIERDA),DERECHA)._data
+	return U
+}
 function regresion_pol(x,y,o) {
 	var zanahorias = []
 
@@ -152,14 +241,28 @@ function regresion_pol(x,y,o) {
 	return U
 }
 function interpolar (x,y) {
-	let U = regresion_pol(x,y,ORDEN+1).flat().reverse()
-	let lambdita = x => {
-		let sum = 0
-		for(let j = 0, length2 = U.length; j < length2; j++){
-			sum+=x**((U.length-1)-j)*U[j]
+	let U = []
+	let lambdita = undefined
+	if (document.getElementById('general').checked) {
+		U = regresionGeneral(x,y)
+		lambdita = x => {
+			let sum = 0
+			for (var i = 0; i < U.length; i++) {
+				sum+=FUNCIONES[i](x)*U[i]
+			}
+			return sum
 		}
-		return sum
+	} else {
+		U = regresion_pol(x,y,ORDEN+1).flat().reverse()
+		lambdita = x => {
+			let sum = 0
+			for(let j = 0, length2 = U.length; j < length2; j++){
+				sum+=x**((U.length-1)-j)*U[j]
+			}
+			return sum
+		}
 	}
+	
 	actualizarR2(lambdita)
 	actualizarLatex(U)
 	return lambdita
@@ -237,29 +340,47 @@ function darResultados(a,b,funcion,n=100) {
 	}
 	return [x,y]
 }
+function calcularRegresionGeneral(){
+	let XI = myPlot.data[0].x
+	let YI = myPlot.data[0].y
+	FUNCION = interpolar(XI,YI)
+	let xmin = math.min(XI)
+	let xmax = math.max(XI)
+	graficar(xmin, xmax,FUNCION)
+}
 function actualizarLatex(coeficientes) {
 
 	const elem = document.getElementById('pretty')
 	let stringLatex = 'f(x)='
-
-	for(let i = 0, length1 = coeficientes.length; i < length1; i++){
-		let signo = ''
-		if (coeficientes[i]>=0) {
-				signo = '+'
-				if (i==0) {
-					signo = ''
-				}
-			} 
-		if (((coeficientes.length-1)-i)) {
-			if (((coeficientes.length-1)-i) == 1) {
-				stringLatex+=signo + math.round(coeficientes[i],3)+'x'
-			} else {
-				stringLatex+=signo + math.round(coeficientes[i],3)+'x^{'+((coeficientes.length-1)-i+'}')
+	if (document.getElementById('general').checked) {
+		for (var i = 0; i < coeficientes.length; i++) {
+			let signo1 = coeficientes[i]>0? '+':''
+			if (i==0) {
+				signo1 = ''
 			}
-		} else {
-			stringLatex+=signo + math.round(coeficientes[i],3)
+			stringLatex += signo1+math.round(coeficientes[i],2)+''+ECUACIONES[i]
+		}
+	} else {
+		for(let i = 0, length1 = coeficientes.length; i < length1; i++){
+			let signo = ''
+			if (coeficientes[i]>=0) {
+					signo = '+'
+					if (i==0) {
+						signo = ''
+					}
+				} 
+			if (((coeficientes.length-1)-i)) {
+				if (((coeficientes.length-1)-i) == 1) {
+					stringLatex+=signo + math.round(coeficientes[i],3)+'x'
+				} else {
+					stringLatex+=signo + math.round(coeficientes[i],3)+'x^{'+((coeficientes.length-1)-i+'}')
+				}
+			} else {
+				stringLatex+=signo + math.round(coeficientes[i],3)
+			}
 		}
 	}
+
 
 	elem.innerHTML = '$$'+stringLatex+'$$'
 	try {
@@ -389,3 +510,33 @@ function actualizarR2(f) {
 	}
 	R2 = (ST-SR)/ST
 }
+
+
+function triggerBotones(param,id='iteraciones') {
+	document.querySelectorAll('#'+id).forEach(x => x.disabled = !param)
+}
+function abrirModalZ() {
+	var mods = document.querySelectorAll('.modal3 > [type=checkbox]');
+    [].forEach.call(mods, function(mod){ mod.checked = true; });
+};
+ECUACION_ACTUAL = 0
+function ecuacionActual(i) {
+	console.log(i)
+	ECUACION_ACTUAL = i-1
+}
+
+function input(str) {
+	mathFields[ECUACION_ACTUAL].cmd(str)
+	mathFields[ECUACION_ACTUAL].focus()
+}
+function borrarEcuacion(i) {
+	ECUACIONES.splice(i-1, 1)
+	crearTabla()
+}
+
+function agregarEcuacion() {
+	ECUACIONES.push('1')
+	crearTabla()
+}
+// triggerBotones(false)
+triggerBotones(false,'botonZeta')
