@@ -57,4 +57,22 @@ class SplineO2 {
     	let C = this.U[tramo*3+2][0]
     	return A*x**2+B*x+C
 	}
+    darResultados(n=30) {
+        let _X = []
+        let _Y = []
+        for (var i = 1; i < this.xs.length; i++) {
+            let a = this.xs[i-1]
+            let b = this.xs[i]
+            let h = (b-a)/n
+            let A = this.U[(i-1)*3][0]
+            let B = this.U[(i-1)*3+1][0]
+            let C = this.U[(i-1)*3+2][0]
+            for (var j = 0; j <= n; j++) {
+                let x = a+j*h
+                _X.push(x)
+                _Y.push(A*x**2+B*x+C)
+            }
+        }
+        return [_X,_Y]
+    }
 }

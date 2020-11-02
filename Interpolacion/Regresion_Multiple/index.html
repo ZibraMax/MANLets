@@ -74,15 +74,36 @@
 							<th style="text-align: center;">
 								<button onclick="masOrden()" class="warning stack icon-paper-plane" style="text-align: center;">Aumentar órden ></button>
 							</th>
-							<tr>
-								<th class="casillaCentrada">X</th>
-								<th class="casillaCentrada">Y</th>
-							</tr>
 						</thead>
-						<tbody >
+						<tbody>
+							<tr>
+								<td class="casillaCentrada">\(x=\)</td>
+								<td class="casillaCentrada"><input type="number" id="entradaX"></td>
+							</tr>
+							<tr>
+								<td class="casillaCentrada">\(y=\)</td>
+								<td class="casillaCentrada"><input type="number" id="entradaY"></td>
+							</tr>
+							<tr>
+								<td class="casillaCentrada">\(z=\)</td>
+								<td class="casillaCentrada"><input type="number" id="entradaZ"></td>
+							</tr>
+							<th class="casillaCentrada">
+								<button onclick="agregarDatoXY()" class="warning stack icon-paper-plane" style="text-align: center">Agregar Punto <i class="fas fa-plus-square"></i></button>
+							</th>
+							<th class="casillaCentrada">
+								<button onclick="borrarDatos()" class="warning stack icon-paper-plane" style="text-align: center">Borrar Puntos <i class="fas fa-trash-alt"></i></button>
+							</th>
+							<tr>
+								<td colspan="2">
+									<label id="latexmatriz"></label>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" class="casillaCentrada" id="resultadosInformacion"></td>
+							</tr>
 						</tbody>
 					</table>
-					<div id="tablaNXN"></div>
 			</div>
 		</div>
 </footer>

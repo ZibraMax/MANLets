@@ -1,35 +1,19 @@
-let Nnn =5
-
-for (var XI=[],i=-Nnn;i<Nnn;++i) XI[i]=i;
-let YI = XI.map(x => 10*x**2-1*x-4+300*(Math.random())*(Math.random() < 0.5 ? -1 : 1))
-ORDEN = 1
-R2 = '-'
 var traces = [{
-  x: XI,
-  y: YI,
+  x: [1, 2],
+  y: [10, 15],
   mode: 'markers',
   type: 'scatter',
-  name: 'Puntos'
+  name: 'Puntos a Interpolar'
 }];
-
-
 traces.push({
-  x: XI,
-  y: YI,
-  name: 'Órden ' + 3
+  x: [1, 2],
+  y: [10, 15],
+  name: 'Funcion Interpolada'
 })
-traces.push({
-  x: XI,
-  y: YI,
-  name: 'Órden ' + 2
-})
-
-
-
 var FUNCION = undefined
 var myPlot = document.getElementById('myPlot')
 let layout = {
-		  title:'Interpolación con Splines',
+		  title:'Iterpolación polinomial',
 		  xaxis: {
 		  	title:'x'
 		  },
@@ -60,86 +44,24 @@ Plotly.d3.select(".plotly").on('click', function(d, i) {
 	let objetos = []
 	let ex = myPlot.data[0].x
 	let ey = myPlot.data[0].y
-	FUNCION = interpolar(ex,ey)
-	graficar(myPlot.layout.xaxis.range[0], myPlot.layout.xaxis.range[1],FUNCION)
+	for(let i = 0, length1 = ex.length; i < length1; i++){
+		objetos.push({
+			x:ex[i],
+			y:ey[i]
+		})
+	}
+	objetos.sort(function (a, b) {
+	  return a.x - b.x;
+	});
+	let EQUIS = objetos.map(x=>x.x)
+	let xmin = math.min(EQUIS)
+	let xmax = math.max(EQUIS)
+	let YE = objetos.map(x=>x.y)
+	FUNCION = interpolar(EQUIS,YE)
+	graficar(xmin, xmax,FUNCION)
 });
-var spline = undefined
-var spline2 = undefined
-
-function interpolar (x,y) {
-	spline = new Spline(x, y);
-	spline2 = new SplineO2(x, y);
-
-	let lambdita = x => {
-		return spline.at(x)
-	}
-	let lambdita2 = x => {
-		return spline2.at(x)
-	}
-	let TT = ''
-	let U = spline2.U
-	for (var i = 0; i < U.length; i+=3) {
-		let signo1 = U[i+1][0] <0 ? '' : '+'
-		let signo2 = U[i+2][0] <0 ? '' : '+'
-		TT+= '&f(x)_{'+(parseInt(i/3)+1)+'}='+math.round(U[i][0],2)+'x^2'+signo1 +math.round(U[i+1][0],2)+'x'+signo2+math.round(U[i+2][0],2) +'\\\\'
-	}
-	TT += '\\text{Cúbicas:} \\'
-	U = spline.U
-	let derivadas = spline.darSegundasDerivadas()
-	let contador = -1
-	for (var i = 0; i < U.length; i+=4) {
-		contador++
-		let signo1 = U[i+1][0] <0 ? '' : '+'
-		let signo2 = U[i+2][0] <0 ? '' : '+'
-		let signo3 = U[i+3][0] <0 ? '' : '+'
-		TT+= ' & f(x)_{'+(parseInt(i/4)+1)+'}='+math.round(U[i],2)+'x^3'+signo1 +math.round(U[i+1],2)+'x^2'+signo2+math.round(U[i+2],2)+'x'+signo3+math.round(U[i+3],2)+';f"('+math.round(x[contador],2)+')='+math.round(derivadas[contador],2) +' \\\\ '
-	}
-	TT+=' & f"('+math.round(x[contador+1],2)+')='+math.round(derivadas[contador+1],2) +' \\\\ '
-	actualizarTabla(TT)
-	return [lambdita,lambdita2]
-}
-
-function graficar(a,b,funcion,n=10000,excel=false) {
-
-	let arreglo = spline.darResultados(n=100)
-	let arreglo2 = spline2.darResultados(n=100)
-	var data_update = {
-		x: arreglo[0],
-		y: arreglo[1],
-		name: 'Órden ' + 3
-	};
-	var data_update2 = {
-		x: arreglo2[0],
-		y: arreglo2[1],
-		name: 'Órden ' + 2
-	};
-	if(excel==false) {
-		try {
-			Plotly.deleteTraces('myPlot', [1,2])
-		} catch {
-
-		}
-	}
-	Plotly.plot('myPlot', [data_update,data_update2])
-}
-function actualizarTabla(TEXT) {
-	document.getElementById('latexmatriz').innerHTML = '$$\\small\\begin{align}' +'\\text{Parábolas:} '+'\\ '+ TEXT+ '\\end{align}$$'
-	try {
-		MathJax.typeset()
-	} catch {}
-}
-function borrarDatos() {
-	myPlot.data[0].x = []
-	myPlot.data[0].y = []
-	myPlot.data[1].x = []
-	myPlot.data[1].y = []
-	Plotly.react(myPlot)
-	document.getElementById('latexmatriz').innerHTML = ''
-	document.getElementById('resultadosInformacion').innerHTML = ''
-	try {
-		MathJax.typeset()
-	} catch {}
-}
+MATRIZ_GENERAL = undefined
+VECTOR_GENERAL = undefined
 
 function agregarDatoXY() {
 	let x = parseFloat(document.getElementById('entradaX').value)
@@ -175,20 +97,109 @@ function agregarDatoXY() {
 	}
 }
 
+function borrarDatos() {
+	myPlot.data[0].x = []
+	myPlot.data[0].y = []
+
+	myPlot.data[1].x = []
+	myPlot.data[1].y = []
+
+	Plotly.react(myPlot)
+	document.getElementById('latexmatriz').innerHTML = ''
+	document.getElementById('pretty').innerHTML = ''
+	document.getElementById('resultadosInformacion').innerHTML = ''
+	try {
+		MathJax.typeset()
+	} catch {}
+
+	//Plotly.deleteTraces('myPlot', [0,1])
+}
+
+function Lk(x,k) {
+	let res = ''
+	for (var i = 0; i < x.length; i++) {
+		if (k!=i) {
+			let signosup = x[i] <0?'+':'-'
+			res += '\\left(\\frac{x'+signosup+math.round(x[i]**2/math.abs(x[i]),2)+'}{'+math.round(x[k]**2/math.abs(x[k]),2)+signosup+math.round(x[i]**2/math.abs(x[i]),2)+'}\\right)'
+		}
+	}
+	return res
+}
+
+function lagrange(x,y) {
+	let L = ''
+	for (var i = 0; i < x.length; i++) {
+		let signo = '+'
+		if (i==0) {
+			signo=''
+		}
+		let salto = '\\\\'
+		L += signo+Lk(x,i) +'('+math.round(y[i],2)+')'+ salto
+	}
+	return L
+}
+
+function interpolar (x,y) {
+	let matriz = []
+	let vector = []
+	for(let i = 0, length1 = x.length; i < length1; i++){
+		let fila = []
+		for(let j = 0; j < x.length; j++){
+			fila.push(x[i]**((x.length-1)-j))
+		}
+		matriz.push(fila)
+		vector.push([y[i]])
+	}
+	let M = math.matrix(matriz)
+	let F = math.matrix(vector)
+	let U = math.multiply(math.inv(M),F)._data
+	MATRIZ_GENERAL = M
+	VECTOR_GENERAL = F
+	let lambdita = x => {
+		let sum = 0
+		for(let j = 0, length2 = U.length; j < length2; j++){
+			sum+=x**((U.length-1)-j)*U[j]
+		}
+		return sum
+	}
+	actualizarLatex(U,lagrange(x,y))
+	return lambdita
+}
+
+function graficar(a,b,funcion,n=100,excel=false) {
+	let arreglo = darResultados(a,b,funcion,n=100)
+	var data_update = {
+		x: arreglo[0],
+		y: arreglo[1],
+		name: 'Funcion Interpolada'
+	};
+	if(excel==false) {
+		try {
+			Plotly.deleteTraces('myPlot', 1)
+		} catch {
+
+		}
+	}
+	Plotly.plot('myPlot', [data_update])
+}
+function actualizarTabla(tabla) {
+	//Datos en X,Y
+	document.getElementById('latexmatriz').innerHTML = '$$\\small\\begin{align} f(x)='+tabla+'\\end{align}$$'
+}
 function darResultados(a,b,funcion,n=100) {
 	let h = (b-a)/n
 	let x = []
 	let y = []
-	for(let i = 0; i < n; i++){
+	for(let i = 0; i <= n; i++){
 		x.push(a + h*i)
 		y.push(funcion(a + h*i))
 	}
 	return [x,y]
 }
-function actualizarLatex(coeficientes) {
+function actualizarLatex(coeficientes,tabla) {
 
 	const elem = document.getElementById('pretty')
-	let stringLatex = 'f(x)='
+	let stringLatex = '\\small f(x)='
 
 	for(let i = 0, length1 = coeficientes.length; i < length1; i++){
 		let signo = ''
@@ -202,7 +213,7 @@ function actualizarLatex(coeficientes) {
 			if (((coeficientes.length-1)-i) == 1) {
 				stringLatex+=signo + math.round(coeficientes[i],3)+'x'
 			} else {
-				stringLatex+=signo + math.round(coeficientes[i],3)+'x^'+((coeficientes.length-1)-i)
+				stringLatex+=signo + math.round(coeficientes[i],3)+'x^{'+((coeficientes.length-1)-i+'}')
 			}
 		} else {
 			stringLatex+=signo + math.round(coeficientes[i],3)
@@ -210,7 +221,8 @@ function actualizarLatex(coeficientes) {
 	}
 
 	elem.innerHTML = '$$'+stringLatex+'$$'
-    try {
+	actualizarTabla(tabla)
+	try {
 	    MathJax.typeset()
 	} catch {
 
@@ -237,7 +249,7 @@ $(document).ready(function(){
                   	Y.push(fila.Y)
                   }
                   try {
-	                  Plotly.deleteTraces('myPlot',[0,1,2])
+	                  Plotly.deleteTraces('myPlot',[0,1])
                   } catch {}
 	                  var traces = [{
 						  x: X,
@@ -246,9 +258,23 @@ $(document).ready(function(){
 						  type: 'scatter',
 						  name: 'Puntos a Interpolar'
 						}];
-					Plotly.plot('myPlot', traces)
-					FUNCION = interpolar(X,Y)
-					graficar(myPlot.layout.xaxis.range[0], myPlot.layout.xaxis.range[1],FUNCION,10000,true)
+					Plotly.plot('myPlot', traces,{title:'Iterpolación polinomial',xaxis: {title:'x'},yaxis: {title:'y'}})
+					let objetos = []
+					for(let i = 0, length1 = X.length; i < length1; i++){
+						objetos.push({
+							x:X[i],
+							y:Y[i]
+						})
+					}
+					objetos.sort(function (a, b) {
+					  return a.x - b.x;
+					});
+					let EQUIS = objetos.map(x=>x.x)
+					let YE = objetos.map(x=>x.y)
+					FUNCION = interpolar(EQUIS,YE)
+					let xmin = math.min(EQUIS)
+					let xmax = math.max(EQUIS)
+					graficar(xmin, xmax,FUNCION,100,true)
 					var mods = document.querySelectorAll('.modal > [type=checkbox]');
 				    [].forEach.call(mods, function(mod){ mod.checked = false; });
                 })
@@ -262,20 +288,17 @@ $(document).ready(function(){
 });
 function exportarExcel(a=0,b=1,n=100) {
 
-	let data = darResultados(a,b,FUNCION[0],n)
+	let data = darResultados(a,b,FUNCION,n)
 	data = data[0].map((_, colIndex) => data.map(row => row[colIndex]));
-	let data2 = darResultados(a,b,FUNCION[1],n)
-	data2 = data2[0].map((_, colIndex) => data2.map(row => row[colIndex]));
 	var wb = XLSX.utils.book_new()
 	wb.Props = {
                 Title: "FuncionInterpolada",
                 Subject: "",
                 Author: "",
                 CreatedDate: new Date()};
-    wb.SheetNames.push("Funcion Cubica")
-	wb.SheetNames.push("Funcion Cuadratica")
-    wb.Sheets["Funcion Cubica"] = XLSX.utils.aoa_to_sheet(data)
-    wb.Sheets["Funcion Cuadratica"] = XLSX.utils.aoa_to_sheet(data2)
+    wb.SheetNames.push("Funcion 1");
+    var ws = XLSX.utils.aoa_to_sheet(data);
+    wb.Sheets["Funcion 1"] = ws;
 
     var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
     function s2ab(s) { 
@@ -286,8 +309,8 @@ function exportarExcel(a=0,b=1,n=100) {
 	}
 	saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), 'FuncionInterpolada.xlsx')
 }
-FUNCION = interpolar(XI,YI)
-graficar(myPlot.layout.xaxis.range[0], myPlot.layout.xaxis.range[1],FUNCION)
+FUNCION = interpolar([1, 2],[10, 15])
+graficar(1, 2,FUNCION)
 
 document.onkeydown = function(e){
   if (e.keyCode == 27) {
@@ -305,18 +328,3 @@ function importarExcelModal() {
     [].forEach.call(mods, function(mod){ mod.checked = true; });
 }
 
-function menosOrden() {
-	ORDEN -= 1*(ORDEN>=1)
-	actualizarOrden()
-}
-function masOrden() {
-	ORDEN += 1
-	actualizarOrden()
-}
-
-function actualizarOrden() {
-	let X = myPlot.data[0].x
-	let Y = myPlot.data[0].y
-	FUNCION = interpolar(X,Y)
-	graficar(myPlot.layout.xaxis.range[0], myPlot.layout.xaxis.range[1],FUNCION)
-}

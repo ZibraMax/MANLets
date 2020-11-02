@@ -35,7 +35,47 @@ Plotly.d3.select(".plotly").on('click', function(d, i) {
 	var y = ((e.layerY - bg.attributes['y'].value) / (bg.attributes['height'].value)) * (myPlot.layout.yaxis.range[0] - myPlot.layout.yaxis.range[1]) + myPlot.layout.yaxis.range[1]
 	if (x.between(myPlot.layout.xaxis.range[0], myPlot.layout.xaxis.range[1]) &&
 	y.between(myPlot.layout.yaxis.range[0], myPlot.layout.yaxis.range[1])) {
-	Plotly.extendTraces(myPlot, {x: [[x]],y: [[y]]},[0]);}
+		try {
+			Plotly.extendTraces(myPlot, {x: [[x]],y: [[y]]},[0]);
+		} catch {
+			Plotly.plot('myPlot', [{x: [x],y: [y],mode: 'markers',type: 'scatter',name: 'Puntos'}]);
+		}
+	}
+	let objetos = []
+	let ex = myPlot.data[0].x
+	let ey = myPlot.data[0].y
+	for(let i = 0, length1 = ex.length; i < length1; i++){
+		objetos.push({
+			x:ex[i],
+			y:ey[i]
+		})
+	}
+	objetos.sort(function (a, b) {
+	  return a.x - b.x;
+	});
+	let EQUIS = objetos.map(x=>x.x)
+	let xmin = math.min(EQUIS)
+	let xmax = math.max(EQUIS)
+	let YE = objetos.map(x=>x.y)
+	FUNCION = interpolar(EQUIS,YE)
+	graficar(xmin, xmax,FUNCION)
+});
+MATRIZ_GENERAL = undefined
+VECTOR_GENERAL = undefined
+
+function agregarDatoXY() {
+	let x = parseFloat(document.getElementById('entradaX').value)
+	let y = parseFloat(document.getElementById('entradaY').value)
+
+	//agregarDatosXY
+	if (x && y || (x == 0 || y == 0)) {
+	try {
+		Plotly.extendTraces(myPlot, {x: [[x]],y: [[y]]},[0]);
+	} catch {
+		Plotly.plot('myPlot', [{x: [x],y: [y],mode: 'markers',type: 'scatter',name: 'Puntos'}]);
+	}
+
+
 	let objetos = []
 	let ex = myPlot.data[0].x
 	let ey = myPlot.data[0].y
@@ -50,10 +90,31 @@ Plotly.d3.select(".plotly").on('click', function(d, i) {
 	});
 	let EQUIS = objetos.map(x=>x.x)
 	let YE = objetos.map(x=>x.y)
+	let xmin = math.min(EQUIS)
+	let xmax = math.max(EQUIS)
 	FUNCION = interpolar(EQUIS,YE)
-	graficar(myPlot.layout.xaxis.range[0], myPlot.layout.xaxis.range[1],FUNCION)
-});
-	
+	graficar(xmin, xmax,FUNCION)
+	}
+}
+
+function borrarDatos() {
+	myPlot.data[0].x = []
+	myPlot.data[0].y = []
+
+	myPlot.data[1].x = []
+	myPlot.data[1].y = []
+
+	Plotly.react(myPlot)
+	document.getElementById('latexmatriz').innerHTML = ''
+	document.getElementById('pretty').innerHTML = ''
+	document.getElementById('resultadosInformacion').innerHTML = ''
+	try {
+		MathJax.typeset()
+	} catch {}
+
+	//Plotly.deleteTraces('myPlot', [0,1])
+}
+
 function interpolar (x,y) {
 	let matriz = []
 	let vector = []
@@ -68,6 +129,8 @@ function interpolar (x,y) {
 	let M = math.matrix(matriz)
 	let F = math.matrix(vector)
 	let U = math.multiply(math.inv(M),F)._data
+	MATRIZ_GENERAL = M
+	VECTOR_GENERAL = F
 	let lambdita = x => {
 		let sum = 0
 		for(let j = 0, length2 = U.length; j < length2; j++){
@@ -75,7 +138,7 @@ function interpolar (x,y) {
 		}
 		return sum
 	}
-	actualizarLatex(U)
+	actualizarLatex(U,interpolate(x, y))
 	return lambdita
 }
 
@@ -86,34 +149,33 @@ function graficar(a,b,funcion,n=100,excel=false) {
 		y: arreglo[1],
 		name: 'Funcion Interpolada'
 	};
-	actualizarTabla()
 	if(excel==false) {
-		Plotly.deleteTraces('myPlot', 1)
+		try {
+			Plotly.deleteTraces('myPlot', 1)
+		} catch {
+
+		}
 	}
 	Plotly.plot('myPlot', [data_update])
 }
-function actualizarTabla() {
-	let data = darResultados(myPlot.layout.xaxis.range[0], myPlot.layout.xaxis.range[1],FUNCION,9)
-	for(let i = 0, length1 = data[0].length; i < length1; i++){
-		document.getElementById('X'+(i+1)).innerHTML = math.round(data[0][i],3)
-		document.getElementById('Y'+(i+1)).innerHTML = math.round(data[1][i],3)
-
-	}
+function actualizarTabla(tabla) {
+	//Datos en X,Y
+	document.getElementById('latexmatriz').innerHTML = '$$\\small\\begin{eqnarray} f(x)='+tabla+'\\end{eqnarray}$$'
 }
 function darResultados(a,b,funcion,n=100) {
 	let h = (b-a)/n
 	let x = []
 	let y = []
-	for(let i = 0; i < n; i++){
+	for(let i = 0; i <= n; i++){
 		x.push(a + h*i)
 		y.push(funcion(a + h*i))
 	}
 	return [x,y]
 }
-function actualizarLatex(coeficientes) {
+function actualizarLatex(coeficientes,tabla) {
 
 	const elem = document.getElementById('pretty')
-	let stringLatex = 'f(x)='
+	let stringLatex = '\\small f(x)='
 
 	for(let i = 0, length1 = coeficientes.length; i < length1; i++){
 		let signo = ''
@@ -135,7 +197,12 @@ function actualizarLatex(coeficientes) {
 	}
 
 	elem.innerHTML = '$$'+stringLatex+'$$'
-    MathJax.typeset()
+	actualizarTabla(tabla)
+	try {
+	    MathJax.typeset()
+	} catch {
+
+	}
 }
 XL_row_object = undefined
 $(document).ready(function(){
@@ -157,7 +224,9 @@ $(document).ready(function(){
                   	X.push(fila.X)
                   	Y.push(fila.Y)
                   }
+                  try {
 	                  Plotly.deleteTraces('myPlot',[0,1])
+                  } catch {}
 	                  var traces = [{
 						  x: X,
 						  y: Y,
@@ -165,7 +234,7 @@ $(document).ready(function(){
 						  type: 'scatter',
 						  name: 'Puntos a Interpolar'
 						}];
-					Plotly.plot('myPlot', traces)
+					Plotly.plot('myPlot', traces,{title:'Iterpolación polinomial',xaxis: {title:'x'},yaxis: {title:'y'}})
 					let objetos = []
 					for(let i = 0, length1 = X.length; i < length1; i++){
 						objetos.push({
@@ -179,7 +248,11 @@ $(document).ready(function(){
 					let EQUIS = objetos.map(x=>x.x)
 					let YE = objetos.map(x=>x.y)
 					FUNCION = interpolar(EQUIS,YE)
-					graficar(myPlot.layout.xaxis.range[0], myPlot.layout.xaxis.range[1],FUNCION,100,true)
+					let xmin = math.min(EQUIS)
+					let xmax = math.max(EQUIS)
+					graficar(xmin, xmax,FUNCION,100,true)
+					var mods = document.querySelectorAll('.modal > [type=checkbox]');
+				    [].forEach.call(mods, function(mod){ mod.checked = false; });
                 })
               document.getElementById('archivoEntrada').value = ''
             };
@@ -213,7 +286,7 @@ function exportarExcel(a=0,b=1,n=100) {
 	saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), 'FuncionInterpolada.xlsx')
 }
 FUNCION = interpolar([1, 2],[10, 15])
-graficar(myPlot.layout.xaxis.range[0], myPlot.layout.xaxis.range[1],FUNCION)
+graficar(1, 2,FUNCION)
 
 document.onkeydown = function(e){
   if (e.keyCode == 27) {
@@ -230,3 +303,4 @@ function importarExcelModal() {
 	var mods = document.querySelectorAll('.modal2 > [type=checkbox]');
     [].forEach.call(mods, function(mod){ mod.checked = true; });
 }
+

@@ -1,4 +1,4 @@
-ORDEN = 2
+ORDEN = 1
 var RESULTADOS = []
 for (var XI=[],i=-10;i<10;++i) XI.push(i);
 let YI = [...XI]
@@ -10,7 +10,7 @@ let Z = []
 for (var i = 0; i < XI.length; i++) {
 	for (var j = 0; j < YI.length; j++) {
 		if (Math.random()>0.7) {
-			Z.push(FUNCION(XI[i],YI[j])+1.5*(Math.random())*(Math.random() < 0.5 ? -1 : 1))
+			Z.push(FUNCION(XI[i],YI[j]))
 			ZI.push(FUNCION(XI[i],YI[j]))
 			X.push(XI[i])
 			Y.push(YI[j])
@@ -37,8 +37,13 @@ var trace2 = {
 
 var data = [trace1,trace2];
 var layout = {
-	title:'Regresión polinomial',xaxis: {title:'x'},yaxis: {title:'y'},
-	margin: {l: 0,r: 0,b: 0,t: 0},
+	xaxis: {title:'x'},yaxis: {title:'y'},margin: {
+    l: 0,
+    r: 0,
+    b: 0,
+    t: 0,
+    pad: 4
+  },
 	legend: {
 		x: 1,
 		xanchor: 'right',
@@ -46,7 +51,73 @@ var layout = {
 	}
 	};
 
+
 Plotly.newPlot('myPlot', data, layout,{responsive: true});
+
+
+function agregarDatoXY() {
+	let x = parseFloat(document.getElementById('entradaX').value)
+	let y = parseFloat(document.getElementById('entradaY').value)
+	let z = parseFloat(document.getElementById('entradaZ').value)
+	let ex = []
+	let ey = []
+	let ez = []
+	try {
+		ex = myPlot.data[0].x
+		ey = myPlot.data[0].y
+		ez = myPlot.data[0].z
+	} catch {}
+	borrarDatos(ORDEN)
+
+	//agregarDatosXY
+	if (x && y && z || (x == 0 || y == 0 || z == 0)) {
+	const _X = ex.concat([x])
+	const _Y = ey.concat([y])
+	const _Z = ez.concat([z])
+	let trace = {
+		x:_X, y: _Y, z: _Z,
+		mode: 'markers',
+		marker: {
+			size: 5,
+			line: {
+			color: 'rgba(217, 217, 217, 0.14)',
+			width: 0.8},
+			opacity: 0.8},
+		type: 'scatter3d'
+	}
+	Plotly.plot('myPlot', [trace]);
+	let objetos = []
+	let xmin = x
+	let xmax = x
+	let ymin = y
+	let ymax = y
+	xmin = math.min(_X)
+	xmax = math.max(_X)
+	ymin = math.min(_Y)
+	ymax = math.max(_Y)
+
+	xmax = math.max([xmax,ymax])
+	xmin = math.min([xmin,ymin])
+	FUNCION = interpolar(_X,_Y,_Z)
+	actualizarR2(FUNCION,_X,_Y,_Z)
+	graficar(xmin, xmax,FUNCION)
+	}
+}
+
+function borrarDatos(orden=0) {
+	ORDEN = orden
+	try {
+		Plotly.deleteTraces('myPlot', [0,1])
+	} catch {}
+	Plotly.react(myPlot)
+	document.getElementById('latexmatriz').innerHTML = ''
+	document.getElementById('pretty').innerHTML = ''
+	document.getElementById('resultadosInformacion').innerHTML = ''
+	try {
+		MathJax.typeset()
+	} catch {}
+
+}
 
 
 function regresion_pol(x,y,z,o) {
@@ -69,11 +140,29 @@ function regresion_pol(x,y,z,o) {
 		}
 		V.push([algo])
 	}
-
-	let U = math.multiply(math.inv(math.matrix(K)),math.matrix(V))._data
+	let U = []
+	U = math.multiply(math.inv(math.matrix(K)),math.matrix(V))._data
 	RESULTADOS = [K,V,U]
 	return U
 }
+
+function actualizarR2(f,X,Y,Z) {
+	let Zpred = []
+	for (var i = 0; i < X.length; i++) {
+		Zpred.push(FUNCION(X[i],Y[i]))
+	}
+	let Zmean = Z.reduce((a,b) => a + b) / Z.length
+	let ST = 0
+	let SR = 0
+	for (var i = 0; i < Y.length; i++) {
+		ST += (Z[i] - Zmean)**2
+		SR += (Z[i] - Zpred[i])**2
+	}
+	R2 = (ST-SR)/ST
+	let sxy = math.sqrt(SR/(X.length-2))
+	document.getElementById('resultadosInformacion').innerHTML = '\\(S_{x/y}=' + math.round(sxy,2) + ';R^2='+math.round(R2,3)+'\\)'
+}
+
 function interpolar(x,y,z) {
 	let U = regresion_pol(x,y,z,ORDEN).flat()
 	let lambdita = (x,y) => {
@@ -83,7 +172,6 @@ function interpolar(x,y,z) {
 		}
 		return sum
 	}
-	//actualizarR2(lambdita)
 	actualizarLatex(U)
 	return lambdita
 }
@@ -112,14 +200,18 @@ function actualizarLatex(coeficientes) {
 		stringLatex += signo + coeff + variable+ exp 
 	}
 	elem.innerHTML = '$$'+stringLatex+'$$'
-    MathJax.typeset()
+    try {
+	    MathJax.typeset()
+	} catch {
+
+	}
 }
 function darResultados(a,b,funcion,n=100) {
 	let h = (b-a)/n
 	let x = []
 	let y = []
 	let z = []
-	for(let i = 0; i < n; i++){
+	for(let i = 0; i <= n; i++){
 		for (var j = 0; j < n; j++) {
 			x.push(a + h*i)
 			y.push(a + h*j)
@@ -139,15 +231,17 @@ function graficar(a,b,funcion,n=100,excel=false) {
 		color:'rgb(192, 240, 36)',
 		type: 'mesh3d'
 	};
-	actualizarTabla()
+	actualizarTabla(funcion)
 	if(excel==false) {
-		Plotly.deleteTraces('myPlot', 1)
+		try {
+          Plotly.deleteTraces('myPlot',1)
+		} catch {}
 	}
 	Plotly.plot('myPlot', [data_update])
 }
 
-function actualizarTabla() {
-	let lugarTabla = document.getElementById('tablaNXN')
+function actualizarTabla(funcion) {
+	let lugarTabla = document.getElementById('latexmatriz')
 
 	let K = RESULTADOS[0]
 	let V = RESULTADOS[1]
@@ -180,11 +274,17 @@ function actualizarTabla() {
 	}
 	tabla+='\\end{pmatrix}'
 	lugarTabla.innerHTML = '$$'+tabla+'$$'
-	MathJax.typeset()
+
+	try {
+	    MathJax.typeset()
+	} catch {
+
+	}
 }
 
 var myPlot = document.getElementById('myPlot')
 FUNCION = interpolar(X,Y,Z)
+actualizarR2(FUNCION,X,Y,Z)
 graficar(-15, 15,FUNCION,100)
 
 function menosOrden() {
@@ -192,7 +292,7 @@ function menosOrden() {
 	actualizarOrden()
 }
 function masOrden() {
-	ORDEN += 1
+	ORDEN += 1*((2*(ORDEN+1))<=myPlot.data[0].x.length-1)
 	actualizarOrden()
 }
 
@@ -201,6 +301,7 @@ function actualizarOrden(excel=false) {
 	let Y = myPlot.data[0].y
 	let Z = myPlot.data[0].z
 	FUNCION = interpolar(X,Y,Z)
+	actualizarR2(FUNCION,X,Y,Z)
 	let a = math.min(myPlot.data[0].x)
 	let b = math.max(myPlot.data[0].x)
 	a = Math.min(a,math.min(myPlot.data[0].y))
@@ -235,12 +336,15 @@ $(document).ready(function(){
                   	Y.push(fila.Y)
                   	Z.push(fila.Z)
                   }
-	                  Plotly.deleteTraces('myPlot',[0,1])
+	                  try {
+		                  Plotly.deleteTraces('myPlot',[0,1])
+	                  } catch {}
 	                  var traces = [{
 						  x: X,
 						  y: Y,
 						  z: Z,
-						  marker: {
+						  mode: 'markers',
+						marker: {
 							size: 5,
 							line: {
 							color: 'rgba(217, 217, 217, 0.14)',
@@ -249,7 +353,10 @@ $(document).ready(function(){
 						type: 'scatter3d'
 						}];
 					Plotly.plot('myPlot', traces)
+					ORDEN = 0
 					actualizarOrden(excel=true)
+					var mods = document.querySelectorAll('.modal > [type=checkbox]');
+				    [].forEach.call(mods, function(mod){ mod.checked = false; });
                 })
               document.getElementById('archivoEntrada').value = ''
             };
