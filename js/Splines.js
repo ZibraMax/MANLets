@@ -60,8 +60,21 @@ Plotly.d3.select(".plotly").on('click', function(d, i) {
 	let objetos = []
 	let ex = myPlot.data[0].x
 	let ey = myPlot.data[0].y
-	FUNCION = interpolar(ex,ey)
-	graficar(myPlot.layout.xaxis.range[0], myPlot.layout.xaxis.range[1],FUNCION)
+	for(let i = 0, length1 = ex.length; i < length1; i++){
+		objetos.push({
+			x:ex[i],
+			y:ey[i]
+		})
+	}
+	objetos.sort(function (a, b) {
+	  return a.x - b.x;
+	});
+	let EQUIS = objetos.map(x=>x.x)
+	let YE = objetos.map(x=>x.y)
+	let xmin = math.min(EQUIS)
+	let xmax = math.max(EQUIS)
+	FUNCION = interpolar(EQUIS,YE)
+	graficar(xmin, xmax,FUNCION)
 });
 var spline = undefined
 var spline2 = undefined
@@ -247,8 +260,24 @@ $(document).ready(function(){
 						  name: 'Puntos a Interpolar'
 						}];
 					Plotly.plot('myPlot', traces)
-					FUNCION = interpolar(X,Y)
-					graficar(myPlot.layout.xaxis.range[0], myPlot.layout.xaxis.range[1],FUNCION,10000,true)
+					let objetos = []
+					let ex = myPlot.data[0].x
+					let ey = myPlot.data[0].y
+					for(let i = 0, length1 = ex.length; i < length1; i++){
+						objetos.push({
+							x:ex[i],
+							y:ey[i]
+						})
+					}
+					objetos.sort(function (a, b) {
+					  return a.x - b.x;
+					});
+					let EQUIS = objetos.map(x=>x.x)
+					let YE = objetos.map(x=>x.y)
+					let xmin = math.min(EQUIS)
+					let xmax = math.max(EQUIS)
+					FUNCION = interpolar(EQUIS,YE)
+					graficar(xmin, xmax,FUNCION)
 					var mods = document.querySelectorAll('.modal > [type=checkbox]');
 				    [].forEach.call(mods, function(mod){ mod.checked = false; });
                 })

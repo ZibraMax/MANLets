@@ -59,7 +59,7 @@ function actualizarFunciones() {
 }
 for (var XI=[],i=-20;i<22;++i) XI[i]=i;
 let YI = XI.map(x => 10*x**2-1*x-4+1000*(Math.random())*(Math.random() < 0.5 ? -1 : 1))
-ORDEN = 1
+ORDEN = 2
 R2 = '-'
 var traces = [{
   x: XI,
@@ -73,7 +73,7 @@ var traces = [{
 traces.push({
   x: XI,
   y: YI,
-  name: 'Regresión, Órden ' + ORDEN
+  name: 'Regresión'
 })
 
 
@@ -81,7 +81,7 @@ traces.push({
 var FUNCION = undefined
 var myPlot = document.getElementById('myPlot')
 let layout = {
-		  title:'Regresión polinomial',
+		  title:'Regresión de Mínimos Cuadrados',
 		  xaxis: {
 		  	title:'x'
 		  },
@@ -215,54 +215,17 @@ function regresionGeneral(x,y) {
 	let U = math.multiply(math.inv(IZQUIERDA),DERECHA)._data
 	return U
 }
-function regresion_pol(x,y,o) {
-	var zanahorias = []
-
-	for (var i = 0; i < 2*o+1; i++) {
-		let algo = x.map(x => x ** i)
-		zanahorias.push(algo.reduce((a, b) => a + b))
-	}
-	let K = math.zeros(o, o)._data
-	let V = []
-
-	for (var i = 0; i < K.length; i++) {
-		for (var j = 0; j < K.length; j++) {
-			K[i][j] = zanahorias[i+j]
-		}
-		let algo = 0
-		for (var j = 0; j < x.length; j++) {
-			algo+=(x[j]**i)*(y[j])
-		}
-		V.push([algo])
-	}
-	MATRIZ_GENERAL = K
-	VECTOR_GENERAL = V
-	let U = math.multiply(math.inv(math.matrix(K)),math.matrix(V))._data
-	return U
-}
 function interpolar (x,y) {
 	let U = []
 	let lambdita = undefined
-	if (document.getElementById('general').checked) {
-		U = regresionGeneral(x,y)
-		lambdita = x => {
-			let sum = 0
-			for (var i = 0; i < U.length; i++) {
-				sum+=FUNCIONES[i](x)*U[i]
-			}
-			return sum
+	U = regresionGeneral(x,y)
+	lambdita = x => {
+		let sum = 0
+		for (var i = 0; i < U.length; i++) {
+			sum+=FUNCIONES[i](x)*U[i]
 		}
-	} else {
-		U = regresion_pol(x,y,ORDEN+1).flat().reverse()
-		lambdita = x => {
-			let sum = 0
-			for(let j = 0, length2 = U.length; j < length2; j++){
-				sum+=x**((U.length-1)-j)*U[j]
-			}
-			return sum
-		}
+		return sum
 	}
-	
 	actualizarR2(lambdita)
 	actualizarLatex(U)
 	return lambdita
@@ -273,7 +236,7 @@ function graficar(a,b,funcion,n=100,excel=false) {
 	var data_update = {
 		x: arreglo[0],
 		y: arreglo[1],
-		name: 'Regresión, Órden ' + ORDEN
+		name: 'Regresión'
 	};
 	actualizarTabla()
 	if(excel==false) {
@@ -349,39 +312,27 @@ function calcularRegresionGeneral(){
 	graficar(xmin, xmax,FUNCION)
 }
 function actualizarLatex(coeficientes) {
-
+	console.log(coeficientes)
 	const elem = document.getElementById('pretty')
 	let stringLatex = 'f(x)='
-	if (document.getElementById('general').checked) {
-		for (var i = 0; i < coeficientes.length; i++) {
-			let signo1 = coeficientes[i]>0? '+':''
-			if (i==0) {
-				signo1 = ''
-			}
-			stringLatex += signo1+math.round(coeficientes[i],2)+''+ECUACIONES[i]
+	for (var i = 0; i < coeficientes.length; i++) {
+		let COEFF = math.round(coeficientes[i],2)
+		if (math.abs(COEFF)<=1*10**-6) {
+			continue
 		}
-	} else {
-		for(let i = 0, length1 = coeficientes.length; i < length1; i++){
-			let signo = ''
-			if (coeficientes[i]>=0) {
-					signo = '+'
-					if (i==0) {
-						signo = ''
-					}
-				} 
-			if (((coeficientes.length-1)-i)) {
-				if (((coeficientes.length-1)-i) == 1) {
-					stringLatex+=signo + math.round(coeficientes[i],3)+'x'
-				} else {
-					stringLatex+=signo + math.round(coeficientes[i],3)+'x^{'+((coeficientes.length-1)-i+'}')
-				}
-			} else {
-				stringLatex+=signo + math.round(coeficientes[i],3)
-			}
+		let signo1 = COEFF>0? '+':''
+		if (i==0) {
+			signo1 = ''
 		}
+		if (COEFF==1 && i != 0) {
+			COEFF=''
+		}
+		let ecuacion = ECUACIONES[i]
+		if (ECUACIONES[i]=='1') {
+			ecuacion = ''
+		}
+		stringLatex += signo1+COEFF+''+ecuacion
 	}
-
-
 	elem.innerHTML = '$$'+stringLatex+'$$'
 	try {
 	    MathJax.typeset()
@@ -485,6 +436,17 @@ function masOrden() {
 }
 
 function actualizarOrden() {
+	ECUACIONES = []
+	for (var i = 0; i <= ORDEN; i++) {
+		if (i==0) {
+			ECUACIONES.push('1')
+		} else if(i==1) {
+			ECUACIONES.push('x')
+		} else {
+			ECUACIONES.push('x^{'+i+'}')
+		}
+	}
+	crearTabla()
 	let X = myPlot.data[0].x
 	let Y = myPlot.data[0].y
 	let xmin = math.min(X)

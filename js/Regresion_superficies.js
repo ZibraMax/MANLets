@@ -183,6 +183,9 @@ function actualizarLatex(coeficientes) {
 	for(let i = 0, length1 = coeficientes.length; i < length1; i++){
 		let signo = ''
 		let coeff = math.round(coeficientes[i],4)
+		if (coeff == 0){
+			continue
+		}
 		if (coeff>=0 && i>0) {
 			signo = '+'
 		}
@@ -196,6 +199,9 @@ function actualizarLatex(coeficientes) {
 		let exp = ''
 		if (i>2) {
 			exp = '^{'+(Math.floor((i+1)/2))+'}'
+		}
+		if (coeff == 1) {
+			coeff = ''
 		}
 		stringLatex += signo + coeff + variable+ exp 
 	}
