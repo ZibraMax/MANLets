@@ -35,7 +35,7 @@ var mathField = MQ.MathField(mathFieldSpan, {
         edit: function() {
             try{
             	triggerBotones(false)
-            	actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+            	actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
             }
             catch(e){}
         }
@@ -58,7 +58,7 @@ function resolver(cac) {
 	try {
 		actualizarFuncion(document.getElementById('funcion').value)
 	} catch {
-		actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+		actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
 	}
 	actualizarX0(document.getElementById('sliderx0').value)
 	if (!actual == 'IS' && !actual == 'N') {
@@ -67,7 +67,7 @@ function resolver(cac) {
 	try {
 		actualizarFuncion(document.getElementById('funcion').value)
 	} catch {
-		actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+		actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
 	}
 	triggerBotones(true)
 }
@@ -101,7 +101,7 @@ function actualizarX0(x) {
 		try {
 		actualizarFuncion(document.getElementById('funcion').value)
 	} catch {
-		actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+		actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
 	}
 		alertaIntervalo(true)
 	} else {
@@ -110,7 +110,7 @@ function actualizarX0(x) {
 		try {
 		actualizarFuncion(document.getElementById('funcion').value)
 	} catch {
-		actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+		actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
 	}
 		alertaIntervalo()
 	}
@@ -129,7 +129,7 @@ function actualizarXf(x) {
 		try {
 		actualizarFuncion(document.getElementById('funcion').value)
 	} catch {
-		actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+		actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
 	}
 		alertaIntervalo()
 	}

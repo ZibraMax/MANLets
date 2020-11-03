@@ -27,7 +27,7 @@ var mathField = MQ.MathField(mathFieldSpan, {
         edit: function() {
             try{
             	triggerBotones(false)
-            	actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+            	actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
             }
             catch(e){}
         }
@@ -90,7 +90,7 @@ function actualizarLatex() {
 	try {
 		str = document.getElementById('funcion').value
 	} catch {
-		str = MathExpression.fromLatex(mathField.latex()).toString()
+		str = MathExpression.fromLatex(mathField.latex()).toString().toLowerCase()
 	}
 	const elem = document.getElementById('pretty')
 	let color = '$$\\textcolor{green}'
@@ -131,7 +131,7 @@ function resolver(tipo = 'GL') {
 	try {
 		fx = parseFuncion(document.getElementById('funcion').value)
 	} catch {
-		fx = parseFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+		fx = parseFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
 	}
 	if (tipo=='GL') {
 		actual = new GaussLegendre(fx)

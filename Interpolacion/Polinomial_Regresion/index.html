@@ -80,7 +80,8 @@
 							</th>
 							<th style="text-align: center;">
 								<label>
-									<input id='general' type="checkbox" onchange="triggerBotones(!this.checked);triggerBotones(this.checked,'botonZeta')">
+									<input id='general' type="checkbox" onchange="triggerBotones(!this.checked);triggerBotones(this.checked,'botonZeta');if (this.checked) {
+										abrirModalZ();} else {actualizarOrden()}">
 									<span class="checkable">Forma General</span>
 								</label>
 							</th>

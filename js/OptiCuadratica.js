@@ -16,7 +16,7 @@ var mathField = MQ.MathField(mathFieldSpan, {
         edit: function() {
             try{
               triggerBotones(false)
-              actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+              actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
             }
             catch(e){}
         }
@@ -39,7 +39,7 @@ function actualizarX0(x,paila=false) {
     try {
     actualizarFuncion(document.getElementById('funcion').value)
   } catch {
-    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
   }
   }
 }
@@ -49,7 +49,7 @@ function actualizarXf(x,paila=false) {
     try {
     actualizarFuncion(document.getElementById('funcion').value)
   } catch {
-    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
   }
   }
 }
@@ -59,7 +59,7 @@ function actualizarX3(x,paila=false) {
     try {
     actualizarFuncion(document.getElementById('funcion').value)
   } catch {
-    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
   }
   }
 }
@@ -91,7 +91,7 @@ function resolver() {
   try {
     actualizarFuncion(document.getElementById('funcion').value)
   } catch {
-    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
   }
   triggerBotones(true)
 }

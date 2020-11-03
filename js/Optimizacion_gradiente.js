@@ -168,7 +168,7 @@ function grad(f) {
 
 function calcular() {
     iteraccionActual = 0
-    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
     actualizarRangos()
     actualizarLatex()
 
@@ -353,7 +353,7 @@ var mathField = MQ.MathField(mathFieldSpan, {
         edit: function() {
             try{
                 triggerBotones(false)
-                actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+                actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
             }
             catch(e){}
         }

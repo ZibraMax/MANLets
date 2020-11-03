@@ -27,7 +27,7 @@ function updateFuncion(i) {
 function crearTabla() {
 	let TABLA = document.getElementById('ecuaciones')
 	TABLA.innerHTML = ''
-	let PLANTILLA = (i)=> '<tr><td>\\(z_'+i+'=\\)</td><td id="ecuacion'+i+'"></td><td><label onclick="borrarEcuacion('+i+')">&times;</label></td></tr>'
+	let PLANTILLA = (i)=> '<tr><td>\\(z_{'+i+'}=\\)</td><td id="ecuacion'+i+'"></td><td><label onclick="borrarEcuacion('+i+')">&times;</label></td></tr>'
 	let ULTIMA_FILA = '<tr><td colspan="3" class="casillaCentrada"><label onclick="agregarEcuacion()" style="color: gray;"><i class="fas fa-plus-circle fa-2x"></i></label></td></tr>'
 	mathFieldSpans = []
 	mathFields = []
@@ -188,7 +188,7 @@ FUNCIONES = []
 function parserFunciones() {
 	FUNCIONES = []
 	for (var i = 0; i < ECUACIONES.length; i++) {
-		let nodoF = math.parse(MathExpression.fromLatex(ECUACIONES[i]).toString())
+		let nodoF = math.parse(MathExpression.fromLatex(ECUACIONES[i]).toString().toLowerCase())
 		let fx = (x) => nodoF.evaluate({x: x})
 		FUNCIONES.push(fx)
 	}
@@ -521,7 +521,6 @@ function abrirModalZ() {
 };
 ECUACION_ACTUAL = 0
 function ecuacionActual(i) {
-	console.log(i)
 	ECUACION_ACTUAL = i-1
 }
 
