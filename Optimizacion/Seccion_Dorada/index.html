@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="es-ES">
 <head>
-	<meta charset="utf-8">
-	<title>Applets - Iteracíon Simple</title>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163602964-1"></script>
 	<script>
@@ -13,13 +11,14 @@
 	gtag('config', 'UA-163602964-1');
 	</script>
 	<meta name="viewport" content="width=device-width, initial-scale=0.5,user-scalable=no" id="viewport">
-	<link rel="shortcut icon" type="image/x-icon" href="../../favicon/favicon.ico">
   <script src="https://kit.fontawesome.com/2416ed6962.js" crossorigin="anonymous"></script>
+	<meta charset="utf-8">
+	<title>Applets - Sección Dorada</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../../favicon/favicon.ico">
 	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 	<link rel="stylesheet" href="https://unpkg.com/picnic">
 	<link rel="stylesheet" href="../../css/estilos.css">
 	<script type="text/javascript" src="../../js/math.js"></script>
-
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
@@ -27,13 +26,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js"></script>
     <script type="text/javascript" src="../../js/math-expressions.js"></script>
+
     <script src="../../js/jquery.toolbar.min.js"></script>
     <link href="../../css/jquery.toolbar.css" rel="stylesheet" />
 </head>
 <body style="margin: 20px">
 	<article class="card">
 		<header>
-			<h1><a href="../index.html" class="fas fa-arrow-left"></a> <a href="../../index.html" class="fas fa-home"></a> MANLets - Iteracíon Simple</h1>
+			<h1><a href="../index.html" class="fas fa-arrow-left"></a> <a href="../../index.html" class="fas fa-home"></a> MANLets - Sección Dorada</h1>
 		</header>
 		<footer>
 			<div class="fila">
@@ -51,10 +51,10 @@
 					<tbody>
 					<tr>
 						<td>
-							<span class="stack">$$x=$$</span>
+							<span class="stack">$$f(x)=$$</span>
 						</td>
 						<td id="cuelloBotella">
-							<span id="math-field" class="mathquill-math-field" style="width: 78%">e^{-x}</span><button id="cositasLindas" type="button" class="btn btn-default" style="margin-left: 10px; width: 18%">\(f\)</button>
+							<span id="math-field" class="mathquill-math-field" style="width: 78%">2\sin (x)-\frac{(x^2)}{10}</span><button id="cositasLindas" type="button" class="btn btn-default" style="margin-left: 10px; width: 18%">\(f\)</button>
 						 	<div id="toolbar-options" class="hidden">
 								<a type="button" class="fa" onClick='input("\\sqrt")'>\(\sqrt{x}\)</a>
 								<a type="button" class="fa" onClick='input("\\nthroot")'>\(\sqrt[n]{x}\)</a>
@@ -70,77 +70,104 @@
 					</tr>
 					<tr>
 						<td>
-							<span class="stack">$$x_r=$$</span>
+							<span class="stack">$$x_0=$$</span>
+							
 						</td>
 						<td>
-							<input type="text" id="sliderx0" value='0' onchange="actualizarX0(this.value)"  class="stack">
+							<input type="text" id="sliderx0" value='1' onchange="actualizarX0(this.value)"  class="stack">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="stack">$$x_l=$$</span>
+						</td>
+						<td>
+							<input type="text" id="sliderxf" value='4' onchange="actualizarXf(this.value)"  class="stack">
 						</td>
 					</tr>
 					</tbody>
 					<thead>
-						<tr style="text-align: center;">
-							<th colspan='2' style="text-align: center;">
-								<button style="text-align: center;" onclick="resolver('IS')" class="stack icon-paper-plane">Calcular</button>
+						<tr>
+							<th>
+								<button onclick="resolver()" class="stack icon-paper-plane" style="text-align: center;">Calcular</button>
+							</th>
+							<th>
+								<label style="width: 40%">
+								  <input id="maximizarRadio" type='radio' checked name="radiodemo" onchange="triggerBotones(false)">
+								  <span class="checkable">Máximo⠀⠀</span>
+								</label>
+								<label style="width: 40%">
+								  <input type='radio' name="radiodemo" onchange="triggerBotones(false)">
+								  <span class="checkable">Mínimo</span>
+								</label>
 							</th>
 						</tr>
 						<tr style="text-align: center;">
-							<td style="text-align: center;">
-								<button id="iteraciones" style="text-align: center;" onclick="anteriorIteracion()" class="succes icon-paper-plane">< Iteracion Anterior</button>
+							<td style="align-content: center;">
+								<button id="iteraciones" onclick="anteriorIteracion()" class="succes icon-paper-plane" >< Iteracion Anterior</button>
 							</td>
-							<td style="text-align: center;">
-								<button id="iteraciones" onclick="siguienteIteracion()" class="warning icon-paper-plane">Iteracion Siguiente > </button>
+							<td style="align-content: center;">
+								<button id="iteraciones" onclick="siguienteIteracion()" class="warning icon-paper-plane" >Iteracion Siguiente > </button>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="2">
-								<span id="pretty">$$x=e^{-x}$$</span>
+								<span id="pretty">$$$$</span>
 							</td>
 						</tr>
 					</thead>
 				</table>
-				<table style="width: 100%; font-size: 13px">
-				  <thead >
-				    <tr style="text-align: center;">
-				      <th><span >$$x_i$$</span></th>
-				      <th><span >$$x_{i+1}$$</span></th>
-				      <th><span>$$g(x_i)$$</span></th>
-				      <th><span>$$g(x_{i+1})$$</span></th>
-				      <th><span>$$e\%$$</span></th>
-				    </tr>
-				  </thead>
-				  <tbody>
+				<table style="font-size: 13px; width: 100%">
+			  <thead>
+			    <tr style="text-align: center;">
+			      <th><span>\(x_l\)</span></th>
+			      <th><span>\(x_u\)</span></th>
+			      <th><span>\(d\)</span></th>
+			      <th><span>\(f(x_1)\)</span></th>
+			      <th><span>\(f(x_2)\)</span></th>
+			      <th><span>\(x_{opt}\)</span></th>
+			      <th><span>\(e\%\)</span></th>
+			    </tr>
+			  </thead>
+			  <tbody>
 
-				    <tr>
-				      <td id="-1,xl">0</td>
-				      <td id="-1,xu">0</td>
-				      <td id="-1,fxl">0</td>
-				      <td id="-1,fxu">0</td>
-				      <td id="-1,e">0</td>
-				    </tr>
+			    <tr>
+			      <td id="-1,xl">0</td>
+			      <td id="-1,xu">0</td>
+			      <td id="-1,fxl">0</td>
+			      <td id="-1,fxu">0</td>
+			      <td id="-1,xr">0</td>
+			      <td id="-1,fxr">0</td>
+			      <td id="-1,e">0</td>
+			    </tr>
 
-				    <tr>
-				      <td id="1,xl">0</td>
-				      <td id="1,xu">0</td>
-				      <td id="1,fxl">0</td>
-				      <td id="1,fxu">0</td>
-				      <td id="1,e">0</td>
-				    </tr>
+			    <tr>
+			      <td id="1,xl">0</td>
+			      <td id="1,xu">0</td>
+			      <td id="1,fxl">0</td>
+			      <td id="1,fxu">0</td>
+			      <td id="1,xr">0</td>
+			      <td id="1,fxr">0</td>
+			      <td id="1,e">0</td>
+			    </tr>
 
-				    <tr>
-				      <td id="+1,xl">0</td>
-				      <td id="+1,xu">0</td>
-				      <td id="+1,fxl">0</td>
-				      <td id="+1,fxu">0</td>
-				      <td id="+1,e">0</td>
-				    </tr>
-				  </tbody>
-				</table>
+			    <tr>
+			      <td id="+1,xl">0</td>
+			      <td id="+1,xu">0</td>
+			      <td id="+1,fxl">0</td>
+			      <td id="+1,fxu">0</td>
+			      <td id="+1,xr">0</td>
+			      <td id="+1,fxr">0</td>
+			      <td id="+1,e">0</td>
+			    </tr>
+			  </tbody>
+			</table>
 			</div>
-		<div class="columnaTercios" style=" border: 2px solid gray; border-radius: 8px;margin: 5px">
+		<div class="columnaTercios" style=" border: 2px solid gray; border-radius: 8px;margin: 5px;">
 			<div id="grafica">
 			</div>
 		</div>
-		<div class="columnaTercios" style="border: 2px solid gray; border-radius: 8px; margin: 5px;">
+		<div class="columnaTercios" style="border: 2px solid gray; border-radius: 8px;margin: 5px;">
 			<div id="grafica2"></div>
 		</div>
 		</div>
@@ -150,18 +177,14 @@
 			</a>
 		</div>
 		<div id="btns">
-			<a class="floatButton" onclick="anteriorIteracion()">
-			<i class="fa fa-angle-left my-float"></i>
+			<a class=" floatButton" onclick="anteriorIteracion()">
+				<i class="fa fa-angle-left my-float"></i>
 			</a>
 			<a class="floatButton1" onclick="siguienteIteracion()">
 			<i class="fa fa-angle-right my-float"></i>
 			</a>
 		</div>
 </footer>
-	</article>
-	<script type="text/javascript" src="../../js/Modelacion_Analisis_Numerico.js"></script>
-	<script type="text/javascript">
-		actual = 'IS'
-	</script>
+	<script type="text/javascript" src="../../js/SeccionDorada.js"></script>
 </body>
 </html>

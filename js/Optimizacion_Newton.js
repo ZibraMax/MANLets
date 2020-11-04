@@ -11,7 +11,7 @@ var mathField = MQ.MathField(mathFieldSpan, {
         edit: function() {
             try{
               triggerBotones(false)
-              actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+              actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
             }
             catch(e){}
         }
@@ -33,7 +33,7 @@ function actualizarX0(x) {
 	try {
     actualizarFuncion(document.getElementById('funcion').value)
   } catch {
-    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
   }
 }
 function actualizarFuncion(funcion) {
@@ -70,7 +70,7 @@ function resolver() {
 	try {
     actualizarFuncion(document.getElementById('funcion').value)
   } catch {
-    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
   }
 	actualizarX0(document.getElementById('sliderx0').value)
 	triggerBotones(true)
@@ -237,7 +237,24 @@ class OptiNewton {
 		  	dash: 'dot'
 		  }
 		}
-		
+		let trace4 = {
+	      x: [resultadoActual[i][0],resultadoActual[i][0]],
+	      y: [0,this.fx(resultadoActual[i][0])],
+	      mode: 'lines',
+	      name: 'xi',
+	      line: {
+	      dash: 'dashdot',
+	      }
+	    }
+	    let trace5= {
+	      x: [resultadoActual[k][0],resultadoActual[k][0]],
+	      y: [0,this.fx(resultadoActual[k][0])],
+	      mode: 'lines',
+	      name: 'xi+1',
+	      line: {
+	      dash: 'dashdot',
+	      }
+	    }
 		let trace3 = {
 		  x: xderivada,
 		  y: yderivada,
@@ -251,7 +268,6 @@ class OptiNewton {
 		  name: 'Xi',
 		}
 
-
 		let layout = {
 		  title:'Iteraciones General ',
 		  xaxis: {
@@ -262,7 +278,7 @@ class OptiNewton {
 		  }
 		}
 		var config = {responsive: true}
-		Plotly.newPlot('grafica2', [trace,trace1,trace2,trace3],layout,config)
+		Plotly.newPlot('grafica2', [trace,trace1,trace4,trace5,trace2,trace3],layout,config)
 		this.graficar2(i,n)
 	}
 	graficar2(i,n=50) {
@@ -328,6 +344,24 @@ class OptiNewton {
 		  mode: 'markers',
 		  name: 'f(xi)'
 		}
+		let trace4 = {
+	      x: [resultadoActual[i][0],resultadoActual[i][0]],
+	      y: [0,this.dfdx(resultadoActual[i][0])],
+	      mode: 'lines',
+	      name: 'xi',
+	      line: {
+	      dash: 'dashdot',
+	      }
+	    }
+	    let trace5= {
+	      x: [resultadoActual[k][0],resultadoActual[k][0]],
+	      y: [0,this.dfdx(resultadoActual[k][0])],
+	      mode: 'lines',
+	      name: 'xi+1',
+	      line: {
+	      dash: 'dashdot',
+	      }
+	    }
 		let trace1 = {
 		  x: t1x,
 		  y: t1y,
@@ -346,10 +380,20 @@ class OptiNewton {
 		  }
 		}
 		var config = {responsive: true}
-		Plotly.newPlot('grafica', [trace,trace1,trace2,trace3],layout,config)
+		Plotly.newPlot('grafica', [trace,trace1,trace4,trace5,trace2,trace3],layout,config)
 	}
 }
 if (navigator.userAgent.match(/Mobile/)) {
   document.getElementById('cuelloBotella').innerHTML = '<input type="text" id="funcion" value="2*sin(x)-(x^2)/10" onchange="actualizarFuncion(this.value)">';
 }
+
+$('#cositasLindas').toolbar({
+	content: '#toolbar-options',
+	animation: 'grow'
+	});
+function input(str) {
+	mathField.cmd(str)
+	mathField.focus()
+}
+	
 triggerBotones(false)

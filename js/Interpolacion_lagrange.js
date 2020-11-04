@@ -115,6 +115,30 @@ function borrarDatos() {
 	//Plotly.deleteTraces('myPlot', [0,1])
 }
 
+function Lk(x,k) {
+	let res = ''
+	for (var i = 0; i < x.length; i++) {
+		if (k!=i) {
+			let signosup = x[i] <0?'+':'-'
+			res += '\\left(\\frac{x'+signosup+math.round(x[i]**2/math.abs(x[i]),2)+'}{'+math.round(x[k]**2/math.abs(x[k]),2)+signosup+math.round(x[i]**2/math.abs(x[i]),2)+'}\\right)'
+		}
+	}
+	return res
+}
+
+function lagrange(x,y) {
+	let L = ''
+	for (var i = 0; i < x.length; i++) {
+		let signo = '+'
+		if (i==0) {
+			signo=''
+		}
+		let salto = '\\\\'
+		L += signo+Lk(x,i) +'('+math.round(y[i],2)+')'+ salto
+	}
+	return L
+}
+
 function interpolar (x,y) {
 	let matriz = []
 	let vector = []
@@ -138,7 +162,7 @@ function interpolar (x,y) {
 		}
 		return sum
 	}
-	actualizarLatex(U,interpolate(x, y))
+	actualizarLatex(U,lagrange(x,y))
 	return lambdita
 }
 
@@ -160,7 +184,7 @@ function graficar(a,b,funcion,n=100,excel=false) {
 }
 function actualizarTabla(tabla) {
 	//Datos en X,Y
-	document.getElementById('latexmatriz').innerHTML = '$$\\small\\begin{eqnarray} f(x)='+tabla+'\\end{eqnarray}$$'
+	document.getElementById('latexmatriz').innerHTML = '$$\\small\\begin{align} f(x)='+tabla+'\\end{align}$$'
 }
 function darResultados(a,b,funcion,n=100) {
 	let h = (b-a)/n

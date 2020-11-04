@@ -29,6 +29,43 @@ function graficarContornos2D(f,ax,bx,ay,by,n=100) {
           }}
     Plotly.newPlot(divGeneral, data,layout,{responsive: true});
 }
+function graficarGradiente(f,ax,bx,ay,by,n=300) {
+    let x = new Array(n)
+    let y = new Array(n) 
+    let z = new Array(n)
+
+    let hx = (bx-ax)/n
+    let hy = (by-ay)/n
+
+    for(let i = 0; i < n; i++) {
+        x[i] = ax + hx*i
+        y[i] = ay + hy*i
+        z[i] = new Array(n);
+    }
+    let u = []
+    for(let i = 0; i < n; i++) {
+        let linea = []
+        for(let j = 0; j < n; j++) {
+            let mgrad = f(x[j],y[i])
+            z[i][j] = (mgrad[0]**2+mgrad[1]**2)**0.5;
+            linea.push('Grad_x: '+ math.round(mgrad[0],3) + ' Grad_y: '+math.round(mgrad[1],3))
+        }
+        u.push(linea)
+    }
+    var data = [{
+        z: z,
+        x: x,
+        y: y,
+        text: u,
+        type: 'contour'}];
+    let layout = {title: "Gradiente",xaxis: {
+            title:'x'
+          },
+          yaxis: {
+            title:'y'
+          }}
+    Plotly.newPlot(divGradiente, data,layout,{responsive: true});
+}
 function graficarDireccion(f,a,b,n=100) {
     let x = new Array(n)
     let y = new Array(n)
@@ -39,10 +76,19 @@ function graficarDireccion(f,a,b,n=100) {
         x[i] = a + i*h
         y[i] = f(a + i*h)
     }
+    let trace4 = {
+          x: [RESULTADOS[iteraccionActual][0],RESULTADOS[iteraccionActual][0]],
+          y: [math.min(y),math.max(y)],
+          mode: 'lines',
+          name: 'Óptimo',
+          line: {
+          dash: 'dashdot',
+          }
+        }
     var data = [{
         x: x,
         y: y,
-        type: 'lines'}];
+        type: 'lines'},trace4];
     let layout = {title: "Region de búsqueda unidimensional",xaxis: {
             title:'h'
           },
@@ -52,7 +98,7 @@ function graficarDireccion(f,a,b,n=100) {
 
     Plotly.newPlot(divDireccion, data,layout,{responsive: true});
 }
-function graficarGradiente(f,ax,bx,ay,by,n=30) {
+function ccc(f,ax,bx,ay,by,n=30) {
     let hx = (bx-ax)/n
     let hy = (by-ay)/n
 
@@ -122,7 +168,7 @@ function grad(f) {
 
 function calcular() {
     iteraccionActual = 0
-    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
     actualizarRangos()
     actualizarLatex()
 
@@ -143,7 +189,7 @@ function actualizarLatex() {
     let str1 = fnode.toTex()
     let str2 = gradfnodex.toTex()
 
-    document.getElementById('pretty1').innerHTML = '$$\\small \\Delta(f)=\\{'+str2+','+gradfnodey.toTex()+'\\}$$'
+    document.getElementById('pretty1').innerHTML = '$$\\small \\nabla f=\\{'+str2+','+gradfnodey.toTex()+'\\}$$'
     MathJax.typeset()
 }
 function optimizacionLineal(f,a,b,tol=0.000000000001) {
@@ -192,13 +238,13 @@ function optimizar(f,ax,bx,ay,by) {
     ITERACIONES = []
     let x0 = parseFloat(document.getElementById('x_0').value)
     let y0 = parseFloat(document.getElementById('y_0').value)
-    let h = 1
+    let h_opt = 1
     let maggradPunto = 1
     let tol = 1*10**-6
     let fxprevio = f(x0,y0)
     let error =1
     i=0
-    while (Math.abs(h) > tol && maggradPunto > tol && error > tol/10000) {
+    while (Math.abs(h_opt) > tol && maggradPunto > tol && error > tol/10000) {
         if (i>0) {
             x0 = x0Prima
             y0 = y0Prima
@@ -213,10 +259,10 @@ function optimizar(f,ax,bx,ay,by) {
         let hmax = (bx-x0)/(gradPunto[0])
         hmax = Math.min(hmax,(by-y0)/(gradPunto[1]))
         G = (h) => f(x(h,x0,y0),y(h,x0,y0))
-        h = optimizacionLineal(G,hmin,hmax)
-        ITERACIONES.push([h,x0,y0,fxprevio,hmin,hmax,error])
-        x0Prima = x(h,x0,y0)
-        y0Prima = y(h,x0,y0)
+        h_opt = optimizacionLineal(G,hmin,hmax)
+        ITERACIONES.push([h_opt,x0,y0,fxprevio,hmin,hmax,error])
+        x0Prima = x(h_opt,x0,y0)
+        y0Prima = y(h_opt,x0,y0)
         let fx = f(x0Prima,y0Prima)
         error = Math.abs((fx-fxprevio)/fx)
         fxprevio = fx
@@ -249,8 +295,7 @@ function actualizar(i) {
     trace2 = {
         x: [],
         y: [],
-        z: [],
-        type: 'scatter3d',
+        type: 'scatter',
         mode: 'lines+markers',
         marker:{symbol: 203,size: 5}
     }
@@ -271,7 +316,6 @@ function actualizar(i) {
 
         trace2.x.push(x0)
         trace2.y.push(y0)
-        trace2.z.push(2.5)
     }
     try {
         Plotly.deleteTraces(graficaGeneral, [1,2])
@@ -284,7 +328,9 @@ function actualizar(i) {
     Plotly.plot(graficaGeneral, [trace,traceInicial],layout)
     Plotly.plot(graficaGradiente, [trace2])
     document.getElementById('niter').innerHTML = 'Óptimo: '+[math.round(RESULTADOS[i][1],2),math.round(RESULTADOS[i][2],2)]
-    document.getElementById('error').innerHTML = 'Error= ' + math.round(RESULTADOS[i+1][6]*100,4) + '%'
+    let gradientePunto = gradf(RESULTADOS[i][1],RESULTADOS[i][2])
+    let magGrad = math.round((gradientePunto[0]**2+gradientePunto[1]**2)**0.5,2)
+    document.getElementById('error').innerHTML = 'h*='+ math.round(RESULTADOS[i][0],2) + '<br>|∇|='+magGrad + ',ε=' + math.round(RESULTADOS[i+1][6]*100,3) + '%'
 }
 
 function siguienteIteracion() {
@@ -307,13 +353,20 @@ var mathField = MQ.MathField(mathFieldSpan, {
         edit: function() {
             try{
                 triggerBotones(false)
-                actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+                actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
             }
             catch(e){}
         }
     }
 });
-
+$('#cositasLindas').toolbar({
+  content: '#toolbar-options',
+  animation: 'grow'
+  });
+function input(str) {
+  mathField.cmd(str)
+  mathField.focus()
+}
 
 var f = undefined
 var fnode = undefined

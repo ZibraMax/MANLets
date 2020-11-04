@@ -14,7 +14,7 @@ var mathField = MQ.MathField(mathFieldSpan, {
         edit: function() {
             try{
               triggerBotones(false)
-              actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+              actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
             }
             catch(e){}
         }
@@ -38,7 +38,7 @@ function actualizarX0(x) {
   try {
     actualizarFuncion(document.getElementById('funcion').value)
   } catch {
-    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
   }
 }
 function actualizarXf(x) {
@@ -46,7 +46,7 @@ function actualizarXf(x) {
   try {
     actualizarFuncion(document.getElementById('funcion').value)
   } catch {
-    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
   }
 }
 function actualizarFuncion(funcion) {
@@ -74,7 +74,7 @@ function resolver() {
   try {
     actualizarFuncion(document.getElementById('funcion').value)
   } catch {
-    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
   }
   actualizarX0(document.getElementById('sliderx0').value)
   actualizarXf(document.getElementById('sliderxf').value)
@@ -355,6 +355,15 @@ class SeccionDorada {
       mode: 'markers',
       name: 'Xopt',
     }
+    let trace4 = {
+        x: [resultadoActual[i][5],resultadoActual[i][5]],
+        y: [0,this.fx(resultadoActual[i][5])],
+        mode: 'lines',
+        name: 'Óptimo',
+        line: {
+        dash: 'dashdot',
+        }
+      }
     let layout = {
       title:'Iteraciones General ',
       xaxis: {
@@ -365,10 +374,19 @@ class SeccionDorada {
       }
     }
     var config = {responsive: true}
-    Plotly.newPlot('grafica2', [trace,trace1,trace2,trace3],layout,config)
+    Plotly.newPlot('grafica2', [trace,trace1,trace2,trace3,trace4],layout,config)
   }
 }
 if (navigator.userAgent.match(/Mobile/)) {
   document.getElementById('cuelloBotella').innerHTML = '<input type="text" id="funcion" value="2sin(x)-(x^2)/10" onchange="actualizarFuncion(this.value)">';
+}
+
+$('#cositasLindas').toolbar({
+  content: '#toolbar-options',
+  animation: 'grow'
+  });
+function input(str) {
+  mathField.cmd(str)
+  mathField.focus()
 }
 triggerBotones(false)

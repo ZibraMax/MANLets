@@ -77,6 +77,34 @@ class Spline {
       t * (1 - t) * (a * (1 - t) + b * t);
     return q;
   }
+  darResultados(n=30) {
+    let _X = []
+    let _Y = []
+    for (var i = 1; i < this.xs.length; i++) {
+      let fxi = (x) => {
+        const t = (x - this.xs[i - 1]) / (this.xs[i] - this.xs[i - 1]);
+    const a =
+      this.ks[i - 1] * (this.xs[i] - this.xs[i - 1]) -
+      (this.ys[i] - this.ys[i - 1]);
+    const b =
+      -this.ks[i] * (this.xs[i] - this.xs[i - 1]) +
+      (this.ys[i] - this.ys[i - 1]);
+    const q =
+      (1 - t) * this.ys[i - 1] +
+      t * this.ys[i] +
+      t * (1 - t) * (a * (1 - t) + b * t);
+    return q;
+      }
+      let a = this.xs[i-1]
+      let b = this.xs[i]
+      let h = (b-a)/n
+      for (var j = 0; j <= n; j++) {
+        _X.push(a+j*h)
+        _Y.push(fxi(a+j*h))
+      }
+    }
+    return [_X,_Y]
+  }
 };
 
 function solve(A, ks) {

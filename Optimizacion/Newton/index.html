@@ -2,7 +2,7 @@
 <html lang="es-ES">
 <head>
   <meta charset="utf-8">
-  <title>Applets</title>
+  <title>Applets - Optimización de Newton</title>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163602964-1"></script>
   <script>
@@ -24,16 +24,17 @@
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css"/> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js"></script>
-    <script type="text/javascript" src="../../js/math-expressions.js"></script>
-    <script src="../../js/jquery.toolbar.min.js"></script>
-    <link href="../../css/jquery.toolbar.css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js"></script>
+  <script type="text/javascript" src="../../js/math-expressions.js"></script>
+
+  <script src="../../js/jquery.toolbar.min.js"></script>
+  <link href="../../css/jquery.toolbar.css" rel="stylesheet" />
 </head>
 <body style="margin: 20px">
   <article class="card">
     <header>
-      <h1><a href="../index.html" class="fas fa-arrow-left"></a> <a href="../../index.html" class="fas fa-home"></a> MANLets - Método de la Secante</h1>
+      <h1><a href="../index.html" class="fas fa-arrow-left"></a> <a href="../../index.html" class="fas fa-home"></a> MANLets - Optimización de Newton</h1>
     </header>
     <footer>
       <div class="fila">
@@ -54,7 +55,7 @@
               <span class="stack">$$f(x)=$$</span>
             </td>
             <td id="cuelloBotella">
-              <span id="math-field" class="mathquill-math-field" style="width: 78%">e^{-x}-x</span><button id="cositasLindas" type="button" class="btn btn-default" style="margin-left: 10px; width: 18%">\(f\)</button>
+              <span id="math-field" class="mathquill-math-field" style="width: 78%">2\sin (x)-\frac{(x^2)}{10}</span><button id="cositasLindas" type="button" class="btn btn-default" style="margin-left: 10px; width: 18%">\(f\)</button>
               <div id="toolbar-options" class="hidden">
                 <a type="button" class="fa" onClick='input("\\sqrt")'>\(\sqrt{x}\)</a>
                 <a type="button" class="fa" onClick='input("\\nthroot")'>\(\sqrt[n]{x}\)</a>
@@ -73,22 +74,14 @@
               <span class="stack">$$x_i=$$</span>
             </td>
             <td>
-              <input type="text" id="sliderx0" value='1' onchange="actualizarX0(this.value)"  class="stack">
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span class="stack">$$x_{i-1}=$$</span>
-            </td>
-            <td>
-              <input type="text" id="sliderxf" value='0' onchange="actualizarXf(this.value)"  class="stack">
+              <input type="text" id="sliderx0" value='6' onchange="actualizarX0(this.value)"  class="stack">
             </td>
           </tr>
           </tbody>
           <thead>
             <tr style="text-align: center;">
               <th colspan='2' style="text-align: center;">
-                <button style="text-align: center;" onclick="resolver('SC')" class="stack icon-paper-plane">Calcular</button>
+                <button style="text-align: center;" onclick="resolver()" class="stack icon-paper-plane">Calcular</button>
               </th>
             </tr>
             <tr style="text-align: center;">
@@ -101,7 +94,9 @@
             </tr>
             <tr>
               <td colspan="2">
-                <span id="pretty">$$f(x)=e^{-x}-x$$</span>
+                <span id="pretty">$$$$</span>
+                <span id="pretty2">$$$$</span>
+                <span id="pretty3">$$$$</span>
               </td>
             </tr>
           </thead>
@@ -110,10 +105,9 @@
           <thead >
             <tr style="text-align: center;">
               <th><span >$$x_i$$</span></th>
-              <th><span >$$x_{i-1}$$</span></th>
-              <th><span>$$f(x_{i})$$</span></th>
-              <th><span>$$f(x_{i-1})$$</span></th>
-              <th><span>$$f'(x_{i})$$</span></th>
+              <th><span>$$f'(x_i)$$</span></th>
+              <th><span>$$f''(x_{i})$$</span></th>
+              <th><span>$$x_{i+1}$$</span></th>
               <th><span>$$e\%$$</span></th>
             </tr>
           </thead>
@@ -125,7 +119,6 @@
               <td id="-1,fxl">0</td>
               <td id="-1,fxu">0</td>
               <td id="-1,xr">0</td>
-              <td id="-1,fxr">0</td>
             </tr>
 
             <tr>
@@ -134,7 +127,6 @@
               <td id="1,fxl">0</td>
               <td id="1,fxu">0</td>
               <td id="1,xr">0</td>
-              <td id="1,fxr">0</td>
             </tr>
 
             <tr>
@@ -143,17 +135,16 @@
               <td id="+1,fxl">0</td>
               <td id="+1,fxu">0</td>
               <td id="+1,xr">0</td>
-              <td id="+1,fxr">0</td>
             </tr>
           </tbody>
         </table>
       </div>
     <div class="columnaTercios" style=" border: 2px solid gray; border-radius: 8px;margin: 5px">
-      <div id="grafica">
+      <div id="grafica2">
       </div>
     </div>
     <div class="columnaTercios" style="border: 2px solid gray; border-radius: 8px; margin: 5px;">
-      <div id="grafica2"></div>
+      <div id="grafica"></div>
     </div>
     </div>
     <div>
@@ -171,9 +162,6 @@
     </div>
 </footer>
   </article>
-  <script type="text/javascript" src="../../js/Modelacion_Analisis_Numerico.js"></script>
-  <script type="text/javascript">
-    actual = 'SC'
-  </script>
+  <script type="text/javascript" src="../../js/Optimizacion_Newton.js"></script>
 </body>
 </html>

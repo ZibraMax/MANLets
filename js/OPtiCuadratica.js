@@ -4,7 +4,7 @@ var sliderxf = document.getElementById('sliderxf')
 var xfG = parseFloat(sliderxf.value)
 var sliderx3 = document.getElementById('sliderx3')
 var xf3 = parseFloat(sliderx3.value)
-
+//test
 var funcionActual = undefined
 let iteraccionActual = 0
 var resultadoActual = []
@@ -16,7 +16,7 @@ var mathField = MQ.MathField(mathFieldSpan, {
         edit: function() {
             try{
               triggerBotones(false)
-              actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+              actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
             }
             catch(e){}
         }
@@ -39,7 +39,7 @@ function actualizarX0(x,paila=false) {
     try {
     actualizarFuncion(document.getElementById('funcion').value)
   } catch {
-    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
   }
   }
 }
@@ -49,7 +49,7 @@ function actualizarXf(x,paila=false) {
     try {
     actualizarFuncion(document.getElementById('funcion').value)
   } catch {
-    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
   }
   }
 }
@@ -59,7 +59,7 @@ function actualizarX3(x,paila=false) {
     try {
     actualizarFuncion(document.getElementById('funcion').value)
   } catch {
-    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
   }
   }
 }
@@ -91,7 +91,7 @@ function resolver() {
   try {
     actualizarFuncion(document.getElementById('funcion').value)
   } catch {
-    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString())
+    actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
   }
   triggerBotones(true)
 }
@@ -471,5 +471,14 @@ class OPtimizacionCuadratica {
 }
 if (navigator.userAgent.match(/Mobile/)) {
   document.getElementById('cuelloBotella').innerHTML = '<input type="text" id="funcion" value="2*sin(x)-(x^2)/10" onchange="actualizarFuncion(this.value)">';
+}
+
+$('#cositasLindas').toolbar({
+  content: '#toolbar-options',
+  animation: 'grow'
+  });
+function input(str) {
+  mathField.cmd(str)
+  mathField.focus()
 }
 triggerBotones(false)
