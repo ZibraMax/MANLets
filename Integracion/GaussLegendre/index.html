@@ -60,19 +60,19 @@
 				<div class="columnaMedios">
 					<table style="width: 100%">
 						<thead>
-							<th>
+							<th colspan="2">
 								Parámetro
 							</th>
-							<th>
+							<th colspan="2">
 								Valor
 							</th>
 						</thead>
 						<tbody>
 						<tr>
-							<td>
+							<td colspan="1">
 								<span class="stack">$$f(x)=$$</span>
 							</td>
-							<td id="cuelloBotella">
+							<td id="cuelloBotella" colspan="3">
 				              <span id="math-field" class="mathquill-math-field" style="width: 78%">-12x^5-6x^3+10</span><button id="cositasLindas" type="button" class="btn btn-default" style="margin-left: 10px; width: 18%">\(f\)</button>
 				              <div id="toolbar-options" class="hidden">
 				                <a type="button" class="fa" onClick='input("\\sqrt")'>\(\sqrt{x}\)</a>
@@ -90,13 +90,10 @@
 						<tr>
 							<td>
 								<span class="stack">$$\color{black}a=$$</span>
-								
 							</td>
 							<td>
 								<input type="text" id="sliderx0" value='0' oninput="actualizarIntervalo()"  class="stack">
 							</td>
-						</tr>
-						<tr>
 							<td>
 								<span class="stack">$$b=$$</span>
 							</td>
@@ -111,29 +108,39 @@
 							<td>
 								<input type="number" id="numeroSegmentos" value='3' oninput="actualizarSegmentos(parseFloat(this.value))"  class="stack">
 							</td>
+							<td colspan="2" >
+								<button onclick="resolver()" class="stack icon-paper-plane" style="text-align: center;">Calcular</button>
+							</td>
 						</tr>
-						</tbody>
-						<thead>
-							<tr>
-								<th colspan="2" >
-									<button onclick="resolver()" class="stack icon-paper-plane" style="text-align: center;">Calcular</button>
-								</th>
-							</tr>
-							<tr style="text-align: center;">
-								<td style="align-content: center;">
-									<button onclick="menosPuntos();actualizarInterfazSegmentos()" class="succes icon-paper-plane" >< Disminuir Puntos</button>
-								</td>
-								<td style="align-content: center;">
-									<button onclick="masPuntos();actualizarInterfazSegmentos()" class="warning icon-paper-plane" >Aumentar Puntos > </button>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2">
-									<span id="pretty">$$\int_{0}^{1}{-12x^5-6x^3+10}{dx}=$$</span>
-								</td>
-							</tr>
-						</thead>
-					</table>
+						<tr style="text-align: center;">
+							<td style="align-content: center;" colspan="2">
+								<button onclick="menosPuntos();actualizarInterfazSegmentos()" class="succes icon-paper-plane" >< Disminuir Puntos</button>
+							</td>
+							<td style="align-content: center;" colspan="2">
+								<button onclick="masPuntos();actualizarInterfazSegmentos()" class="warning icon-paper-plane" >Aumentar Puntos > </button>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4">
+								<span id="pretty">$$\int_{0}^{1}{-12x^5-6x^3+10}{dx}=$$</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table style="font-size: 13px; width: 100%">
+					<thead>
+						<tr style="text-align: center;">
+							<th><span>\(\zeta_i\)</span></th>
+							<th><span>\(W_i\)</span></th>
+							<th><span>\(x(\zeta_i)\)</span></th>
+							<th><span>\(f(x_i)\)</span></th>
+							<th><span>\(Wf(x_i)\)</span></th>
+						</tr>
+					</thead>
+					<tbody id="cuerpoTablaPuntos">
+
+					</tbody>
+				</table>
 			</div>
 		</div>
 		<div id="btns">

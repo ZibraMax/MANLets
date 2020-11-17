@@ -1,6 +1,6 @@
 /* Modelación y Análisis Numérico
 * Este archivo hace parte de un proyecto para el aprendizaje interactivo de metodos numéricos.
-* En este archivo se encuentra el nucleo de calculo de los metodos
+* En este archivo se encuentra el nucleo de calculo de los metodos de integración
 * 
 *
 * Este archivo requiere la libreria math.js
@@ -113,7 +113,31 @@ function actualizarLatex() {
 		valor = ''
 	}
 	elem.innerHTML = color+'{\\int_{'+actual.a+'}^{'+actual.b+'}' + math.parse(str).toTex()+'{dx}='+valor+'}$$'
+	if (problema == 'GL') {
+		actualizarTablaPuntos()
+	}
     MathJax.typeset()
+}
+function actualizarTablaPuntos() {
+	let Z = actual.xs
+	let X = Z.map(x => (actual.b-actual.a)/2*x+(actual.a+actual.b)/2)
+	let W = actual.ws
+	let str = ''
+	for (var i = 0; i < X.length; i++) {
+		let fila = '<tr><td>'
+		fila += math.round(Z[i],3)
+		fila += '</td><td>'
+		fila += math.round(W[i],3)
+		fila += '</td><td>'
+		fila += math.round(X[i],3)
+		fila += '</td><td>'
+		fila += math.round(actual.fx(X[i]),3)
+		fila += '</td><td>'
+		fila += math.round(actual.fx(X[i])*W[i],3)
+		fila += '</td></tr>'
+		str += fila
+	}
+	document.getElementById('cuerpoTablaPuntos').innerHTML = str
 }
 
 function resolver(tipo = 'GL') {
@@ -401,7 +425,7 @@ class Simpson{
 
 		let flag = 1 - (PUNTOS_GAUSS%2 == 0)
 		PUNTOS_GAUSS = PUNTOS_GAUSS-3*flag
-		let puntosGrafica = 8
+		let puntosGrafica = 30
 		for(let i = 0; i < PUNTOS_GAUSS; i+=2){
 			let x0 = this.a+i*h
 			let x1 = this.a+(i+1)*h
@@ -425,6 +449,7 @@ class Simpson{
 			let trace = {
 				x: x,
 				y: fxs,
+				mode: 'lines',
 				fill: 'tozeroy',
 				fillcolor: 'rgba(34, 135, 224, 0.3)',
 				opacity: 0.5,
@@ -458,6 +483,7 @@ class Simpson{
 			let trace = {
 				x: x,
 				y: fxs,
+				mode: 'lines',
 				fill: 'tozeroy',
 				fillcolor: 'rgba(228, 164, 12, 0.3)',
 				opacity: 0.5,
