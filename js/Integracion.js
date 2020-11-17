@@ -131,9 +131,9 @@ function actualizarTablaPuntos() {
 		fila += '</td><td>'
 		fila += math.round(X[i],3)
 		fila += '</td><td>'
-		fila += math.round(actual.fx(X[i]),3)
+		fila += math.round((actual.b-actual.a)/2*actual.fx(X[i]),3)
 		fila += '</td><td>'
-		fila += math.round(actual.fx(X[i])*W[i],3)
+		fila += math.round((actual.b-actual.a)/2*actual.fx(X[i])*W[i],3)
 		fila += '</td></tr>'
 		str += fila
 	}
