@@ -125,15 +125,15 @@ function actualizarTablaPuntos() {
 	let str = ''
 	for (var i = 0; i < X.length; i++) {
 		let fila = '<tr><td>'
-		fila += math.round(Z[i],3)
+		fila += math.round(Z[X.length-i-1],3)
 		fila += '</td><td>'
-		fila += math.round(W[i],3)
+		fila += math.round(W[X.length-i-1],3)
 		fila += '</td><td>'
-		fila += math.round(X[i],3)
+		fila += math.round(X[X.length-i-1],3)
 		fila += '</td><td>'
-		fila += math.round((actual.b-actual.a)/2*actual.fx(X[i]),3)
+		fila += math.round((actual.b-actual.a)/2*actual.fx(X[X.length-i-1]),3)
 		fila += '</td><td>'
-		fila += math.round((actual.b-actual.a)/2*actual.fx(X[i])*W[i],3)
+		fila += math.round((actual.b-actual.a)/2*actual.fx(X[X.length-i-1])*W[X.length-i-1],3)
 		fila += '</td></tr>'
 		str += fila
 	}
