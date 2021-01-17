@@ -16,7 +16,7 @@ var a = parseFloat(document.getElementById('sliderx0').value)
 var b = parseFloat(document.getElementById('sliderxf').value)
 var NMAX = 40
 var NMIN = 1
-var problema = 'GL'
+// var problema = 'GL'
 var actual = undefined
 
 var mathFieldSpan = document.getElementById('math-field');
@@ -168,7 +168,6 @@ function resolver(tipo = 'GL') {
 	}
 	actualizarIntervalo()
 }
-
 function menosPuntos() {
 	PUNTOS_GAUSS -= 1*(PUNTOS_GAUSS>1)
 	if (PUNTOS_GAUSS<NMIN) {
@@ -515,4 +514,29 @@ $('#cositasLindas').toolbar({
 function input(str) {
 	mathField.cmd(str)
 	mathField.focus()
+}
+document.body.onload = function(){
+	console.log(problema)
+	resolver(problema)
+	var queryString = window.location.search;
+	if (queryString != '') {
+		queryString = queryString.split('?')[1]
+		let parametros = new URLSearchParams(queryString);
+		funcion_param = parametros.get('fx')
+		console.log(funcion_param)
+		try {
+			mathField.focus();
+			mathField.keystroke('End Shift-Home Del');
+			// input(funcion_param)
+			mathField.write(funcion_param)
+			mathField.focus()
+			sliderx0.value = parseFloat(parametros.get('a'))
+			sliderxf.value = parseFloat(parametros.get('b'))
+			actualizarSegmentos(parseFloat(parametros.get('n')))
+			actualizarIntervalo()
+
+		} catch (e) {
+			console.log(queryString,e)
+		}
+	}
 }

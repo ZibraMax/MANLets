@@ -391,4 +391,35 @@ let b = Math.max(bx,by)
 let x = (h,x0,y0) => {return x0+gradf(x0,y0)[0]*h}
 let y = (h,x0,y0) => {return y0+gradf(x0,y0)[1]*h}
 var G = undefined
-triggerBotones(false)
+document.body.onload = function(){
+  triggerBotones(false)
+  var queryString = window.location.search;
+  if (queryString != '') {
+    queryString = queryString.split('?')[1]
+    let parametros = new URLSearchParams(queryString);
+    funcion_param = parametros.get('fx')
+    console.log(funcion_param)
+    try {
+        let estado = parametros.get('max')=='true'
+        document.getElementById('maximizarRadio').checked = estado
+        document.getElementById('minimizarRadio').checked = !estado
+      document.getElementById('x0').value = parseFloat(parametros.get('xa'))
+      document.getElementById('xf').value = parseFloat(parametros.get('xb'))
+      document.getElementById('y0').value = parseFloat(parametros.get('ya'))
+      document.getElementById('yf').value = parseFloat(parametros.get('yb'))
+
+      document.getElementById('x_0').value = parseFloat(parametros.get('x0'))
+      document.getElementById('y_0').value = parseFloat(parametros.get('y0'))
+      mathField.focus();
+      mathField.keystroke('End Shift-Home Del');
+      // input(funcion_param)
+      mathField.write(funcion_param)
+      mathField.focus()
+
+      calcular()
+
+    } catch (e) {
+      console.log(queryString,e)
+    }
+  }
+}

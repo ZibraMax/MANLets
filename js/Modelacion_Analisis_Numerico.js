@@ -1567,4 +1567,27 @@ $('#cositasLindas').toolbar({
 	animation: 'grow'
 	});
 
-triggerBotones(false)
+document.body.onload = function(){
+	triggerBotones(false)
+	var queryString = window.location.search;
+	if (queryString != '') {
+		queryString = queryString.split('?')[1]
+		let parametros = new URLSearchParams(queryString);
+		funcion_param = parametros.get('fx')
+		console.log(funcion_param)
+		try {
+			mathField.focus();
+			mathField.keystroke('End Shift-Home Del');
+			// input(funcion_param)
+			mathField.write(funcion_param)
+			mathField.focus()
+			actualizarX0(parseFloat(parametros.get('xl')))
+			actualizarXf(parseFloat(parametros.get('xu')))
+			sliderxf.value = parseFloat(parametros.get('xu'))
+			sliderx0.value = parseFloat(parametros.get('xl'))
+			resolver(actual)
+		} catch (e) {
+			console.log(queryString,e)
+		}
+	}
+}
