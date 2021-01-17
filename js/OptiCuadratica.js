@@ -230,6 +230,7 @@ function actualizarTabla(i) {
   }
 }
 function interpolar (x,y) {
+  console.log(x,y)
   let matriz = []
   let vector = []
   for(let i = 0, length1 = x.length; i < length1; i++){
@@ -482,3 +483,30 @@ function input(str) {
   mathField.focus()
 }
 triggerBotones(false)
+document.body.onload = function(){
+  triggerBotones(false)
+  var queryString = window.location.search;
+  if (queryString != '') {
+    queryString = queryString.split('?')[1]
+    let parametros = new URLSearchParams(queryString);
+    funcion_param = parametros.get('fx')
+    console.log(funcion_param)
+    try {
+      mathField.focus();
+      mathField.keystroke('End Shift-Home Del');
+      // input(funcion_param)
+      mathField.write(funcion_param)
+      mathField.focus()
+      actualizarX0(parseFloat(parametros.get('xl')))
+      actualizarXf(parseFloat(parametros.get('xu')))
+      actualizarX3(parseFloat(parametros.get('x3')))
+      sliderxf.value = parseFloat(parametros.get('xu'))
+      sliderx0.value = parseFloat(parametros.get('xl'))
+      sliderx3.value = parseFloat(parametros.get('x3'))
+
+    } catch (e) {
+      console.log(queryString,e)
+    }
+    triggerBotones(true)
+  }
+}

@@ -1573,7 +1573,7 @@ document.body.onload = function(){
 	if (queryString != '') {
 		queryString = queryString.split('?')[1]
 		let parametros = new URLSearchParams(queryString);
-		funcion_param = parametros.get('funcion')
+		funcion_param = parametros.get('fx')
 		console.log(funcion_param)
 		try {
 			mathField.focus();
@@ -1590,4 +1590,4 @@ document.body.onload = function(){
 			console.log(queryString,e)
 		}
 	}
-};
+}
