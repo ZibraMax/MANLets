@@ -1589,7 +1589,13 @@ class MetodoDeRaiz {
 	}
 }
 if (navigator.userAgent.match(/Mobile/)) {
-	document.getElementById('cuelloBotella').innerHTML = '<input type="text" id="funcion" value="-12x^5-6x^3+10" onchange="actualizarFuncion(this.value)">';
+	if (actual == 'IS') {
+		document.getElementById('cuelloBotella').innerHTML = '<input type="text" id="funcion" value="e^(-x)" onchange="actualizarFuncion(this.value)">';
+	} else if (actual == 'N' || actual == 'SC' || actual == 'SCM') {
+		document.getElementById('cuelloBotella').innerHTML = '<input type="text" id="funcion" value="e^(-x)-x" onchange="actualizarFuncion(this.value)">';
+	} else {
+		document.getElementById('cuelloBotella').innerHTML = '<input type="text" id="funcion" value="-12x^5-6x^3+10" onchange="actualizarFuncion(this.value)">';
+	}
 }
 function input(str) {
 	mathField.cmd(str)
