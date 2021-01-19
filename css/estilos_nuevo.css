@@ -283,6 +283,9 @@ a { color: #000000; }
 .botonesMath{
 }
 @media (prefers-color-scheme: dark) {
+  img {
+    filter: grayscale(100%) brightness(0.8) drop-shadow(10px 10px 20px black);
+  }
   .fa {
     color: #ebebeb;
   }
