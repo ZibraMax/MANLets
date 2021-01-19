@@ -263,13 +263,18 @@ class GaussLegendre{
 		}
 		traces.push(trace)
 
-		let layout = {
+		let layout = {plot_bgcolor:"rgba(0,0,0,0)",
+        paper_bgcolor:"rgba(0,0,0,0)",
 		  title:'Integración por Gauss-Legendre',
 		  xaxis: {
-		  	title:'x'
+		  	title:'x',
+        tickformat: '.3f',
+        gridcolor: 'rgb(198,194,191)'
 		  },
 		  yaxis: {
-		  	title:'y'
+		  	title:'y',
+        tickformat: '.3f',
+        gridcolor: 'rgb(198,194,191)'
 		  }
 		}
 
@@ -340,14 +345,19 @@ class Trapecio{
 		}
 		traces.push(trace)
 
-		let layout = {
+		let layout = {plot_bgcolor:"rgba(0,0,0,0)",
+        paper_bgcolor:"rgba(0,0,0,0)",
 		  title:'Integración por Trapecio',
 		  shapes:shapes,
 		  xaxis: {
-		  	title:'x'
+		  	title:'x',
+        tickformat: '.3f',
+        gridcolor: 'rgb(198,194,191)'
 		  },
 		  yaxis: {
-		  	title:'y'
+		  	title:'y',
+        tickformat: '.3f',
+        gridcolor: 'rgb(198,194,191)'
 		  }
 		}
 
@@ -491,14 +501,19 @@ class Simpson{
 			traces.push(trace)
 		}
 		PUNTOS_GAUSS = PUNTOS_GAUSS+3*flag
-		let layout = {
+		let layout = {plot_bgcolor:"rgba(0,0,0,0)",
+        paper_bgcolor:"rgba(0,0,0,0)",
 		  title:'Integración por Simpson',
 		  shapes:shapes,
 		  xaxis: {
-		  	title:'x'
+		  	title:'x',
+        tickformat: '.3f',
+        gridcolor: 'rgb(198,194,191)'
 		  },
 		  yaxis: {
-		  	title:'y'
+		  	title:'y',
+        tickformat: '.3f',
+        gridcolor: 'rgb(198,194,191)'
 		  }
 		}
 

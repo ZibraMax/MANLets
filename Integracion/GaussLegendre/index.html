@@ -31,7 +31,8 @@
 
 	<!-- Picnic y css-->
 	<link rel="stylesheet" href="https://unpkg.com/picnic">
-	<link rel="stylesheet" href="../../css/estilos.css">
+<link rel="stylesheet" media='(prefers-color-scheme: dark)' href="../../css/picnic.min.css"/>
+	<link rel="stylesheet" href="../../css/estilos_nuevo.css">
 
 	<!-- Math.js-->
 	<script type="text/javascript" src="../../js/math.js"></script>
@@ -76,21 +77,21 @@
 							<td id="cuelloBotella" colspan="3">
 				              <span id="math-field" class="mathquill-math-field" style="width: 78%">-12x^5-6x^3+10</span><button id="cositasLindas" type="button" class="btn btn-default" style="margin-left: 10px; width: 18%">\(f\)</button>
 				              <div id="toolbar-options" class="hidden">
-				                <a type="button" class="fa" onClick='input("\\sqrt")'>\(\sqrt{x}\)</a>
-				                <a type="button" class="fa" onClick='input("\\nthroot")'>\(\sqrt[n]{x}\)</a>
-				                  <a type="button" class="fa" onClick= 'input("log")'>\(\ln\)</a>
-				                  <a type="button" class="fa" onClick='input("^")'>\(x^n\)</a>
-				                  <a type="button" class="fa" onClick='input("\\frac")'>\(\frac{a}{b}\)</a>
-				                  <a type="button" class="fa" onClick='input("(")'>\(()\)</a>
-				                  <a type="button" class="fa" onClick='input("sin")'>\(\sin\)</a>
-				                  <a type="button" class="fa" onClick='input("cos")'>\(\cos\)</a>
-				                  <a type="button" class="fa" onClick='input("tan")'>\(\tan\)</a>
+				                <a type="button" class="" onClick='input("\\sqrt")'>\(\sqrt{x}\)</a>
+				                <a type="button" class="" onClick='input("\\nthroot")'>\(\sqrt[n]{x}\)</a>
+				                  <a type="button" class="" onClick= 'input("log")'>\(\ln\)</a>
+				                  <a type="button" class="" onClick='input("^")'>\(x^n\)</a>
+				                  <a type="button" class="" onClick='input("\\frac")'>\(\frac{a}{b}\)</a>
+				                  <a type="button" class="" onClick='input("(")'>\(()\)</a>
+				                  <a type="button" class="" onClick='input("sin")'>\(\sin\)</a>
+				                  <a type="button" class="" onClick='input("cos")'>\(\cos\)</a>
+				                  <a type="button" class="" onClick='input("tan")'>\(\tan\)</a>
 				              </div>
 				            </td>
 						</tr>
 						<tr>
 							<td>
-								<span class="stack">$$\color{black}a=$$</span>
+								<span class="stack">$$a=$$</span>
 							</td>
 							<td>
 								<input type="text" id="sliderx0" value='0' oninput="actualizarIntervalo()"  class="stack">
@@ -123,7 +124,7 @@
 						</tr>
 						<tr>
 							<td colspan="4">
-								<span id="pretty">$$\int_{0}^{1}{-12x^5-6x^3+10}{dx}=$$</span>
+								<span id="pretty">$$\color{black}\int_{0}^{1}{-12x^5-6x^3+10}{dx}=$$</span>
 							</td>
 						</tr>
 					</tbody>

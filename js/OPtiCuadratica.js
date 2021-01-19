@@ -359,12 +359,18 @@ class OPtimizacionCuadratica {
       }
     }
     let layout = {
+      plot_bgcolor:"rgba(0,0,0,0)",
+        paper_bgcolor:"rgba(0,0,0,0)",
       title:'Iteracion ' + (parseInt(i)+1),
       xaxis: {
-        title:'x'
+        title:'x',
+        tickformat: '.3f',
+        gridcolor: 'rgb(198,194,191)'
       },
       yaxis: {
-        title:'y'
+        title:'y',
+        tickformat: '.3f',
+        gridcolor: 'rgb(198,194,191)'
       }
     }
     var config = {responsive: true}
@@ -458,12 +464,18 @@ class OPtimizacionCuadratica {
       }
     }
     let layout = {
+      plot_bgcolor:"rgba(0,0,0,0)",
+        paper_bgcolor:"rgba(0,0,0,0)",
       title:'Iteraciones General ',
       xaxis: {
-        title:'x'
+        title:'x',
+        tickformat: '.3f',
+        gridcolor: 'rgb(198,194,191)'
       },
       yaxis: {
-        title:'y'
+        title:'y',
+        tickformat: '.3f',
+        gridcolor: 'rgb(198,194,191)'
       }
     }
     var config = {responsive: true}
