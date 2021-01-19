@@ -1625,9 +1625,13 @@ document.body.onload = function(){
 			mathField.write(funcion_param)
 			mathField.focus()
 			actualizarX0(parseFloat(parametros.get('xl')))
-			actualizarXf(parseFloat(parametros.get('xu')))
-			sliderxf.value = parseFloat(parametros.get('xu'))
 			sliderx0.value = parseFloat(parametros.get('xl'))
+			try {
+				actualizarXf(parseFloat(parametros.get('xu')))
+				sliderxf.value = parseFloat(parametros.get('xu'))
+			} catch (e) {
+				console.log(e)
+			}
 			resolver(actual)
 		} catch (e) {
 			console.log(queryString,e)
