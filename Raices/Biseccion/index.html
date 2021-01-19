@@ -16,8 +16,9 @@
 	<title>Applets - Método de Bisección</title>
 	<link rel="shortcut icon" type="image/x-icon" href="../../favicon/favicon.ico">
 	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-	<link rel="stylesheet" href="https://unpkg.com/picnic">
-	<link rel="stylesheet" href="../../css/estilos.css">
+	<link rel="stylesheet" href="https://unpkg.com/picnic"/>
+	<link rel="stylesheet" media='(prefers-color-scheme: dark)' href="../../css/picnic.min.css"/>
+	<link rel="stylesheet" href="../../css/estilos_nuevo.css">
 	<script type="text/javascript" src="../../js/math.js"></script>
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -28,11 +29,14 @@
     <script type="text/javascript" src="../../js/math-expressions.js"></script>
     <script src="../../js/jquery.toolbar.min.js"></script>
     <link href="../../css/jquery.toolbar.css" rel="stylesheet" />
+    <script type="text/javascript">
+		var actual = 'BS'
+	</script>
 </head>
-<body style="margin: 20px">
+<body style="margin: 20px" class="dark-theme">
 	<article class="card">
 		<header>
-			<h1><a href="../index.html" class="fas fa-arrow-left"></a> <a href="../../index.html" class="fas fa-home"></a> MANLets - Método de Bisección</h1>
+			<h1 class=""><a href="../index.html" class="fas fa-arrow-left iconoMenu"></a> <a href="../../index.html" class="fas fa-home iconoMenu"></a> MANLets - Método de Bisección</h1>
 		</header>
 		<footer>
 			<div class="fila">
@@ -55,15 +59,15 @@
 						<td id="cuelloBotella">
 							<span id="math-field" class="mathquill-math-field" style="width: 78%">-12x^5-6x^3+10</span><button id="cositasLindas" type="button" class="btn btn-default" style="margin-left: 10px; width: 18%">\(f\)</button>
 						 	<div id="toolbar-options" class="hidden">
-								<a type="button" class="fa" onClick='input("\\sqrt")'>\(\sqrt{x}\)</a>
-								<a type="button" class="fa" onClick='input("\\nthroot")'>\(\sqrt[n]{x}\)</a>
-							    <a type="button" class="fa" onClick= 'input("log")'>\(\ln\)</a>
-							    <a type="button" class="fa" onClick='input("^")'>\(x^n\)</a>
-							    <a type="button" class="fa" onClick='input("\\frac")'>\(\frac{a}{b}\)</a>
-							    <a type="button" class="fa" onClick='input("(")'>\(()\)</a>
-							    <a type="button" class="fa" onClick='input("sin")'>\(\sin\)</a>
-							    <a type="button" class="fa" onClick='input("cos")'>\(\cos\)</a>
-							    <a type="button" class="fa" onClick='input("tan")'>\(\tan\)</a>
+								<a type="button" onClick='input("\\sqrt")'>\(\sqrt{x}\)</a>
+								<a type="button" onClick='input("\\nthroot")'>\(\sqrt[n]{x}\)</a>
+							    <a type="button" onClick= 'input("log")'>\(\ln\)</a>
+							    <a type="button" onClick='input("^")'>\(x^n\)</a>
+							    <a type="button" onClick='input("\\frac")'>\(\frac{a}{b}\)</a>
+							    <a type="button" onClick='input("(")'>\(()\)</a>
+							    <a type="button" onClick='input("sin")'>\(\sin\)</a>
+							    <a type="button" onClick='input("cos")'>\(\cos\)</a>
+							    <a type="button" onClick='input("tan")'>\(\tan\)</a>
 							</div>
 						</td>
 					</tr>
@@ -180,8 +184,5 @@
 		</div>
 </footer>
 	<script type="text/javascript" src="../../js/Modelacion_Analisis_Numerico.js"></script>
-<script type="text/javascript">
-		actual = 'BS'
-	</script>
 </body>
 </html>

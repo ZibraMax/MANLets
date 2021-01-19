@@ -11,7 +11,6 @@
 * 
 * David Arturo Rodriguez Herrera - da.rodriguezh@uniandes.edu.co - arturo@asections.com
 */
-var actual = ''
 var slider = document.getElementById('slider')
 var sliderx0 = document.getElementById('sliderx0')
 var sliderxf = document.getElementById('sliderxf')
@@ -754,14 +753,18 @@ class MetodoDeRaiz {
 		  name: 'f(Xi)',
 		}
 		let layout = {
+		  plot_bgcolor:"rgba(0,0,0,0)",
+	      paper_bgcolor:"rgba(0,0,0,0)",
 		  title:'Iteracion ' + (parseInt(i)+1),
 		  xaxis: {
 		  	title:'x',
-		  	tickformat: '.3f'
+		  	tickformat: '.3f',
+		  	gridcolor: 'rgb(198,194,191)'
 		  },
 		  yaxis: {
 		  	title:'y',
-		  	tickformat: '.3f'
+		  	tickformat: '.3f',
+		  	gridcolor: 'rgb(198,194,191)'
 		  }
 		}
 		var config = {responsive: true}
@@ -863,14 +866,18 @@ class MetodoDeRaiz {
 
 
 		let layout = {
+		  plot_bgcolor:"rgba(0,0,0,0)",
+	      paper_bgcolor:"rgba(0,0,0,0)",
 		  title:'Iteraciones General ',
 		  xaxis: {
 		  	title:'x',
-		  	tickformat: '.3f'
+		  	tickformat: '.3f',
+		  	gridcolor: 'rgb(198,194,191)'
 		  },
 		  yaxis: {
 		  	title:'y',
-		  	tickformat: '.3f'
+		  	tickformat: '.3f',
+		  	gridcolor: 'rgb(198,194,191)'
 		  }
 		}
 		var config = {responsive: true}
@@ -959,14 +966,18 @@ class MetodoDeRaiz {
 		  name: 'f(Xi)',
 		}
 		let layout = {
+		  plot_bgcolor:"rgba(0,0,0,0)",
+	      paper_bgcolor:"rgba(0,0,0,0)",
 		  title:'Iteracion ' + (parseInt(i)+1),
 		  xaxis: {
 		  	title:'x',
-		  	tickformat: '.3f'
+		  	tickformat: '.3f',
+		  	gridcolor: 'rgb(198,194,191)'
 		  },
 		  yaxis: {
 		  	title:'y',
-		  	tickformat: '.3f'
+		  	tickformat: '.3f',
+		  	gridcolor: 'rgb(198,194,191)'
 		  }
 		}
 		var config = {responsive: true}
@@ -1040,14 +1051,18 @@ class MetodoDeRaiz {
 
 
 		let layout = {
+		  plot_bgcolor:"rgba(0,0,0,0)",
+	      paper_bgcolor:"rgba(0,0,0,0)",
 		  title:'Iteraciones General ',
 		  xaxis: {
 		  	title:'x',
-		  	tickformat: '.3f'
+		  	tickformat: '.3f',
+		  	gridcolor: 'rgb(198,194,191)'
 		  },
 		  yaxis: {
 		  	title:'y',
-		  	tickformat: '.3f'
+		  	tickformat: '.3f',
+		  	gridcolor: 'rgb(198,194,191)'
 		  }
 		}
 		var config = {responsive: true}
@@ -1123,15 +1138,21 @@ class MetodoDeRaiz {
 		  }
 		}
 		let layout = {
+		  plot_bgcolor:"rgba(0,0,0,0)",
+	      paper_bgcolor:"rgba(0,0,0,0)",
 		  title:'Iteracion ' + (parseInt(i)+1),
 		  xaxis: {
 		  	title:'x',
-		  	tickformat: '.3f'
+		  	tickformat: '.3f',
+		  	gridcolor: 'rgb(198,194,191)'
 		  },
 		  yaxis: {
 		  	title:'y',
-		  	tickformat: '.3f'
-		  }
+		  	tickformat: '.3f',
+		  	gridcolor: 'rgb(198,194,191)'
+		  },
+		  plot_bgcolor:"rgba(0,0,0,0)",
+	      paper_bgcolor:"rgba(0,0,0,0)"
 		}
 		var config = {responsive: true}
 		Plotly.newPlot('grafica', [trace,trace3,trace1,trace2],layout,config)
@@ -1193,15 +1214,21 @@ class MetodoDeRaiz {
 		  name: 'Xr',
 		}
 		let layout = {
+		  plot_bgcolor:"rgba(0,0,0,0)",
+	      paper_bgcolor:"rgba(0,0,0,0)",
 		  title:'Iteraciones General ',
 		  xaxis: {
 		  	title:'x',
-		  	tickformat: '.3f'
+		  	tickformat: '.3f',
+		  	gridcolor: 'rgb(198,194,191)'
 		  },
 		  yaxis: {
 		  	title:'y',
-		  	tickformat: '.3f'
-		  }
+		  	tickformat: '.3f',
+		  	gridcolor: 'rgb(198,194,191)'
+		  },
+		  plot_bgcolor:"rgba(0,0,0,0)",
+	      paper_bgcolor:"rgba(0,0,0,0)"
 		}
 		var config = {responsive: true}
 		Plotly.newPlot('grafica2', [trace,trace3,trace1,trace2],layout,config)
@@ -1313,14 +1340,18 @@ class MetodoDeRaiz {
 
 		}
 		let layout = {
+		  plot_bgcolor:"rgba(0,0,0,0)",
+	      paper_bgcolor:"rgba(0,0,0,0)",
 		  title:'Iteracion ' + (parseInt(i)+1),
 		  xaxis: {
 		  	title:'x',
-		  	tickformat: '.3f'
+		  	tickformat: '.3f',
+		  	gridcolor: 'rgb(198,194,191)'
 		  },
 		  yaxis: {
 		  	title:'y',
-		  	tickformat: '.3f'
+		  	tickformat: '.3f',
+		  	gridcolor: 'rgb(198,194,191)'
 		  }
 		}
 		var config = {responsive: true}
@@ -1382,14 +1413,18 @@ class MetodoDeRaiz {
 
 		}
 		let layout = {
+		  plot_bgcolor:"rgba(0,0,0,0)",
+	      paper_bgcolor:"rgba(0,0,0,0)",
 		  title:'Iteraciones General ',
 		  xaxis: {
 		  	title:'x',
-		  	tickformat: '.3f'
+		  	tickformat: '.3f',
+		  	gridcolor: 'rgb(198,194,191)'
 		  },
 		  yaxis: {
 		  	title:'y',
-		  	tickformat: '.3f'
+		  	tickformat: '.3f',
+		  	gridcolor: 'rgb(198,194,191)'
 		  }
 		}
 		var config = {responsive: true}
@@ -1458,14 +1493,18 @@ class MetodoDeRaiz {
 		  }
 		}
 		let layout = {
+		  plot_bgcolor:"rgba(0,0,0,0)",
+	      paper_bgcolor:"rgba(0,0,0,0)",
 		  title:'Iteracion ' + (parseInt(i)+1),
 		  xaxis: {
 		  	title:'x',
-		  	tickformat: '.3f'
+		  	tickformat: '.3f',
+		  	gridcolor: 'rgb(198,194,191)'
 		  },
 		  yaxis: {
 		  	title:'y',
-		  	tickformat: '.3f'
+		  	tickformat: '.3f',
+		  	gridcolor: 'rgb(198,194,191)'
 		  }
 		}
 		var config = {responsive: true}
@@ -1531,14 +1570,18 @@ class MetodoDeRaiz {
 		  }
 		}
 		let layout = {
+		  plot_bgcolor:"rgba(0,0,0,0)",
+	      paper_bgcolor:"rgba(0,0,0,0)",
 		  title:'Iteracion ' + (parseInt(i)+1),
 		  xaxis: {
 		  	title:'x',
-		  	tickformat: '.3f'
+		  	tickformat: '.3f',
+		  	gridcolor: 'rgb(198,194,191)'
 		  },
 		  yaxis: {
 		  	title:'y',
-		  	tickformat: '.3f'
+		  	tickformat: '.3f',
+		  	gridcolor: 'rgb(198,194,191)'
 		  }
 		}
 		var config = {responsive: true}

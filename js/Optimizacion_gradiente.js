@@ -21,11 +21,16 @@ function graficarContornos2D(f,ax,bx,ay,by,n=100) {
         x: x,
         y: y,
         type: 'contour'}];
-    let layout = {title: "Función",xaxis: {
-            title:'x'
+    let layout = {plot_bgcolor:"rgba(0,0,0,0)",
+        paper_bgcolor:"rgba(0,0,0,0)",title: "Función",xaxis: {
+            title:'x',
+        tickformat: '.3f',
+        gridcolor: 'rgb(198,194,191)'
           },
           yaxis: {
-            title:'y'
+            title:'y',
+        tickformat: '.3f',
+        gridcolor: 'rgb(198,194,191)'
           }}
     Plotly.newPlot(divGeneral, data,layout,{responsive: true});
 }
@@ -58,11 +63,16 @@ function graficarGradiente(f,ax,bx,ay,by,n=300) {
         y: y,
         text: u,
         type: 'contour'}];
-    let layout = {title: "Gradiente",xaxis: {
-            title:'x'
+    let layout = {plot_bgcolor:"rgba(0,0,0,0)",
+        paper_bgcolor:"rgba(0,0,0,0)",title: "Gradiente",xaxis: {
+            title:'x',
+        tickformat: '.3f',
+        gridcolor: 'rgb(198,194,191)'
           },
           yaxis: {
-            title:'y'
+            title:'y',
+        tickformat: '.3f',
+        gridcolor: 'rgb(198,194,191)'
           }}
     Plotly.newPlot(divGradiente, data,layout,{responsive: true});
 }
@@ -89,11 +99,16 @@ function graficarDireccion(f,a,b,n=100) {
         x: x,
         y: y,
         type: 'lines'},trace4];
-    let layout = {title: "Region de búsqueda unidimensional",xaxis: {
-            title:'h'
+    let layout = {plot_bgcolor:"rgba(0,0,0,0)",
+        paper_bgcolor:"rgba(0,0,0,0)",title: "Region de búsqueda unidimensional",xaxis: {
+            title:'h',
+        tickformat: '.3f',
+        gridcolor: 'rgb(198,194,191)'
           },
           yaxis: {
-            title:'f(h)'
+            title:'f(h)',
+        tickformat: '.3f',
+        gridcolor: 'rgb(198,194,191)'
           }}
 
     Plotly.newPlot(divDireccion, data,layout,{responsive: true});
@@ -299,13 +314,18 @@ function actualizar(i) {
         mode: 'lines+markers',
         marker:{symbol: 203,size: 5}
     }
-    let layout = {
+    let layout = {plot_bgcolor:"rgba(0,0,0,0)",
+        paper_bgcolor:"rgba(0,0,0,0)",
         title: "Iteración " + (i+1),
         xaxis: {
-            title:'x'
+            title:'x',
+        tickformat: '.3f',
+        gridcolor: 'rgb(198,194,191)'
         },
         yaxis: {
-            title:'y'
+            title:'y',
+        tickformat: '.3f',
+        gridcolor: 'rgb(198,194,191)'
         }
     }
     for (var j = 0; j <= i+1; j++) {

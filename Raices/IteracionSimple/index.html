@@ -17,7 +17,8 @@
   <script src="https://kit.fontawesome.com/2416ed6962.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 	<link rel="stylesheet" href="https://unpkg.com/picnic">
-	<link rel="stylesheet" href="../../css/estilos.css">
+	<link rel="stylesheet" media='(prefers-color-scheme: dark)' href="../../css/picnic.min.css"/>
+	<link rel="stylesheet" href="../../css/estilos_nuevo.css">
 	<script type="text/javascript" src="../../js/math.js"></script>
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -29,6 +30,9 @@
     <script type="text/javascript" src="../../js/math-expressions.js"></script>
     <script src="../../js/jquery.toolbar.min.js"></script>
     <link href="../../css/jquery.toolbar.css" rel="stylesheet" />
+    <script type="text/javascript">
+		var actual = 'IS'
+	</script>
 </head>
 <body style="margin: 20px">
 	<article class="card">
@@ -56,15 +60,15 @@
 						<td id="cuelloBotella">
 							<span id="math-field" class="mathquill-math-field" style="width: 78%">e^{-x}</span><button id="cositasLindas" type="button" class="btn btn-default" style="margin-left: 10px; width: 18%">\(f\)</button>
 						 	<div id="toolbar-options" class="hidden">
-								<a type="button" class="fa" onClick='input("\\sqrt")'>\(\sqrt{x}\)</a>
-								<a type="button" class="fa" onClick='input("\\nthroot")'>\(\sqrt[n]{x}\)</a>
-							    <a type="button" class="fa" onClick= 'input("log")'>\(\ln\)</a>
-							    <a type="button" class="fa" onClick='input("^")'>\(x^n\)</a>
-							    <a type="button" class="fa" onClick='input("\\frac")'>\(\frac{a}{b}\)</a>
-							    <a type="button" class="fa" onClick='input("(")'>\(()\)</a>
-							    <a type="button" class="fa" onClick='input("sin")'>\(\sin\)</a>
-							    <a type="button" class="fa" onClick='input("cos")'>\(\cos\)</a>
-							    <a type="button" class="fa" onClick='input("tan")'>\(\tan\)</a>
+								<a type="button" class="" onClick='input("\\sqrt")'>\(\sqrt{x}\)</a>
+								<a type="button" class="" onClick='input("\\nthroot")'>\(\sqrt[n]{x}\)</a>
+							    <a type="button" class="" onClick= 'input("log")'>\(\ln\)</a>
+							    <a type="button" class="" onClick='input("^")'>\(x^n\)</a>
+							    <a type="button" class="" onClick='input("\\frac")'>\(\frac{a}{b}\)</a>
+							    <a type="button" class="" onClick='input("(")'>\(()\)</a>
+							    <a type="button" class="" onClick='input("sin")'>\(\sin\)</a>
+							    <a type="button" class="" onClick='input("cos")'>\(\cos\)</a>
+							    <a type="button" class="" onClick='input("tan")'>\(\tan\)</a>
 							</div>
 						</td>
 					</tr>
@@ -160,8 +164,5 @@
 </footer>
 	</article>
 	<script type="text/javascript" src="../../js/Modelacion_Analisis_Numerico.js"></script>
-	<script type="text/javascript">
-		actual = 'IS'
-	</script>
 </body>
 </html>

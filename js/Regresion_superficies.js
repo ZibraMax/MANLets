@@ -36,8 +36,13 @@ var trace2 = {
 };
 
 var data = [trace1,trace2];
-var layout = {
-	xaxis: {title:'x'},yaxis: {title:'y'},margin: {
+var layout = {plot_bgcolor:"rgba(0,0,0,0)",
+        paper_bgcolor:"rgba(0,0,0,0)",
+	xaxis: {title:'x',
+        tickformat: '.3f',
+        gridcolor: 'rgb(198,194,191)'},yaxis: {title:'y',
+        tickformat: '.3f',
+        gridcolor: 'rgb(198,194,191)'},margin: {
     l: 0,
     r: 0,
     b: 0,

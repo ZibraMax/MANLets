@@ -154,7 +154,7 @@
 }
 .tool-item.selected,
 .tool-item:hover {
-  background: #02baf2;
+  background: #F3F3F3;
 }
 .tool-item.selected > .fa,
 .tool-item:hover > .fa {

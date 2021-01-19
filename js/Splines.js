@@ -28,13 +28,18 @@ traces.push({
 
 var FUNCION = undefined
 var myPlot = document.getElementById('myPlot')
-let layout = {
+let layout = {plot_bgcolor:"rgba(0,0,0,0)",
+        paper_bgcolor:"rgba(0,0,0,0)",
 		  title:'Interpolación con Splines',
 		  xaxis: {
-		  	title:'x'
+		  	title:'x',
+        tickformat: '.3f',
+        gridcolor: 'rgb(198,194,191)'
 		  },
 		  yaxis: {
-		  	title:'y'
+		  	title:'y',
+        tickformat: '.3f',
+        gridcolor: 'rgb(198,194,191)'
 		  }
 		}
 Plotly.newPlot('myPlot', traces,layout ,{responsive: true});
