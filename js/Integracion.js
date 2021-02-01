@@ -26,7 +26,6 @@ var mathField = MQ.MathField(mathFieldSpan, {
     handlers: {
         edit: function() {
             try{
-            	triggerBotones(false)
             	actualizarFuncion(MathExpression.fromLatex(mathField.latex()).toString().toLowerCase())
             }
             catch(e){}
