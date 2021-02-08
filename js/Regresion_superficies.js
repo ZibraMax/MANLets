@@ -363,7 +363,7 @@ $(document).ready(function(){
 							opacity: 0.8},
 						type: 'scatter3d'
 						}];
-					Plotly.plot('myPlot', traces)
+					Plotly.plot('myPlot', traces,layout)
 					ORDEN = 0
 					actualizarOrden(excel=true)
 					var mods = document.querySelectorAll('.modal > [type=checkbox]');

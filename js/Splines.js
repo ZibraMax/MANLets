@@ -9,7 +9,8 @@ var traces = [{
   y: YI,
   mode: 'markers',
   type: 'scatter',
-  name: 'Puntos'
+  name: 'Puntos',
+
 }];
 
 
@@ -59,7 +60,7 @@ Plotly.d3.select(".plotly").on('click', function(d, i) {
 		try {
 			Plotly.extendTraces(myPlot, {x: [[x]],y: [[y]]},[0]);
 		} catch {
-			Plotly.plot('myPlot', [{x: [x],y: [y],mode: 'markers',type: 'scatter',name: 'Puntos'}]);
+			Plotly.plot('myPlot', [{x: [x],y: [y],mode: 'markers',type: 'scatter',name: 'Puntos'}],layout);
 		}
 	}
 	let objetos = []
@@ -138,7 +139,7 @@ function graficar(a,b,funcion,n=10000,excel=false) {
 
 		}
 	}
-	Plotly.plot('myPlot', [data_update,data_update2])
+	Plotly.plot('myPlot', [data_update,data_update2],layout)
 }
 function actualizarTabla(TEXT) {
 	document.getElementById('latexmatriz').innerHTML = '$$\\small\\begin{align}' +'\\text{Parábolas:} '+'\\ '+ TEXT+ '\\end{align}$$'
@@ -168,7 +169,7 @@ function agregarDatoXY() {
 	try {
 		Plotly.extendTraces(myPlot, {x: [[x]],y: [[y]]},[0]);
 	} catch {
-		Plotly.plot('myPlot', [{x: [x],y: [y],mode: 'markers',type: 'scatter',name: 'Puntos'}]);
+		Plotly.plot('myPlot', [{x: [x],y: [y],mode: 'markers',type: 'scatter',name: 'Puntos'}],layout);
 	}
 
 
@@ -264,7 +265,7 @@ $(document).ready(function(){
 						  type: 'scatter',
 						  name: 'Puntos a Interpolar'
 						}];
-					Plotly.plot('myPlot', traces)
+					Plotly.plot('myPlot', traces,layout)
 					let objetos = []
 					let ex = myPlot.data[0].x
 					let ey = myPlot.data[0].y

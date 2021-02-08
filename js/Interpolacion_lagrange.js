@@ -263,7 +263,7 @@ $(document).ready(function(){
 						  type: 'scatter',
 						  name: 'Puntos a Interpolar'
 						}];
-					Plotly.plot('myPlot', traces,{title:'Iterpolación polinomial',xaxis: {title:'x'},yaxis: {title:'y'}})
+					Plotly.plot('myPlot', traces,layout)
 					let objetos = []
 					for(let i = 0, length1 = X.length; i < length1; i++){
 						objetos.push({

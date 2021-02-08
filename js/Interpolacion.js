@@ -43,7 +43,7 @@ Plotly.d3.select(".plotly").on('click', function(d, i) {
 		try {
 			Plotly.extendTraces(myPlot, {x: [[x]],y: [[y]]},[0]);
 		} catch {
-			Plotly.plot('myPlot', [{x: [x],y: [y],mode: 'markers',type: 'scatter',name: 'Puntos'}]);
+			Plotly.plot('myPlot', [{x: [x],y: [y],mode: 'markers',type: 'scatter',name: 'Puntos'}],layout);
 		}
 	}
 	let objetos = []
@@ -77,7 +77,7 @@ function agregarDatoXY() {
 	try {
 		Plotly.extendTraces(myPlot, {x: [[x]],y: [[y]]},[0]);
 	} catch {
-		Plotly.plot('myPlot', [{x: [x],y: [y],mode: 'markers',type: 'scatter',name: 'Puntos'}]);
+		Plotly.plot('myPlot', [{x: [x],y: [y],mode: 'markers',type: 'scatter',name: 'Puntos'}],layout);
 	}
 
 
@@ -161,7 +161,7 @@ function graficar(a,b,funcion,n=100,excel=false) {
 
 		}
 	}
-	Plotly.plot('myPlot', [data_update])
+	Plotly.plot('myPlot', [data_update],layout)
 }
 function actualizarTabla(tabla) {
 	//Datos en X,Y
@@ -239,7 +239,7 @@ $(document).ready(function(){
 						  type: 'scatter',
 						  name: 'Puntos a Interpolar'
 						}];
-					Plotly.plot('myPlot', traces,{title:'Iterpolación polinomial',xaxis: {title:'x'},yaxis: {title:'y'}})
+					Plotly.plot('myPlot', traces,layout)
 					let objetos = []
 					for(let i = 0, length1 = X.length; i < length1; i++){
 						objetos.push({

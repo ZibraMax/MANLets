@@ -375,7 +375,7 @@ $(document).ready(function(){
 						  type: 'scatter',
 						  name: 'Puntos a Interpolar'
 						}];
-					Plotly.plot('myPlot', traces)
+					Plotly.plot('myPlot', traces,layout)
 					FUNCION = interpolar(X,Y)
 					let xmin = math.min(X)
 					let xmax = math.max(X)
