@@ -232,33 +232,39 @@ class DiferenciasFinitas {
         let K = this.K;
         let V = this.F;
         let U = this.U;
-        let tabla = "\\scriptsize\\begin{pmatrix}";
-        for (var i = 0; i < K.length; i++) {
-            for (var j = 0; j < K.length; j++) {
-                let sep = "&";
-                if (j == K.length - 1) {
-                    sep = "";
+        let tabla = "";
+        if (this.K.length > 7) {
+            tabla =
+                "\\text{El sistema de ecuaciones es muy grande para mostrarse.}";
+        } else {
+            tabla += "\\scriptsize\\begin{pmatrix}";
+            for (var i = 0; i < K.length; i++) {
+                for (var j = 0; j < K.length; j++) {
+                    let sep = "&";
+                    if (j == K.length - 1) {
+                        sep = "";
+                    }
+                    tabla += math.round(K[i][j], 3) + sep;
                 }
-                tabla += math.round(K[i][j], 3) + sep;
+                tabla += "\\\\";
             }
-            tabla += "\\\\";
+            tabla += "\\end{pmatrix}";
+            tabla += "\\cdot\\begin{pmatrix}";
+            for (var i = 0; i < K.length; i++) {
+                tabla += "a_{" + i + "}\\\\";
+            }
+            tabla += "\\end{pmatrix}=";
+            tabla += "\\begin{pmatrix}";
+            for (var i = 0; i < K.length; i++) {
+                tabla += math.round(V[i], 3) + "\\\\";
+            }
+            tabla += "\\end{pmatrix}\\rightarrow";
+            tabla += "\\begin{pmatrix}";
+            for (var i = 0; i < K.length; i++) {
+                tabla += math.round(U[i], 3) + "\\\\";
+            }
+            tabla += "\\end{pmatrix}";
         }
-        tabla += "\\end{pmatrix}";
-        tabla += "\\cdot\\begin{pmatrix}";
-        for (var i = 0; i < K.length; i++) {
-            tabla += "a_{" + i + "}\\\\";
-        }
-        tabla += "\\end{pmatrix}=";
-        tabla += "\\begin{pmatrix}";
-        for (var i = 0; i < K.length; i++) {
-            tabla += math.round(V[i], 3) + "\\\\";
-        }
-        tabla += "\\end{pmatrix}\\rightarrow";
-        tabla += "\\begin{pmatrix}";
-        for (var i = 0; i < K.length; i++) {
-            tabla += math.round(U[i], 3) + "\\\\";
-        }
-        tabla += "\\end{pmatrix}";
         document.getElementById("SistemaEcuaciones").innerHTML =
             "$$" + tabla + "$$";
         MathJax.typeset();
