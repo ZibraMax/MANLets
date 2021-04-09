@@ -253,7 +253,19 @@ a { color: #000000; }
 .iteracionModificada {
   background-color : #72bce0;
 }
+.span-math-field{
+  margin: 0;
+ padding: .3em .6em;
+  border: 1px solid #aaa;
+  border-radius: .2em;
+  transition: all 0.3s;
+  width: 100%
+}
 
+.span-math-field:focus{
+  border: 1px solid #0074d9;
+  outline: 0
+}
 #math-field{
     margin: 0;
    padding: .3em .6em;
