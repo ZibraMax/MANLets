@@ -11,83 +11,107 @@
  */
 
 var actual = undefined;
-var ECUACIONES = []
-var YI = []
-ECUACIONES.push('-0.5y_1')
-ECUACIONES.push('4-0.3y_2-0.1y_1')
-YI.push(4)
-YI.push(6)
-var ECUACION_ACTUAL = 0
-var mathFields = []
-var mathFieldSpans = []
+var ECUACIONES = [];
+var YI = [];
+ECUACIONES.push("-0.5y_1");
+ECUACIONES.push("4-0.3y_2-0.1y_1");
+YI.push(4);
+YI.push(6);
+var ECUACION_ACTUAL = 0;
+var mathFields = [];
+var mathFieldSpans = [];
 var MQ = MathQuill.getInterface(2);
 
 for (var i = 0; i < ECUACIONES.length; i++) {
-	mathFieldSpans.push(document.getElementsByName('z'+(i+1))[0])
-	let mathField = MQ.MathField(mathFieldSpans[mathFieldSpans.length-1], {
-	    spaceBehavesLikeTab: true,
-	    handlers: {
-	        edit: function() {
-	            try{
-					triggerBotones(false)
-	            	actualizarFunciones()
-	            }
-	            catch(e){}
-	        }
-	    }
-	})
-	mathFields.push(mathField)
+    mathFieldSpans.push(document.getElementsByName("z" + (i + 1))[0]);
+    let mathField = MQ.MathField(mathFieldSpans[mathFieldSpans.length - 1], {
+        spaceBehavesLikeTab: true,
+        handlers: {
+            edit: function () {
+                try {
+                    triggerBotones(false);
+                    actualizarFunciones();
+                } catch (e) {}
+            },
+        },
+    });
+    mathFields.push(mathField);
 }
 function ecuacionActual(i) {
-	ECUACION_ACTUAL = i-1
+    ECUACION_ACTUAL = i - 1;
 }
 function updateFuncion(i) {
-	ECUACIONES[i] = MathExpression.fromLatex(mathFields[i].latex()).toString().toLowerCase()
-	YI[i] = parseFloat(document.getElementById('y0_'+(i+1)).value)
+    ECUACIONES[i] = MathExpression.fromLatex(mathFields[i].latex())
+        .toString()
+        .toLowerCase();
+    YI[i] = parseFloat(document.getElementById("y0_" + (i + 1)).value);
 }
 function crearTabla() {
-	let TABLA = document.getElementById('ecuaciones')
-	TABLA.innerHTML = ''
-	let PLANTILLA = (i)=> '<tr><td>\\(\\frac{dy_'+i+'}{dx}=\\)</td><td colspan="2" id="ecuacion'+i+'"></td><td style="text-align: right; width: 30%">\\(y_0= \\)<input oninput="triggerBotones(false)" style="width: 60%;" id="y0_'+(i)+'" type="text" value="'+YI[i-1]+'"><label style="padding: 5px" onclick="borrarEcuacion('+i+')">&times;</label></td></tr>'
-	let ULTIMA_FILA = '<tr><td colspan="4" class="casillaCentrada"><label onclick="agregarEcuacion()" style="color: gray;"><i class="fas fa-plus-circle fa-2x"></i></label></td></tr>'
-	mathFieldSpans = []
-	mathFields = []
-	for (var i = 0; i < ECUACIONES.length; i++) {
-		TABLA.innerHTML+=PLANTILLA(i+1)
-	}
-	TABLA.innerHTML+=ULTIMA_FILA
-	for (var i = 0; i < ECUACIONES.length; i++) {
-		let config = {spaceBehavesLikeTab: true,handlers: {edit: function() {actualizarFunciones()}}}
-		let ecuacion = ECUACIONES[i]
-		var mathFieldSpan = $('<span onclick ="ecuacionActual('+(i+1)+')" id="math-field" name="z'+(i+1)+'" class="mathquill-editable-math-field"></span>');
-		var mathField = MQ.MathField(mathFieldSpan[0],config);
-		mathFieldSpan.appendTo(document.getElementById('ecuacion'+(i+1)));
-		mathField.write(ecuacion)
-		mathField.reflow();
-		mathFields.push(mathField)
-		mathFieldSpans.push(document.getElementsByName('z'+(i+1))[0])
-	}
-	try {
-		MathJax.typeset()
-	} catch {
-
-	}
+    let TABLA = document.getElementById("ecuaciones");
+    TABLA.innerHTML = "";
+    let PLANTILLA = (i) =>
+        "<tr><td>\\(\\frac{dy_" +
+        i +
+        '}{dx}=\\)</td><td colspan="2" id="ecuacion' +
+        i +
+        '"></td><td style="text-align: right; width: 30%">\\(y_0= \\)<input oninput="triggerBotones(false)" style="width: 60%;" id="y0_' +
+        i +
+        '" type="text" value="' +
+        YI[i - 1] +
+        '"><label style="padding: 5px" onclick="borrarEcuacion(' +
+        i +
+        ')">&times;</label></td></tr>';
+    let ULTIMA_FILA =
+        '<tr><td colspan="4" class="casillaCentrada"><label onclick="agregarEcuacion()" style="color: gray;"><i class="fas fa-plus-circle fa-2x"></i></label></td></tr>';
+    mathFieldSpans = [];
+    mathFields = [];
+    for (var i = 0; i < ECUACIONES.length; i++) {
+        TABLA.innerHTML += PLANTILLA(i + 1);
+    }
+    TABLA.innerHTML += ULTIMA_FILA;
+    for (var i = 0; i < ECUACIONES.length; i++) {
+        let config = {
+            spaceBehavesLikeTab: true,
+            handlers: {
+                edit: function () {
+                    actualizarFunciones();
+                },
+            },
+        };
+        let ecuacion = ECUACIONES[i];
+        var mathFieldSpan = $(
+            '<span onclick ="ecuacionActual(' +
+                (i + 1) +
+                ')" id="math-field" name="z' +
+                (i + 1) +
+                '" class="mathquill-editable-math-field"></span>'
+        );
+        var mathField = MQ.MathField(mathFieldSpan[0], config);
+        mathFieldSpan.appendTo(document.getElementById("ecuacion" + (i + 1)));
+        mathField.write(ecuacion);
+        mathField.reflow();
+        mathFields.push(mathField);
+        mathFieldSpans.push(document.getElementsByName("z" + (i + 1))[0]);
+    }
+    try {
+        MathJax.typeset();
+    } catch {}
 }
 function actualizarFunciones() {
-	for (var i = 0; i < mathFields.length; i++) {
-		updateFuncion(i)
-	}
+    for (var i = 0; i < mathFields.length; i++) {
+        updateFuncion(i);
+    }
 }
 function borrarEcuacion(i) {
-	ECUACIONES.splice(i-1, 1)
-	YI.splice(i-1, 1)
-	crearTabla()
+    ECUACIONES.splice(i - 1, 1);
+    YI.splice(i - 1, 1);
+    crearTabla();
 }
 
 function agregarEcuacion() {
-	YI.push('0')
-	ECUACIONES.push('1')
-	crearTabla()
+    YI.push("0");
+    ECUACIONES.push("1");
+    crearTabla();
 }
 // var mathFieldSpan = document.getElementById("math-field");
 // var MQ = MathQuill.getInterface(2);
@@ -111,7 +135,7 @@ function agregarEcuacion() {
 
 function resolver() {
     triggerBotones(true);
-	actualizarFunciones()
+    actualizarFunciones();
     actualizarFuncion();
 }
 function actualizarTabla() {
@@ -120,11 +144,11 @@ function actualizarTabla() {
 var NUMERO_FUNCIONES = 2;
 var ACTUAL_METODO = 0;
 function actualizarFuncion() {
-	NUMERO_FUNCIONES = ECUACIONES.length
-	let fx = [];
-	for (let i = 0; i < NUMERO_FUNCIONES; i++) {
-		fx.push(parseFuncion(ECUACIONES[i]))
-	}
+    NUMERO_FUNCIONES = ECUACIONES.length;
+    let fx = [];
+    for (let i = 0; i < NUMERO_FUNCIONES; i++) {
+        fx.push(parseFuncion(ECUACIONES[i]));
+    }
     let xi = parseFloat(document.getElementById("xi").value);
     // let yi = parseFloat(document.getElementById("yi").value);
     let h = parseFloat(document.getElementById("h").value);
@@ -278,7 +302,7 @@ class RungeKutta {
     }
     actualizarTabla() {
         let metodo = document.getElementById("metodo").value;
-		ACTUAL_METODO = parseInt(metodo)
+        ACTUAL_METODO = parseInt(metodo);
         let str = "";
         str += `<thead>
 			<tr style="text-align: center;">
@@ -295,12 +319,12 @@ class RungeKutta {
             fila += math.round(this.x[i][ACTUAL_METODO], 3);
             fila += "</td>";
             for (let j = 0; j < NUMERO_FUNCIONES; j++) {
-                fila += "<td>"
+                fila += "<td>";
                 fila += math.round(this.y[i][ACTUAL_METODO][j], 3);
-                fila += "</td>"
+                fila += "</td>";
             }
             fila += "</tr>";
-			str+=fila
+            str += fila;
         }
         str += "</tbody>";
         document.getElementById("tabla").innerHTML = str;
@@ -310,7 +334,7 @@ class RungeKutta {
         let nombres = [];
         let traces = [];
         for (var i = 0; i < NUMERO_FUNCIONES; i++) {
-            nombres.push("Y_" + (i + 1));
+            nombres.push("Y" + (i + 1));
             let x = [];
             let fxs = [];
             for (let j = 0; j < this.x.length; j++) {
@@ -329,7 +353,7 @@ class RungeKutta {
         let layout = {
             plot_bgcolor: "rgba(0,0,0,0)",
             paper_bgcolor: "rgba(0,0,0,0)",
-            title: "Métodos de Runge Kutta",
+            title: "Sistemas de ecuaciones",
             xaxis: {
                 title: "x",
                 tickformat: ".3f",
@@ -351,11 +375,11 @@ $("#cositasLindas").toolbar({
     animation: "grow",
 });
 function input(str) {
-	mathFields[ECUACION_ACTUAL].cmd(str)
-	mathFields[ECUACION_ACTUAL].focus()
+    mathFields[ECUACION_ACTUAL].cmd(str);
+    mathFields[ECUACION_ACTUAL].focus();
 }
 document.body.onload = function () {
-	crearTabla()
+    crearTabla();
     resolver();
     triggerBotones(false);
     var queryString = window.location.search;
