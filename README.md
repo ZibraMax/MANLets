@@ -3,7 +3,7 @@ Applets para modelacion y análisis numérico
 
 **Endline:**
 - [x] Ecuación diferencial de orden 2
-- [ ] Sistemas de ecuaciones 1D
+- [x] Sistemas de ecuaciones 1D
 - [ ] Valores propios
 - [ ] EDP Placa
 - [ ] Parabólica 1D explícito
