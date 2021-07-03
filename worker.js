@@ -9,7 +9,9 @@
    * The value on the right is the Notion page ID
    */
   const SLUG_TO_PAGE = {
-    '': 'b1012a4092364dc8afddc7dfc61c07df',
+    '': 'MANLETS-2116f56fd5114d15a1329c25e8eb43bb',
+    '202110': 'b1012a4092364dc8afddc7dfc61c07df',
+    '202119': 'b93fc3b4bb184d7ea362f15572e2499d',
   };
   
   /* Step 3: enter your page title and description for SEO purposes */
@@ -32,6 +34,7 @@
     if (x.matches) { // If media query matches
       onDark();
     } else {
+      onLight();
     }
   }
   var x = window.matchMedia("(prefers-color-scheme: dark)")
@@ -246,7 +249,7 @@
         el.className = 'toggle-mode';
         el.addEventListener('click', toggle);
         nav.appendChild(el);
-        onLight();
+        
       }
       const observer = new MutationObserver(function() {
         if (redirected) return;
