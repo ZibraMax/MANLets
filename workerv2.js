@@ -23,13 +23,13 @@ const PAGE_DESCRIPTION = "Notas de clase";
 const GOOGLE_FONT = "";
 
 /* Step 5: enter any custom scripts you'd like */
-const CUSTOM_SCRIPT = `<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163602964-1"></script>
+const CUSTOM_SCRIPT = `<script async src="https://www.googletagmanager.com/gtag/js?id=G-44PZ80H95P"></script>
 	<script>
 	window.dataLayer = window.dataLayer || [];
 	function gtag(){dataLayer.push(arguments);}
 	gtag('js', new Date());
 
-	gtag('config', 'UA-163602964-1');
+	gtag('config', 'G-44PZ80H95P');
   document.body.onload = function(){
   function myFunction(x) {
     if (x.matches) { // If media query matches

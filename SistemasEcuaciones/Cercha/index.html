@@ -1,76 +1,144 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-<head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163602964-1"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-44PZ80H95P"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
 
-	gtag('config', 'UA-163602964-1');
-	</script>
+			gtag("config", "G-44PZ80H95P");
+		</script>
 
-	<link rel="shortcut icon" type="image/x-icon" href="../../favicon/favicon.ico">
-	<link rel="stylesheet" href="https://unpkg.com/picnic">
-	<link rel="stylesheet" href="../../css/estilos_nuevo.css">
-	<meta charset="utf-8">
-  <script src="https://kit.fontawesome.com/2416ed6962.js" crossorigin="anonymous"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=0.7, user-scalable=no">
-	<title>Applets</title>
-	<script type="text/javascript" src="../../js/math.js"></script>
+		<link
+			rel="shortcut icon"
+			type="image/x-icon"
+			href="../../favicon/favicon.ico"
+		/>
+		<link rel="stylesheet" href="https://unpkg.com/picnic" />
+		<link rel="stylesheet" href="../../css/estilos_nuevo.css" />
+		<meta charset="utf-8" />
+		<script
+			src="https://kit.fontawesome.com/2416ed6962.js"
+			crossorigin="anonymous"
+		></script>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=0.7, user-scalable=no"
+		/>
+		<title>Applets</title>
+		<script type="text/javascript" src="../../js/math.js"></script>
 
-	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-</head>
-<body style="margin: 20px">
-	<article class="card">
-		<header>
-			<h1><a href="../index.html" class="fas fa-arrow-left"></a> <a href="../../index.html" class="fas fa-home"></a> MANLets - Método de Gauss-Seidel</h1>
-		</header>
-		<footer>
-			<div style="text-align: center; align-items: center; align-content: center;">
-				<div class="columnaTercios">
-					<header style="text-align: center;">
-						Estructura
-					</header>
-					<footer style="text-align: center;">
-						<canvas id="canvas_estructura" width="300" height="500" style="border: dashed; border-radius: 20px;"></canvas>
-					</footer>
-				</div>
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+		<script
+			id="MathJax-script"
+			async
+			src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+		></script>
+	</head>
+	<body style="margin: 20px">
+		<article class="card">
+			<header>
+				<h1>
+					<a href="../index.html" class="fas fa-arrow-left"></a>
+					<a href="../../index.html" class="fas fa-home"></a> MANLets
+					- Método de Gauss-Seidel
+				</h1>
+			</header>
+			<footer>
+				<div
+					style="
+						text-align: center;
+						align-items: center;
+						align-content: center;
+					"
+				>
 					<div class="columnaTercios">
-						<header style="text-align: center;">
-							Secciones
-						</header>
+						<header style="text-align: center">Estructura</header>
+						<footer style="text-align: center">
+							<canvas
+								id="canvas_estructura"
+								width="300"
+								height="500"
+								style="border: dashed; border-radius: 20px"
+							></canvas>
+						</footer>
+					</div>
+					<div class="columnaTercios">
+						<header style="text-align: center">Secciones</header>
 						<footer>
 							<div>
-								<canvas width="300" height="160" style="border: dashed; border-radius: 20px;" id="vigas"></canvas>
+								<canvas
+									width="300"
+									height="160"
+									style="border: dashed; border-radius: 20px"
+									id="vigas"
+								></canvas>
 								<div>
 									<div>
-										<input id="bviga" type="number" placeholder="Base Viga [m]" style="width: 300px" value="0.3" oninput='actualizarCanvitas()' on>
+										<input
+											id="bviga"
+											type="number"
+											placeholder="Base Viga [m]"
+											style="width: 300px"
+											value="0.3"
+											oninput="actualizarCanvitas()"
+											on
+										/>
 									</div>
 									<div>
-										<input id="hviga" type="number" placeholder="Altura Viga [m]" style="width: 300px" value="0.5" oninput='actualizarCanvitas()'>
+										<input
+											id="hviga"
+											type="number"
+											placeholder="Altura Viga [m]"
+											style="width: 300px"
+											value="0.5"
+											oninput="actualizarCanvitas()"
+										/>
 									</div>
 								</div>
 							</div>
-							<hr>
+							<hr />
 							<div>
-								<canvas width="300" height="160" style="border: dashed; border-radius: 20px;" id="columnas"></canvas>
+								<canvas
+									width="300"
+									height="160"
+									style="border: dashed; border-radius: 20px"
+									id="columnas"
+								></canvas>
 								<div>
 									<div>
-										<input id="bcol" type="number" placeholder="Base Columna [m]" style="width: 300px" value="0.5" oninput='actualizarCanvitas()'>
+										<input
+											id="bcol"
+											type="number"
+											placeholder="Base Columna [m]"
+											style="width: 300px"
+											value="0.5"
+											oninput="actualizarCanvitas()"
+										/>
 									</div>
 									<div>
-										<input id="hcol" type="number" placeholder="Altura Columna [m]" style="width: 300px" value="0.5" oninput='actualizarCanvitas()'>
+										<input
+											id="hcol"
+											type="number"
+											placeholder="Altura Columna [m]"
+											style="width: 300px"
+											value="0.5"
+											oninput="actualizarCanvitas()"
+										/>
 									</div>
 								</div>
 							</div>
 						</footer>
 					</div>
 					<div class="columnaTercios">
-						<header style="text-align: center;">
+						<header style="text-align: center">
 							Sistema de Ecuaciones
 						</header>
 						<footer>
@@ -78,160 +146,96 @@
 								<table style="width: 100%; height: 100%">
 									<thead>
 										<tr>
-											<th>
-												\(x_{i-1}\)
-											</th>
-											<th>
-												\(x_{i}\)
-											</th>
-											<th>
-												\(x_{i+1}\)
-											</th>
+											<th>\(x_{i-1}\)</th>
+											<th>\(x_{i}\)</th>
+											<th>\(x_{i+1}\)</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
-											<td id="x0ii">
-												0
-											</td>
-											<td id="x0i">
-												0
-											</td>
-											<td id="x0iii">
-												0
-											</td>
+											<td id="x0ii">0</td>
+											<td id="x0i">0</td>
+											<td id="x0iii">0</td>
 										</tr>
 										<tr>
-											<td id="x1ii">
-												0
-											</td>
-											<td id="x1i">
-												0
-											</td>
-											<td id="x1iii">
-												0
-											</td>
+											<td id="x1ii">0</td>
+											<td id="x1i">0</td>
+											<td id="x1iii">0</td>
 										</tr>
 										<tr>
-											<td id="x2ii">
-												0
-											</td>
-											<td id="x2i">
-												0
-											</td>
-											<td id="x2iii">
-												0
-											</td>
+											<td id="x2ii">0</td>
+											<td id="x2i">0</td>
+											<td id="x2iii">0</td>
 										</tr>
 										<tr>
-											<td id="x3ii">
-												0
-											</td>
-											<td id="x3i">
-												0
-											</td>
-											<td id="x3iii">
-												0
-											</td>
+											<td id="x3ii">0</td>
+											<td id="x3i">0</td>
+											<td id="x3iii">0</td>
 										</tr>
 										<tr>
-											<td id="x4ii">
-												0
-											</td>
-											<td id="x4i">
-												0
-											</td>
-											<td id="x4iii">
-												0
-											</td>
+											<td id="x4ii">0</td>
+											<td id="x4i">0</td>
+											<td id="x4iii">0</td>
 										</tr>
 										<tr>
-											<td id="x5ii">
-												0
-											</td>
-											<td id="x5i">
-												0
-											</td>
-											<td id="x5iii">
-												0
-											</td>
+											<td id="x5ii">0</td>
+											<td id="x5i">0</td>
+											<td id="x5iii">0</td>
 										</tr>
 										<tr>
-											<td id="x6ii">
-												0
-											</td>
-											<td id="x6i">
-												0
-											</td>
-											<td id="x6iii">
-												0
-											</td>
+											<td id="x6ii">0</td>
+											<td id="x6i">0</td>
+											<td id="x6iii">0</td>
 										</tr>
 										<tr>
-											<td id="x7ii">
-												0
-											</td>
-											<td id="x7i">
-												0
-											</td>
-											<td id="x7iii">
-												0
-											</td>
+											<td id="x7ii">0</td>
+											<td id="x7i">0</td>
+											<td id="x7iii">0</td>
 										</tr>
 										<tr>
-											<td id="x8ii">
-												0
-											</td>
-											<td id="x8i">
-												0
-											</td>
-											<td id="x8iii">
-												0
-											</td>
+											<td id="x8ii">0</td>
+											<td id="x8i">0</td>
+											<td id="x8iii">0</td>
 										</tr>
 										<tr>
-											<td id="x9ii">
-												0
-											</td>
-											<td id="x9i">
-												0
-											</td>
-											<td id="x9iii">
-												0
-											</td>
+											<td id="x9ii">0</td>
+											<td id="x9i">0</td>
+											<td id="x9iii">0</td>
 										</tr>
 										<tr>
-											<td id="x10ii">
-												0
-											</td>
-											<td id="x10i">
-												0
-											</td>
-											<td id="x10iii">
-												0
-											</td>
+											<td id="x10ii">0</td>
+											<td id="x10i">0</td>
+											<td id="x10iii">0</td>
 										</tr>
 										<tr>
-											<td id="x11ii">
-												0
-											</td>
-											<td id="x11i">
-												0
-											</td>
-											<td id="x11iii">
-												0
-											</td>
+											<td id="x11ii">0</td>
+											<td id="x11i">0</td>
+											<td id="x11iii">0</td>
 										</tr>
 										<tr>
 											<th style="text-align: center">
-												<button class="warning icon-paper-plane" onclick="seidelIteracionAnterior()"><10</button>
-													
+												<button
+													class="warning icon-paper-plane"
+													onclick="seidelIteracionAnterior()"
+												>
+													<10
+												</button>
 											</th>
 											<th style="text-align: center">
-												<button class="success icon-paper-plane" onclick="calcularSeidel()">Calcular</button>
+												<button
+													class="success icon-paper-plane"
+													onclick="calcularSeidel()"
+												>
+													Calcular
+												</button>
 											</th>
 											<th style="text-align: center">
-												<button class="warning icon-paper-plane" onclick="seidelIteracionSiguiente()">10></button>
+												<button
+													class="warning icon-paper-plane"
+													onclick="seidelIteracionSiguiente()"
+												>
+													10>
+												</button>
 											</th>
 										</tr>
 									</tbody>
@@ -239,20 +243,38 @@
 							</div>
 						</footer>
 					</div>
-			</div>
-			<div id="btns">
-			<a class="floatButton" onclick="seidelIteracionAnterior()">
-			<i class="fa fa-angle-left my-float"></i>
-			</a>
-			<a class="floatButton1" onclick="seidelIteracionSiguiente()">
-			<i class="fa fa-angle-right my-float"></i>
-			</a>
-		</div>
-		</footer>
-	</article>
-	<script type="text/javascript" src="../../js/SistemasEcuaciones.js"></script>
-	<script type="text/javascript" src="../../js/matrizRigidez.js"></script>
-	<script type="text/javascript">var mods = document.querySelectorAll('#modal_1');
-	[].forEach.call(mods, function(mod){ mod.checked = true; });actualizarCanvitas();definirElementos();drawEstructura(desplazamientos=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],inicial=true)</script>
-</body>
+				</div>
+				<div id="btns">
+					<a class="floatButton" onclick="seidelIteracionAnterior()">
+						<i class="fa fa-angle-left my-float"></i>
+					</a>
+					<a
+						class="floatButton1"
+						onclick="seidelIteracionSiguiente()"
+					>
+						<i class="fa fa-angle-right my-float"></i>
+					</a>
+				</div>
+			</footer>
+		</article>
+		<script
+			type="text/javascript"
+			src="../../js/SistemasEcuaciones.js"
+		></script>
+		<script type="text/javascript" src="../../js/matrizRigidez.js"></script>
+		<script type="text/javascript">
+			var mods = document.querySelectorAll("#modal_1");
+			[].forEach.call(mods, function (mod) {
+				mod.checked = true;
+			});
+			actualizarCanvitas();
+			definirElementos();
+			drawEstructura(
+				(desplazamientos = [
+					0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				]),
+				(inicial = true)
+			);
+		</script>
+	</body>
 </html>
