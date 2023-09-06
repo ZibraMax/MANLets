@@ -1,0 +1,18 @@
+﻿Nombre,Tema,Tipo,Material,Publicado,ID
+Tutorial Diagrama de Flujo (Factorial) [en python],"Diagramas de Flujo, Python",Tutoriales,"TAMAN_C2.drawio, TAMAN_C2.pdf",Yes,0
+Tutorial Diagrama de Flujo (Factorial) [en VBA],"Diagramas de Flujo, Python",Tutoriales,"TAMAN_C2.drawio, TAMAN_C2.pdf",Yes,0
+Conceptos básicos de Visual Basic,"Diagramas de Flujo, Programación, VBA",Tutoriales,Tutorial_VBA.drawio,Yes,0
+¿Como Instalar Python?,"Programación, Python",Tutoriales,,Yes,1
+Conceptos básicos de Python,"Programación, Python",Tutoriales,,Yes,1
+Archivos en Python,"Programación, Python",Tutoriales,,Yes,5
+"Numpy: Matrices, vectores y álgebra lineal en Python","Numpy, Programación",Tutoriales,,Yes,9
+Matplotlib: Gráficas en Python,"Matplotlib, Python",Tutoriales,,Yes,13
+"LaTex, empezar aquí",Latex,Tutoriales,Plantilla_Latex_TAMAN.zip,Yes,15
+[Resumen útil] Comandos de LaTex y listado de símbolos útiles,Latex,Tutoriales,Gua_bsica_Latex.pdf,Yes,17
+Matrices y vectores en LaTex,Latex,Tutoriales,,Yes,21
+Paréntesis y Comillas en LaTex,Latex,Tutoriales,,Yes,22
+Insertar imágenes en LaTex,Latex,Tutoriales,,Yes,24
+Insertar tablas en LaTex,Latex,Tutoriales,,Yes,25
+Manejo de referencias en LaTex,Latex,Tutoriales,biblatex-cheatsheet.pdf,Yes,28
+Series de Taylor,Taylor,Tutoriales,,Yes,29
+Conceptos EDO Orden 2,EDO Orden 2,Tutoriales,,Yes,29

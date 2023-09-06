@@ -1,0 +1,1120 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Conceptos básicos de Visual Basic</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="39932309-53d3-4e10-8ddf-0b565ed52301" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🥕</span></div><h1 class="page-title">Conceptos básicos de Visual Basic</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tema</th><td><span class="selected-value select-value-color-brown">Diagramas de Flujo</span><span class="selected-value select-value-color-purple">Programación</span><span class="selected-value select-value-color-brown">VBA</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Tipo</th><td><span class="selected-value select-value-color-default">Tutoriales</span></td></tr><tr class="property-row property-row-file"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesFile"><path d="M12.5938 8.44043L7.54883 13.4854C6.26367 14.7773 4.54102 14.6475 3.44043 13.54C2.32617 12.4326 2.20312 10.7168 3.49512 9.4248L10.3926 2.52734C11.1445 1.77539 12.2725 1.63867 13.0039 2.37695C13.7422 3.11523 13.6055 4.22949 12.8535 4.98828L6.08594 11.7627C5.77832 12.0703 5.41602 11.9814 5.2041 11.7764C4.99902 11.5576 4.91016 11.2021 5.21777 10.8877L9.93457 6.1709C10.1738 5.93164 10.1875 5.58301 9.96191 5.35059C9.72949 5.13184 9.38086 5.13867 9.1416 5.37793L4.39746 10.1152C3.67285 10.8535 3.7002 11.9746 4.34961 12.624C5.05371 13.3281 6.12012 13.3145 6.8584 12.5762L13.6602 5.77441C14.9795 4.45508 14.9316 2.71875 13.7764 1.55664C12.6416 0.428711 10.8779 0.34668 9.55176 1.66602L2.61328 8.61816C0.883789 10.3477 1 12.8291 2.57227 14.4014C4.14453 15.9668 6.63281 16.0898 8.3623 14.3672L13.4414 9.28809C13.6738 9.0625 13.667 8.64551 13.4346 8.41992C13.209 8.18066 12.833 8.21484 12.5938 8.44043Z"></path></svg></span>Material</th><td><span style="margin-right:6px"><a href="Tutorial_VBA.drawio">Tutorial VBA.drawio</a></span></td></tr></tbody></table></header><div class="page-body"><div id="d9e6fbb5-35c0-4fbe-b76c-1ad81d119d34" class="column-list"><div id="6a30e042-44a4-4030-b3f1-6cc80526c7d2" style="width:20.833333333333332%" class="column"><p id="688e4625-c9bd-4529-bd97-1fe76b25cd0e" class="">Contenido:</p><nav id="73d9dc05-8c14-4172-9c70-c5b7e7ce5377" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1f2e6ce0-28fa-4a38-b93c-591b683492ec">Como correr el código (Módulos y Sub Rutinas)</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#57c52d4f-5125-4947-a386-e3499050e36e">Comentarios</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f14d4b1b-4a9d-4553-9525-c07e8303fc31">Variables</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a5114f9e-4d20-4bc0-9d71-df34a9d67c35">Declarar variables</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#28264b17-1d36-4cca-b2b0-bad320bb07e8">Traer datos de las celdas, escribir en las celdas</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c1e9118-9ba6-4e3a-b315-95d700ae11fe">Ventana de <em>Locales</em></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fa7cd6da-e00a-4174-a3a9-ed14bd74e1b4">Tipos de variables</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d37a08a3-c22f-45bf-ab6e-7e1b6e696d5f">Condicionales</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#31481536-fa6f-4b67-9efc-47188b525580">Ciclos</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#94d4ec42-796c-4829-9708-0a3ee320158d"><em>For</em></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5d1b848b-8adc-4166-9ce2-85e84010fb2b"><em>While</em></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4123429f-99dc-4800-9df7-d905338f817e">Funciones</a></div></nav><p id="71a8e9d5-aabf-40ba-a662-69f47e47e12f" class="">
+</p></div><div id="72ca4cfe-9e91-46e8-8955-06202dfa94fb" style="width:58.33333333333333%" class="column"><h2 id="1f2e6ce0-28fa-4a38-b93c-591b683492ec" class="">Como correr el código (Módulos y Sub Rutinas)</h2><ol type="1" id="746dad1e-108d-4aaf-845c-66d3c9937f7b" class="numbered-list" start="1"><li>Abrir excel</li></ol><ol type="1" id="7eb51bba-b1b9-40e7-871f-735972dc7cb6" class="numbered-list" start="2"><li>Activar la pestaña de desarrollador<figure id="7bf43b0b-d69c-4604-9a99-3f4f01a246c6" class="image"><a href="t.gif"><img style="width:1364px" src="t.gif"/></a></figure></li></ol><ol type="1" id="33eef474-f942-40c2-9311-19604af46f12" class="numbered-list" start="3"><li>Crear un libro de excel y darle en guardar como</li></ol><ol type="1" id="361f21ef-13ab-42ed-b2bb-141934ae1fe0" class="numbered-list" start="4"><li>Seleccionar Libro Habilitado para Macros<figure id="31de9f1f-60cd-41b3-a014-f0d2eb95a86f" class="image"><a href="t%201.gif"><img style="width:1364px" src="t%201.gif"/></a></figure></li></ol><ol type="1" id="ac935cff-2206-4da9-99a5-d1171be42d40" class="numbered-list" start="5"><li>En la pestaña de desarrollador, abrir Visual Basic. En la ventana emergente hay que crear un Módulo. En los módulos se podrá correr el código<figure id="7cb81c4a-2e09-4cfb-a003-49c5069ae74b" class="image"><a href="t%202.gif"><img style="width:1364px" src="t%202.gif"/></a></figure></li></ol><ol type="1" id="858490c8-ed77-456c-b012-bdcaabbcf8d7" class="numbered-list" start="6"><li>Crearemos una <strong>subrutina </strong>en la subrutina podremos correr el código. Para ello, escribimos lo siguiente<pre id="360c5808-c71e-4658-8027-3c7417eabe86" class="code code-wrap"><code>Sub main() &#x27;Abre la subrutina
+
+	MsgBox (&quot;Hola Mundo!&quot;) &#x27;Codigo que se ejecuta, en este caso un mensaje en pantalla
+
+End Sub &#x27;Cierra la subrutina</code></pre></li></ol><ol type="1" id="388955be-4845-4552-9518-55ce40ed1c7a" class="numbered-list" start="7"><li>Corremos el código con el boton verde<figure id="2b172225-6ff8-4dfe-ac69-e38c0f77513b" class="image"><a href="t%203.gif"><img style="width:1364px" src="t%203.gif"/></a></figure></li></ol><ol type="1" id="8babb20c-b5b4-40b0-bb1b-99d6b343a3c5" class="numbered-list" start="8"><li>Podemos crar botones (o figuras) y asignarles una subrutina<figure id="10899684-4c1c-4da9-b4cd-d66d5a40815b" class="image"><a href="t%204.gif"><img style="width:1364px" src="t%204.gif"/></a></figure><figure id="fe0d91b6-82d7-4a5a-bc67-c7cb4cd9a25c" class="image"><a href="t%205.gif"><img style="width:1364px" src="t%205.gif"/></a></figure></li></ol><h2 id="57c52d4f-5125-4947-a386-e3499050e36e" class="">Comentarios</h2><pre id="c3115c63-d442-4649-a600-3c55b09f8545" class="code code-wrap"><code>&#x27;Yo soy un comentario de una linea
+yo no soy un comentario, aqui doy error
+&#x27;En VBA no existen comentarios de lineas multiples, entonces
+&#x27;hay que usar el simbolo &#x27; para cada linea que se quiera comentar
+
+&#x27;En el caso en que se quiera poner un comentario al lado de una linea 
+&#x27;de código, se ejecutrá hasta que se encuentre el símbolo &#x27;, ejemplo:
+Cells(3,4).value = &quot;Hola Mundo!&quot; &#x27;Este código se ejecutará, pero este cometnario no.</code></pre><h2 id="f14d4b1b-4a9d-4553-9525-c07e8303fc31" class="">Variables</h2><p id="7c4eb61f-8a8e-4da9-b360-38706102b564" class="">Las variables son la manera mas sencilla de almacenar información. Existen muchos tipos de variables que tienen diferentes características. Por ejemplo, las variables de tipo <em>int </em>sirven para almacenar números enteros, mientras que las variables de tipo <em>float</em> o <em>double </em>sirven para amacenar números con decimales.</p><p id="856a94bb-c761-4555-a7c9-4d45e02a583f" class="">Tener variables nos permite usar la información y hacer cambios en ella. Por ejemplo, si tenemos dos variables que representen números podríamos asignar la suma de estas dos variables a una variable nueva.</p><p id="97648a7b-47e6-447b-bc67-451bb7689a69" class="">Las variables representan un espacio en la memoria del computador a la que se puede acceder mediante un nombre, sin embargo, a nivel de usuario esto no es relevante, ya que el lenguanje de programación se encargará de hacer estos procesos.</p><p id="2f920094-9822-4b09-a717-976556ebde8f" class="">En conclusión, las variables al nivel de usario tendrán: Un nombre, un tipo y un valor. </p><h3 id="a5114f9e-4d20-4bc0-9d71-df34a9d67c35" class="">Declarar variables</h3><p id="246f397b-7d24-45ea-8ebc-0a72964ba1c4" class="">Para declarar variables en VBA basta con usar el símobolo <code>=</code> al que se puede entender como <code>Asignación</code> . Puden llevar cualquier nombre y el valor puede ser de cualquier tipo. Por ejemplo, si queremos crear una variable que tenga como nombre <code>zanahorias</code> que almacene el número decimal 2.5 el códgio se puede escribir así:</p><pre id="c770f11e-4e87-4dd5-a209-793ab1d4d97e" class="code code-wrap"><code>zanahorias = 2.5</code></pre><p id="b778b3ae-2c77-4dfd-b545-371768759fed" class="">Otra manera de declarar variables es usando el comando <code>dim</code></p><pre id="6c063f97-3b1f-4a30-81bc-807456786ecb" class="code code-wrap"><code>Dim zanahorias As Double
+zanahorias = 2.5</code></pre><p id="fc044ed1-9160-48a0-8eb0-4dc97d87bbe6" class="">Ambos métodos funcionan, el segundo permite tener mas &quot;control&quot; sobre el flujo del código. Por ejemplo, evitar que el lenguaje trate una variable <code>Double</code> como variable <code>Integer</code></p><h3 id="28264b17-1d36-4cca-b2b0-bad320bb07e8" class="">Traer datos de las celdas, escribir en las celdas</h3></div><div id="135aecc9-e637-4a11-9d74-2a0f0c40a132" style="width:20.83333333333335%" class="column"><p id="a9d298e4-4506-4ef9-89aa-06371f891207" class="">
+</p><p id="8322fe6e-6d89-474b-aa08-56ab0fc454f7" class="">
+</p><p id="d411c376-38f1-4421-8852-2268bd5ebee0" class="">
+</p><p id="b321570a-1505-4004-b92b-102f6408798b" class="">
+</p><p id="c709a69a-f982-4453-829c-628b3ec36a05" class="">
+</p><p id="5fc38509-7d26-4de5-9ed4-2486c8e413a0" class="">
+</p><p id="5f6abcf0-c819-43bd-b779-b539b3c5121b" class="">
+</p><p id="b64e88e0-a8c7-45d1-8779-7fcdb68c0dcf" class="">
+</p><p id="66f3f637-2c2d-42d8-9a1b-b22f5684883a" class="">
+</p><p id="b1058fb4-bc06-4836-ab0d-96bbdba9c1ba" class="">
+</p><p id="e82c30ce-e864-4e9b-ae44-45b317ae2897" class="">
+</p><p id="bdc5c854-5dc7-4e3b-b419-997dd747764d" class="">
+</p><p id="031dc468-6862-4073-9f13-3bc180f1d226" class="">
+</p><p id="459417c8-9520-448c-ad48-59a1b8149ec7" class="">
+</p><p id="3ac6738e-eede-4233-9591-b5e21999e898" class="">
+</p><p id="42527777-79ee-4ed6-bdf3-b1826fc42762" class="">
+</p><p id="739537bb-e0df-4402-b6ac-b1fa9373fb07" class="">
+</p><p id="d1c06908-6045-4e38-abe3-0862a8dae77d" class="">
+</p><p id="820da032-2819-462b-ad49-612c05782906" class="">
+</p><p id="3878e430-c875-4c50-8b16-01143876ad72" class="">
+</p><p id="c1c62d76-fe84-4e7b-b1d0-7d580ca1136e" class="">
+</p><p id="081caec8-3730-4eb4-9af0-fc179be41487" class="">
+</p><p id="974ac3a3-299f-470b-ba7a-532d244e255e" class="">
+</p><p id="ea0aba4e-a457-4d37-8b28-c6dec86cfa73" class="">
+</p><p id="46ab2b27-f244-4f71-a948-353eb5740ab5" class="">
+</p><p id="f0c2d33e-ebf6-49b7-8359-93496a3bfcfc" class="">
+</p><p id="02a77a0b-59b7-4d3d-8804-a97074216657" class="">
+</p><p id="3f0f03e8-3122-49b7-806c-4833b38072e9" class="">
+</p><p id="8e3f91f6-8d09-4ec2-8593-ef892b4b44cb" class="">
+</p><p id="8d31ae28-cf11-4180-96e9-c1583ec1bee8" class="">
+</p><p id="2355dd9e-1786-4db1-8aad-7688d270712b" class="">
+</p><p id="14d8a387-0ad8-4909-9228-06f37e9d932a" class="">
+</p><p id="f616140f-109a-4b24-903d-985611b42e51" class="">
+</p><p id="bcfc4490-6028-4789-9be1-8a26239a90ab" class="">
+</p><p id="9340e0f3-2a82-4be1-a580-47ac7e8ea3ff" class="">
+</p><p id="18efe5f7-aa77-478c-80db-8a1c56f2f4b5" class="">
+</p><p id="185e9acf-76f9-4d1d-981f-a1197658cd0a" class="">
+</p><p id="46e729d2-4a10-4137-b865-c6f055bd5e76" class="">
+</p><p id="89775e69-a813-432c-a402-19738d685d36" class="">
+</p><p id="fdabb178-3fce-4395-a0e6-86a3375badc3" class="">
+</p><p id="7a079f43-2ab5-47eb-9fe1-e9e1ee25d56c" class="">
+</p><p id="e8749376-2ed5-4948-a740-f598903f0620" class="">
+</p><p id="7065bcd8-bfc4-4091-94c2-ad6090b0fc3b" class="">
+</p><p id="edab129b-d402-4b8b-8b3a-87f113ca4f6d" class="">
+</p><p id="ab39d6d0-ba76-4cc2-a7c5-47722be57a8f" class="">
+</p><p id="40b2cd68-1821-4709-b018-7e8cf12c4c70" class="">
+</p><p id="b46213e2-ea2b-49a1-a807-db57c0f88759" class="">
+</p><p id="ffebf773-08ba-4c4e-93f8-96a1145a83ac" class="">
+</p><p id="bf105017-885b-4cdc-822e-22facb25094d" class="">
+</p><p id="2fe997f8-6f2c-4300-9e51-61c0d710510e" class="">
+</p><p id="6e89fc10-bf6a-4186-aea7-4fbef1fed444" class="">
+</p><p id="20717be1-5308-4b5d-84fa-41bba208f7c3" class="">
+</p><p id="5c18d595-7cf5-4dcc-a591-700a6f78b7bc" class="">
+</p><p id="f042ec04-7542-4f17-9fa8-686eec8f30cf" class="">
+</p><p id="26f77358-61d5-43de-a17c-1054f0066266" class="">
+</p><p id="87374243-ddbc-4996-b0ac-526e8033fef7" class="">
+</p><p id="c82fc13d-ecdc-4af5-b9d8-fcf105d64fd5" class="">
+</p><p id="0f5402e3-1c41-41ce-beb5-ddb6ee9fda95" class="">
+</p><p id="d1abe3de-636e-4f0d-bb7c-e5160c1b2fd4" class="">
+</p><p id="f496a229-0d08-4c3f-9fcb-5beea701dc80" class="">
+</p><p id="9bacaecb-01e8-4d08-8f44-c6046ce867d7" class="">
+</p><p id="1f3d54e4-848e-42b4-ab0a-8ecfb6b0752b" class="">
+</p><p id="91e32169-234b-446f-a42e-c7732def76a7" class="">
+</p><p id="8eb87633-6057-4f2c-aa03-9875def4a7d8" class="">
+</p><p id="d2fd109e-cc79-4106-86b3-11072927f65c" class="">
+</p><p id="22d63060-225c-4d8c-8f4c-d9c124a8a63c" class="">
+</p><p id="af286d85-5a70-4bd7-a19e-b143ea3c53b6" class="">
+</p><p id="02d7170a-b137-408e-a174-8372f2ee3136" class="">
+</p><p id="d6ed7d69-eafb-4472-8eb5-25611fe307e3" class="">
+</p><p id="aa3efcca-3d3a-4c06-a710-0c4943ba80a3" class="">
+</p><p id="6bbdebfd-8140-44f5-b331-196adc90ccf4" class="">
+</p><p id="50949be6-e0d2-4631-981a-0298b762900a" class="">
+</p><p id="fdcb5f23-bc1c-4025-a60f-58af8e1af5cd" class="">
+</p><p id="960c1ae0-a9b1-4ae6-a822-594f75fc4410" class="">
+</p><p id="baa43d86-db5a-4723-8ec1-6e1852c26a6c" class="">
+</p><p id="785e31c9-f4b9-4cee-963a-aab5fa2a1884" class="">
+</p><p id="5d962d5c-50c0-4475-86f6-756e6493ce0c" class="">
+</p><p id="0afa3a76-14f8-4577-b1f4-cfd6b9ef6b59" class="">
+</p><p id="293c7601-a11c-4be3-a461-75519838087b" class="">
+</p><p id="040aa545-324b-4521-a062-8bb76cb5bcf1" class="">
+</p><p id="39415dee-600c-49a6-a7f9-a84111b98589" class="">
+</p><p id="16167ccd-e502-424f-b105-3b1843d27aec" class="">
+</p><p id="4bed8a0a-b8b6-4fd5-9734-f86cab46197b" class="">
+</p><p id="a2517b74-1ef2-4a4d-b7af-07f6dee81a9c" class="">
+</p><p id="4fdb4fee-2cce-4133-b790-a3c61f4796a2" class="">
+</p><p id="04400b8c-b6a3-488d-acb4-3118837588ac" class="">
+</p><p id="f235a7c2-07b8-479a-89b2-94227c39ef53" class="">
+</p><p id="82bb543d-3192-42af-8645-71e81ee26374" class="">
+</p><p id="0a9748a3-89e2-4724-bdcc-4fe6a6113c13" class="">
+</p><p id="f8de30ac-f54e-4bdc-be77-a4c3bd5278f7" class="">
+</p><p id="993c8e72-2173-4e11-8b0e-9976aa583681" class="">
+</p><p id="103ac16a-6df6-40f9-be3c-0bfe72602bf0" class="">
+</p><p id="58225191-f617-409b-a01e-4b6fca7c990d" class="">
+</p><p id="771f4903-6d3d-441e-bcc5-063f3fb31e62" class="">
+</p><p id="62b8827f-6d69-45fc-985b-69ea534af250" class="">
+</p><p id="e062c3fd-36ca-46eb-9a3d-e27c120aa7f7" class="">
+</p><p id="eeced171-0617-4482-8cab-6c3d96c1b477" class="">
+</p><p id="7365a873-b846-49e9-b05b-4f804324c0ff" class="">
+</p><p id="fc142f09-d225-442e-819c-59be11ea90d5" class="">
+</p><p id="07dcc287-7a69-4aca-85e1-347a8a43b179" class="">
+</p><p id="892782bf-3f8b-487c-9d1c-1d06f0bc2584" class="">
+</p><p id="4c1fd0ff-2a5f-491f-a086-96d6859c5c43" class="">
+</p><p id="d4d9acb4-4f02-4a86-a325-dc40d46da2b7" class="">
+</p><p id="9a2627f1-514b-458a-a4cc-294d53479ec2" class="">
+</p><p id="eaab3fbc-c3fa-49c7-b572-326efae69005" class="">
+</p><p id="926f7337-4359-4bc7-b292-be07fa5ff298" class="">
+</p><p id="93306f56-1fe8-4533-9485-8dac334d01ea" class="">
+</p><p id="582d8723-5eb0-4131-9c89-62e0f2dd574f" class="">
+</p><p id="64a12e69-fae3-4c3b-8e88-6b7b08c62d53" class="">
+</p><p id="0a6b6846-ef74-4972-9616-f8cdc9aa51b8" class="">
+</p><p id="73bcdbd6-196c-4089-b8e8-abb46af4f515" class="">
+</p><p id="de03dab4-d29c-47cf-bc54-4b11c33564e8" class="">
+</p><p id="a552559a-61c2-4a27-9f61-428713f53f9d" class="">
+</p><p id="79f6417e-2996-4c20-906a-1f32e8924d1f" class=""><mark class="highlight-gray_background">Símbolo</mark></p></div></div><div id="02ecb160-34b8-4bfb-9ba7-ed1c06a17e2e" class="column-list"><div id="1272e357-dd4d-477b-a8f1-414847e32261" style="width:21.875%" class="column"><p id="96017155-f28e-4691-844e-76dd69bb257f" class=""><mark class="highlight-gray">El paralelogramo se usa para la entrada y salida de datos del diagrama, por ejemplo, al traer información de las celdas o al escribir información en las celdas aparecerá un paralelogramo.</mark></p><p id="6ba3df8d-812f-4bc1-908e-903bb8e4351c" class="">
+</p></div><div id="81cd934a-1a1b-46d7-b94a-c27ffeb84201" style="width:28.125%" class="column"><p id="28d1e9ae-320e-4543-817c-adb30da1a762" class="">Para traer datos de las celdas de Excel basta con escribir</p><pre id="c9b9290c-f889-47f6-80cb-f00774c0a7f2" class="code code-wrap"><code>zanahorias = Cells(i,j).value</code></pre><p id="68e52cf9-54f3-433c-a104-a3a38145c5da" class="">
+</p></div><div id="18948cd1-c8a2-400a-a33d-aea1e92a42b6" style="width:28.125%" class="column"><p id="8de7c2da-b7fb-4925-9e89-6ac046e78fa9" class="">Para escribir datos en las celdas de Excel basta con escribir</p><pre id="de44506f-46e5-43c3-8ca3-b6c2872eb81b" class="code code-wrap"><code>&#x27;Asignando el valor directamente
+Cells(i,j).value = 2.5
+&#x27;Usando una variable
+Cells(i,j).value = zanahorias</code></pre></div><div id="98ca9745-f814-48fc-a05f-31bdd069f592" style="width:21.875%" class="column"><figure id="e852cec6-57d1-470e-83af-4f8822db1d35" class="image"><a href="Untitled_Diagram.svg"><img style="width:120px" src="Untitled_Diagram.svg"/></a></figure><p id="5becb975-25d3-4ab3-a47b-a6d37baee31c" class="">
+</p></div></div><div id="66c23c5c-c76c-4bc5-bb88-832561786e4e" class="column-list"><div id="d59df49f-3499-4e0c-8d20-090513ffe2b2" style="width:20.833333333333332%" class="column"><ul id="df561884-d903-41c3-baaf-25240ce4da89" class="toggle"><li><details open=""><summary><mark class="highlight-gray">Ejemplo:</mark> <mark class="highlight-gray">Click para abrir</mark></summary><p id="0ff34519-c67e-4df9-bb06-d62607c85d56" class=""><mark class="highlight-gray">Generalmente se pone al principio del programa, en ese caso se ve así:</mark></p><figure id="136b3a40-5766-4b20-ae17-b4234ee5d5d1" class="image"><a href="Untitled_Diagram%201.svg"><img src="Untitled_Diagram%201.svg"/></a></figure><p id="fc43b621-5e50-4721-bbc5-9cbaeedbafc6" class="">
+</p></details></li></ul><p id="e2edfab0-378d-456d-af1c-f42852411c45" class="">
+</p></div><div id="f3ac8a8f-b68c-4e78-ae43-5da40d07926e" style="width:58.33333333333333%" class="column"><p id="9af3e455-d742-42a0-a344-a628b979b92e" class="">Las celdas vienen enumeradas desde 1 y tienen índices numéricos, es decir, la celda A1 tiene coordenadas i=1, j=1.</p><p id="755a6040-1b57-40bf-8e19-956a9a53d72c" class="">Cuando se declara una variable  hay que tener cuidado con el tipo de variable, por ejemplo si queremos guardar en la variable <code>a</code> el valor de una celda que dice <code>Hola</code> el código arrojará un error.</p><figure id="09317024-d418-40e2-be9d-8c3edb0ea817" class="image"><a href="t%206.gif"><img style="width:888px" src="t%206.gif"/></a></figure><p id="35ec546d-8846-4798-bb15-e55dba383feb" class="">Si no declaramos la variable <code>a</code> sino que asignamos el valor directamente, no ocurrirá el error, pero la variable dejará de ser un número y pasrá a ser una cadena de texto.</p><figure id="8055a743-9ecb-4247-9054-a6a9b708da57" class="image"><a href="t%207.gif"><img style="width:888px" src="t%207.gif"/></a><figcaption>Al correr el código no arroja error</figcaption></figure><h3 id="2c1e9118-9ba6-4e3a-b315-95d700ae11fe" class="">Ventana de <em>Locales</em></h3><p id="872c0f2f-8d6a-4e09-b663-89867f06ea3c" class="">Para ver con detalle el tipo de las variables y su comportamiento usaremos la ventana de locales. Se puede abrir asi:</p><figure id="2725ae19-fd9b-4cca-84fa-b726a9e00368" class="image"><a href="t%208.gif"><img style="width:1364px" src="t%208.gif"/></a></figure><h3 id="fa7cd6da-e00a-4174-a3a9-ed14bd74e1b4" class="">Tipos de variables</h3><p id="9b1d736e-91a1-437e-81ab-606922b603f2" class="">En VBA existe una gran cantidad de tipos de variables, la lista completa esta<a href="https://corporatefinanceinstitute.com/resources/excel/study/vba-variables-dim/"> aquí,</a> sin embargo, en este tutorial solo se introducirá a los tipos de variables que nos encontraremos en el transcurso del curso.</p></div><div id="955a8117-134f-429b-91ad-ea540b0c3a19" style="width:20.83333333333335%" class="column"><ul id="93814411-fccf-4192-9c0f-adbbac63c189" class="toggle"><li><details open=""><summary><mark class="highlight-gray">Ejemplo: Click para abrir</mark></summary><p id="00c281a7-bd9b-444b-a305-eda5bca93a2f" class=""><mark class="highlight-gray">Cuando se use para imprimir datos, se verá de la siguiente manera:</mark></p><figure id="362d302c-6f16-4f8a-99bf-6f0b4d6a56ad" class="image"><a href="Untitled_Diagram%202.svg"><img src="Untitled_Diagram%202.svg"/></a></figure><p id="f3248acd-75d5-400d-a25a-3db82eed6719" class=""><mark class="highlight-gray">Esto sucede generalmente al final de programa donde se retorna un resultado.</mark></p></details></li></ul></div></div><div id="9303a0ad-5450-4c40-8643-e41255167633" class="column-list"><div id="15fccc12-1636-4a4d-a314-9ae77445da5f" style="width:21.875%" class="column"><p id="4f3e587c-bc27-47fd-8f76-18b67dafa825" class="">
+</p><p id="5c3062d8-7d31-469d-adbb-d92907119337" class="">
+</p></div><div id="ce2c3e62-6139-4c66-8f1e-9927e20ae5ab" style="width:28.125%" class="column"><p id="dded0813-b8c0-43e1-9d3a-7f7a8b859579" class=""><mark class="highlight-yellow_background"><strong>Números</strong></mark><div class="indented"><p id="ceb52704-fcf4-4b23-8aa3-3438e3b6df8f" class=""><em>Integer: </em>representa cualquier número entero.</p><p id="9412f3c0-8d20-48de-ad3b-5f39eb3fa106" class="">
+</p><p id="700517df-7a75-4e61-b656-2e65d9af3c7b" class="">
+</p><p id="1ff216de-1a27-4b7b-ad46-3b3e2f9238a7" class=""><em>Double: </em>representa un número decimal con presición <em>double.</em></p></div></p></div><div id="ccdfcfac-23f4-46ed-bfbd-d40e6f7b989d" style="width:28.125%" class="column"><pre id="159c125e-8707-4cc5-95e0-e004b7de7cdb" class="code code-wrap"><code>Dim zanahorias As Integer
+zanahorias = 1</code></pre><pre id="c89b724b-15c4-46fe-817f-2fe9d5f3b981" class="code code-wrap"><code>Dim zanahorias As Double
+zanahorias = 2.5</code></pre></div><div id="84ede80c-34a4-43b5-b7d7-44f702f682ab" style="width:21.875%" class="column"><p id="d98b707c-f453-4728-b301-db81444d7a1f" class="">
+</p></div></div><div id="12d7f95b-e0e6-47f9-a594-0928a1c06910" class="column-list"><div id="d8324517-fe4b-4219-86ec-ee780f7e8295" style="width:20.833333333333332%" class="column"><p id="35198bbf-fc57-4750-ad40-735cee9b04ea" class="">
+</p><p id="6ad68f0e-c91f-49fe-8deb-3e639ad5acda" class=""><mark class="highlight-gray">Para cualquier operación  y proceso sencillo se usa el rectangulo.</mark></p></div><div id="6b6dc014-2596-43e6-a17d-54a5ddf1f6ce" style="width:58.33333333333333%" class="column"><p id="b38b3364-3967-43f3-acc1-efcd239ad0d3" class=""><strong>Operaciones</strong></p><ul id="abbf319c-43cf-4eda-9721-35009dab8663" class="bulleted-list"><li style="list-style-type:disc"><strong>Suma</strong></li></ul><p id="621f6d99-a959-4b21-9c17-a46a5ddce8cf" class="">Cuando dos numeros enteros se suman el resultado es un número entero, por ejemplo</p></div><div id="4c5fd902-e9a0-491f-a72d-ff25b1628c85" style="width:20.83333333333335%" class="column"><p id="cca413f8-922b-4371-9033-ace0cf571d36" class=""><mark class="highlight-gray_background">Símbolo</mark></p><p id="b2798cf1-694d-4e9c-99c7-18d482acb84e" class="">
+</p></div></div><div id="8177924e-0093-4fb6-a64d-02d983854558" class="column-list"><div id="77dee92e-d507-47ff-adcc-b6de7774dfd7" style="width:21.875%" class="column"><p id="be05ec5e-1da5-41ef-9d54-600d60be1a55" class=""><mark class="highlight-gray">El bloque rectangular se puede usar casi en cualquier ocasiión, desde asignar una variable, hasta cambiar de color una celda.</mark></p></div><div id="e69656b5-b353-4394-a3b3-4e8da7760ef5" style="width:28.125%" class="column"><pre id="90975157-5c17-42af-8f10-897da8049bea" class="code code-wrap"><code>Sub main()
+	a = 4
+	b = 5
+	c = a+b
+	Cells(1,1).value = c
+End Sub
+</code></pre></div><div id="8c04693c-0e13-42fe-afd9-329808ea24d4" style="width:28.125000000000007%" class="column"><figure id="8e6c784c-20d6-4de0-a9d5-6784f321aca0" class="image"><a href="t%209.gif"><img style="width:391px" src="t%209.gif"/></a><figcaption>El código anterior esta linkeado con ese botón</figcaption></figure></div><div id="5702be76-a27a-4efd-8aa2-84232322b05b" style="width:21.875%" class="column"><figure id="105ac151-80e6-47e3-8cc6-5cbc9097ab76" class="image"><a href="Untitled_Diagram%203.svg"><img style="width:120px" src="Untitled_Diagram%203.svg"/></a></figure><p id="5389b19d-c911-4cb4-9f41-07885cf1a888" class="">
+</p></div></div><div id="aa43a749-c932-464b-a4da-1f305eef6c2e" class="column-list"><div id="de7c7923-3ab1-497c-b3ac-ec5ccdd45576" style="width:20.833333333333332%" class="column"><p id="5481b7f4-7130-4b4a-9c49-315483e51e51" class="">
+</p></div><div id="bac5000d-8509-46f2-bd13-8fecdce0fbec" style="width:58.33333333333333%" class="column"><p id="428a3ea5-7ae0-4cd2-8468-a675ceaded13" class="">En el anterior ejemplo el código se ejecuta con un botón, para hacer esto, debemos realizar el siguiente procedimiento:</p><figure id="eca4a0c3-00e4-48a4-b7b9-430881abbe31" class="image"><a href="t%2010.gif"><img style="width:1364px" src="t%2010.gif"/></a></figure><p id="7ab242e4-27e7-4e28-9bc3-7a7556f01869" class="">Note que en la pestaña emergente seleccionamos la subrutina <code>main</code></p><p id="36730858-3a24-404e-be93-743227437dee" class="">Sin embargo, si intentamos sumar un número  decimal con un número entero, el resultado será un numero decimal.</p></div><div id="a173811e-b50c-4008-8729-55995f0142b6" style="width:20.83333333333335%" class="column"><p id="976edc85-ef0a-4e08-9f39-1c91426532ee" class="">
+</p></div></div><div id="58798dc2-384e-4b4d-b502-917308ac3816" class="column-list"><div id="4ef172c1-567c-4ae8-a89c-5efabafa8d26" style="width:21.875%" class="column"><p id="8f60966c-0496-4b6a-b500-892fe011145f" class="">
+</p></div><div id="c78625e6-6028-4933-a626-0a4a7c21b06c" style="width:28.125%" class="column"><pre id="8b427a8e-5cc6-4c9b-a46a-0929d1860b4a" class="code code-wrap"><code>Sub main()
+	a = 4
+	b = 5.5
+	c = a+b
+	Cells(1,1).value = c
+End Sub</code></pre></div><div id="b224103e-41d2-4693-b176-2832077c1573" style="width:28.125%" class="column"><figure id="436f5329-fc70-4ef8-9226-b96d4ec0e9ba" class="image"><a href="t%2011.gif"><img style="width:391px" src="t%2011.gif"/></a></figure></div><div id="fe1e810f-ab80-4fe3-b36c-3071896c08e3" style="width:21.875%" class="column"><p id="affef288-7e06-49db-aef9-08f55c0faa60" class="">
+</p></div></div><div id="fcb4c29a-9e8b-4c38-9743-0720ffaf837a" class="column-list"><div id="6ed1674f-686c-4ae3-9438-277b6249ec98" style="width:20.833333333333332%" class="column"><p id="096a4fd6-94f3-4ada-9c94-80a70fc7fd54" class="">
+</p></div><div id="39622f41-07b6-4c3b-b6a9-b450073aa63a" style="width:58.33333333333333%" class="column"><p id="0573220f-752e-438b-aabc-3f5e85495244" class="">Este mismo principio aplica para todas las operaciones que siguen.</p><ul id="e472230b-60b8-43fd-8e99-58740a256584" class="bulleted-list"><li style="list-style-type:disc"><strong>Resta</strong></li></ul></div><div id="f24517a8-01b4-4cf9-bd24-3be742fe94ad" style="width:20.83333333333335%" class="column"><p id="7e6a962d-05e6-4032-88a7-1c6ded68b3f1" class="">
+</p></div></div><div id="9551d8c8-f063-4fd4-a642-596cebc4c19e" class="column-list"><div id="3b500203-8fe3-420c-ba93-acb2781824e3" style="width:21.875%" class="column"><p id="b4b2950d-151c-478a-9738-e71a73cc26a0" class="">
+</p></div><div id="e40ef6a4-b8b9-476d-b2dc-e536f8bbbc69" style="width:28.125%" class="column"><pre id="e9a06a67-3687-421d-ba17-86b2d1cb00cd" class="code code-wrap"><code>Sub main()
+	a = 4
+	b = 5.5
+	c = a-b
+	Cells(1,1).value = c
+End Sub</code></pre></div><div id="4e7d1cc9-fe55-4be0-bf1e-5b9e3a1210df" style="width:28.125%" class="column"><figure id="dc804fd9-7d93-4e33-8e57-84c20b900521" class="image"><a href="t%2012.gif"><img style="width:391px" src="t%2012.gif"/></a></figure></div><div id="30ef77f4-ccb4-439a-913f-f81d34082f57" style="width:21.875%" class="column"><p id="fd615dd5-c236-4238-b75e-35af111768d3" class="">
+</p></div></div><div id="404108cb-30db-4680-8844-bb6fd74c935e" class="column-list"><div id="57f42ba0-b3ef-4f31-8c01-ad539c203983" style="width:20.833333333333332%" class="column"><p id="3519160c-c9cf-417d-8edf-ff3d65c747a7" class="">
+</p></div><div id="5b9aa1ff-5818-447a-b040-8298f5f2bccb" style="width:58.33333333333333%" class="column"><ul id="b9428cae-06e2-4919-9ac3-4fb519a3facf" class="bulleted-list"><li style="list-style-type:disc"><strong>Multiplicación</strong></li></ul></div><div id="0af8d748-a3df-4a9a-8178-24d841c3e558" style="width:20.833333333333346%" class="column"><p id="a3767d2d-71c4-4b00-83e9-64fbda3543d7" class="">
+</p></div></div><div id="4dc43646-8c85-48b2-902c-89a5debacb9e" class="column-list"><div id="da91e4dd-f0ae-4caa-bfa1-6f7a4fcfb21c" style="width:20.833333333333332%" class="column"><p id="1b84293b-3987-49c1-b518-8cb022610007" class="">
+</p></div><div id="32eb46c8-8bf6-4dd0-819b-4c38a37b374b" style="width:58.33333333333333%" class="column"><p id="578cdf7a-6ddc-4a51-986d-f9af8ea9ec6b" class="">En este caso, a pesar que la multiplicación da un número sin decimales, la variable sigue siendo de tipo <em>float</em></p></div><div id="4db2084e-60b3-496e-84ca-4ea154b69d5e" style="width:20.833333333333353%" class="column"><p id="6d50669d-b8c9-4f4e-add2-5a23c8cf20e8" class="">
+</p></div></div><div id="ff5a17fa-cc76-4dd7-ad69-87c79ea6cd00" class="column-list"><div id="c48a8fb4-0775-4c08-9d0e-e3dbaaf8d451" style="width:21.875%" class="column"><p id="f928454d-1450-41fa-8546-1093c5bc4fc2" class="">
+</p></div><div id="0fde9368-93d7-4ddd-a9ed-a0bb14b447ea" style="width:28.125%" class="column"><pre id="f5cc5e70-9db8-446b-b00e-adefec039609" class="code code-wrap"><code>Sub main()
+	a = 4
+	b = 5.5
+	c = a*b
+	Cells(1,1).value = c
+End Sub</code></pre></div><div id="c9aec3be-3412-426c-ab84-c9221f8e1ddb" style="width:28.125%" class="column"><figure id="dbf08148-6fb5-4d87-8007-5f96561d1f41" class="image"><a href="t%2013.gif"><img style="width:391px" src="t%2013.gif"/></a></figure></div><div id="b2ed61ed-e240-44d2-bfa4-b898fe92b5fc" style="width:21.875%" class="column"><p id="119dab4b-b98f-4782-aa47-62525b6f62f8" class="">
+</p></div></div><div id="0fd1f457-8e14-4683-9921-ba5c9cee03a5" class="column-list"><div id="c7867dbd-dbe9-4258-9656-211701f3e2d1" style="width:20.833333333333332%" class="column"><p id="c27e9d61-936a-4ef0-a8b1-96a120b4e2b9" class="">
+</p></div><div id="e5225317-3311-42a5-baba-0382dc8262d3" style="width:58.33333333333333%" class="column"><ul id="5bfbf6f2-ee95-4ee1-9337-c18c8b16e1db" class="bulleted-list"><li style="list-style-type:disc"><strong>División</strong></li></ul></div><div id="00abd7b0-907a-4fd6-82ba-82419a394842" style="width:20.833333333333343%" class="column"><p id="ef5559d5-b5d2-4c17-9cbd-db50fcd9aa59" class="">
+</p></div></div><div id="1d5b99fa-825e-4ece-8757-371c09b1f9da" class="column-list"><div id="225034d7-67fa-4b0f-b124-9f0bb07d4d42" style="width:21.875%" class="column"><p id="3c6773d2-fbd4-4682-a11e-77080e961b56" class="">
+</p></div><div id="df981414-4c06-4014-b57e-6d9661ff4fa3" style="width:28.125%" class="column"><pre id="2d9c660c-95bc-4496-8bee-f341db732c88" class="code code-wrap"><code>Sub main()
+	a = 4
+	b = 5.5
+	c = a/b
+	Cells(1,1).value = c
+End Sub</code></pre></div><div id="4ec3d32d-73b0-4508-912d-bfeca4b67dd7" style="width:28.125%" class="column"><figure id="5831b19e-7f28-427a-8ebf-9ff467763f60" class="image"><a href="t%2014.gif"><img style="width:391px" src="t%2014.gif"/></a></figure></div><div id="49c880d6-a5c7-4386-b75e-2f72b987ae04" style="width:21.875%" class="column"><p id="f3b98d6a-a557-40fb-bac7-d87e8c6d402d" class="">
+</p></div></div><div id="e454910c-be37-4e14-b414-7af413781175" class="column-list"><div id="9bc69759-d89d-4ebf-a6c1-23aee96ae5af" style="width:20.833333333333332%" class="column"><p id="7467c327-90c5-4adc-b99b-6eeb8a2c7139" class="">
+</p></div><div id="bb7b9689-7817-4d52-a6db-f7dc9188b995" style="width:58.33333333333333%" class="column"><ul id="1f77bd9a-ac2f-4ace-a9fe-308176e977ab" class="bulleted-list"><li style="list-style-type:disc"><strong>Módulo</strong></li></ul><p id="b7c0b66a-e320-4f17-95e0-b41e91c7e899" class="">Retorna el residuo de la división entre dos números.</p></div><div id="ba5379e8-f3d8-4fc7-a34e-716ff014b871" style="width:20.83333333333335%" class="column"><p id="2365f8ee-a365-43cd-a1bc-9406732e7099" class="">
+</p></div></div><div id="c9ee2090-f066-482c-aadf-a1cccc337095" class="column-list"><div id="621b02f1-4623-4626-984a-213f61b3ae08" style="width:21.875%" class="column"><p id="20a2a4bf-0a79-46a8-9809-250678966ef5" class="">
+</p></div><div id="e856e94d-a91e-479e-b48c-f0e7b19e2ed9" style="width:28.125%" class="column"><pre id="feda0183-06e5-481c-b57a-023e4dd34106" class="code code-wrap"><code>Sub main()
+	a = Cells(1,2).value
+	b = Cells(2,2).value
+	c = a mod b
+	Cells(3,2).value = c
+End Sub</code></pre></div><div id="98675936-5ee0-468a-b1c9-9255056c79a4" style="width:28.125%" class="column"><figure id="f07f0311-8810-40c5-b9ff-e0690b587133" class="image"><a href="t%2015.gif"><img style="width:391px" src="t%2015.gif"/></a></figure></div><div id="593897eb-c646-4bda-817b-b3a1213e4233" style="width:21.875%" class="column"><p id="31f458ca-ca1b-4e90-8722-8f7472883b44" class="">
+</p></div></div><div id="f539dd8c-2b7d-4587-a9d0-523d2d9ab5d1" class="column-list"><div id="6ff7a5c6-3718-43bf-ae3f-a6550d416928" style="width:20.833333333333332%" class="column"><p id="3fe0d381-e275-4cf7-bf06-28ef63fbae6a" class="">
+</p></div><div id="4faa7a5a-6da6-4188-ad5c-9ada19929049" style="width:58.33333333333333%" class="column"><ul id="323ed693-963b-4df2-a7a9-d7a7b55704c9" class="bulleted-list"><li style="list-style-type:disc"><strong>Exponente</strong></li></ul><figure id="a7ca1f04-34b4-45e9-a7ec-68f388e75de4" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mfrac><mn>5</mn><mn>2</mn></mfrac></msup><mo>=</mo><mn>316.2277</mn></mrow><annotation encoding="application/x-tex">10^{\frac{5}{2}}=316.2277</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0040200000000001em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.0040200000000001em;"><span style="top:-3.4130000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443142857142858em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">5</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">316.2277</span></span></span></span></span></div></figure></div><div id="892f4193-ade5-4b7c-8e5a-b88515490f0f" style="width:20.83333333333335%" class="column"><p id="59418209-ad18-4b22-aae5-de18528669ca" class="">
+</p></div></div><div id="035056a0-c288-400b-b66d-418b98278fa5" class="column-list"><div id="59302116-2c72-40cd-a31f-a0cfbfd86f62" style="width:21.875%" class="column"><p id="cf3bba0f-54d6-479f-973d-10b25543eedc" class="">
+</p></div><div id="bc58f714-a126-4659-a5a2-d6b1c7ffbd6e" style="width:28.125%" class="column"><pre id="b6df6b40-00ab-487e-a84b-243637c938ce" class="code code-wrap"><code>Sub main()
+	a = Cells(1,2).value
+	b = Cells(2,2).value
+	c = (a) ^ (b) &#x27;Los paréntesis son 
+	&#x27;IMPORTANTES
+	Cells(3,2).value = c
+End Sub</code></pre></div><div id="711217b9-17e6-4ed8-bb08-621dc71dd75d" style="width:28.125%" class="column"><figure id="32367808-35b4-4d08-b63f-637ae8e0975c" class="image"><a href="t%2016.gif"><img style="width:391px" src="t%2016.gif"/></a></figure></div><div id="405f38ce-824c-478d-9ec7-6da02d9f050a" style="width:21.875%" class="column"><p id="f429eacf-143a-4d79-9f34-c551e32887fd" class="">
+</p></div></div><div id="00f9f7e8-9fea-4cb9-8045-c9d8617ba0e5" class="column-list"><div id="081dd0d3-ab61-4c4a-9f56-b6d7779ab929" style="width:20.833333333333332%" class="column"><p id="85f5661b-c16a-4736-b092-e6327a471905" class="">
+</p></div><div id="da155b37-4263-4c38-ac6a-4e6c8b6773fa" style="width:58.33333333333333%" class="column"><p id="4dd0f8a1-1f21-49e4-8aec-b284b76c21e8" class=""><mark class="highlight-yellow_background">Booleanos (</mark><mark class="highlight-yellow_background"><em>bool</em></mark><mark class="highlight-yellow_background">)</mark></p><p id="c416a313-5720-4637-bdd2-3f4f1e78ce84" class="">Representa el estado verdadero o falso. Los booleanos pueden declararse explícitamente o ser obtenidos mediante comparaciones.</p><pre id="5bdf9444-721d-45b3-8995-e80c901a115c" class="code code-wrap"><code>Sub main()
+	a = True
+	b = False
+End Sub</code></pre></div><div id="ac4e3434-743f-4464-b9b9-d361d3665c13" style="width:20.833333333333353%" class="column"><p id="0bd6c01e-7697-4afe-b0bd-9a1e93aa0f31" class="">
+</p></div></div><div id="8467c0c9-8f5f-4ed1-82f2-05a8ad79e9ec" class="column-list"><div id="1b71e156-ff24-409a-b765-32494da11b1f" style="width:21.875%" class="column"><p id="6378c235-ffd5-4508-bad6-0dbf8ef4ef95" class="">
+</p></div><div id="b1074cb9-835e-4edd-bf2a-c17ebcc07989" style="width:28.125%" class="column"><pre id="36a276bd-7a9a-4fdc-898a-dfd00da2196e" class="code code-wrap"><code>Sub main()
+	a = 5
+	b = 3
+	c = a &lt;= b
+	Cells(3,2).value = c
+End Sub</code></pre></div><div id="bcd9b6e7-8066-4a8e-90a8-bdcb54f7580c" style="width:28.125%" class="column"><figure id="26235486-540a-4055-8c6a-bc41f86a2361" class="image"><a href="t%2017.gif"><img style="width:391px" src="t%2017.gif"/></a></figure></div><div id="0f6e8b26-7c42-46dc-a245-be8ae6d8851d" style="width:21.875000000000004%" class="column"><p id="e9981e05-df9d-4c44-8b31-645897039205" class="">
+</p></div></div><div id="31f8ad10-1b51-4261-9d0d-1fb7f65f42cb" class="column-list"><div id="ff277ebd-5920-4d3e-8c63-fa068ba8d683" style="width:20.833333333333332%" class="column"><p id="3d1f6b9c-d863-4e8d-b4d7-aa6211524008" class="">
+</p></div><div id="f2864f7c-bff8-489e-992d-05d28f1148f1" style="width:58.33333333333333%" class="column"><p id="afa51f88-7f28-4325-a40a-5202a927b9d4" class=""><strong>Comparaciones</strong></p></div><div id="734d8233-cf37-495f-8570-94f80c96c3ec" style="width:20.83333333333335%" class="column"><p id="da821578-1afd-4a6a-a3c0-25f6e41feffe" class="">
+</p></div></div><div id="fe56e002-17d0-49b6-8516-f978c3f15cf1" class="column-list"><div id="b54ae867-fb14-4557-81c4-4f259cf0809b" style="width:21.875%" class="column"><p id="ed720aa2-9aa0-45be-8095-4479a75d17ea" class="">
+</p></div><div id="e458c58a-75c2-4e66-8ff2-5c1c15181279" style="width:28.125%" class="column"><pre id="d04e3d25-d503-416a-943a-7577c98151d3" class="code code-wrap"><code>a = 5
+b = 3
+c =  a &lt;= b &#x27;False</code></pre><pre id="641613c5-ae27-4a25-b21a-07685aa6581b" class="code code-wrap"><code>a = 5
+b = 3
+c =  a &gt; b &#x27;False</code></pre><pre id="4746f921-9650-45bc-89a6-a4c25c65ff77" class="code code-wrap"><code>a = 5
+b = 3
+c =  a = b &#x27;False</code></pre></div><div id="68c455c9-81a3-4bda-bd59-5b1465dd7e66" style="width:28.125%" class="column"><pre id="327b8feb-a1f4-4308-8582-61650b541ff9" class="code code-wrap"><code>a = 5
+b = 3
+c =  a &gt;= b &#x27;True</code></pre><pre id="18c272e3-07aa-43e4-b540-253370be74b9" class="code code-wrap"><code>a = 5
+b = 5
+c =  a &lt; b &#x27;False</code></pre><pre id="4cc984d0-679e-42a1-a1c5-deaaa092eab2" class="code code-wrap"><code>a = 5
+b = 3
+c =  not a = b &#x27;True</code></pre></div><div id="125cac6c-1c10-4d2f-af2f-6d62c53f8e03" style="width:21.874999999999996%" class="column"><p id="53aa94bf-a8b5-4dba-97cb-26f198ae38d8" class="">
+</p></div></div><div id="651ecf41-a77f-442b-bb76-eab16825615a" class="column-list"><div id="d946abd2-1f23-48ab-985b-772e08fc6d3e" style="width:20.833333333333332%" class="column"><p id="891ed688-d1ff-402c-9088-c3f4f9b08a06" class="">
+</p></div><div id="d7503952-ed2f-4a93-9454-89681dedb34d" style="width:58.33333333333333%" class="column"><p id="d7ab2248-bc5d-4e6a-9c23-ab7b5e2358be" class=""><strong>Operadores Lógicos</strong></p></div><div id="ac7c6e8f-c838-4b53-a9c0-48ac3f4cae28" style="width:20.833333333333346%" class="column"><p id="f364b4f1-bd3c-4cd2-9980-f6f58d83f05f" class="">
+</p></div></div><div id="2d6df2c4-796c-4809-89ec-e9c2cf95f086" class="column-list"><div id="7985e89b-4b73-4c7b-bd8e-bec7ab28dc3e" style="width:21.875%" class="column"><p id="79428c70-88dd-4612-b0a8-5fa8f199bbbc" class="">
+</p></div><div id="41950167-eaae-4c90-b30e-563af3f63a39" style="width:28.125%" class="column"><p id="d0ca0d8a-a450-410b-a390-4588283776b7" class=""><code>and</code></p><pre id="293f38f8-19f3-4ae4-bf5b-51499d55548b" class="code code-wrap"><code>a = 5
+b = 3
+c =  a = b and a = 3 &#x27;False</code></pre><pre id="4f95cad7-a53a-41b6-8d2a-1fa14c101a81" class="code code-wrap"><code>a = 5
+b = 3
+c =  a = b or a = 3 &#x27;False
+</code></pre></div><div id="b8aa4206-c6dc-4143-a089-b2d402d34b13" style="width:28.125%" class="column"><p id="cfdcb744-14e5-483c-baee-69f641d9edf2" class=""><code>or</code></p><pre id="62a07467-ba12-4c13-8eec-229f86ac8adc" class="code code-wrap"><code>a = 5
+b = 5
+c =  a = b and a = 3 &#x27;False</code></pre><pre id="163e4d83-9d14-4f94-97d0-0eaca2ff0740" class="code code-wrap"><code>a = 5
+b = 5
+c =  a = b or a = 3 &#x27;True</code></pre></div><div id="beaa2dc1-a40c-485b-83a3-0b38b9fcf73f" style="width:21.875%" class="column"><p id="274e5699-37d4-40fd-a67f-b3e7408b1deb" class="">
+</p></div></div><div id="8a1a9f27-3d3b-45a9-82af-4878ae2a266a" class="column-list"><div id="ef81e143-ba75-40f6-9bf5-43094387f948" style="width:20.833333333333332%" class="column"><p id="58217ceb-ea8d-443b-8a24-e9a0da837370" class="">
+</p></div><div id="a36a43f8-8ebb-4e68-8091-f1a8b9d6983a" style="width:58.33333333333333%" class="column"><p id="c4dc1a29-0e68-4904-a4bf-a336b4e067ab" class=""><mark class="highlight-yellow_background">Cadenas de texto (</mark><mark class="highlight-yellow_background"><em>str</em></mark><mark class="highlight-yellow_background">)</mark></p><p id="4eccf48e-447b-4a5c-bba6-d43fd5bbebb3" class="">Se usan para guardar texto de cualquier longitud. El texto debe ir en comillas. Se usan comillas dobles.</p></div><div id="3dfe9ab1-7d5b-439c-b1b2-a4c51a793be5" style="width:20.83333333333334%" class="column"><p id="a255f814-2ccc-49cb-ac09-f0f0fbd04272" class="">
+</p></div></div><div id="f0a943f7-0fd3-4b83-82f4-ff1eea1d73ba" class="column-list"><div id="5908c0ea-bac3-4be3-a39f-5bdf438dfeed" style="width:21.875%" class="column"><p id="b7c2d603-da28-414e-a31f-a823b8ccffa4" class="">
+</p></div><div id="737b6e34-7cd4-47c4-9074-91e723c19b43" style="width:28.125%" class="column"><pre id="0543baf9-47e3-4815-94d5-2525cc7313cc" class="code code-wrap"><code>Sub main()
+	a = &quot;Hola Mundo!&quot;
+	Cells(3,2).value = a
+End Sub</code></pre></div><div id="b477e1e9-ac2c-4294-8b66-2da7d8edcd29" style="width:28.125%" class="column"><figure id="0bf39032-2589-49eb-9712-472e4331b238" class="image"><a href="t%2018.gif"><img style="width:391px" src="t%2018.gif"/></a></figure></div><div id="6f49a22e-6e4b-4ab2-8885-e70d4ee02fe3" style="width:21.875000000000004%" class="column"><p id="60f45e49-5b7a-4806-8c60-cf2bb6d92f83" class="">
+</p></div></div><div id="7c7eeaec-a883-46bf-9351-883c95914532" class="column-list"><div id="cca8298f-7bb2-4633-8d44-8661cde7ee04" style="width:20.833333333333332%" class="column"><p id="f77b24e6-f888-48d6-adad-713751b64859" class="">
+</p></div><div id="dd0ed86a-722c-4302-b024-8b4680a619f4" style="width:58.33333333333333%" class="column"><p id="71a8d30c-a570-44d6-96be-90266bde277e" class=""><strong>Comparación</strong></p><p id="99c6539f-795e-4563-8545-c5604d2cc15a" class="">Las cadenas de texto solo pueden compararse en igualdad, es decir, no existe una cadena de texto que sea mayor o menor que otra.</p></div><div id="75729481-8072-41c8-b2e4-3a1551bca772" style="width:20.83333333333335%" class="column"><p id="b4b5a86b-2381-470b-9af5-d0c114918e77" class="">
+</p></div></div><div id="6bca1e7c-76fc-4df5-b929-dc55b142aee5" class="column-list"><div id="ba50b17c-6fbe-417d-9336-7556a46bf019" style="width:21.875%" class="column"><p id="dcac63b8-97ba-49c8-8b98-e978c4fb4fc2" class="">
+</p></div><div id="d8a5681d-9136-416d-8b0f-54bfd589213f" style="width:28.125%" class="column"><pre id="58c87435-cdf6-4e67-aea0-6e51a01c6eea" class="code code-wrap"><code>Sub main()
+	a = &quot;Hola Mundo!&quot;
+	b = &quot;Hola Mundo&quot;
+	c = a = b
+	Cells(3,2).value = c
+End Sub</code></pre></div><div id="e6562b45-1c00-4716-b20c-f9f45497e7d4" style="width:28.125%" class="column"><figure id="d0117ce0-303e-4775-bf4a-adecdb728312" class="image"><a href="t%2019.gif"><img style="width:391px" src="t%2019.gif"/></a></figure></div><div id="7d2f8629-9ee1-46c9-93bb-0b3e931fcee7" style="width:21.875%" class="column"><p id="e42ca044-2dc1-46df-9841-98ec6a444b8f" class="">
+</p></div></div><div id="8f528dff-d1f8-4d59-af31-31a167f834d4" class="column-list"><div id="b9d705d0-5d13-4779-a915-56742481177c" style="width:20.833333333333332%" class="column"><p id="5cb14e48-7d5c-47e4-8a5f-0f756df9bfd3" class="">
+</p></div><div id="4447c10c-ac23-4de9-964d-2724d224ee23" style="width:58.33333333333333%" class="column"><p id="c4ad7135-665e-4cb3-9695-5f7576b4ef14" class=""><strong>Longitud</strong></p><p id="8ab77645-c3f0-433d-abce-ee2161754a29" class="">Usando la función <code>len</code> se puede encontrar la longitud en caracteres de cualquier cadena de texto. Por ejemplo, si pasamos la cadena de texto a del ejemplo pasado</p></div><div id="4ca54db0-e6dd-456c-82a6-1454790eeb91" style="width:20.83333333333335%" class="column"><p id="a4d1d7c7-7671-4b38-98d7-8a5c182d4f29" class="">
+</p></div></div><div id="cc66d434-f581-4ac4-88c1-2c08addbd438" class="column-list"><div id="c6753369-a295-4f64-9093-84ab0a3a62f0" style="width:21.875%" class="column"><p id="71e2ff38-b342-42be-9f8d-9e101c433a53" class="">
+</p></div><div id="9933b3c3-663b-42bf-90ac-c3238246ec4a" style="width:28.125%" class="column"><pre id="69142351-e0d8-4379-be02-4ba66fae3cd1" class="code code-wrap"><code>Sub main()
+    a = &quot;Hola Mundo!&quot;
+    Cells(3, 2).Value = Len(a)
+End Sub</code></pre></div><div id="4e0b66ac-e538-4d4e-aaf2-6eab766a5122" style="width:28.125%" class="column"><figure id="9753f245-01c8-4603-8882-814e5e408fa0" class="image"><a href="t%2020.gif"><img style="width:391px" src="t%2020.gif"/></a></figure></div><div id="e15ef2b5-5efd-4d9c-94e0-c76690687a29" style="width:21.875%" class="column"><p id="f9c1a1ca-1cdb-48c3-b50d-0c801427a943" class="">
+</p></div></div><div id="e256bda9-d954-4f73-b288-2418139cfb66" class="column-list"><div id="37ff6423-8236-4a3f-9121-8956dc7de740" style="width:20.833333333333332%" class="column"><p id="be305b17-7f60-4e23-a279-4ca65aec614f" class="">
+</p></div><div id="8fe6eb74-69cc-4eed-a010-0346ea4131ed" style="width:58.33333333333333%" class="column"><p id="a4dedfb4-c63b-43fa-86a2-9bccfe695446" class=""><mark class="highlight-yellow_background">Arreglos</mark></p><p id="89471964-20a4-4e83-90e3-afbbdb50a092" class="">Es el contenedor mas versatil de VBA. Se usa para guardar datos de cualquier tamaño. Se declaran usando la siguiente sintáxis:</p><pre id="e0234b36-7198-45bc-b38c-74b3e99820d8" class="code code-wrap"><code>Dim a(1 to 5) As Double &#x27;arreglo de 5 posiciones, desde 1 hasta 5
+a(1) = 4
+a(2) = 9
+a(3) = 16
+a(4) = 25
+a(5) = 36</code></pre><p id="938a47f8-f64f-4cde-b6d2-d1da084a0a18" class="">Para acceder a la información de los arreglos se debe usar un <strong>índice. </strong>El índice representa la posicion en el arreglo que se quiere obtener. En VBA las listas se pueden iniciar desde cualquier índice, pero se recomienda obligar a que comienzen desde 1.</p></div><div id="33e333d3-029c-4ae5-bc63-1aa4531b7e85" style="width:20.83333333333335%" class="column"><p id="a568edf3-24b3-4086-a947-01ba8e36b00c" class="">
+</p></div></div><div id="0d53d15f-3b5a-4636-bbe5-0c4909cd5fec" class="column-list"><div id="0b2eb717-17b6-4890-b167-9a906a37f528" style="width:21.875%" class="column"><p id="9fe051a6-5831-434c-a72e-4ad4ffafed49" class="">
+</p></div><div id="9e0082d1-dcb5-49db-bded-d7cf8887af99" style="width:28.125%" class="column"><pre id="f8a5b613-2cac-44a2-9581-15cccfe5ca0a" class="code code-wrap"><code>Cells(3,2).value = a(1)</code></pre></div><div id="c4f997d9-6d43-43e3-ac0b-8d94592b8b5d" style="width:28.125%" class="column"><pre id="0b3f22ef-9bda-49fe-87c0-74f6a9b0493f" class="code code-wrap"><code>Cells(3,2).value = a(4)</code></pre></div><div id="61190838-a62b-48d1-86ac-732f63d8e574" style="width:21.875%" class="column"><p id="af745c68-db5f-4309-a50d-35e5dea21be5" class="">
+</p></div></div><div id="b560e658-3031-4c63-9744-c9f055f2500d" class="column-list"><div id="966644ba-f451-413c-a893-a106520f9ebd" style="width:20.833333333333332%" class="column"><p id="d5f3b6e7-ec7a-46a7-934d-a2d21505f5a6" class="">
+</p></div><div id="5b872f6d-d6a7-4a19-873e-7a21101bc47d" style="width:58.33333333333333%" class="column"><p id="45cb7f84-4e09-43fb-8d16-cb55f060ef24" class="">Cuando se intenta obtener un elemento que no existe en la lista, se retornará un error.</p></div><div id="34a83cb1-6fbe-4825-a6e0-2bb81c4e16ef" style="width:20.833333333333346%" class="column"><p id="2c08202d-55e6-46c9-8565-14f5a3400f94" class="">
+</p></div></div><div id="d56579a1-6818-4765-bb74-63173e64d697" class="column-list"><div id="26a2f2cb-467f-4a96-bb8c-3e39e2a33ab9" style="width:21.875%" class="column"><p id="9a16f5fd-89af-4558-8faf-9a5ee57a28d7" class="">
+</p></div><div id="50b49b00-6b99-47ef-9ca1-9f9b1de8ed55" style="width:28.125%" class="column"><pre id="0fa35816-3ad3-481a-b4f1-41e17ae89ee9" class="code code-wrap"><code>Sub main()
+    Dim a(1 to 5) As Double
+    a(1) = 4
+    a(2) = 9
+    a(3) = 16
+    a(4) = 25
+    a(5) = 36
+    Cells(3, 2).Value = a(6)
+End Sub</code></pre></div><div id="2408b468-d3c1-459c-bb32-c1270e921599" style="width:28.125%" class="column"><figure id="baa7946c-e961-46ab-8269-ab76e6c8e9fd" class="image"><a href="t%2021.gif"><img style="width:391px" src="t%2021.gif"/></a></figure></div><div id="54bad646-5ea6-4c44-8770-4adceb0bc4c3" style="width:21.875%" class="column"><p id="56c3ca60-5548-4faa-855f-37710a6fbca1" class="">
+</p></div></div><div id="df88da29-1aca-4ca2-9911-862ff1b282fc" class="column-list"><div id="f24d29f4-7706-49a9-aa7f-e4d587ea3e8e" style="width:20.833333333333332%" class="column"><p id="30ffada1-78a4-4241-af04-c806d837e9de" class="">
+</p></div><div id="95136040-0a4c-491f-b7d2-97d5b723251e" style="width:58.33333333333333%" class="column"><p id="561f683f-6c06-4a29-ae3f-40e3ccd1f4ec" class="">Los arreglos pueden almacenar un solo tipo de variable, por ello se declaran como <code>Dim variable(tamaño) as Tipo</code>. Sin embargo, se pueden declarar arreglos que puedan contener diferentes tipos de datos con la palabra <code>Variant</code></p><pre id="15996472-7163-4a93-83b2-118df1cb5ba4" class="code code-wrap"><code>Dim arreglo(1 to 30) as Variant</code></pre><p id="f54a86cc-0108-472c-9611-051f7f3b2126" class=""><strong>Longitud de un arreglo</strong></p><p id="18863d65-dbd6-403f-8a67-f432c04eba07" class="">Usando la función <code>ubound</code> se puede encontrar la longitud del arreglo. Si el arreglo tiene longitud n, sus índices van desde 1 hasta n</p></div><div id="4cfebb49-43f6-47bd-b5f9-b7ff1aeeb4b1" style="width:20.83333333333336%" class="column"><p id="440b8e06-1e24-49b1-a2f3-c6bcef814642" class="">
+</p><p id="4dd67ddd-47b4-44fc-b49a-3fb12e0792ee" class="">
+</p><p id="cff5a0e3-ee32-464f-8909-71e1e7f04740" class="">
+</p><p id="a4a52fbd-e40d-4de4-b7ba-bebb1a7508e8" class="">
+</p><p id="d7cb287c-fccd-4cf4-a4a8-bb08fd6c01f0" class="">
+</p><p id="3285eb16-ae63-4685-9b3c-fc2e1170ca53" class="">
+</p></div></div><div id="5579387d-9dd8-4303-be10-42bf6f7b221e" class="column-list"><div id="824d9fae-cc6d-4738-be50-47ab65959259" style="width:21.000000000000004%" class="column"><p id="3f6695ac-19c0-4146-911d-bece81686c4e" class="">
+</p></div><div id="1cb7d8e1-7f65-49bf-a4cd-487c5a906508" style="width:27%" class="column"><pre id="8dfbfc04-244b-44b4-8989-bc7c8d14a026" class="code code-wrap"><code>Sub main()
+    Dim a(1 to 5) As Integer
+    a(1) = 4
+    a(2) = 9
+    a(3) = 16
+    a(4) = 25
+    a(5) = 36
+    b = UBound(a)
+    Cells(3, 2).Value = b
+End Sub</code></pre><p id="4ca59f3a-1f72-4c34-8913-eea1b5b2a12b" class="">
+</p><p id="443a8143-771d-4a05-97d4-d8e51868c8be" class="">En el diagrama de flujo se ilustra la manera en como se debe comentar</p></div><div id="c20c7614-947f-4e72-b896-4f24ffdaa346" style="width:27%" class="column"><figure id="5ce7043b-5596-41ad-b437-662ca8097d6d" class="image"><a href="t%2022.gif"><img style="width:391px" src="t%2022.gif"/></a></figure></div><div id="d1ee68f2-3665-4fc5-aa0c-ea2ce0cabb5e" style="width:25%" class="column"><ul id="fd6f0930-5560-41bd-9db2-750278e89ca1" class="toggle"><li><details open=""><summary><mark class="highlight-gray">Ejemplo:</mark> <mark class="highlight-gray">Click para abrir</mark></summary><p id="dbec114f-cc8b-43d4-a753-ad4daaf817c2" class=""><mark class="highlight-gray">Un ejemplo...</mark></p><figure id="010b2b7a-d070-40e5-b448-8bf3a86f21ba" class="image"><a href="Untitled_Diagram%204.svg"><img src="Untitled_Diagram%204.svg"/></a></figure></details></li></ul><p id="71850b95-e2fe-4738-bfaf-cb9268d067e0" class="">
+</p></div></div><div id="a6a20a47-4015-4a2f-942b-abda72fd8372" class="column-list"><div id="5c74a59d-fdf8-42e9-ab5c-8112fd8749f0" style="width:20.833333333333332%" class="column"><p id="3a14142f-aa1e-466a-b230-2ed0f4f44197" class="">
+</p><p id="dfd06e1d-d879-4501-a7bc-1304187b12fa" class="">
+</p></div><div id="f865f6f2-ebc7-4ee2-a57c-c5f588c5473f" style="width:58.33333333333333%" class="column"><h2 id="d37a08a3-c22f-45bf-ab6e-7e1b6e696d5f" class="">Condicionales</h2><p id="a9e7dad1-28ca-440e-a87a-051a942f8cad" class="">Permiten que el código tome una descición basado en un booleano</p></div><div id="4d8e5e47-ef26-481e-bed9-693f8d751c74" style="width:20.83333333333335%" class="column"><p id="14be87d6-786e-4622-a1ce-c4cc5b7b6ec7" class=""><mark class="highlight-gray_background">Símbolo</mark></p><p id="6d2117d7-72c5-4071-bd7b-fdbe8c3b8daf" class="">
+</p></div></div><div id="7a9fd2f3-63e8-408e-a0ee-db41c17831a3" class="column-list"><div id="fb53a8e5-f515-4b59-89fd-506ca153e40b" style="width:21.875%" class="column"><ul id="d3dd772c-c39a-4ff7-82e9-36d920d52ff6" class="toggle"><li><details open=""><summary><mark class="highlight-gray">Ejemplo:</mark> <mark class="highlight-gray">Click para abrir</mark></summary><figure id="529af967-2a0c-41d6-bed6-2e2293f33d71" class="image"><a href="Untitled_Diagram%205.svg"><img src="Untitled_Diagram%205.svg"/></a></figure><p id="dcf78916-c476-44bb-83b0-88c8f9899920" class=""><mark class="highlight-gray">La idea de los diagramas es encajar diferentes formas con sentido lógico, por eso podemos conectarlo de diferentes formas y se conseguira un resultado correcto. La única condicion. Solo debe existir un inicio y todas las lineas deben conducir al final. (Hay casos donde puede existir mas de un final, pero nunca existirá una linea que no encuentre el final)</mark></p></details></li></ul></div><div id="235df397-ca14-40a4-a1aa-b0f9a517adcb" style="width:28.125%" class="column"><pre id="c3eb601a-3da5-4419-9f4c-77a729e39d1e" class="code code-wrap"><code>Sub main()
+    x = Cells(1, 2).Value
+    If x &lt; 0 Then
+        Cells(2, 1).Value = &quot;Número negativo&quot;
+    ElseIf x = 0 Then
+        Cells(2, 1).Value = &quot;Cero&quot;
+    Else
+        Cells(2, 1).Value = &quot;Mayor a cero&quot;
+    End If
+End Sub</code></pre><p id="cb6f2e18-62c5-4281-8c55-0dcbba34a363" class="">
+</p><p id="c5306878-4a90-4bdd-b2c3-3c47281e9533" class="">En el ejemplo de diagrama de flujo de la izquierda se muestra el uso de dos condicionales encadenados, asi como el uso de un circulo que conecta flujos.</p><p id="00087c9f-4076-4e66-b993-e49bce5a2ddc" class="">Falta comentar el diagrama!</p></div><div id="fc2caecc-7fb0-4029-ab6f-c3ae3bf1c609" style="width:28.125%" class="column"><figure id="d2e8ffbb-b92f-43e6-b3ed-fe450e24ad9a" class="image"><a href="t%2023.gif"><img style="width:411px" src="t%2023.gif"/></a></figure><p id="b729bb95-5fd4-469f-b7dc-a7028cd49450" class="">
+</p></div><div id="39108772-5704-44ff-8e12-276810cb4a91" style="width:21.875%" class="column"><figure id="8147025c-3716-4711-af78-1a309d42ba68" class="image"><a href="Untitled_Diagram%206.svg"><img src="Untitled_Diagram%206.svg"/></a></figure><p id="28b85db2-f738-4e7c-ba92-78047c2faadc" class=""><mark class="highlight-gray">En este símbolo existe una entrada y dos salidas. Las salidas se corresponden con la condición del if, si es verdadera o falsa.</mark></p><p id="c0d1eb92-afd3-4762-85ef-2a8c9d81ff20" class="">
+</p></div></div><div id="719b22a9-bd42-4a6c-b05e-83b64e8b2727" class="column-list"><div id="f5d9e790-bdd4-4940-9f47-c5da33ec9d1d" style="width:21.875%" class="column"><p id="84a39748-acff-497b-a743-e8ec19308df7" class="">
+</p></div><div id="5ddc72ff-6c8c-4956-aa20-918412c74163" style="width:30.125%" class="column"><pre id="d34a746d-42fb-4cad-89ed-70a4a0497189" class="code code-wrap"><code>Sub main()
+    a = Cells(1, 2).Value
+    entrada = a = &quot;Permiso concedido&quot;
+    If entrada Then
+        Cells(2, 1).Value = &quot;Siga por favor&quot;
+    Else:
+        Cells(2, 1).Value = &quot;Seguridad!!&quot;
+    End If
+End Sub</code></pre></div><div id="4543400d-db45-42af-8165-d6f4d59cb47e" style="width:28.125%" class="column"><figure id="e5c0ba94-6d11-45e1-9ab2-52df8a2ebe29" class="image"><a href="t%2024.gif"><img style="width:411px" src="t%2024.gif"/></a></figure></div><div id="9a9c1ce9-7c45-4360-9246-1cafccdb109a" style="width:19.875%" class="column"><p id="47a0f54d-f59a-4001-a80a-987ec864d61f" class="">
+</p></div></div><div id="5de45efa-39df-4956-97c4-7c0457ebd5c1" class="column-list"><div id="4ebb78f8-6035-42f0-93b2-d4cbae8cf13e" style="width:21.875%" class="column"><p id="ccbd9100-6195-4659-9075-9a78ada04946" class="">
+</p></div><div id="a939a0c9-eb74-4845-917d-e2d77b4c430a" style="width:28.125%" class="column"><pre id="a6963a94-7116-4024-bc6f-da9931b3774f" class="code code-wrap"><code>Sub main()
+    imprimir = Cells(1, 2).Value
+    If imprimir Then
+        Cells(2, 1).Value = &quot;El documento se imprimió de manera correcta&quot;
+    End If
+End Sub</code></pre></div><div id="aa0d842e-94a0-4b96-823d-9b3a5a287cb0" style="width:28.125%" class="column"><figure id="9eebcd5a-3785-4e8c-8368-b745b2b79121" class="image"><a href="t%2025.gif"><img style="width:411px" src="t%2025.gif"/></a></figure></div><div id="28e2ac37-86ed-4980-8a33-75efdccce480" style="width:21.875000000000004%" class="column"><p id="ab20c900-8995-449a-9326-556aecd30b9f" class="">
+</p></div></div><div id="57c32c80-c5a7-4ef1-a577-e9f2452dd887" class="column-list"><div id="fa63e803-15d3-4f44-9922-9d0840631bd9" style="width:20.833333333333332%" class="column"><p id="0840ed9c-bed1-4944-89ba-883551ec10dc" class="">
+</p></div><div id="4f0111ca-0699-4ff4-9297-a1a7c82f681e" style="width:58.33333333333333%" class="column"><h2 id="31481536-fa6f-4b67-9efc-47188b525580" class="">Ciclos</h2><h3 id="94d4ec42-796c-4829-9708-0a3ee320158d" class=""><em>For</em></h3><p id="fd59cfda-0d4b-4d86-8c71-4445da0d2a3d" class="">Los ciclos <em>for </em>son acciones que se realizan repetidamente, por ejemplo, queremos encontrar todos los numeros del 1 al 5 y elevarlos al cuadrado, para ello podemos hacer esto:</p><pre id="fe2917ff-9472-4d24-9b6b-8d2ff0b0ff5a" class="code code-wrap"><code>Sub main()
+    For i = 1 To 5
+        Cells(i, 1).Value = (i) ^ (2)
+    Next i
+		Cells(1,2).Value = &quot;Esta linea se ejecutó una sola vez&quot;
+End Sub</code></pre><p id="f6711267-7f90-4a93-8245-8b78db42150f" class="">En este ejemplo hay tres cosas que resaltar, la primera es la secuencia <code>For i = 1 To 5</code> que representa el ciclo <em>for </em>esto quiere decir que las acciones siguientes se repetirán 5 veces y la variable <code>i</code> tomara los valores 1,2,3,4,5 en cada una de las iteraciones.</p><p id="c5041e02-834c-4089-899a-1c5493af5d8f" class="">Los segundo a recalcar es que en el comando <code>Cells</code> estamos usando la variable <code>i</code>. Esto quiere decir que en cada iteración estamos imprimiendo el resultado en una celda distinta. Como lo mencionamos anteriormente, <code>i</code> toma los valores de 1,2,3,4,5 respectivamente, por lo que cuando <code>i = 1</code>, en la celda 1,1 se imprime el valor de 1^2, mientras que cuando <code>i=3</code>, en la celda 3,2 se imprime el valor de 3^2.</p><p id="e1ca54fc-2069-493b-92e4-a8c88edfb9af" class="">Por último, observamos la expresión <code>Next i</code> que representa el lugar donde el ciclo da vuelta, es decir, las instrucciones que se ejecuten luego de esa linea no se realizarán repetidamente. En síntesis en esa linea cierra el <em>for.</em></p><figure id="ec54f02e-d522-47bb-b18f-5b3d36be875d" class="image"><a href="t%2026.gif"><img style="width:411px" src="t%2026.gif"/></a></figure><p id="6e3f3d27-8f3f-497a-b91c-920896f12060" class="">La variable que itera (en el ejemplo anterior la variable <code>i</code>) comunmente se usa para acceder a las posciciones de un arreglo, por ejemplo:</p></div><div id="e41ddcf2-0d3f-4927-8070-0ebd1cdc428b" style="width:20.833333333333346%" class="column"><p id="82780fd0-a98e-4687-9fd2-856e220051ea" class=""><mark class="highlight-gray_background">Símbolo</mark></p><figure id="22828f25-531e-4836-817c-b9d64abbe955" class="image"><a href="Untitled_Diagram%207.svg"><img src="Untitled_Diagram%207.svg"/></a></figure><p id="57ff32ea-181f-46f3-acd5-b86983f48811" class=""><mark class="highlight-gray">Por si acaso, el símbolo es el hexágono...</mark></p><p id="ee4fe1f2-b867-48b2-b1f9-d6f39aeeb1c9" class="">
+</p></div></div><div id="293dc49d-26e3-4b93-a253-4cb8e2178e0e" class="column-list"><div id="2b542524-a5a0-45bc-b87e-985e867f56a3" style="width:21.875%" class="column"><p id="5dbaa946-5d8d-459e-9e77-18b237041044" class="">
+</p></div><div id="cfecb157-8682-460f-89d1-d53cfb716a88" style="width:28.125%" class="column"><pre id="f9c25cd5-4bc6-46fe-8d7c-569f6fa210b9" class="code code-wrap"><code>Sub main()
+    Dim a(1 To 5) As String
+    a(1) = &quot;Zanahorias&quot;
+    a(2) = &quot;Manzanas&quot;
+    a(3) = &quot;Peras&quot;
+    a(4) = &quot;Gatos&quot;
+    a(5) = &quot;Conejos&quot;
+    For i = 1 To 5
+        Cells(i, 1) = a(i)
+    Next i
+End Sub</code></pre></div><div id="9dec88bd-5ff8-4757-b318-59a5737609b6" style="width:28.125%" class="column"><figure id="3f84487f-dead-4274-9a39-4d8ab4cad7d6" class="image"><a href="t%2027.gif"><img style="width:411px" src="t%2027.gif"/></a></figure></div><div id="76c2c5f3-eab4-4e0a-ac92-37717e66277e" style="width:21.875%" class="column"><p id="ddbd8f4f-a7e1-4368-a3cd-9d985bbc82b9" class="">
+</p></div></div><div id="c01edd79-267b-465c-af20-753e345e1764" class="column-list"><div id="de6614ee-915b-44aa-81c3-76dace948000" style="width:20.833333333333332%" class="column"><p id="1db064b0-c955-4ee9-bff5-3e0878638c46" class="">
+</p></div><div id="d4072407-b931-4095-ac3b-e227cb327496" style="width:58.33333333333333%" class="column"><p id="3c33894d-d792-418f-b1db-adc24f1ff9df" class="">Podemos combinar ciclos con variables para hacer cosas mas interesantes como generar datos:</p></div><div id="407359b8-7779-40ff-9580-419faafcd482" style="width:20.83333333333335%" class="column"><p id="317017ab-315c-45b7-883e-df78dfc098a2" class="">
+</p></div></div><div id="0b361efd-ce42-4813-9b99-2eaca217b17e" class="column-list"><div id="21ef1c11-23c2-4f5c-8043-f70162797c89" style="width:21.875%" class="column"><p id="0a5552c8-65e9-4d47-9a8d-77fa474a6044" class="">
+</p></div><div id="bd407003-2b6d-4c2a-82f6-ee673152278f" style="width:28.125%" class="column"><pre id="3c20d00b-86e9-4516-b7cc-8c5d6ceb67b3" class="code code-wrap"><code>Sub main()
+    inicio = Cells(1, 2).Value
+    fin = Cells(2, 2).Value
+
+    For i = inicio To fin
+        Cells(i, 3).Value = (i)
+        Cells(i, 4).Value = (i) ^ (1 / 2)
+    Next i
+End Sub</code></pre><p id="fc0ee6a3-fc76-49ba-b2ef-b0ca339a0db6" class="">
+</p></div><div id="8dffa131-47d1-44cc-b824-1d1e25c8b25c" style="width:28.125%" class="column"><figure id="f3b0cb59-8fc4-4df9-a38f-1dbedea4be89" class="image"><a href="t%2028.gif"><img style="width:411px" src="t%2028.gif"/></a></figure></div><div id="0aad3b02-65d2-4155-af65-8847ff487a65" style="width:21.875%" class="column"><p id="c40c5290-0475-4fec-8256-c5bd98ff541b" class="">
+</p></div></div><div id="0c0302b7-8bd6-4612-8863-176616de944e" class="column-list"><div id="926f0f72-3c55-45f8-8e8d-24d4a2064a3a" style="width:20.833333333333332%" class="column"><p id="bc7c01a2-ad14-41fa-8d77-7a1892eb1ad9" class="">
+</p></div><div id="ec119e20-d123-4145-89ff-915c991a0d5c" style="width:58.33333333333333%" class="column"><h3 id="5d1b848b-8adc-4166-9ce2-85e84010fb2b" class=""><em>While</em></h3><p id="95682c48-2e01-48ed-aff9-c5c5793c7884" class="">El funcionamiento del <em>While </em>es parecido al <em>for</em>, sin embargo, su diferencia radica en que el <em>for </em>hace un número de iteraciones predefinido, mientras que el <em>while </em>itera dependiendo de una condición booleana (muy parecido al if)</p><p id="0dadb68d-8d16-414d-a200-0760f27fc37b" class="">Por ejemplo, podemos disminuir el error hasta que sea menor de un valor especificado:</p><p id="12488d3f-7a2c-40a7-b255-17e5c2705916" class="">
+</p></div><div id="37178a0d-2787-4dda-bcfe-a4aefb531d6e" style="width:20.83333333333335%" class="column"><p id="75f3ff93-9fa3-4f65-86a8-214e3cda7e70" class=""><mark class="highlight-gray_background">Símbolo</mark></p><p id="d53b843b-defb-45cc-9d44-a65db73cbf86" class="">
+</p></div></div><div id="f9c36b24-cf17-407a-a9f5-f1e2c7d754ef" class="column-list"><div id="0993f105-608c-49e3-857f-e56212fc7dd3" style="width:21.875%" class="column"><p id="fac44e78-5fc0-42a7-ab41-7bb828d88772" class="">
+</p></div><div id="816024d9-90d0-4400-a9bb-e71966862bd4" style="width:28.125%" class="column"><pre id="057fb7ac-5736-4ffc-afec-70ebf72d24bf" class="code code-wrap"><code>Sub main()
+    contador = 1
+    errorcito = 1
+    tolerancia = 0.01
+    While errorcito &gt;= 0.01
+        errorcito = errorcito - 0.01
+        Cells(contador, 1).Value = errorcito
+        contador = contador + 1
+    Wend
+End Sub</code></pre></div><div id="e40e0e23-b4cd-47db-b5d0-604b7287cfe1" style="width:28.125%" class="column"><figure id="030695d9-9128-447e-b846-ddd2845927f0" class="image"><a href="t%2029.gif"><img style="width:468px" src="t%2029.gif"/></a></figure></div><div id="e2776697-62f0-452a-80a8-af7f4ca66a10" style="width:21.874999999999996%" class="column"><figure id="6b0bd226-93e1-457d-a04d-9fa5473dda52" class="image"><a href="Untitled_Diagram%208.svg"><img style="width:108px" src="Untitled_Diagram%208.svg"/></a></figure><p id="df66855b-704b-4a99-9afd-463413adada5" class=""><mark class="highlight-gray">Por si acaso, el símbolo del while es igual al del if pero con una entrada extra.</mark></p></div></div><div id="349ef93b-5f9a-46a0-b97a-3cbf126a456d" class="column-list"><div id="7ddb3de9-f34e-4ad9-9f78-589b5627760e" style="width:20.833333333333332%" class="column"><p id="b7df1cc3-0a11-4de9-ae3a-a0f918e55ff2" class="">
+</p></div><div id="5f28b596-1866-4c4a-a2ae-109bfa8c862c" style="width:58.33333333333333%" class="column"><p id="3abcf86b-e765-4bf8-88f7-b64e4e52586b" class="">Si los <em>Whiles </em>estan mal formulados pueden llevar a un bucle infinito en el programa, por lo que deben tratarse con precaución.</p><h2 id="4123429f-99dc-4800-9df7-d905338f817e" class="">Funciones</h2><p id="613c6e6f-edd6-479b-801d-3aa784307d10" class="">Las funciones permiten agrupar bloques de código y procesos complejos. Permiten tener parámetros y salidas. Generalmente son usadas para realizar acciones que se repitan en diferentes contextos.</p><p id="d1929e11-c3fb-47d4-b34a-7a832ec4260a" class="">Las funciones se declaran usando la palabra <code>function</code> , con la siguiente sintaxis:</p><pre id="fe6ff78c-bc96-4568-88ca-ef752357fed2" class="code code-wrap"><code>Function nombre_funcion(parametro_1 as tipo,parametro_2 as tipo,...,parametro_n as tipo)
+	bloque que se ejecuta
+	al llamar a la función
+End Function</code></pre><p id="d03bf0a7-fb74-49ef-81c1-98c6e397fa3a" class="">Hagamos una función que nos diga si un número es par o impar</p><ul id="c5841733-e454-4cf5-a462-1e4505747509" class="bulleted-list"><li style="list-style-type:disc">Por parámetro debe recibir el número a verificar</li></ul><ul id="29bcbdbd-77ff-4077-a10b-8a25667af7d9" class="bulleted-list"><li style="list-style-type:disc">Debe retornar <em>True</em>, si el número es par y <em>False </em>de lo contrario</li></ul><p id="c80f4eec-27d1-4d9f-976b-50a10f6ba265" class="">Entonces, empezamos creando una función vacía con el parámetro n que sea el número a evaluar:</p><pre id="24b46d60-978e-46f2-ada4-526df96360f5" class="code code-wrap"><code>Function esPar(n as Integer)
+
+End Function</code></pre><p id="f669876a-9595-45f0-8557-c4893b71d082" class="">Luego tenemos que evaluar de manera numérica si el número es o no par, por ejemplo, podemos usar la operación módulo, porque, todo número par es divisible entre 2, lo que hace que el residuo sea 0.</p><pre id="c1d72c41-10ae-446e-8fa0-5c09cd7f1f99" class="code code-wrap"><code>Function esPar(n as Integer)
+    residuo = n Mod 2
+End Function</code></pre><p id="be9c991c-5622-4237-9f8e-42949b1b12dd" class="">La función no retorna nada, todvia...</p><p id="7ca702c3-f61d-45b7-be7a-acb69da0d240" class="">Para que una función retorne un valor en VBA debemos asignarle el valor de retorno al nombre de la función, asi:</p></div><div id="ab5d1ce9-c425-40f7-a0ce-c8d0b78031a8" style="width:20.833333333333357%" class="column"><p id="b874f064-5e58-4c19-987b-11aa1cd77ee5" class="">
+</p></div></div><div id="d0afcd3c-348c-4217-95bb-3b7cdef27461" class="column-list"><div id="ecb2ff70-369a-44f2-888f-50e0cfcd0f62" style="width:21.875%" class="column"><p id="cafab129-0d58-4dfb-a4b5-fc13db396982" class="">
+</p></div><div id="d216a251-3769-4a03-b634-a06c87686e0b" style="width:28.125%" class="column"><pre id="286a98f9-20d2-443e-9384-e7c321580875" class="code code-wrap"><code>Function esPar(n as Integer)
+    residuo = n Mod 2
+		esPar = residuo
+End Function</code></pre></div><div id="6116ef55-9eb3-4817-8919-52d5dd3e5b47" style="width:28.125%" class="column"><figure id="c9856097-57c5-46ea-8d28-5380ce41f749" class="image"><a href="t%2030.gif"><img style="width:239px" src="t%2030.gif"/></a></figure></div><div id="c0543b9d-f6d7-4ac3-87bc-fa3814ab3840" style="width:21.874999999999996%" class="column"><p id="776f196c-10f8-4ff8-986f-e51b2e3ba57d" class="">
+</p></div></div><div id="0aca9cc7-73e7-4fb4-9030-912772cf5642" class="column-list"><div id="04eb8fa2-2f86-4973-b4d4-ab6a0cce85d6" style="width:20.833333333333332%" class="column"><p id="7fc41318-53b6-4429-96f9-6478248b80f8" class="">
+</p></div><div id="9cf63868-0fdc-4e1c-8708-eb22ccdcfa37" style="width:54.166666666666664%" class="column"><p id="a6b80322-8764-494e-8774-11b30234a9bd" class="">Las funciones que se escriben en los módulos de VBA pueden ser usadas directamente en las celdas de Excel.</p><p id="7b69808c-ea23-4ff4-a805-2c7a4bae1832" class="">Por útlimo debemos retornar el booleano, esto lo podemos evaluar con un <em>if</em></p></div><div id="2fb87dbf-97f0-413f-ac51-e44c7e91d512" style="width:25.000000000000007%" class="column"><p id="18255cd9-9ad7-49f9-a925-890e87519067" class="">
+</p></div></div><div id="c10b985c-a1a5-4538-b74a-cfdd832411cf" class="column-list"><div id="9dcafc4b-0203-48bd-a4db-c43a148938f6" style="width:21.875%" class="column"><p id="c3ad00be-a7f8-4000-9b3f-710d8f284e52" class=""><mark class="highlight-gray">Para definir una función en el diagrama de flujo, se hace el mismo procedimiento que veníamos haciendo. La única diferencia es que en lugar de Inicio le pondremos el nombre de la función.</mark></p><p id="89642110-a593-4ddf-a222-35c45297f86b" class="">
+</p></div><div id="45039a83-d65d-48d0-98e9-1c2a1789ef0a" style="width:28.125%" class="column"><pre id="60cca7d9-8644-43fa-8581-18c369aed61b" class="code code-wrap"><code>Function esPar(n As Integer)
+    residuo = n Mod 2
+    If residuo = 0 Then
+        esPar = True
+    Else
+        esPar = False
+    End If
+End Function</code></pre><p id="56ed48c7-4d28-41a7-b28d-a871afdcdb57" class="">
+</p></div><div id="946eed8e-21d2-4bb5-9467-e23faf6af758" style="width:28.125%" class="column"><figure id="8c3da094-3f37-4d00-8ecf-e70a71639112" class="image"><a href="t%2031.gif"><img style="width:239px" src="t%2031.gif"/></a></figure><p id="7aeffb56-6117-42ae-a2ef-97c09ddec5be" class="">
+</p></div><div id="5f535fbf-7725-4542-bded-682f266f450a" style="width:21.875%" class="column"><p id="73c27d1a-27f2-4122-b7b0-38365baa2c65" class="">
+</p></div></div><div id="f29ab13d-0cee-4e28-bd38-875971be813c" class="column-list"><div id="982a482f-85e9-42e5-b106-a9c228be7db9" style="width:20.833333333333332%" class="column"><ul id="379d2764-f048-4470-b69a-e7a524f1afc7" class="toggle"><li><details open=""><summary><mark class="highlight-gray">Ejemplo: Funcion </mark><code><mark class="highlight-gray">esPar</mark></code></summary><figure id="0b05aaac-0e4d-4e5d-8d3e-9a0467423357" class="image"><a href="Untitled_Diagram%209.svg"><img src="Untitled_Diagram%209.svg"/></a></figure></details></li></ul><p id="4a82baf2-d93f-483b-8079-c6efa9acd9a9" class="">
+</p><p id="1ffa7439-4ca9-415c-a96e-84a2857ec200" class="">
+</p><p id="4c674563-df3d-4048-8a42-3d68392d06bc" class="">
+</p><p id="32290238-c5cc-46b4-b11a-0c345ab0e3be" class="">
+</p><p id="a0f0d1d5-b887-4e9a-a937-8f9247d96879" class="">
+</p><p id="cea795b8-7e32-42af-81b9-89b67c535fd9" class="">
+</p><p id="95463fd1-bf82-49c5-ad40-e57d6991c484" class="">
+</p><p id="928a366e-d0fb-43dd-9c09-ef432c12446f" class="">
+</p><p id="0f762a27-104d-4866-a9ac-4b37d9e6596c" class="">
+</p><p id="b74400c5-622b-4af1-b57e-7bf4bd32b00a" class="">
+</p><p id="83273d0d-9aa9-448a-af65-416ba301a053" class=""><mark class="highlight-gray">El programa final se ve así:</mark></p><figure id="5c533b6a-803d-44de-9bee-a39f03adbd74" class="image"><a href="Untitled_Diagram%2010.svg"><img src="Untitled_Diagram%2010.svg"/></a></figure><p id="6b25ee9b-8974-425b-9911-0d59599084c1" class=""><mark class="highlight-gray">Tip: Hacer click en la imagen para zoom</mark></p></div><div id="bd264c64-4b81-429e-9b1f-78df9c73e2d3" style="width:54.166666666666664%" class="column"><p id="f05afadb-cc6b-4293-b025-61dffb49481f" class="">Con ello podemos combinar todo, en este caso queremos encontrar la suma de todos los numeros pares dentro de un arreglo, para ello, usaremos la función que acabamos de hacer para comprobar si el número es par o no.</p><pre id="6400c181-27fe-4fe6-a958-56230462deaa" class="code code-wrap"><code>Function sumaPares(ByRef arreglo() As Integer)
+    sumatoria = 0
+    For i = LBound(arreglo) To UBound(arreglo)
+				par = esPar(arreglo(i))
+        If par Then
+            sumatoria = sumatoria + arreglo(i)
+        End If
+    Next i
+    sumaPares = sumatoria
+End Function</code></pre><p id="e89805f1-a682-4dc8-b3de-adc4e5adb1fd" class="">En este ejemplo, se necesita pasar un arreglo por parámetro de una función, para ello será necesario declarar el tipo de datos que contiene el arreglo y además sera importante incluir la palabra clave <code>ByRef</code> en los parámetros de la función.</p><p id="c0bec787-9538-4862-95d9-6cee2a3f0308" class="">Creamos una variable auxiliar <code>sumatoria</code> que acumulará el valor de la sumatoria</p><p id="2e8adbeb-bb65-4b8a-aa28-c08fc17c3756" class="">Las funciones <code>LBound</code> y <code>UBound</code> sirven para encontrar el limite inferior y superior del arreglo.</p><p id="a0346919-d31c-4d2b-b271-4a999298d6cf" class="">Con esto, podemos hacer un for que itere sobre todos los elementos del arreglo.</p><p id="4efca34a-1559-4e53-8bf9-abdbb1278f16" class="">Dentro del ciclo <em>for </em>verificamos si el numero es par, para eso usamos la función que definimos previamente.</p><p id="21f2e5ee-b857-4124-8509-92f97bfdd9b9" class="">Si el numero es par entonces acumulamos el valor en la variable auxiliar</p><p id="441c68c9-a377-44ae-a94f-b7a2258b18b2" class="">Por último retornamos el valor de la sumatoria asignandole ese valor a la variable <code>sumaPares</code></p><p id="57c4a6dc-6220-429c-b1ac-0e81d23087c1" class="">
+</p><p id="ac7b967a-6d82-42fc-aff5-3aec7fbb5b6b" class="">Podemos integrar las funciones con las subrutinas, por ejemplo, podemos tener una subrutina asi:</p><pre id="b45928e0-759f-43e8-95e0-8e86fcc261dc" class="code code-wrap"><code>Sub main()
+    Dim a(1 To 5) As Integer
+    For i = 1 To 5
+        a(i) = i
+    Next i
+    resultado = sumaPares(a)
+    Cells(1, 1) = resultado
+    
+End Sub</code></pre><p id="7cfa105a-b038-44f2-b064-41d000e8a774" class="">En esta subrutina se crea un arreglo de números del 1 al 5, por lo que la suma de pares debe ser 6. Una vez creado el arreglo se llama a la función que creamos de <code>sumaPares</code>. Este resultado lo imprimimos en una celda de Excel:</p><figure id="e47a1ed1-1b09-4cc1-a2f8-2c3cd51cdb7e" class="image"><a href="t%2032.gif"><img style="width:239px" src="t%2032.gif"/></a></figure><p id="08c63eb0-8a6a-48d4-9011-8ee2e3c168a6" class="">Todos los diagramas de flujo de este tutorial se encuentran adjuntos. Se hicieron con <a href="http://draw.io">draw.io</a> por lo que si quiere abrirlos tendra que hacerlo usando esta herramienta.</p><p id="90fbda35-4069-4de8-a170-39aa54e4763f" class="">
+</p></div><div id="d009b5a0-9bfc-4a8f-b56d-8a46d1c10c3b" style="width:25.00000000000001%" class="column"><ul id="8af79c62-76ea-4892-86e1-5eb54cbbd3f5" class="toggle"><li><details open=""><summary><mark class="highlight-gray">Ejemplo: Funcion </mark><code><mark class="highlight-gray">sumaPares</mark></code></summary><figure id="6cd62812-94ef-4706-b821-574a3a8da82e" class="image"><a href="Untitled_Diagram%2011.svg"><img src="Untitled_Diagram%2011.svg"/></a></figure><p id="50d74b77-e769-457a-85c7-f2fe1b0311ab" class=""><mark class="highlight-gray">Lo importante es que al llamar a la función </mark><mark class="highlight-gray"><code>esPar</code></mark><mark class="highlight-gray"> dentro de la función </mark><mark class="highlight-gray"><code>sumaPares</code></mark><mark class="highlight-gray"> debemos usar un rectangulo con lineas a los lados. Esto significa que en esa parte se realiza un proceso complejo.</mark></p></details></li></ul></div></div></div></article></body></html>

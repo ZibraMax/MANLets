@@ -1,0 +1,746 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Tutorial Diagrama de Flujo (Factorial) [en python]</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="922d81ab-f68c-4064-8768-6e8a26b89612" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">📊</span></div><h1 class="page-title">Tutorial Diagrama de Flujo (Factorial) [en python]</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tema</th><td><span class="selected-value select-value-color-brown">Diagramas de Flujo</span><span class="selected-value select-value-color-yellow">Python</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Tipo</th><td><span class="selected-value select-value-color-default">Tutoriales</span></td></tr><tr class="property-row property-row-file"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesFile"><path d="M12.5938 8.44043L7.54883 13.4854C6.26367 14.7773 4.54102 14.6475 3.44043 13.54C2.32617 12.4326 2.20312 10.7168 3.49512 9.4248L10.3926 2.52734C11.1445 1.77539 12.2725 1.63867 13.0039 2.37695C13.7422 3.11523 13.6055 4.22949 12.8535 4.98828L6.08594 11.7627C5.77832 12.0703 5.41602 11.9814 5.2041 11.7764C4.99902 11.5576 4.91016 11.2021 5.21777 10.8877L9.93457 6.1709C10.1738 5.93164 10.1875 5.58301 9.96191 5.35059C9.72949 5.13184 9.38086 5.13867 9.1416 5.37793L4.39746 10.1152C3.67285 10.8535 3.7002 11.9746 4.34961 12.624C5.05371 13.3281 6.12012 13.3145 6.8584 12.5762L13.6602 5.77441C14.9795 4.45508 14.9316 2.71875 13.7764 1.55664C12.6416 0.428711 10.8779 0.34668 9.55176 1.66602L2.61328 8.61816C0.883789 10.3477 1 12.8291 2.57227 14.4014C4.14453 15.9668 6.63281 16.0898 8.3623 14.3672L13.4414 9.28809C13.6738 9.0625 13.667 8.64551 13.4346 8.41992C13.209 8.18066 12.833 8.21484 12.5938 8.44043Z"></path></svg></span>Material</th><td><span style="margin-right:6px"><a href="TAMAN_C2.drawio">TAMAN_C2.drawio</a></span><span style="margin-right:6px"><a href="TAMAN_C2.pdf">TAMAN_C2.pdf</a></span></td></tr></tbody></table></header><div class="page-body"><p id="0e63775a-f74d-4b04-bf11-e48bb45fb88a" class="">Nota: En el tutorial de <a href="Conceptos%20ba%CC%81sicos%20de%20Python%2043763ddb3b1642caa181525d53029895.html"><span class="icon">🐍</span>Conceptos básicos de Python</a> se pueden repasar los temas de programacion de la primera clase.</p><h2 id="12c77bc5-5743-488c-836c-da137be1b944" class="">Cálculo de un factorial</h2><p id="dc6807f9-a28e-4cf7-8bcb-e256b715d2cf" class="">Para la tarea 1 es necesario calcular un factorial, para ello se puede partir de la siguiente expresión</p><figure id="7c5f3c96-3244-446a-a12e-c3cc125006e0" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>n</mi><mo stretchy="false">!</mo><mo>=</mo><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>3</mn><mo stretchy="false">)</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">n!=(n)(n-1)(n-2)(n-3)...(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">n</span><span class="mclose">!</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mclose">)</span><span class="mord">...</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span></div></figure><p id="61069f4f-e2d4-42be-9a75-e13dc219cc87" class="">Esta expresión puede generalizarse como;</p><figure id="9beec12f-7c96-4a5a-bc46-423c14cc92d6" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>n</mi><mo stretchy="false">!</mo><mo>=</mo><munderover><mo>∏</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mi>i</mi></mrow><annotation encoding="application/x-tex">n!=\prod_{i=1}^{n}i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">n</span><span class="mclose">!</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.929066em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∏</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">i</span></span></span></span></span></div></figure><p id="d02a6360-afca-4f1c-9d80-3f57cd661d2c" class="">Además, para la función factorial debemos evaluar dos casos específicos:</p><figure id="946bad56-2258-4bab-9dbd-62d6e95cda11" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo fence="true">{</mo><mtable rowspacing="0.3600em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>n</mi><mo stretchy="false">!</mo><mo>=</mo><mn>1</mn><mtext>                  </mtext><mi>n</mi><mo>=</mo><mn>0</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>n</mi><mo stretchy="false">!</mo><mo>=</mo><mtext>“ERROR”  </mtext><mi>n</mi><mo>&lt;</mo><mn>0</mn></mrow></mstyle></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases}
+n!=1 \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n = 0\\
+n!=\text{``ERROR&#x27;&#x27;}\ \    n&lt;0
+\end{cases}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.0000299999999998em;vertical-align:-1.25003em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="mclose">!</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">1</span><span class="mspace"> </span><span class="mspace"> </span><span class="mspace"> </span><span class="mspace"> </span><span class="mspace"> </span><span class="mspace"> </span><span class="mspace"> </span><span class="mspace"> </span><span class="mspace"> </span><span class="mspace"> </span><span class="mspace"> </span><span class="mspace"> </span><span class="mspace"> </span><span class="mspace"> </span><span class="mspace"> </span><span class="mspace"> </span><span class="mspace"> </span><span class="mspace"> </span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">0</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="mclose">!</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord text"><span class="mord">“ERROR”</span></span><span class="mspace"> </span><span class="mspace"> </span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div></figure><p id="bb9cdc7d-8992-4657-aa32-9781b578a447" class="">
+</p><p id="e89b4fe8-f517-4088-9df7-8a848672d063" class="">Por lo tanto, en Python crearemos una función para el factorial, que tome como parámetro el <code>n</code></p><p id="6dbf8fa8-0203-442e-b478-80a96b6f1749" class="">Las funciones permiten agrupar bloques de código y procesos complejos. Permiten tener parámetros y salidas. Generalmente son usadas para realizar acciones que se repitan en diferentes contextos.</p><p id="0f8fd82d-630f-4d16-abe1-5259ae82adb7" class="">Las funciones se declaran usando la palabra def , con la siguiente sintaxis:</p><pre id="826e90ca-41b7-4dd8-8a17-785cfab4ad47" class="code code-wrap"><code>def nombre_funcion(parametro_1,parametro_2,....,parametro_n):
+	bloque que se ejecuta
+	al llamar a la función
+	return resultado de llamar a la función</code></pre><p id="48f0db47-b3cf-4d7e-805d-28ff1b0f3637" class="">Por lo tanto:</p><pre id="702d709d-7c00-4ebf-a04e-b9ff927c4d97" class="code code-wrap"><code>def factorial(n):
+	</code></pre><p id="1cc48f0a-fffe-48a9-9754-dbd857f7db0c" class="">Ahora, debemos evaluar cada uno de los casos del factorial, para ello, usamos un condicional if</p><pre id="343bf543-14d9-4d72-96bf-fc39f8206179" class="code code-wrap"><code>def factorial(n):
+	if n==0:
+		
+	elif n&lt;:
+	
+	else:</code></pre><p id="098c515e-d41d-48ad-b20d-3aab64962d71" class="">Para decirle a Python que la función debe retornar un valor, basta con usar la palabra return</p><pre id="b2f92163-f834-4d8b-ba7b-2567d99494d6" class="code code-wrap"><code>def factorial(n):
+	if n==0:
+		return 1
+	elif n&lt;:
+	
+	else:</code></pre><p id="a2a95a6b-005b-4e21-8fb4-8e36b890b88d" class="">Para el caso donde n &lt; 0:</p><pre id="cf85314d-f698-412e-896b-5432c986fd6b" class="code code-wrap"><code>def factorial(n):
+	if n==0:
+		return 1
+	elif n&lt;:
+		return &quot;ERROR&quot;
+	else:</code></pre><p id="17c0381e-16c0-411e-a98e-4706f03e1514" class="">Por último, debemos hacer que la función calcule el factorial con la fórmula de la multiplicatoria, para ello, usaremos un ciclo <em>for</em></p><p id="86887f19-ecfb-4fa7-864a-06aa313056b9" class="">Los ciclos <em>for </em>son acciones que se realizan repetidamente. En este caso queremos acumular la multiplicación de los números del 1 a n, por lo tanto:</p><pre id="80f4e688-5005-4dcc-a989-3c40ff41b20b" class="code code-wrap"><code>resultado = 1 #Inicializamos el resultado en 1 porque la multiplicación por 1 no afecta el resultado
+for i in range(1,n+1): #Esta linea declara el ciclo for. La variable i tomará los valores desde 1 hasta n
+
+return resultado #retornamos el valor</code></pre><pre id="04ef7cc2-4b27-4d75-afd3-86bf2140afd8" class="code code-wrap"><code>resultado = 1 #Inicializamos el resultado en 1 porque la multiplicación por 1 no afecta el resultado
+for i in range(1,n+1): #Esta linea declara el ciclo for. La variable i tomará los valores desde 1 hasta n
+	resultado = resultado*i
+
+return resultado #retornamos el valor</code></pre><p id="42473c35-839b-4af7-9d24-c1dfe1624d4e" class="">Por ejemplo, cuando i es igual a 1, resultado es igual a 1</p><p id="c0dab540-e6bf-4b81-b3d3-b6d32c71892f" class="">Cuando i es igual a 2, resultado igual a 1 * 2 = 2</p><p id="8205f7aa-66b9-49d9-addb-6b6446999027" class="">Cuando i es igual a 3, resultado es igual a 1 * 2 * 3 = 6</p><p id="a767cb42-affd-4c91-b758-44f9689a8338" class="">Cuando i es igual a 4, resultado es igual a 1 * 2 * 3 * 4 = 24</p><p id="05806da4-a7c3-4eff-bd9d-7daf5fed1a78" class="">El código completo se ve así:</p><pre id="b31c79fd-ff5c-44c0-a791-0e66f266c215" class="code code-wrap"><code>def factorial(n):
+	if n==0:
+		return 1
+	elif n&lt;:
+		return &quot;ERROR&quot;
+	else:
+		resultado = 1
+		for i in range(1,n+1):
+			resultado = resultado*i
+		return resultado</code></pre><h2 id="d6b6dde4-3c18-45ae-80ae-61775e0013c9" class="">Diagrama de flujo del factorial</h2><p id="324560b7-c905-4f0d-9e13-71b78422d178" class="">Los diagramas de flujo son una herramientra gráfica que facilita la conceptualización lógica de procesos. El flujo se representa con flechas. Por ejemplo:</p><div id="cdadcf73-a9aa-4987-b434-aa18fca143f7" class="column-list"><div id="00cf1a05-93bb-4dfc-ba77-0a0ce1bc9017" style="width:50%" class="column"><pre id="3dbf80c1-20b6-4630-b505-042d1a2297b7" class="code code-wrap"><code>def factorial():
+	
+</code></pre><p id="450cc18c-ec0f-4d94-b95f-b14d56d6db2c" class="">
+</p></div><div id="0e2a17c4-1ea3-4dae-8b28-6ce6a7e7878f" style="width:50%" class="column"><figure id="bd0e6491-50d9-4591-8cbd-c45a824a3394" class="image"><a href="f.svg"><img style="width:288px" src="f.svg"/></a></figure></div></div><p id="f3c326f8-296a-46a1-834b-20474890df74" class="">En el anterior diagrama el código va de inicio a fin sin realizar ninguna acción. El símbolo ovalado representa el incicio y fin del programa. Un diagrama de flujo solo tiene un inicio y puede tener múltiples finales.</p><p id="589094b5-a9f8-4674-afdc-637c2bf03fe4" class="">Ahora empezemos traduciendo el código de la función factorial, lo primero que tenemos que hacer es manejar la entrada del parámetro n, para ello, usamos un paralelogramo así:</p><div id="5eef5f85-87d2-4038-9eb4-a3bffe71accf" class="column-list"><div id="75600f99-dd70-4001-b310-857c15907844" style="width:50%" class="column"><pre id="46387dd2-ee8e-4d57-bc3f-63a84ed7d5eb" class="code code-wrap"><code>def factorial(n):
+	
+</code></pre></div><div id="38fb0363-b838-4486-9ed3-129baa54f51a" style="width:50%" class="column"><figure id="e69668ac-df2a-40d4-98df-a51a66bf0f15" class="image"><a href="f%201.svg"><img style="width:240px" src="f%201.svg"/></a></figure></div></div><p id="57c5f998-c5f8-4ca3-9929-abba431ea563" class="">Ahora harémos las condiciones del factorial, para ello usamos el siguiente símbolo:</p><figure id="a7ec5520-09b4-4bac-b0a2-0169e636c0d4" class="image"><a href="f%202.svg"><img style="width:144px" src="f%202.svg"/></a></figure><p id="b5511f3d-d4d7-46f0-aa81-d5681bfbc038" class="">Incorporando la primera condición, el diagrama se ve así:</p><div id="d6bb8a00-dd9f-4d84-8c9f-ac16adaa506d" class="column-list"><div id="9cf8a6fb-fd0d-46c6-9aa3-b1a2b28ee25d" style="width:50%" class="column"><pre id="5b9ef52a-5991-46d6-a01f-4f77121b500c" class="code code-wrap"><code>def factorial(n):
+	if n==0:
+		return 1</code></pre></div><div id="79ea2cc6-48e4-4586-9588-bfbb6cf23549" style="width:50%" class="column"><figure id="2b931044-148e-495b-bf93-599cdc1bdef9" class="image"><a href="f%203.svg"><img src="f%203.svg"/></a></figure></div></div><p id="aa945fe0-d651-4291-9591-6d780f9f6edc" class="">El símbolo del rombo verifica que el número ingresado sea 0 y de ser así el programa retorna el valor de 1. Para retornar un valor se usa el mismo símbolo que se usa para los parámetros, un paralelogramo. Ahora el diagrama tiene dos finales, ambos se representan con el mismo símbolo.</p><p id="b1572d39-d617-471f-ba53-43e92c47ddc6" class="">Las formas del diagrama de flujo son parecidos a ladrillos legos, pueden ubicarse en diferentes sitios y conectarse. Para incluir las otras condiciones del factoria blasta con agregar otro rombo así:</p><p id="21c34ba1-d82c-4785-9f3c-8a8ba223fe1b" class="">
+</p><div id="e881008f-1ce6-498c-887c-851f7423c831" class="column-list"><div id="251b4243-68dc-4eb7-8d8d-3d14d07eeabf" style="width:50%" class="column"><pre id="b6bcaef0-5c59-4c2c-a82b-1c7bc0a4f60a" class="code code-wrap"><code>def factorial(n):
+	if n==0:
+		return 1
+	elif n&lt;:
+		return &quot;ERROR&quot;
+		</code></pre></div><div id="f92e1569-d94a-474e-8028-74afc0786170" style="width:50%" class="column"><figure id="17c33a0e-1383-4a1c-b066-3a95aeba10de" class="image"><a href="f%204.svg"><img src="f%204.svg"/></a></figure></div></div><p id="5d17cab6-ab54-4584-8d82-6af6b7d5ca70" class="">En el diagrama anterior las dos condiciones eran muy cercanas y llevaban a la finalización del programa, el símbolo circular sirve para unir flujos (flechas) y se usó en este caso para mostrar que las dos opciones de n = 0 y n &lt; 0 llegan a la terminación del programa.</p><p id="5d90c9a6-3468-41bf-b3d8-1a72137c335e" class="">Por último, debemos agregar el ciclo <em>for </em>para ello, usamos un hexágono que determine donde se comienza a iterar asi:</p><div id="a3fcd520-0bda-4e16-807e-0fba37c2c2c6" class="column-list"><div id="04f71e5e-424b-45e3-8fc3-ff183feb4cb0" style="width:50%" class="column"><pre id="34613508-9812-456f-848d-74c619723438" class="code code-wrap"><code>def factorial(n):
+	if n==0:
+		return 1
+	elif n&lt;:
+		return &quot;ERROR&quot;
+	else:
+		resultado = 1
+		for i in range(1,n+1):
+			resultado = resultado*i
+		return resultado</code></pre></div><div id="0ed28c1e-1734-4942-9857-ef1a4a35c8cc" style="width:50%" class="column"><figure id="9ef0e7df-b94e-4b12-a856-faa93c52ef10" class="image"><a href="f%205.svg"><img src="f%205.svg"/></a><figcaption>Hacer click en la imagen para zoom</figcaption></figure></div></div><p id="46815806-03dc-4620-b6ed-3b464e15f1d6" class="">El símbolo rectangular se usa para representar un proceso, por ejemplo, declarar una variable, realizar una suma, etc. En este caso se usó tanto para declara una variable como para acumular el valor de la multiplicatoria.</p><p id="171c2473-3d48-4d58-9156-b2024855ccda" class="">Note que las flechas del ciclo for tienen sentido lógico, es decir, mientras i se encuentre en el rango establecido se realizará la accion del rectangulo, pero cuando i deje de estar en el  rango se ejcutará el código del paralelogramo, retornado el valor final.</p><p id="e136e560-27cc-4ca0-b205-239ea02cd676" class="">Por último, usaremos la función que acabamos de crar en un script de Python, por ejemplo, si quisieramos encontrar el factorial de 5. Al momento de usar funciones que creamos anteriormente debemos usar el símbolo de rectangulo con dos líneas.</p><div id="3db2b967-416a-4dbd-9379-6d328543174a" class="column-list"><div id="e3122141-5e52-4d3b-9eae-4ecbc28b16dd" style="width:50%" class="column"><pre id="753d7e90-4bbc-42c7-8446-2d0e8ececdbc" class="code code-wrap"><code>n = 5
+f = factorial(n)
+print(f)</code></pre><p id="29dafd9b-024a-47e1-b8e6-bfd3b44d91e1" class="">
+</p></div><div id="aea4238f-f85f-4405-ac3a-a1f8f0692772" style="width:50%" class="column"><figure id="0fd4338f-2d57-4b9f-89f8-b3a8829844a2" class="image"><a href="f%2017.svg"><img src="f%2017.svg"/></a></figure></div></div><p id="8255aeb3-67d1-4c5e-bb15-b4cfd0043416" class="">Por último, ¿que sucede si el diagrama de flujo ocupa mas de una página? Se debe colocar un símbolo de un pentagono indicando el fin y comienzo de la página asi:</p><figure id="84277d74-118e-451e-981c-bb9468588fc1" class="image"><a href="f%207.svg"><img style="width:288px" src="f%207.svg"/></a></figure><p id="2afa727d-8cd0-4df6-875a-d3494b04b51c" class="">Adjunto estará el archivo de <a href="http://draw.io">draw.io</a> usado para este tutorial asi como el resultado final de los diagramas exportado a pdf.</p><h2 id="534fda4f-4c03-40e8-85cf-9779607b2f52" class="">Resumen de figuras del diagrama de flujo</h2><div id="529d28db-2893-42cd-8ac3-0a5294989545" class="column-list"><div id="2c690401-03c7-4909-9ab2-5781e8bb7c26" style="width:33.333333333333336%" class="column"><p id="f8e7b6fd-5b5a-42d8-be9b-7576216685e2" class=""><mark class="highlight-yellow">Símbolo</mark></p></div><div id="dc710a38-920d-481f-acb1-efbc117ae028" style="width:33.333333333333336%" class="column"><p id="bfccfd43-8d57-4574-a1b2-be16441e2dd0" class=""><mark class="highlight-yellow">Significado</mark></p></div><div id="7c2d6992-3126-4191-b875-a7908ade216a" style="width:33.33333333333333%" class="column"><p id="2c12abaa-f3cf-42a3-92a6-84e00b6648c0" class=""><mark class="highlight-yellow">Entradas y salidas</mark></p></div></div><hr id="b2f0785f-d4ed-4a23-9c78-ac5d58597e56"/><div id="70f81989-fe18-4232-9d42-03ae8f8fcefb" class="column-list"><div id="6b7dbfeb-337a-4dbc-94bf-833d694af1c3" style="width:33.33333333333333%" class="column"><figure id="8bf9fa60-a12b-45c2-8aed-f46bccd27158" class="image"><a href="f%208.svg"><img style="width:108px" src="f%208.svg"/></a></figure></div><div id="c1392a07-6078-4cb1-bb9a-25beeed449f6" style="width:33.33333333333333%" class="column"><p id="f3d9d231-c0c4-4fb1-a22b-673f409350a2" class="">Determina el inicio o fin de un programa o función</p><p id="16a49ba4-6545-47a6-806f-9f818bdb0675" class="">
+</p></div><div id="61bfbe53-af38-41dd-839b-e63ca62cee19" style="width:33.33333333333333%" class="column"><p id="c0d6e691-29df-4f46-8158-86ae78bb6824" class="">1 entrada o 1 salida</p></div></div><div id="1fd005d5-ade4-4c5a-8f91-abbe779940d5" class="column-list"><div id="ce7e7ee7-c8ed-40cf-9c9b-dcd4e266162d" style="width:33.333333333333336%" class="column"><figure id="85477cd2-ad3c-4e4a-9f49-6326e1302215" class="image"><a href="f%209.svg"><img style="width:120px" src="f%209.svg"/></a></figure></div><div id="e33c0d81-2545-4d1e-8024-2a512a029c2b" style="width:33.333333333333336%" class="column"><p id="3c6f378c-ada5-4023-99c4-c4c02400e064" class="">Se usa para realizar cualquier proceso simple, ejemplo, sumar dos números</p></div><div id="24c88109-e217-4a36-9a33-ad8db87bd10e" style="width:33.33333333333333%" class="column"><p id="bfa6f207-cee7-4012-9970-10f234426d41" class="">1 entrada y 1 salida</p></div></div><div id="d8eca032-8a5c-40e8-9591-e4cd49c86bfb" class="column-list"><div id="aadd5419-d846-41c6-b7ff-eba219d02a8a" style="width:33.333333333333336%" class="column"><figure id="b064bfd4-7ee7-4cf3-907d-fe4ce7bcb884" class="image"><a href="f%2010.svg"><img style="width:120px" src="f%2010.svg"/></a></figure></div><div id="50bc4a38-53a2-4f49-8edd-a31b3cb79eeb" style="width:33.333333333333336%" class="column"><p id="2f2819a4-5d18-4dd7-8120-bef4c167e55b" class="">Se usa para tomar una descición en el flujo. Representa los <em>if&#x27;s</em></p></div><div id="91da27c5-60f7-4905-bbd7-6d489be046e4" style="width:33.33333333333333%" class="column"><p id="3bc43937-9fca-44f2-b3a8-68e639f45d04" class="">1 entrada y 2 salidas, se debe indicar cual de las dos es la verdadera</p></div></div><div id="a1efe98e-368c-4182-849d-21046a77cd4b" class="column-list"><div id="151bb055-a86d-4d8a-81e8-662f7a881df2" style="width:33.333333333333336%" class="column"><figure id="4b338a2d-c5b0-4407-ab12-0217cd741921" class="image"><a href="f%2011.svg"><img style="width:120px" src="f%2011.svg"/></a></figure></div><div id="8ccb05c7-79c7-4467-8cf2-caca10f78597" style="width:33.333333333333336%" class="column"><p id="5a6a208e-3ef3-4e77-9853-ead735bf3695" class="">Se usa para recibir o retornar parámetros</p></div><div id="2c2a67cc-017d-4b2c-8014-41fd3ac1f1f9" style="width:33.33333333333333%" class="column"><p id="62e1c54a-6f17-4a94-a465-08f1e8692522" class="">1 entrada y 1 salida</p></div></div><div id="b8bd5547-4a2f-46e5-9f6f-9d91555a9394" class="column-list"><div id="e946dd57-1fe6-45aa-b146-67162ddf0994" style="width:33.333333333333336%" class="column"><figure id="8d898da1-94d0-4e89-a891-fb784a0e1a76" class="image"><a href="f%2012.svg"><img style="width:132px" src="f%2012.svg"/></a></figure></div><div id="ce226638-e48e-491f-81ba-2192efd01365" style="width:33.333333333333336%" class="column"><p id="d93c42e3-306c-4ddf-a921-29511e9abd67" class="">Se usa para realizar operaciones iterativas, representa a los ciclos for</p></div><div id="d97e4cf0-30ca-4585-9cf7-30a166ad073e" style="width:33.33333333333333%" class="column"><p id="417ede2f-d3d5-43a8-9ab6-233e32d094f8" class="">2 entradas y 2 salidas</p><p id="1eac491a-4cee-4e97-9b93-4f0c7a7d59e1" class="">
+</p></div></div><div id="7943710a-8026-4ccf-bfe7-3803b6075b94" class="column-list"><div id="72d896d2-fd3f-418f-a61f-47c2647fa919" style="width:33.333333333333336%" class="column"><figure id="cc6dece7-8973-40e6-8022-69f7bc22fb29" class="image"><a href="f%2013.svg"><img style="width:132px" src="f%2013.svg"/></a></figure></div><div id="093c0a4c-1c9e-4f6c-9203-12fdd9904dda" style="width:33.333333333333336%" class="column"><p id="e7cfac1c-5bca-41e3-8375-576f9166a69e" class="">Se usa para marcar saltos de página</p></div><div id="07f25bf5-fec2-4155-9c4f-c126eece783d" style="width:33.33333333333333%" class="column"><p id="e692c475-2b12-49ce-a65c-3f26e3ff7b5b" class="">1 entrada o 1 salida</p></div></div><div id="ec56de25-f24f-43b7-856c-08d5b38fc873" class="column-list"><div id="ae59fa47-2511-4782-a55b-9b75a155e1d5" style="width:33.333333333333336%" class="column"><figure id="7ee963c0-4b73-4e85-b978-deef5480ef35" class="image"><a href="f%2014.svg"><img style="width:132px" src="f%2014.svg"/></a></figure></div><div id="83c21de7-d522-48f2-a264-07f91286c96b" style="width:33.333333333333336%" class="column"><p id="bbbad31b-c665-476a-a54b-d447c0b59468" class="">Se usa para unir distintos flujos en uno solo.</p><p id="fc5605e8-1b6e-4437-b9b9-c5e6a08d6ea1" class="">
+</p></div><div id="dacbc961-eb26-4f03-8447-6191314f88b6" style="width:33.33333333333333%" class="column"><p id="db2e563e-99e5-4222-b7f9-7c96245c05ce" class="">Varias entradas y 1 salida. No se recomienda asignarle mas de 3 entradas</p><p id="9ea1d8a3-1142-40e0-b897-c8ac9471c98b" class="">
+</p></div></div><div id="7db6fb71-966d-44c2-81c5-4b0709b42afb" class="column-list"><div id="0c49ed94-bd2b-43fe-896c-81f523dcd6b7" style="width:33.333333333333336%" class="column"><figure id="11529398-7415-4798-ba28-fad759a59e7b" class="image"><a href="f%2015.svg"><img style="width:132px" src="f%2015.svg"/></a></figure></div><div id="60027e21-a507-400e-b946-57074a1859f1" style="width:33.333333333333336%" class="column"><p id="5800cc19-f17c-4164-9612-0f8f5bfc0382" class="">Se usa para ejecutar procesos complejos, generalmente para llamar funciones creadas por el usuario</p></div><div id="6295b9a2-a6b5-48f2-9b52-34b7292f95b9" style="width:33.33333333333333%" class="column"><p id="9afe93c4-bb32-4c05-a753-f5ea259b78b4" class="">1 entrada y 1 salida</p></div></div><div id="db0ed3de-34e5-4d2e-a64f-498bfa775575" class="column-list"><div id="f16834d4-b8eb-472a-ba00-9c2f36c20d20" style="width:33.333333333333336%" class="column"><figure id="7c2e5de1-83f0-42fb-ab06-c5687fc6477c" class="image"><a href="f%2016.svg"><img style="width:132px" src="f%2016.svg"/></a></figure><p id="8dab3844-20df-4a5b-9dc5-316e1b8bbbea" class="">
+</p></div><div id="1a245fa2-6539-4e0d-bec7-de71933f092c" style="width:33.333333333333336%" class="column"><p id="ada6117e-6483-4aed-9763-3e2a497b8bb5" class="">Se usa para comentar secciones del diagrama de flujo</p><p id="31924a7c-edab-4889-a1ea-a09d337d9bd2" class="">
+</p></div><div id="24c42341-8618-4040-bc05-79611636e934" style="width:33.33333333333333%" class="column"><p id="632e726d-3c4f-4331-9168-9b4173714f29" class="">Se pone a la derecha o izquierda de las zonas a comentar. El texto se pone entre las lineas horizontales y se recomienda alinear el texto a la izquierda</p></div></div></div></article></body></html>

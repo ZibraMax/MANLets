@@ -1,0 +1,1010 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Conceptos básicos de Python</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="43763ddb-3b16-42ca-a181-525d53029895" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🐍</span></div><h1 class="page-title">Conceptos básicos de Python</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tema</th><td><span class="selected-value select-value-color-purple">Programación</span><span class="selected-value select-value-color-yellow">Python</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Tipo</th><td><span class="selected-value select-value-color-default">Tutoriales</span></td></tr></tbody></table></header><div class="page-body"><nav id="3ae889a1-d1aa-4260-a3cb-c24c353357ef" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4182e357-2263-4ff4-9bfa-d1567b8365d0">Comentarios</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#42177454-9cf8-41d6-8c6d-0de80b2e18cf">Variables</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#83f1d521-db91-4961-9282-d7319505c7ee">Declarar variables</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#86e14365-5b87-49b2-bf93-c0cff20a9146">Tipos de variables</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10bb8663-b374-43f1-87af-14fc8f5f8851">La función <code>type</code></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#db0baac3-6b5e-40ad-9871-1ff7a22625e6">Condicionales</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9083a89b-3519-476b-b121-29aa8cc894d0">Bloques de código [IMPORTANTE]:</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e26a0690-a038-4566-b498-bb1449958b45">Ciclos</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b6a49fda-951b-4c6b-a527-636a32e83d53"><em>For</em></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2f268f7f-3fa8-4d94-bb5c-00e0e6b85754"><em>While</em></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b9b5f65a-b8b2-4026-b377-be5901956bdb">Funciones</a></div></nav><h2 id="4182e357-2263-4ff4-9bfa-d1567b8365d0" class="">Comentarios</h2><pre id="fca552c4-45ed-406e-80e7-80164363f336" class="code code-wrap"><code>#Yo soy un comentario de una linea
+yo no soy un comentario, aqui doy error
+&quot;&quot;&quot;No soy comentario pero algunos programadores me usan así, no lo deberían hacer :(
+&quot;&quot;&quot;
+#En Python no existen comentarios de lineas multiples, entonces
+#hay que usar el simbolo # para cada linea que se quiera comentar
+
+#En el caso en que se quiera poner un comentario al lado de una linea 
+#de código, se ejecutrá hasta que se encuentre el símbolo #, ejemplo:
+print(&#x27;Hola Mundo!&#x27;) #Este código se ejecutará, pero este cometnario no.</code></pre><h2 id="42177454-9cf8-41d6-8c6d-0de80b2e18cf" class="">Variables</h2><p id="8bc15f21-20f5-44eb-a808-3e1536cea5ae" class="">Las variables son la manera mas sencilla de almacenar información. Existen muchos tipos de variables que tienen diferentes características. Por ejemplo, las variables de tipo <em>int </em>sirven para almacenar números enteros, mientras que las variables de tipo <em>float</em> o <em>double </em>sirven para amacenar números con decimales.</p><p id="dd21505f-a3dc-4652-94a3-119eb7e66b99" class="">Tener variables nos permite usar la información y hacer cambios en ella. Por ejemplo, si tenemos dos variables que representen números podríamos asignar la suma de estas dos variables a una variable nueva.</p><p id="1385760b-62a5-41e1-9d95-15befb5b3d10" class="">Las variables representan un espacio en la memoria del computador a la que se puede acceder mediante un nombre, sin embargo, a nivel de usuario esto no es relevante, ya que el lenguanje de programación se encargará de hacer estos procesos.</p><p id="f6b350d1-1545-44e1-aa63-dd8c74d06e5e" class="">En conclusión, las variables al nivel de usario tendrán: Un nombre, un tipo y un valor. </p><h3 id="83f1d521-db91-4961-9282-d7319505c7ee" class="">Declarar variables</h3><p id="91ca4fec-b428-477a-9513-b735cf905ee8" class="">Para declarar variables en Python basta con usar el símobolo <code>=</code> al que se puede entender como <code>Asignación</code> . Puden llevar cualquier nombre y el valor puede ser de cualquier tipo. Por ejemplo, si queremos crear una variable que tenga como nombre <code>zanahorias</code> que almacene el número decimal 2.5 el códgio se puede escribir así:</p><pre id="de80ae45-18df-42ce-a549-89211d1ad2a9" class="code code-wrap"><code>zanahorias = 2.5</code></pre><h3 id="86e14365-5b87-49b2-bf93-c0cff20a9146" class="">Tipos de variables</h3><p id="ddc782e2-0987-4103-bd5e-57386e57f241" class="">En Python existe una gran cantidad de tipos de variables, la lista completa esta <a href="https://docs.python.org/3/library/stdtypes.html">aquí</a>, sin embargo, en este tutorial solo se introducirá a los tipos de variables que nos encontraremos en el transcurso del curso.</p><h3 id="10bb8663-b374-43f1-87af-14fc8f5f8851" class="">La función <code>type</code></h3><p id="948d0b9d-1981-4303-bd0e-d7cc72a1fd7a" class="">Con la función type podremos saber el tipo de una variable, por ejemplo, si usamos la variable anterior (zanahorias) se espera que la función <code>type</code> nos diga que esta variable es de tipo <em>float</em></p><div id="2efe99c7-4e94-4ec0-b822-497cbdf38792" class="column-list"><div id="c8836c99-8192-45b4-a852-39c368b63d3c" style="width:50%" class="column"><p id="0fbd3092-89d1-47df-beb0-ad7db11b51bd" class=""><strong>Comando</strong></p></div><div id="8305d5b3-b8f3-4851-acae-e31ca7432192" style="width:50%" class="column"><p id="a163532c-61a1-4fbc-9501-3bf428a13977" class=""><strong>Salida</strong></p></div></div><div id="760866cd-faf3-4404-949d-2122566469b5" class="column-list"><div id="b9b6b053-a481-47f1-bc2e-d424457eb209" style="width:50%" class="column"><pre id="b19abc6a-ab08-4545-8ecd-cba6070b92ee" class="code code-wrap"><code>type(zanahorias)</code></pre></div><div id="6f852837-c8b1-4e45-b465-a08c9f792da2" style="width:50%" class="column"><pre id="8def5f63-6aee-4638-b9af-1c7874cc4b59" class="code code-wrap"><code>&gt;&gt;&gt; &lt;class &#x27;float&#x27;&gt;</code></pre></div></div><div id="86fd42c8-1d64-4d7e-8f32-23adb6ae441f" class="column-list"><div id="312d0ff4-e2d2-4255-ba23-9cf08e81fed2" style="width:50%" class="column"><p id="a94c1d34-b1a6-449c-ba5a-039fc7699f86" class=""><mark class="highlight-yellow_background"><strong>Números</strong></mark><div class="indented"><p id="f4382fb9-aeeb-44bc-98bf-0e8a9f055e37" class=""><em>int: </em>representa cualquier número entero.</p><p id="f5a7ec98-499b-4961-82b8-674e891de68c" class="">
+</p><p id="4e642bda-d95d-44fd-b75c-e419882bb560" class="">
+</p><p id="873867f2-06ce-425e-a3a8-a9190b9222c4" class=""><em>float: </em>representa un número decimal con presición <em>double.</em></p><p id="67df3a09-3352-4636-960b-ee8771b136a4" class="">
+</p><p id="b67f1925-cf72-4bc6-bc0d-b35722debbc8" class="">
+</p><p id="2b42bcb7-9968-44b6-9562-685f2b9e7c52" class="">
+</p><p id="6d4fef5e-a851-4036-8795-0a2d0298463b" class=""><em>complex: </em>Representa un numero complejo de la forma <code>a+bj</code></p><p id="f933e6c8-5eec-446e-965d-b8bf9e4eaf1c" class="">
+</p></div></p></div><div id="abe7bd1e-cbf0-4d08-8f91-2abcabbc5138" style="width:50%" class="column"><pre id="2e500030-5457-4088-96ba-3e4f6a909e82" class="code code-wrap"><code>zanahorias = 1
+&gt;&gt;&gt; type(zanahorias)
+&lt;class &#x27;int&#x27;&gt;</code></pre><pre id="d3e95012-ec7e-47b5-bc09-c2beb4318b2b" class="code code-wrap"><code>zanahorias = 2.5
+&gt;&gt;&gt; type(zanahorias)
+&lt;class &#x27;float&#x27;&gt;</code></pre><pre id="5187c53b-fca5-4a15-b7f3-25644378cca2" class="code code-wrap"><code>zanahorias = 3+4j
+&gt;&gt;&gt; type(zanahorias)
+&lt;class &#x27;complex&#x27;&gt;</code></pre></div></div><p id="cdb96aa2-c486-469c-8c11-cacf0d6e5e1e" class=""><strong>Operaciones</strong></p><ul id="b28310aa-c1f4-46d7-9b1d-920e00e9e960" class="bulleted-list"><li style="list-style-type:disc"><strong>Suma</strong></li></ul><p id="985fc109-dd01-4628-8527-32489182aa90" class="">Cuando dos numeros enteros se suman el resultado es un número entero, por ejemplo</p><div id="7f88df86-3685-4948-b2b8-c22056337b2f" class="column-list"><div id="da89cf9e-673a-474a-8847-ca15511d17a2" style="width:50%" class="column"><pre id="cf090932-f2b8-4462-bd13-3dcd97ba4e7b" class="code code-wrap"><code>a = 4
+b = 5
+c = a+b
+print(c)
+9</code></pre></div><div id="2b46b54f-a1b2-4381-a57f-9731d922719a" style="width:50%" class="column"><pre id="b6f172b0-2676-4430-9ef0-191fadb36f2f" class="code code-wrap"><code>type(a)
+&gt;&gt;&gt; &lt;class &#x27;int&#x27;&gt;
+type(b)
+&gt;&gt;&gt; &lt;class &#x27;int&#x27;&gt;
+type(c)
+&gt;&gt;&gt; &lt;class &#x27;int&#x27;&gt;</code></pre></div></div><p id="c3222c75-f404-423d-884f-ebb7d077536d" class="">Sin embargo, si intentamos sumar un número  decimal con un número entero, el resultado será un numero decimal.</p><div id="77da7d65-d4d1-4486-a13c-529da8eb1bf9" class="column-list"><div id="843ea2e0-7c19-4124-afef-9dcefd01fdb8" style="width:50%" class="column"><pre id="37f24da9-9f15-42dd-9da4-e65e2a65aa82" class="code code-wrap"><code>a = 4
+b = 5.5
+c = a+b
+print(c)
+9.5</code></pre></div><div id="72be472e-d530-4c5a-9753-c90366d5adf9" style="width:50%" class="column"><pre id="69c88f5b-df42-4ffa-a114-2a2a8eca3aaf" class="code code-wrap"><code>type(a)
+&gt;&gt;&gt; &lt;class &#x27;int&#x27;&gt;
+type(b)
+&gt;&gt;&gt; &lt;class &#x27;float&#x27;&gt;
+type(c)
+&gt;&gt;&gt; &lt;class &#x27;float&#x27;&gt;</code></pre></div></div><p id="85c43f1a-bac3-4d9c-984b-538269d5c475" class="">Este mismo principio aplica para todas las operaciones que siguen.</p><ul id="f92ac14e-49a6-45ef-b2a8-ed065cb0289e" class="bulleted-list"><li style="list-style-type:disc"><strong>Resta</strong></li></ul><div id="ec4a73a5-5569-45af-a38a-586bc4ea0a7b" class="column-list"><div id="e6b49007-0390-4031-951e-68095994cbd9" style="width:50%" class="column"><pre id="673822fb-b79a-4c5d-ada8-46d8a7566283" class="code code-wrap"><code>a = 4
+b = 5.5
+c = a-b
+print(c)
+-1.1</code></pre></div><div id="108d30e5-c828-47c3-a858-1cbc6ec91c90" style="width:50%" class="column"><pre id="3d66c0f4-4a82-48b0-8ae6-0ddf8c5af97d" class="code code-wrap"><code>type(a)
+&gt;&gt;&gt; &lt;class &#x27;int&#x27;&gt;
+type(b)
+&gt;&gt;&gt; &lt;class &#x27;float&#x27;&gt;
+type(c)
+&gt;&gt;&gt; &lt;class &#x27;float&#x27;&gt;</code></pre></div></div><ul id="4587577f-8019-4bc5-9c67-ac150132e930" class="bulleted-list"><li style="list-style-type:disc"><strong>Multiplicación</strong></li></ul><p id="d43ec776-c329-41e9-84f7-0aad359c1591" class="">En este caso, a pesar que la multiplicación da un número sin decimales, la variable sigue siendo de tipo <em>float</em></p><div id="a47af21b-6e63-4411-a45c-5c3f71ce6788" class="column-list"><div id="596c8783-ae49-471e-a5c7-a5dba0855c57" style="width:50%" class="column"><pre id="960cfcb8-a443-4b6f-abe2-d7ce11b5a3f4" class="code code-wrap"><code>a = 4
+b = 5.5
+c = a*b
+print(c)
+22.0</code></pre></div><div id="f005efb5-b6ae-4d77-8fe6-56e2f5859c4f" style="width:50%" class="column"><pre id="91071ba2-31f2-427a-8da6-ba202878f383" class="code code-wrap"><code>type(a)
+&gt;&gt;&gt; &lt;class &#x27;int&#x27;&gt;
+type(b)
+&gt;&gt;&gt; &lt;class &#x27;float&#x27;&gt;
+type(c)
+&gt;&gt;&gt; &lt;class &#x27;float&#x27;&gt;</code></pre></div></div><ul id="ab063615-9bd7-4172-abb2-cd8739ad53a9" class="bulleted-list"><li style="list-style-type:disc"><strong>División</strong></li></ul><div id="66984ebe-20d5-4fc2-8ef8-0ce798ae276a" class="column-list"><div id="b8ab46f9-35b1-461d-876a-b777acb392bd" style="width:50%" class="column"><pre id="864c5db5-0af9-41cb-994b-cea2253ae96f" class="code code-wrap"><code>a = 4
+b = 5.5
+c = a/b
+print(c)
+0.7272727272727273</code></pre></div><div id="20bd01e6-d1ee-436c-99e9-80f4ab0046a7" style="width:50%" class="column"><pre id="e60f28ff-7f1c-460b-b3bf-0073187861b0" class="code code-wrap"><code>type(a)
+&gt;&gt;&gt; &lt;class &#x27;int&#x27;&gt;
+type(b)
+&gt;&gt;&gt; &lt;class &#x27;float&#x27;&gt;
+type(c)
+&gt;&gt;&gt; &lt;class &#x27;float&#x27;&gt;</code></pre></div></div><ul id="2dd7c063-257f-4cea-8cf6-63f8b5588412" class="bulleted-list"><li style="list-style-type:disc"><strong>Módulo</strong></li></ul><p id="789691bf-53a4-4433-9762-199167e01f5b" class="">Retorna el residuo de la división entre dos números.</p><div id="8f0ba5b6-0b97-4349-b3f4-1efe5eed249b" class="column-list"><div id="adb38dea-e4e8-41b2-850e-157016bb4a22" style="width:50%" class="column"><pre id="2ce7c6dd-b19b-4d69-b627-d338589fd7fa" class="code code-wrap"><code>a=10
+b=22
+c = b%a
+print(c)
+2</code></pre></div><div id="9c345d0b-9ea2-4d85-9ec3-3c6fe0d13894" style="width:50%" class="column"><pre id="f680b30b-fbd5-4a95-b9d6-8b890abbf5e1" class="code code-wrap"><code>type(a)
+&gt;&gt;&gt; &lt;class &#x27;int&#x27;&gt;
+type(b)
+&gt;&gt;&gt; &lt;class &#x27;int&#x27;&gt;
+type(c)
+&gt;&gt;&gt; &lt;class &#x27;int&#x27;&gt;</code></pre></div></div><ul id="bf6b5a1d-b1e9-4eb2-b645-092f90ffebc8" class="bulleted-list"><li style="list-style-type:disc"><strong>Exponente</strong></li></ul><figure id="3677c822-9e81-489f-bcef-ec8bab9d509f" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mfrac><mn>5</mn><mn>2</mn></mfrac></msup><mo>=</mo><mn>316.2277</mn></mrow><annotation encoding="application/x-tex">10^{\frac{5}{2}}=316.2277</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0040200000000001em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.0040200000000001em;"><span style="top:-3.4130000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443142857142858em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">5</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">316.2277</span></span></span></span></span></div></figure><div id="1fbd2131-2448-4c86-bd2b-d7056a2d3c6f" class="column-list"><div id="b1829eb9-04ea-473b-80ff-7ba0816f79ed" style="width:50%" class="column"><pre id="f4afef38-df6d-41de-b682-770db01655b2" class="code code-wrap"><code>a=10
+b=5/2
+c = a**b
+print(c)
+316.22776601683796</code></pre></div><div id="3541d056-25bc-440a-85b1-77f6c14aa118" style="width:50%" class="column"><pre id="214776b9-28d6-455c-8c4d-6044a3d91036" class="code code-wrap"><code>type(a)
+&gt;&gt;&gt; &lt;class &#x27;int&#x27;&gt;
+type(b)
+&gt;&gt;&gt; &lt;class &#x27;float&#x27;&gt;
+type(c)
+&gt;&gt;&gt; &lt;class &#x27;float&#x27;&gt;</code></pre></div></div><ul id="2579af44-a68b-4a68-ac52-d1805d7317a8" class="bulleted-list"><li style="list-style-type:disc"><strong>División </strong><strong><em>entera</em></strong></li></ul><p id="bffe2677-c709-465c-a664-294ad187d7ae" class="">Realiza la división normal y quita los decimales del resultado (aproximación hacia abajo)</p><div id="247ede38-f2c6-4ab6-8c88-bc1a6de04229" class="column-list"><div id="f1dd1db2-1eca-4712-bcc0-2f72228dade8" style="width:50%" class="column"><pre id="e2ab9b7f-8ce2-4acc-a7de-a0b4a827e251" class="code code-wrap"><code>a=5
+b=2
+c1 = a/b
+c2 = a//b
+print(c1)
+2.5
+print(c2)
+2</code></pre></div><div id="f2c104a8-643b-4fca-82f6-4742bc582ad0" style="width:50%" class="column"><pre id="e336419c-2cd1-42f8-af91-a56fb83ddb04" class="code code-wrap"><code>type(a)
+&gt;&gt;&gt; &lt;class &#x27;int&#x27;&gt;
+type(b)
+&gt;&gt;&gt; &lt;class &#x27;int&#x27;&gt;
+type(c1)
+&gt;&gt;&gt; &lt;class &#x27;float&#x27;&gt;
+type(c2)
+&gt;&gt;&gt; &lt;class &#x27;int&#x27;&gt;</code></pre></div></div><p id="3fceb604-ac61-4b67-a55a-ee536738bff0" class=""><mark class="highlight-yellow_background">Booleanos (</mark><mark class="highlight-yellow_background"><em>bool</em></mark><mark class="highlight-yellow_background">)</mark></p><p id="edb3a270-008c-42f8-8e53-ca91365445fb" class="">Representa el estado verdadero o falso. Los booleanos pueden declararse explícitamente o ser obtenidos mediante comparaciones.</p><div id="28885e98-739e-49e1-a46a-1d2a75394e02" class="column-list"><div id="f833f6f0-bed2-403d-a3ed-0f6b859379fd" style="width:50%" class="column"><pre id="a262c83a-3f06-4814-af84-ba81043889b3" class="code code-wrap"><code>a=True
+b=False</code></pre><p id="2a4913f2-bfce-4677-b701-dd5edc300b74" class="">
+</p></div><div id="769bc880-1ec6-4bd2-9d12-92a4b1722ac0" style="width:50%" class="column"><pre id="0d179922-b307-4e9e-b84b-55ef7c23efef" class="code code-wrap"><code>type(a)
+&gt;&gt;&gt; &lt;class &#x27;bool&#x27;&gt;
+type(b)
+&gt;&gt;&gt; &lt;class &#x27;bool&#x27;&gt;</code></pre></div></div><div id="e106f681-d77c-44a5-8226-6d88d21053ec" class="column-list"><div id="29678b13-7526-4b8d-b9bc-14353098a021" style="width:50%" class="column"><pre id="25535006-609f-4954-8f1a-5094c19b7327" class="code code-wrap"><code>a = 5
+b = 3
+c =  a &lt;= b
+print(c)
+False</code></pre></div><div id="6af7cd8b-f285-494e-8fee-4927ddcc65d2" style="width:50%" class="column"><pre id="5598e47b-6318-436a-a093-d54aed6fc3e3" class="code code-wrap"><code>type(a)
+&gt;&gt;&gt; &lt;class &#x27;int&#x27;&gt;
+type(b)
+&gt;&gt;&gt; &lt;class &#x27;int&#x27;&gt;
+type(c)
+&gt;&gt;&gt; &lt;class &#x27;bool&#x27;&gt;</code></pre></div></div><p id="bdea6bc5-598f-4d89-906b-6186ff19c6ff" class=""><strong>Comparaciones</strong></p><p id="2a93e094-66f6-4a78-b9f2-314ceb9ee196" class="">
+</p><div id="3a2823fe-e344-486a-94a3-cedeef182c76" class="column-list"><div id="b1216aef-7d97-403d-b0db-6c53e341e27a" style="width:50%" class="column"><pre id="6924fdb4-c54e-42f4-865e-3ba682986bff" class="code code-wrap"><code>a = 5
+b = 3
+c =  a &lt;= b
+print(c)
+False</code></pre></div><div id="422f6833-38a2-4283-90f6-b2f77e78c254" style="width:50%" class="column"><pre id="a2a9bf91-d973-4ec0-8619-848f8c0e69d4" class="code code-wrap"><code>a = 5
+b = 3
+c =  a &gt;= b
+print(c)
+True</code></pre></div></div><div id="7f10abba-a834-4b51-a750-c06a7aa4ac08" class="column-list"><div id="64a407a0-2bf0-4f59-8fff-a4844ec1d06b" style="width:50%" class="column"><pre id="33dd95d6-6c31-45b6-a8f1-ea9cdae4d680" class="code code-wrap"><code>a = 5
+b = 3
+c =  a &gt; b
+print(c)
+False</code></pre></div><div id="2cd5468a-834f-42ce-a751-b0048a4e796f" style="width:50%" class="column"><pre id="d6f05ff0-6e66-481d-b21f-9765d3452471" class="code code-wrap"><code>a = 5
+b = 5
+c =  a &lt; b
+print(c)
+False</code></pre></div></div><div id="9244fbff-e937-48bb-bb5d-6e354aff108f" class="column-list"><div id="6d15a0cb-b106-40a1-87d9-6cc0af6c5907" style="width:50%" class="column"><pre id="01d09888-188d-4220-b03f-b9781d348556" class="code code-wrap"><code>a = 5
+b = 3
+c =  a == b
+print(c)
+False</code></pre></div><div id="72bc6631-6801-48a3-ae84-0687989735b8" style="width:50%" class="column"><pre id="03e806ca-56a8-4c91-82dd-b80f33eb16e6" class="code code-wrap"><code>a = 5
+b = 3
+c =  not a == b
+print(c)
+True</code></pre></div></div><p id="d64f8151-0c28-4d20-a574-95f6335afca6" class=""><strong>Operadores Lógicos</strong></p><div id="ec84072f-3252-42a6-a1d7-4f78ca613b74" class="column-list"><div id="75aa2ded-ba5b-419e-8327-13c19c185c79" style="width:50%" class="column"><p id="25d22704-e662-43ab-a714-6b57e051a296" class=""><code>and</code></p></div><div id="ce036bd2-0fa9-4648-bbbb-1952ec280c46" style="width:50%" class="column"><p id="6ebd4332-98a9-4f07-94dc-fc81d71e62cf" class=""><code>or</code></p></div></div><div id="8ca53714-1b5e-4575-95fa-702b8670d823" class="column-list"><div id="d39b2938-b48b-4e4a-8851-63905bedb3a1" style="width:50%" class="column"><pre id="9e922dd5-7f25-480d-9c16-07589459796d" class="code code-wrap"><code>a = 5
+b = 3
+c =  a == b and a == 3
+print(c)
+False</code></pre></div><div id="7a1aefc3-d345-4eae-87db-85e8f54c6a9d" style="width:50%" class="column"><pre id="fad8c014-242d-494a-aa8b-de64a5a6140b" class="code code-wrap"><code>a = 5
+b = 5
+c =  a == b and a == 3
+print(c)
+False</code></pre></div></div><div id="d5524662-3209-423e-b6ed-32e9ae5eefa1" class="column-list"><div id="d07ebd97-0a3a-4645-a2ae-c8456c8faf84" style="width:50%" class="column"><pre id="35a34f46-74ce-4f20-b56e-0ebb6c3a28eb" class="code code-wrap"><code>a = 5
+b = 3
+c =  a == b or a == 3
+print(c)
+False</code></pre></div><div id="da10c297-1b03-49a8-ad3d-c1ac1a09f887" style="width:50%" class="column"><pre id="89cc1d7b-6305-4169-b04f-edb6f6f4f6d3" class="code code-wrap"><code>a = 5
+b = 5
+c =  a == b or a == 3
+print(c)
+True</code></pre></div></div><p id="2181fd34-19de-4988-830f-2a9cf8487f77" class=""><mark class="highlight-yellow_background">Cadenas de texto (</mark><mark class="highlight-yellow_background"><em>str</em></mark><mark class="highlight-yellow_background">)</mark></p><p id="b0602131-af6d-497b-b263-ba6a56353bad" class="">Se usan para guardar texto de cualquier longitud. El texto debe ir en comillas. Se pueden usar comillas simples y/o comillas dobles.</p><div id="2488fe89-ccb6-431f-97ac-1307938d5c67" class="column-list"><div id="5a2462a4-491f-437f-8f53-ac2b4710f90e" style="width:50%" class="column"><pre id="e9910edf-c893-410f-a661-e8e9a22a18a5" class="code code-wrap"><code>a = &#x27;Hola Mundo!&#x27;
+print(a)
+Hola Mundo!</code></pre></div><div id="610ed64a-d7e7-489e-843f-5c59ddf074b2" style="width:50%" class="column"><pre id="996e7d2f-e206-49de-9103-7bbbf9fd5d7b" class="code code-wrap"><code>type(a)
+&gt;&gt;&gt; &lt;class &#x27;str&#x27;&gt;</code></pre></div></div><p id="a7605033-b389-42ba-a266-109d6dd348ad" class=""><strong>Comparación</strong></p><p id="72b0547f-5b85-45e5-9e35-bbfbd9308474" class="">Las cadenas de texto solo pueden compararse en igualdad, es decir, no existe una cadena de texto que sea mayor o menor que otra.</p><div id="f51e6d39-cd73-4f34-a59d-994785908b89" class="column-list"><div id="60047820-9518-47a3-aa5b-79e60069c4e1" style="width:50%" class="column"><pre id="13bdee8b-93d9-487f-abc0-6d7e375142d6" class="code code-wrap"><code>a = &#x27;Hola Mundo!&#x27;
+b = &quot;Hola Mundo&quot;
+c = a == b
+print(c)
+False</code></pre></div><div id="532480a5-26d0-4fbf-9e98-a404837f5a44" style="width:50%" class="column"><pre id="af512589-f217-42a5-9702-cdf09c22349e" class="code code-wrap"><code>type(a)
+&gt;&gt;&gt; &lt;class &#x27;str&#x27;&gt;
+type(b)
+&gt;&gt;&gt; &lt;class &#x27;str&#x27;&gt;
+type(c)
+&gt;&gt;&gt; &lt;class &#x27;bool&#x27;&gt;</code></pre></div></div><p id="2c975fc4-dbe7-47d8-8879-744a184499a6" class=""><strong>Longitud</strong></p><p id="364e96a0-49f6-4dd2-8474-3b3c7bbeb60a" class="">Usando la función <code>len</code> se puede encontrar la longitud en caracteres de cualquier cadena de texto. Por ejemplo, si pasamos la cadena de texto a del ejemplo pasado</p><div id="182e737e-1fb1-49e7-8c36-1d36a6d5a9f7" class="column-list"><div id="ede421f9-6c6f-4103-979b-7e20ec4882a2" style="width:50%" class="column"><pre id="0dcf9efa-d7aa-4f11-babb-517010f03b8f" class="code code-wrap"><code>a = &#x27;Hola Mundo!&#x27;
+b = len(a)
+print(b)
+11</code></pre></div><div id="23ce5be4-66f6-4704-bd25-486a9c8c86b8" style="width:50%" class="column"><pre id="a889133f-03c4-4848-ba9d-93fad7e8b920" class="code code-wrap"><code>type(a)
+&gt;&gt;&gt; &lt;class &#x27;str&#x27;&gt;
+type(b)
+&gt;&gt;&gt; &lt;class &#x27;int&#x27;&gt;</code></pre></div></div><p id="bf539363-8c06-4021-8bf9-b69fa68be60c" class=""><mark class="highlight-yellow_background">Listas (</mark><mark class="highlight-yellow_background"><em>list</em></mark><mark class="highlight-yellow_background">)</mark></p><p id="a18cf0cd-2c90-4071-b5ca-82eb199e1f39" class="">Es el contenedor mas versatil de Python. Se usa para guardar datos de cualquier tamaño. Se declaran usando los parentesis cuadrados [ ] y los items de la lsita deben separase por comas.</p><div id="d358168c-ef84-419a-b698-99b038fe0597" class="column-list"><div id="13fc5565-fa35-4f2c-86b2-cb5523492cf4" style="width:50%" class="column"><pre id="fbe2b9c0-ad26-4175-87de-7e8bb158ca7e" class="code code-wrap"><code>a = [1, 4, 9, 16, 25]</code></pre><p id="2ccd95f2-d2dc-4006-8315-8fc59dba0343" class="">
+</p></div><div id="4dd12e67-56c8-44c1-9ac9-96db75b529d2" style="width:50%" class="column"><pre id="52999679-cdcb-492a-8455-92b47350a18d" class="code code-wrap"><code>type(a)
+&gt;&gt;&gt; &lt;class &#x27;list&#x27;&gt;</code></pre></div></div><p id="90d4b069-1aee-48c8-9024-bfec1db9d172" class="">Para acceder a la información de las listas se debe usar un <strong>índice. </strong>El índice representa la posicion en la lista que se quiere obtener. En python las listas comienzan desde 0.</p><div id="b4541d5a-8919-48f7-947a-60faa7ebf709" class="column-list"><div id="09cd2de3-026f-48d8-808d-967583555c3a" style="width:33.333333333333336%" class="column"><pre id="661fa154-62a3-47f5-8344-1cd519c34d13" class="code code-wrap"><code>print(a[0])
+1</code></pre></div><div id="dac24a63-9a70-446a-b006-bd0334072c41" style="width:33.333333333333336%" class="column"><pre id="07232f3a-e344-4a9e-95d7-29d5f976f98c" class="code code-wrap"><code>print(a[1])
+4</code></pre></div><div id="682b44dc-c66e-4dd8-999e-4347cafa863e" style="width:33.33333333333333%" class="column"><pre id="251636cd-f4f6-4d9d-b12e-66a8eef3018b" class="code code-wrap"><code>print(a[4])
+25</code></pre></div></div><p id="807a4d27-e2db-4cd5-b6a2-992e91f242a5" class="">Cuando se intenta obtener un elemento que no existe en la lista, se retornará un error.</p><pre id="7f25e087-b8f4-48b8-8235-fdf14ce96075" class="code code-wrap"><code>print(a[5])
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+IndexError: list index out of range</code></pre><p id="3aa78399-35ef-430c-aa73-b3d8515b881d" class="">Además, se pueden acceder a los elementos de la lista de &quot;atras para adelante&quot; usando índices negativos, por ejemplo</p><p id="baaa7dd1-4a2d-45a7-8b12-eef61bb1f980" class="">
+</p><div id="784f15e4-5867-4651-b31e-6c0d812e62de" class="column-list"><div id="4d6d3e18-0112-431a-9fdf-614cf3555eb2" style="width:33.333333333333336%" class="column"><pre id="d563445e-fe8d-44fa-8258-68a87ef96547" class="code code-wrap"><code>print(a[-1])
+25</code></pre></div><div id="9f26b98a-9df7-4d16-b67e-102cfabccdb8" style="width:33.333333333333336%" class="column"><pre id="ca3d3fbe-e500-46a6-805e-f6e09c0c1860" class="code code-wrap"><code>print(a[-2])
+16</code></pre></div><div id="c3d541e6-fc14-4a7d-a6ad-e932130f661a" style="width:33.33333333333333%" class="column"><pre id="53b60cbe-956d-47f8-b91c-1af3d6ea8ac8" class="code code-wrap"><code>print(a[-3])
+9</code></pre></div></div><pre id="c56b01c2-824a-49c4-b409-087085121dda" class="code code-wrap"><code>print(a[-6])
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+IndexError: list index out of range</code></pre><p id="13073244-9881-401e-8647-7687e36bd2e6" class="">Las listas pueden almacenar cualquier tipo de variable dentro de sus casillas, por ejemplo:</p><div id="b84dd000-e4d3-4a2c-8a7d-3922988c98bc" class="column-list"><div id="b7ba4566-f453-4103-bc4b-f96badf5a0ff" style="width:50%" class="column"><pre id="68958492-4fab-4f63-a76d-b7f217a75646" class="code code-wrap"><code>a = [1, 4.0, True, &#x27;He&#x27;, 3 + 5j]
+type(a)
+&gt;&gt;&gt; &lt;class &#x27;list&#x27;&gt;</code></pre></div><div id="2a92037d-b43e-4d7b-b08a-148ce6b74e4d" style="width:50%" class="column"><pre id="aa3a3c4a-59af-4e1e-8f40-a55e478cf15a" class="code code-wrap"><code>type(a[0])
+&gt;&gt;&gt; &lt;class &#x27;int&#x27;&gt;
+type(a[1])
+&gt;&gt;&gt; &lt;class &#x27;float&#x27;&gt;
+type(a[2])
+&gt;&gt;&gt; &lt;class &#x27;bool&#x27;&gt;
+type(a[3])
+&gt;&gt;&gt; &lt;class &#x27;str&#x27;&gt;
+type(a[4])
+&gt;&gt;&gt; &lt;class &#x27;complex&#x27;&gt;</code></pre></div></div><p id="c6b5aee2-10d3-435c-90eb-11456c51fd20" class=""><strong>Agregar elementos a una lista</strong></p><p id="1c55c9d6-7d6d-4e4b-b522-abb62a66feba" class="">Se usa el método <code>.append</code></p><pre id="3350fd0a-9981-4d3c-9ae3-83c539feef85" class="code code-wrap"><code>a = [1, 4.0]
+print(a)
+[1, 4.0]
+a.append(&#x27;Hola&#x27;)
+print(a)
+[1, 4.0, &#x27;Hola&#x27;]</code></pre><p id="4a950c13-2cf7-4865-b2a2-9181becf79e8" class=""><strong>Quitar elementos a una lista</strong></p><p id="6aca7c35-e218-4f39-bf10-afff85ac9489" class="">Se usa el método <code>.pop</code></p><div id="e53e2a62-96f7-4788-8cdd-76cabb2642fd" class="column-list"><div id="648cf68c-543b-4ee2-ab7e-18e7fe7957ad" style="width:50%" class="column"><pre id="8c7ca60b-3c9c-403c-8958-78cfdf96933b" class="code code-wrap"><code>a = [1, 4.0, &#x27;Hola&#x27;]
+print(a)
+[1, 4.0, &#x27;Hola&#x27;]
+a.pop()
+print(a)
+[1, 4.0]</code></pre></div><div id="32cc35b7-fc3c-447e-aead-6d55f26c1dc5" style="width:50%" class="column"><pre id="f7219053-02d5-4e9e-b60e-87f16bf4170c" class="code code-wrap"><code>a = [1, 4.0, &#x27;Hola&#x27;]
+print(a)
+[1, 4.0, &#x27;Hola&#x27;]
+a.pop(0) #Se puede pasar el índice que se quiere eliminar
+print(a)
+[4.0, &#x27;Hola&#x27;]</code></pre></div></div><p id="15f3c056-67e0-4999-a401-5e2ea0360107" class=""><strong>Longitud de una lista</strong></p><p id="f7245550-eaa1-44a0-a4dd-3c1e2e2b9118" class="">Usando la función <code>len</code> se puede encontrar la longitud de la lista. Si la lista tiene longitud n, sus índices van desde 0 hasta n-1</p><div id="55f39908-f055-4d42-bab1-4094ef327135" class="column-list"><div id="855b3c0d-9080-41bd-956f-b1e9ba691025" style="width:50%" class="column"><pre id="f9e39b9a-f86c-49c1-aaf2-b41403da0245" class="code code-wrap"><code>a = [1, 4.0, &#x27;Hola&#x27;]
+b = len(a)
+print(b)
+3</code></pre></div><div id="f4bcf5f0-82b3-40cb-934b-37c44f9d05b5" style="width:50%" class="column"><pre id="abe4160c-b8e7-41ab-95e9-8c32d996df20" class="code code-wrap"><code>type(a)
+&gt;&gt;&gt; &lt;class &#x27;list&#x27;&gt;
+type(b)
+&gt;&gt;&gt; &lt;class &#x27;int&#x27;&gt;</code></pre></div></div><p id="82cb9164-e02a-4951-95a8-23eb7947c18b" class=""><strong>Listas y cadenas de texto</strong></p><p id="4c301dfb-7093-4d7f-b619-3b030d33dc93" class="">Las cadenas de texto pueden interpretarse como una lista de caracteres:</p><pre id="868d1916-d8fc-49c3-bf0a-462edfc728c2" class="code code-wrap"><code>a = &#x27;Hola Mundo!&#x27;
+print(a[0])
+&#x27;H&#x27;</code></pre><p id="15533607-904f-40b2-9201-f90567b73388" class="">El método <code>split</code> de las cadenas de texto es muy util para el manejo de la información, lo que hace es dividir una cadena de texto grande en una lista de cadenas de texto mas pequeñas basado en un separador</p><pre id="0aee1664-ba86-4231-89ba-8a90410f70a3" class="code code-wrap"><code>a = &#x27;Hola estudiantes modelación&#x27;
+b = a.split(&#x27; &#x27;)
+print(b)
+[&#x27;Hola&#x27;, &#x27;estudiantes&#x27;, &#x27;modelación&#x27;]
+b = a.split(&#x27;a&#x27;)
+[&#x27;Hol&#x27;, &#x27; estudi&#x27;, &#x27;ntes model&#x27;, &#x27;ción&#x27;]</code></pre><p id="d57ce500-cd19-4e98-bfb2-f22c5d7ae4f4" class=""><mark class="highlight-yellow_background"><em>None</em></mark></p><p id="16679096-a226-4b0e-8e13-4ab994960c1b" class="">Es el valor que toma una variable sin valor. El concepto de <em>None </em>es parecido al de el null en otros lenguajes de programación</p><h2 id="db0baac3-6b5e-40ad-9871-1ff7a22625e6" class="">Condicionales</h2><p id="c3108c70-7802-44a3-84cd-922f1345d6f8" class="">Permiten que el código tome una descicion basado en un booleano</p><pre id="46fc896e-bdd7-4316-853a-e8d36483d0bd" class="code code-wrap"><code>x = 5
+if x &lt; 0:
+    print(&#x27;Número negativo&#x27;)
+elif x == 0:
+    print(&#x27;Cero&#x27;)
+else:
+    print(&#x27;Mayor a cero&#x27;)
+&gt;&gt;&gt; Mayor a cero</code></pre><pre id="bde3bd1e-9340-423b-9ebb-e1a13c1b49b2" class="code code-wrap"><code>a = &#x27;Permiso Denegado&#x27;
+entrada = a == &#x27;Permiso concedido&#x27;
+if entrada:
+	print(&#x27;Siga por favor&#x27;)
+else:
+	print(&#x27;Seguridad!&#x27;)
+&gt;&gt;&gt; Seguridad!</code></pre><pre id="3c81924d-83be-4b85-8a5c-344ceca73931" class="code code-wrap"><code>imprimir = True
+if imprimir:
+	print(&#x27;Se esta conectando con la impresora...&#x27;)
+	documento.imprimir()
+	print(&#x27;El documento se imprimió de manera correcta&#x27;)
+&gt;&gt;&gt; Se esta conectando con la impresora...
+&gt;&gt;&gt; El documento se imprimió de manera correcta</code></pre><h2 id="9083a89b-3519-476b-b121-29aa8cc894d0" class="">Bloques de código [IMPORTANTE]:</h2><p id="927a8bc2-f23d-4ae7-aa82-e5bb33adfa16" class="">Note que dentro de los <em>if&#x27;s </em>hay &quot;bloques de código&quot; que se ejecutan cuando la condicion se cumple (es verdadera). Estos bloques se encuentran desplazados hacia la derecha. A estos espacios se les llama IDENTACIÓN. La identación en Python es FUNDAMENTAL para que el código funcione. Si un bloque de código no esta identado no se ejecutará dentro del <em>if </em>y en casos extremos dará error:</p><div id="c25c4bcd-73aa-4322-876f-3ad06dea4661" class="column-list"><div id="ee8c2901-a5f5-4ac5-81c4-9b66002f5c10" style="width:50%" class="column"><pre id="e818d983-345b-4e2c-91f2-7b9bf26e7690" class="code code-wrap"><code>a = &#x27;Permiso concedido&#x27;
+entrada = a == &#x27;Permiso concedido&#x27;
+if entrada:
+	print(&#x27;Siga por favor&#x27;)
+print(&#x27;Seguridad!&#x27;)
+&gt;&gt;&gt; Siga por favor
+&gt;&gt;&gt; Seguridad!</code></pre><p id="48f309a2-8895-4a27-a123-8b867554fa13" class="">
+</p></div><div id="e9250355-9a11-4b66-a81c-82bb18758af7" style="width:50%" class="column"><pre id="007089f3-606c-41cf-b9b5-67c8f8e5720a" class="code code-wrap"><code>a = &#x27;Permiso Denegado&#x27;
+entrada = a == &#x27;Permiso concedido&#x27;
+if entrada:
+	print(&#x27;Siga por favor&#x27;)
+else:
+print(&#x27;Seguridad!&#x27;)
+File &quot;&lt;stdin&gt;&quot;, line 4
+    print(&#x27;Seguridad!&#x27;)
+        ^
+IndentationError: expected an indented block</code></pre></div></div><h2 id="e26a0690-a038-4566-b498-bb1449958b45" class="">Ciclos</h2><h3 id="b6a49fda-951b-4c6b-a527-636a32e83d53" class=""><em>For</em></h3><p id="b0076671-0b5c-429e-baf8-fa7068269c58" class="">Los ciclos <em>for </em>iteran sobre una lista/iterable, por ejemplo</p><pre id="a4434069-7d38-45a7-a42b-4c53b0119acb" class="code code-wrap"><code>verduras = [&#x27;Zanahoria&#x27;, &#x27;Pepino&#x27;, &#x27;Arvejas&#x27;]
+for verdura in verduras:
+	print(verdura)
+&gt;&gt;&gt; Zanahoria
+&gt;&gt;&gt; Pepino
+&gt;&gt;&gt; Arvejas</code></pre><p id="48481f5b-2c90-4144-a1e3-feeaf1870db8" class="">En este ejemplo la variable <code>verduras</code> hace referencia a una LISTA de cadenas de texto, mientras que la variable <code>verdura</code> tomará el valor de cada una de las casillas de la lista en el orden en el que fueron agregadas.</p><p id="1b85bb1e-e4a3-491a-9c60-019b46f22b54" class="">Para hacer ciclos de Python con números, se puede usar la función <code>range</code> que se asemeja a los ciclos de otros lenguajes.</p><pre id="d806c6b9-0a60-4764-aa31-033a8de51ab1" class="code code-wrap"><code>for i in range(0,3): #Por defecto el paso es = 1
+	print(i**2)
+&gt;&gt;&gt; 0
+&gt;&gt;&gt; 1
+&gt;&gt;&gt; 4</code></pre><p id="79061b30-0a0e-403a-9035-a06f095f48f8" class="">La función <code>range</code>toma como parámetro el inicio, el final y el paso. Estos parametros deben ser enteros, no pueden tener decimales. Si en range se pasa por parametro inico 0, final 10, la lista irá desde cero hasta 9, es decir, siempre llega a n-1 donde n es el final. Por ejemplo:</p><pre id="dbbdeb01-8887-47fc-8547-ac0a77cd3784" class="code code-wrap"><code>range(0,10,1) &gt;&gt;&gt; [0,1,2,3,4,5,6,7,8,9] 
+range(0,10,2) &gt;&gt;&gt; [0,2,4,6,8]
+range(0,10,1.5) 
+&gt;&gt;&gt; Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: &#x27;float&#x27; object cannot be interpreted as an integer</code></pre><p id="13458a07-48a6-462a-a9e0-506a6d05dbce" class="">Si se quiere hacer un ciclo desde 0 hasta 10 entonces se debería escribir así:</p><pre id="1e61a02b-3980-4417-a63b-f87af2047f50" class="code code-wrap"><code>for i in range(0,11):
+	print(i**2)
+&gt;&gt;&gt; 0
+&gt;&gt;&gt; 1
+&gt;&gt;&gt; 4
+&gt;&gt;&gt; ...
+&gt;&gt;&gt; 100</code></pre><h3 id="2f268f7f-3fa8-4d94-bb5c-00e0e6b85754" class=""><em>While</em></h3><p id="b95e3e83-7e46-4c2f-86b4-b89f03187bf9" class="">El funcionamiento del <em>While </em>es parecido al for, sin embargo, su diferencia radica en que el <em>for </em>hace un número de iteraciones predefinido, mientras que el <em>while </em>itera dependiendo de una condición booleana (muy parecido al if)</p><p id="0ca834f5-c625-4e5e-ac09-1ddfdbc6e053" class="">Por ejemplo, un ciclo <em>while </em>que se termine cuando el número es divisible entre 7.</p><pre id="626b8861-1ea6-4915-9360-680b11d13c03" class="code code-wrap"><code>i = 0
+lista = [3,6,3,8,32,27,28,65,34]
+while not lista[i]%7==0:
+	i = i + 1</code></pre><p id="3bd76527-e07e-4dd2-a593-0e21703b2b70" class="">Otra manera de hacerlo:</p><pre id="d6cef4cd-161c-4f9a-8a36-b49c127743bc" class="code code-wrap"><code>i = 0
+condicion = True
+lista = [3,6,3,8,32,27,28,65,34]
+while condicion:
+	if lista[i]%7==0:
+		condicion=False
+	i = i + 1</code></pre><p id="57c73581-967b-4026-a643-585e9e608eb4" class="">Si los <em>Whiles </em>estan mal formulados pueden llevar a un bucle infinito en el programa, por lo que deben tratarse con precaución.</p><h2 id="b9b5f65a-b8b2-4026-b377-be5901956bdb" class="">Funciones</h2><p id="1d817675-af0d-4ec9-a24d-a4073e219957" class="">Las funciones permiten agrupar bloques de código y procesos complejos. Permiten tener parámetros y salidas. Generalmente son usadas para realizar acciones que se repitan en diferentes contextos.</p><p id="bc3cb950-506f-4b63-bf3e-a2f5de9d45f2" class="">Las funciones se declaran usando la palabra <code>def</code> , con la siguiente sintaxis:</p><pre id="3f837748-e9fd-4595-a33f-22de5164a8d2" class="code code-wrap"><code>def nombre_funcion(parametro_1,parametro_2,....,parametro_n):
+	bloque que se ejecuta
+	al llamar a la función
+	return resultado de llamar a la función</code></pre><p id="0d7888ab-9e5f-48f7-a8bf-9357d05a8f18" class="">Hagamos una función que nos diga si un número es par o impar</p><ul id="7142537d-9379-4ed3-bfc6-1b876e5c3caa" class="bulleted-list"><li style="list-style-type:disc">Por parámetro debe recibir el número a verificar</li></ul><ul id="81f6be8f-53c2-4045-aa08-98143e411228" class="bulleted-list"><li style="list-style-type:disc">Debe retornar <em>True</em>, si el número es par y <em>False </em>de lo contrario</li></ul><p id="d1b40760-46b9-4278-906b-d37b46f2277c" class="">Entonces, empezamos creando una función vacía con el parámetro n que sea el número a evaluar:</p><pre id="12c62725-270a-4b5a-8c36-36c90610595a" class="code code-wrap"><code>def es_par(n):</code></pre><p id="694560b8-d9ae-48fe-8a9d-8206d9c5a0af" class="">Luego tenemos que evaluar de manera numérica si el número es o no par, por ejemplo, podemos usar la operación módulo, porque, todo número par es divisible entre 2, lo que hace que el residuo sea 0.</p><div id="d19595e0-396d-40a3-8873-2dedc82ea4eb" class="column-list"><div id="0b0f21f7-7499-4027-9679-640704d39fbf" style="width:50%" class="column"><pre id="1b7c82c0-c21a-43e9-a972-be9eda456563" class="code code-wrap"><code>def es_par(n):
+	residuo = n%2</code></pre></div><div id="40968bbc-59cf-49ba-ba24-326792fa91fe" style="width:50%" class="column"><pre id="66379dfd-9588-428b-98cf-bbedc959121b" class="code code-wrap"><code>print(es_par(3))
+&gt;&gt;&gt; None</code></pre></div></div><p id="2b15967a-4c97-416c-9c02-e65891febb4e" class="">La función no retorna nada, por eso al imprimir sale <code>None</code></p><p id="b3e6dd74-1c9b-463a-91f3-10bd3b2cc056" class="">
+</p><div id="a7bd8586-dcdd-4123-9c83-6da0caf733a3" class="column-list"><div id="8a29616a-f15b-4908-8ae9-f91add873b8f" style="width:50%" class="column"><pre id="06b5ba82-1cd4-49fb-84e5-f365b3c5693b" class="code code-wrap"><code>def es_par(n):
+	residuo = n%2
+	return residuo</code></pre></div><div id="04d031ab-849b-4507-a2a1-4fcf6f8b1df6" style="width:50%" class="column"><pre id="3705bfde-0303-4a78-8526-b3f659b7b14f" class="code code-wrap"><code>print(es_par(3))
+&gt;&gt;&gt; 1</code></pre><p id="3d35960a-9468-469e-9209-549b39aebb19" class="">
+</p></div></div><p id="4c2eb819-e312-40e9-9223-d7372efb568b" class="">Por útlimo debemos retornar el booleano, esto lo podemos evaluar con un <em>if</em></p><div id="d50073d3-6578-407b-a3a0-748bbcd5fbd3" class="column-list"><div id="326ac132-d3aa-47af-a635-e5c0441962bb" style="width:50%" class="column"><pre id="f17f963d-0d08-4205-b0e0-212769c2abbc" class="code code-wrap"><code>def es_par(n):
+	residuo = n%2
+	if residuo == 0:
+		return True
+	else:
+		return False</code></pre></div><div id="54373654-7b7d-4e36-9f07-7c0a3363fa0c" style="width:50%" class="column"><pre id="c9cd7f3c-b641-4f09-8c45-ea3f80650a48" class="code code-wrap"><code>print(es_par(3))
+&gt;&gt;&gt; False</code></pre></div></div><p id="10fd9fdb-c314-4a17-9aca-dc1e474b80fd" class="">Note que pusimos el return dentro del <em>if</em>, esto tambien es válido.</p><p id="f2b01f61-ccd2-40ea-bbbe-f813b284a3cc" class="">Hagamoslo un poco mas complejo...</p><p id="52546ea5-1d27-4c91-971e-ed93f50f88eb" class="">
+</p><p id="0476fbed-ed5d-412a-a72f-f7bb4257694a" class="">Hagamos una función que nos diga si una lista de números es par o impar</p><ul id="eef94043-e109-4667-b4b0-f28303729146" class="bulleted-list"><li style="list-style-type:disc">Por parámetro debe recibir una <strong>lista de números </strong>a verificar</li></ul><ul id="548e8755-3e53-4c1d-ab0e-dc56589b4143" class="bulleted-list"><li style="list-style-type:disc">Debe retornar una lista, donde cada posicion sea un booleano: True, si el número en esa posicion de la lista es par y False de lo contrario</li></ul><p id="91e9965c-11dd-4c31-ad25-94bbb0d57131" class="">Partimos del ejemplo anterior, la intuición nos dice que hay que meter un ciclo en el código:</p><div id="d0085913-c065-4724-9f68-642200488651" class="column-list"><div id="90997807-7e38-45a1-bf9e-c108fcdb2ae7" style="width:50%" class="column"><pre id="9efb4358-9013-4b3e-82fd-ea653b795e2a" class="code code-wrap"><code>def es_par(lista):
+	for i in range(0,len(lista)):
+		if lista[i]%2 == 0:
+			print(True)
+		else:
+			print(False)</code></pre><p id="4608540b-a901-4586-a1e0-e8eae543ec8e" class="">Modificamos el return para que imprimiera el resultado.</p><p id="82c5b79a-db99-4715-a2c6-c7f6774989b8" class=""><code>lista[i]</code> es la iésima poscicion de la lista</p><p id="b79cda77-d4f5-4441-b711-1a210f764c8f" class=""><code>len(lista)</code> es la longitud de la lista</p></div><div id="34847bf4-a4a8-4bd8-9cd3-198b6e3fd266" style="width:50%" class="column"><pre id="bd5bc1e0-9f6a-4b55-bcb3-49a79032322d" class="code code-wrap"><code> a = [1,2,3,4,5,6,7,8]
+es_par(a)
+&gt;&gt;&gt; False
+&gt;&gt;&gt; True
+&gt;&gt;&gt; False
+&gt;&gt;&gt; True
+&gt;&gt;&gt; False
+&gt;&gt;&gt; True
+&gt;&gt;&gt; False
+&gt;&gt;&gt; True</code></pre><p id="cc3c3e64-424b-48c6-b172-ef1eaad6d1aa" class="">
+</p></div></div><p id="024172fd-cf25-4bb0-a751-b9642d483241" class=""><code>for i in range(0,len(lista))</code> hace que i tome los valores desde 0 hasta la longitud de la lista -1</p><p id="f12b8056-9103-49d1-ac44-e7e94a8fc326" class="">En cada iteración estamos comprobando si el número en la iésima posicion de la lista es par o impar y lo imprimimos, ahora hagamos que retorne una lista.</p><p id="5053472d-bf59-4521-99d9-6fcfdd11d061" class="">Deberíamos crear una lista vacía y en cada iteración agregarle una posicion que indique si el numero es par o impar</p><div id="d4dbc1ac-c448-4aa6-8f3c-b707ba379291" class="column-list"><div id="2dd0edc5-7831-4c39-bcbf-f8900f88c8fb" style="width:50%" class="column"><pre id="f46285ee-452b-4c68-a800-bbaf8bdfa08d" class="code code-wrap"><code>def es_par(lista):
+		lista_retorno = [] #Asi se declara una lista vacía
+	for i in range(0,len(lista)):
+		if lista[i]%2 == 0:
+			lista_retorno.append(True)
+		else:
+			lista_retorno.append(False)
+	return lista_retorno</code></pre><p id="a9b260c3-62bf-479c-b5af-085b75ad8beb" class="">Y listo!</p><p id="b06b1c7a-5ed4-465d-8fd6-06585d9c4718" class="">
+</p></div><div id="e3b0b521-9983-43bb-8c3e-b081382267e5" style="width:50%" class="column"><pre id="b98afefe-eba0-4261-b413-7c008c7dc5f6" class="code code-wrap"><code>a = [1,2,3,4,5,6,7,8]
+print(es_par(a))
+&gt;&gt;&gt; [False, True, False, True, False, True, False, True]</code></pre><p id="d7c98680-bdb0-49c4-8517-261e8fd3f884" class="">
+</p></div></div><p id="bea2a44b-6b23-4eb5-9159-a8cb24018c1e" class="">Este resumen de conceptos básicos en Python recorre los temas necesarios para poder empezar programar en Python, si embargo, el mundo de la programación es muy grande.</p><p id="85036053-5f11-4150-b1eb-d1fa6054c546" class="">Hay mil maneras distintas de llegar a los mismos resultados y en muchos casos mas eficientes. El objetivo de este tutorial es que tengan las bases de programación para que al momento de introducir conceptos nuevos no existan vacíos de conceptos previos.</p><p id="963a6c75-b5b1-4c1b-b8be-5d24b43ed482" class="">El ejemplo de números pares recoge casi todo lo que vimos en el tutorial completo, sin duda puede hacerse mucho mas compacto.</p><pre id="3e641cc7-a67d-4448-9871-2111442af2ff" class="code code-wrap"><code>a = [1,2,3,4,5,6,7,8]
+b = [n%2==0 for n in a]
+print(b)</code></pre></div></article></body></html>

@@ -1,0 +1,845 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Numpy: Matrices, vectores y álgebra lineal en Python</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="fc59f766-49a0-4d87-8da8-949a8ab555ae" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🐍</span></div><h1 class="page-title">Numpy: Matrices, vectores y álgebra lineal en Python</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tema</th><td><span class="selected-value select-value-color-blue">Numpy</span><span class="selected-value select-value-color-purple">Programación</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Tipo</th><td><span class="selected-value select-value-color-default">Tutoriales</span></td></tr></tbody></table></header><div class="page-body"><h3 id="8dd97654-20d2-4c06-93aa-efb88537545f" class="">Importar Numpy</h3><pre id="8dc2ad03-96bc-42e8-a1de-c3a577f0e557" class="code code-wrap"><code>import numpy as np</code></pre><h3 id="bf2320f5-28ab-43bc-ab21-ce012b348391" class="">Comparación entre listas y arreglos de Numpy</h3><pre id="9d097ff0-0ede-44e4-ae74-169bd04ff5e8" class="code code-wrap"><code>lista= [3.5,4,2.8]
+print(lista)
+
+&gt;&gt;&gt; [3.5, 4, 2.8]</code></pre><pre id="81d9136c-8618-412b-880e-02691932f7f5" class="code code-wrap"><code>nplista= np.array(lista)
+print(nplista)
+
+&gt;&gt;&gt; [3.5 4.  2.8]</code></pre><pre id="8eab29d4-5424-436b-9ab9-70b7b580137b" class="code"><code>print(lista*2.85)
+
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+&lt;ipython-input-4-f46976f244bb&gt; in &lt;module&gt;
+----&gt; 1 print(lista*2.85)
+
+TypeError: can&#x27;t multiply sequence by non-int of type &#x27;float&#x27;</code></pre><pre id="2919d9fc-3d51-4424-a2e6-7f34939ce85d" class="code"><code>print(nplista*2.8)
+
+&gt;&gt;&gt; [ 9.8  11.2   7.84]</code></pre><h3 id="5b1e9ba6-25ea-41e7-9bad-ec62bf3a4802" class="">Solucionar sistemas de ecuaciones</h3><pre id="8bf1a4d6-e1da-4086-8310-2e467b9c607f" class="code"><code>MATRIZ = [[4.5, 6.8, 9.2, 5.6],
+          [6.7, 6.7, 9.4, 3.5],
+          [6.7, 8.9, 5.4, 5.6],
+          [8.9, 7.8, 3.4, 6.2]]
+
+VECTOR = [[5.6],
+          [7.8],
+          [9.8],
+          [7.9]]
+
+M = np.array(MATRIZ)
+V = np.array(VECTOR)</code></pre><pre id="7188adf5-3f6a-4c3d-b48b-505d14a2dbbf" class="code"><code>x = np.linalg.solve(M, V)
+print(x)
+
+&gt;&gt;&gt; 
+[[ 0.14798605]
+ [ 1.66689532]
+ [-0.09840803]
+ [-0.9813342 ]]</code></pre><h3 id="f8378821-e671-4fc8-b448-513325936618" class="">Opreaciones vectorizadas vs operaciones algebráicas</h3><p id="b0e589c2-55d7-4b9a-92c8-f0ffbecdb1b4" class="">Con el anterior sistema de ecuaciones se tiene que:</p><figure id="69e88e80-b03e-417c-ad05-7f6d5889bc48" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">[</mo><mi>M</mi><mo stretchy="false">]</mo><mo stretchy="false">{</mo><mi>x</mi><mo stretchy="false">}</mo><mo>=</mo><mo stretchy="false">{</mo><mi>V</mi><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">[M]\{x\}=\{V\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">]</span><span class="mopen">{</span><span class="mord mathnormal">x</span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mclose">}</span></span></span></span></span></div></figure><p id="61959b05-9184-4401-9fa8-6cf927e56ff6" class="">Si se usa el símbolo * se realiza broadcasting, que es la forma en como Numpy puede operar muchos datos al tiempo. Esto no corresponde a la multiplicación matricial clásica</p><pre id="e1e40104-9cc6-443d-b88d-904a82bc114e" class="code"><code>print(M*x) #Broadcasting
+
+&gt;&gt;&gt; array([[-2946.55172414,   327.39463602,     0.        ,     0.        ],
+		       [ 4918.96551724, -6012.06896552,  1093.10344828,     0.        ],
+		       [    0.        ,  5327.5862069 , -5860.34482759,   532.75862069],
+		       [    0.        ,     0.        ,  1974.13793103, -2763.79310345]])</code></pre><p id="848144ec-5a55-4397-a0c9-f1a1b0e4dae8" class="">Si se usa el símbolo @, se puede operar algebráicametne (como en lineal). Por ejemplo:</p><pre id="d5530308-ec5c-4271-89d5-0699d2fced07" class="code"><code>print(M@x)
+print(V)
+
+&gt;&gt;&gt;[[-2.40000000e+03]
+		 [-2.00000000e+03]
+		 [ 9.09494702e-13]
+		 [-1.00000000e+02]]
+
+&gt;&gt;&gt; [[-2400.]
+		 [-2000.]
+		 [    0.]
+		 [ -100.]]</code></pre><p id="011c4d65-edfa-4ed6-b6f2-b2bcb9a12686" class="">A los arreglos de Numpy se les pueden hacer bastantes operaciones basicas (suma, resta, division, etc.)</p><pre id="18f300e9-b822-4e98-b3c3-bdbd71619a65" class="code"><code>v1 = np.array([[3],[4],[5]])
+v2= np.array([[6.4],[7.8],[9]])
+print(v1,v2)
+
+&gt;&gt;&gt; [[3]
+		 [4]
+		 [5]]
+
+&gt;&gt;&gt; [[6.4]
+		 [7.8]
+		 [9. ]]</code></pre><pre id="921052aa-673e-4b8e-b831-99baf8edaf78" class="code"><code>print(v1+v2)
+
+&gt;&gt;&gt;array([[ 9.4],
+	       [11.8],
+	       [14. ]])</code></pre><h3 id="10f869fd-89ed-4ea6-b670-e1d18f4e884a" class="">Algebra lineal</h3><p id="6209029b-9af3-46be-89f4-be245070c131" class="">Numpy puede realizar operaciones de álgebra lineal usando las siguientes funciones</p><h3 id="19fdc0ee-1903-47c1-81f4-47b6953b1614" class="">Valores y vectores propios</h3><p id="0d3e97cb-8078-4774-93c4-320f87d0b6e2" class="">Al extraer los valores y vectores propios, se retorna un vector y una matriz. En el vector se encuentran los valores propios de la matriz y en la matriz, cada columna representa un valor propio.</p><p id="ba497944-c001-4345-a014-f56801fde38c" class="">
+</p><p id="e217119b-9672-4e5e-a7b4-47655a9cda99" class="">La iesima poscición del vector de valores propios corresponde a la iesima columna de la matriz de vectores propios.</p><pre id="6a940880-a772-434d-ad65-605de0a2bee2" class="code"><code>A = np.array([[110,60,34],[60,-86,20],[34,20,50]])
+valores_propios, vectores_propios = np.linalg.eig(A)
+print(valores_propios)
+print(vectores_propios)
+
+&gt;&gt;&gt;[-103.59143724  142.6819638    34.90947345]
+
+&gt;&gt;&gt;[[ 0.25978113 -0.88514322 -0.38605082]
+	 [-0.96327552 -0.2656498  -0.03912098]
+	 [ 0.06792665 -0.3820362   0.92164761]]</code></pre><p id="10aaba7e-9ae4-4c98-840b-621fe8ca1a44" class="">Si se quieren organizar los valores propios se puede usar el siguiente comando:</p><pre id="ca5fa764-e3a8-4fd1-b3c3-e0e2697205be" class="code"><code>idx = valores_propios.argsort()[::-1]   
+valores_propios= valores_propios[idx]
+vectores_propios = vectores_propios [:,idx]
+
+print(valores_propios)
+print(vectores_propios)
+
+&gt;&gt;&gt; [ 142.6819638    34.90947345 -103.59143724]
+
+&gt;&gt;&gt; [[-0.88514322 -0.38605082  0.25978113]
+		 [-0.2656498  -0.03912098 -0.96327552]
+		 [-0.3820362   0.92164761  0.06792665]]</code></pre><h3 id="d4f9abba-e14d-49ca-a974-a2b473a58dc6" class="">Matriz inversa</h3><pre id="7b22ba12-f796-470b-9412-af4d59683faa" class="code"><code>A = np.array([[110,60,34],[60,-86,20],[34,20,50]])
+inversa = np.linalg.inv(A)
+print(inversa)
+
+&gt;&gt;&gt; [[ 0.00910881  0.00449626 -0.0079925 ]
+	 [ 0.00449626 -0.00841887  0.00031009]
+	 [-0.0079925   0.00031009  0.02531086]]</code></pre><p id="59d57e03-42a4-48ba-a0f4-4a5ce46c0245" class="">Para verificar que es la inversa se puede realizar la siguiente operación:</p><figure id="b8deb9b7-a1c3-440c-84c7-f0fe53761d42" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">[</mo><mi>A</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>A</mi><msup><mo stretchy="false">]</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>=</mo><mo stretchy="false">[</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[A][A]^{-1}=[1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1141079999999999em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">A</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal">A</span><span class="mclose"><span class="mclose">]</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.864108em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span></span></span></span></span></div></figure><p id="e72bb0d8-db6f-4b0a-bf91-64517ae20b3a" class="">Donde <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span></span></span></span></span><span>﻿</span></span> es la matriz identidad.</p><pre id="eb8f19ac-f297-4b57-ada3-16ca1649f6c7" class="code"><code>print(A@inversa) #Recuerde que @ es producto matricial!
+
+&gt;&gt;&gt; [[ 1.00000000e+00  9.97465999e-18  1.38777878e-17]
+		 [ 1.38777878e-17  1.00000000e+00 -8.32667268e-17]
+		 [-2.08166817e-17 -7.37257477e-18  1.00000000e+00]]</code></pre><p id="20a564f7-1452-4bf7-b8be-49e08cefbde5" class="">Recuerde que valores de <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&lt;</mo><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>16</mn></mrow></msup></mrow><annotation encoding="application/x-tex">&lt;10^{-16}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">16</span></span></span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> numéricamente se consideran 0.</p><h3 id="6cc37a8f-c7ed-41cf-abd6-985e5ef6f57a" class="">Producto punto</h3><pre id="02dc6b90-96d5-42d4-8e6d-6114a5b483ca" class="code"><code>v1 = np.array([3,4,5])
+v2 = np.array([6.4,7.8,9])
+
+producto = np.dot(v1,v2)
+print(producto)
+
+&gt;&gt;&gt; 95.4</code></pre><h3 id="bdab1bd8-7fad-4a25-9e98-6c1ac96d9b35" class="">Producto cruz</h3><pre id="385289b5-c3d7-44ee-85e4-ebdbb969bec6" class="code"><code>v1 = np.array([3,4,5])
+v2 = np.array([6.4,7.8,9])
+
+producto = np.cross(v1,v2)
+print(producto)
+
+&gt;&gt;&gt; [-3.   5.  -2.2]</code></pre><h3 id="44b2fdea-a941-4a23-9212-07a16097c904" class="">Propiedades importantes de los arreglos de Numpy</h3><p id="a9d5e7ad-fd04-4280-8694-6d28f4797e27" class="">Lo mas importante al trabajar con Numpy es controlar el <code>shape</code>. Esta propiedad de los arreglos de Numpy define las dimensiones y el tamaño del arreglo en cada una de estas dimensiones. Por ejemplo, con los vectores anteriores</p><pre id="9ca53ba8-7ae1-46f2-93c0-8e64de01421c" class="code"><code>v1 = np.array([[3],[4],[5]])
+v2= np.array([[6.4],[7.8],[9]])
+
+
+print(v1.shape)
+
+&gt;&gt;&gt; (3,1)</code></pre><pre id="520b5831-eed9-4d8e-849c-58d55ab09d8b" class="code"><code>print(v2.shape)
+
+&gt;&gt;&gt; (3,1)</code></pre><p id="c93803d3-6938-46bd-bdab-ca9790226c1c" class="">Una de las maneras mas fáciles de cambiar el shape es encontrando la tranaspuesta de una matriz o un vector:</p><pre id="57e5f365-3261-4254-8cb8-f6dc9e286b7e" class="code"><code>print(M.T)
+
+&gt;&gt;&gt; array([[4.5, 6.7, 6.7, 8.9],
+		       [6.8, 6.7, 8.9, 7.8],
+		       [9.2, 9.4, 5.4, 3.4],
+		       [5.6, 3.5, 5.6, 6.2]])</code></pre><pre id="abd08f74-1166-4480-85c3-cab2820da6c3" class="code"><code>print(v2.T)
+
+&gt;&gt;&gt; array([[6.4, 7.8, 9. ]])</code></pre><pre id="7a9fca13-8ea5-4355-987a-92d25f30444c" class="code"><code>M2 = v1@v2.T
+print(M2)
+
+&gt;&gt;&gt; array([[19.2, 23.4, 27. ],
+		       [25.6, 31.2, 36. ],
+		       [32. , 39. , 45. ]])</code></pre><pre id="ba3e31ac-66a0-4457-b841-440653f48cd2" class="code"><code>r = v1.T@v2
+print(r.shape,r[0,0])
+
+
+&gt;&gt;&gt; (1, 1) 95.4</code></pre><p id="9be063fb-9e04-4ff1-ab6f-ee01b085a002" class="">Podemos obligar a un arreglo a que tome una forma específica, por ejemplo, si queremos conevertir una matriz en un vecotr vertical:</p><pre id="d030e1f6-bc5c-4088-b08a-055c27114133" class="code"><code>print(M2.reshape([9,1]))
+
+&gt;&gt;&gt; array([[19.2],
+		       [23.4],
+		       [27. ],
+		       [25.6],
+		       [31.2],
+		       [36. ],
+		       [32. ],
+		       [39. ],
+		       [45. ]])</code></pre><h3 id="adf66329-c0c2-4b13-8081-f857998a5528" class="">Herramientas para crear datos</h3><p id="ab439f6b-0e7f-4e1c-921b-ded1cc92bef0" class="">Para crear datos lineales (arreglo de datos en un rango) se puede usar la función <code>np.linspace</code></p><pre id="b1707181-651e-4a75-ae63-e674089996dc" class="code"><code>datos = np.linspace(0,1,100)
+print(datos)
+
+&gt;&gt;&gt; array([0.        , 0.01010101, 0.02020202, 0.03030303, 0.04040404,
+		       0.05050505, 0.06060606, 0.07070707, 0.08080808, 0.09090909,
+		       0.1010101 , 0.11111111, 0.12121212, 0.13131313, 0.14141414,
+		       0.15151515, 0.16161616, 0.17171717, 0.18181818, 0.19191919,
+		       0.2020202 , 0.21212121, 0.22222222, 0.23232323, 0.24242424,
+		       0.25252525, 0.26262626, 0.27272727, 0.28282828, 0.29292929,
+		       0.3030303 , 0.31313131, 0.32323232, 0.33333333, 0.34343434,
+		       0.35353535, 0.36363636, 0.37373737, 0.38383838, 0.39393939,
+		       0.4040404 , 0.41414141, 0.42424242, 0.43434343, 0.44444444,
+		       0.45454545, 0.46464646, 0.47474747, 0.48484848, 0.49494949,
+		       0.50505051, 0.51515152, 0.52525253, 0.53535354, 0.54545455,
+		       0.55555556, 0.56565657, 0.57575758, 0.58585859, 0.5959596 ,
+		       0.60606061, 0.61616162, 0.62626263, 0.63636364, 0.64646465,
+		       0.65656566, 0.66666667, 0.67676768, 0.68686869, 0.6969697 ,
+		       0.70707071, 0.71717172, 0.72727273, 0.73737374, 0.74747475,
+		       0.75757576, 0.76767677, 0.77777778, 0.78787879, 0.7979798 ,
+		       0.80808081, 0.81818182, 0.82828283, 0.83838384, 0.84848485,
+		       0.85858586, 0.86868687, 0.87878788, 0.88888889, 0.8989899 ,
+		       0.90909091, 0.91919192, 0.92929293, 0.93939394, 0.94949495,
+		       0.95959596, 0.96969697, 0.97979798, 0.98989899, 1.        ])</code></pre><p id="e663d14c-fe86-4135-8e19-765e5727fd36" class="">Para crear matrices/vectores/arreglos llenos de ceros se puede usar la función <code>np.zeros(shape)</code>. Toma como parámetro el <code>shape</code> del arreglo. Por ejemplo, si queremos hacer una matriz de 3 filas y 5 columnas con ceros el comando sería así:</p><pre id="1366ad1e-29a4-4601-86b0-13322a85a7b7" class="code"><code>datos = np.zeros([3,5])
+print(datos)
+
+
+&gt;&gt;&gt; array([[0., 0., 0., 0., 0.],
+		       [0., 0., 0., 0., 0.],
+		       [0., 0., 0., 0., 0.]])</code></pre><p id="92d91d85-00f6-48fd-8a15-606d2a7b29ef" class="">
+</p></div></article></body></html>

@@ -1,0 +1,897 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>LaTex, empezar aquí</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="ed5cf3c8-489d-4421-aa38-20f248a61dab" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://cdn0.iconfinder.com/data/icons/files-documents-set-2-1/128/file_3_document_extension_file_format_tex_latex-512.png"/></div><h1 class="page-title">LaTex, empezar aquí</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tema</th><td><span class="selected-value select-value-color-green">Latex</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Tipo</th><td><span class="selected-value select-value-color-default">Tutoriales</span></td></tr><tr class="property-row property-row-file"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesFile"><path d="M12.5938 8.44043L7.54883 13.4854C6.26367 14.7773 4.54102 14.6475 3.44043 13.54C2.32617 12.4326 2.20312 10.7168 3.49512 9.4248L10.3926 2.52734C11.1445 1.77539 12.2725 1.63867 13.0039 2.37695C13.7422 3.11523 13.6055 4.22949 12.8535 4.98828L6.08594 11.7627C5.77832 12.0703 5.41602 11.9814 5.2041 11.7764C4.99902 11.5576 4.91016 11.2021 5.21777 10.8877L9.93457 6.1709C10.1738 5.93164 10.1875 5.58301 9.96191 5.35059C9.72949 5.13184 9.38086 5.13867 9.1416 5.37793L4.39746 10.1152C3.67285 10.8535 3.7002 11.9746 4.34961 12.624C5.05371 13.3281 6.12012 13.3145 6.8584 12.5762L13.6602 5.77441C14.9795 4.45508 14.9316 2.71875 13.7764 1.55664C12.6416 0.428711 10.8779 0.34668 9.55176 1.66602L2.61328 8.61816C0.883789 10.3477 1 12.8291 2.57227 14.4014C4.14453 15.9668 6.63281 16.0898 8.3623 14.3672L13.4414 9.28809C13.6738 9.0625 13.667 8.64551 13.4346 8.41992C13.209 8.18066 12.833 8.21484 12.5938 8.44043Z"></path></svg></span>Material</th><td><span style="margin-right:6px"><a href="Plantilla_Latex_TAMAN.zip">Plantilla_Latex_TAMAN.zip</a></span></td></tr></tbody></table></header><div class="page-body"><p id="050ecd4e-084d-4bdf-b760-957c6483859a" class="">La manera mas sencilla de empezar a escribir documentos en LaTex, es mediante una herramienta llamada Overleaf</p><h2 id="b7093a01-d637-4dc4-b6b0-06be94ccc7dc" class="">Overleaf</h2><p id="6b159261-633c-4e04-bdec-96f39a63aef0" class="">Link: <a href="https://www.overleaf.com/">https://www.overleaf.com/</a></p><p id="911872b6-426f-4f6e-91d7-3e09939af238" class="">Paso 1: Registrarse usando cualquier correo, preferiblemente el correo de la universidad.</p><figure id="41c2614e-4198-4324-953d-ae624d5946db" class="image"><a href="t%2037.gif"><img style="width:1368px" src="t%2037.gif"/></a></figure><p id="26fd75cf-fb20-4265-b9ed-00512a513475" class="">Crear un nuevo proyecto</p><figure id="794e5522-07b6-4c24-8c97-1f6a5a13f049" class="image"><a href="Untitled%2022.png"><img style="width:1045px" src="Untitled%2022.png"/></a></figure><p id="0148c621-f406-4278-964d-41342df4af48" class="">Ponerle nombre al proyecto</p><figure id="354527b0-8406-45af-900d-a758264f600b" class="image"><a href="Untitled%2023.png"><img style="width:640px" src="Untitled%2023.png"/></a></figure><p id="a7620966-881a-4b2b-a80d-72694d185854" class="">Se abrirá el editor de latex junto con el visor de pdf. En este momento ya podemos empezar a escribir.</p><figure id="01d1f245-09f6-4b48-b763-4c814d5d4509" class="image"><a href="Untitled%2024.png"><img style="width:1355px" src="Untitled%2024.png"/></a></figure><h2 id="cf535e37-4862-4f88-be0f-d528e7e99a95" class="">Estructura de <em>Documento</em></h2><p id="5ad982f4-51c4-4b39-b66b-c654cba59d60" class="">Los archivos de LaTex se dividen en dos seciones, el <em>preambulo </em>y el <em>documento</em></p><h2 id="cb1b44a0-31bc-4439-ab73-2e1764d5e5f5" class=""><em>Preambulo</em></h2><p id="7e75ec05-4069-4123-9937-f77a0222f003" class="">En esta sección se definen las características del documento.</p><h3 id="21200649-d735-4c07-ba35-5a0f0fc0732d" class="">DocumentClass</h3><p id="eff506d8-94fe-405c-afd1-92022bc1de49" class="">Se define la clase de documento. Este siempre será el primer comando.</p><div id="c0542e78-e5bc-4cfd-a2fe-aff84380ea03" class="column-list"><div id="617b63a4-c1ba-4072-b981-baeea9ef5210" style="width:50%" class="column"><pre id="d6e17718-eefc-46bb-9e7f-b5ba4c2168cd" class="code code-wrap"><code>\documentclass{article}</code></pre><p id="66c9f23b-708f-4b3f-af8e-beda3c449e01" class="">El mas usado y el que usaremos en clase</p></div><div id="fed086df-34d1-4e61-946a-b903d3472249" style="width:50%" class="column"><figure id="b3140703-ccb9-460d-ace3-2c2699d0a7ee" class="image"><a href="Untitled%2025.png"><img style="width:517px" src="Untitled%2025.png"/></a></figure></div></div><div id="cc30d924-5406-4840-8c16-06c57cd8037b" class="column-list"><div id="56c96963-53eb-4849-8365-08e7d7f3c527" style="width:50%" class="column"><pre id="277a0670-1548-4137-bc94-d3e952dca5e2" class="code code-wrap"><code>\documentclass{book}</code></pre><p id="831739e1-432a-4121-bb5f-1cbcd29785ad" class="">Para documentos grandes con diferentes archivos</p></div><div id="da13a6d5-d03e-4992-8ef8-4d7d4a43f195" style="width:50%" class="column"><figure id="76a09008-4331-4dc2-a830-71d68028c9be" class="image"><a href="Untitled%2026.png"><img style="width:528px" src="Untitled%2026.png"/></a></figure></div></div><div id="b529f183-fd28-4681-985e-2aa9e533e105" class="column-list"><div id="6f306ff9-5d30-4ac5-963f-9a2dd81eaea0" style="width:50%" class="column"><pre id="60d80acf-47b4-4e1b-8231-eefe73a224b2" class="code code-wrap"><code>\documentclass{letter}</code></pre><p id="4483d15c-551b-472d-a2fd-6d3b6389cc85" class="">Documentos cortos</p></div><div id="bb7fcede-352c-4901-9376-5d544105c63c" style="width:50%" class="column"><figure id="02164172-1743-47f4-836f-1eef75edf92c" class="image"><a href="Untitled%2027.png"><img style="width:497px" src="Untitled%2027.png"/></a></figure></div></div><p id="4ea79bd4-96fa-421c-ac0c-8ad1027aa9a3" class="">En general, el <code>documentclass</code> cambia el estilo general del documento</p><h3 id="57d5bbf1-22d9-499e-898d-0bad32ec0e0f" class="">Paquetes</h3><p id="6b854c90-e792-4bcc-8ca6-dc2e20dec284" class="">Los paquetes son extensiones utiles que nos ayudarán al momento de escribir. Los paquetes se incluyen en el preambulo usando <code>\usepackage{nombrepaquete}</code>.</p><p id="2eb050fa-ea01-435f-b4db-c0df99378ca0" class="">En este ejemplo, vamos a incluir estos paquetes:</p><pre id="0db60a81-a8a5-4c29-8a2b-28623e687211" class="code code-wrap"><code>\usepackage[utf8]{inputenc}
+\usepackage{graphicx}  % Imágenes y gráficas
+\usepackage{amsmath}   % Ecuaciones y fórmulas
+\usepackage{ragged2e}  % Alinear texto
+\usepackage{parskip}   % Sangría
+\usepackage{vmargin}   % Márgenes
+\setpapersize{A4}      % Tamaño del papel
+\setmargins{3cm}       % margen izquierdo
+{1cm}                  % margen superior
+{15cm}                 % anchura del texto
+{22.42cm}              % altura del texto
+{80pt}                 % altura de los encabezados
+{1cm}                  % espacio entre el texto y los encabezados
+{0pt}                  % altura del pie de página
+{1cm}                  % espacio entre el texto y el pie de página
+\usepackage{xcolor}  % Para manejo de colores</code></pre><p id="ab4ad3f6-a0e3-4cfc-b387-c3f1027eb450" class="">El paquete <code>inputenc</code> se usa para controlar el <em>encoding </em>del documento. Con utf-8 podremos usar letras con acentos.</p><p id="7474978b-0d8d-41f5-94e6-4a1d3b57e85b" class="">En general, los paquetes tienen un nombre (el que esta dentro de los parentesis { }) y una serie de opciones (las que esten entre los parentesis [ ])</p><p id="6cef7100-2020-4380-a8ce-aa0b11958981" class="">Si en algun punto usted esta usando un recurso externo o paquete distinto a los que estan aqui, basta con agregarlo en el preambulo.</p><ul id="ba2e58fe-36c2-4845-ae46-e9d4bf538cb7" class="toggle"><li><details open=""><summary>Como va el código hasta el momento</summary><pre id="1e41ebe6-d1fe-4fd5-a7a7-542cecaf5ef6" class="code code-wrap"><code>\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}  % Imágenes y gráficas
+\usepackage{amsmath}   % Ecuaciones y fórmulas
+\usepackage{ragged2e}  % Alinear texto
+\usepackage{parskip}   % Sangría
+\usepackage{vmargin}   % Márgenes
+\setpapersize{A4}      % Tamaño del papel
+\setmargins{3cm}       % margen izquierdo
+{1cm}                  % margen superior
+{15cm}                 % anchura del texto
+{22.42cm}              % altura del texto
+{80pt}                % altura de los encabezados
+{1cm}                  % espacio entre el texto y los encabezados
+{0pt}                  % altura del pie de página
+{1cm}                  % espacio entre el texto y el pie de página</code></pre></details></li></ul><h2 id="0c7001a0-decd-4771-be67-a6c5fcdaa142" class=""><em>Documento</em></h2><p id="fd05b09d-5069-42a6-8ce7-902e6f62e610" class="">El espacio para escribir el documento se limita usando un <em>Environment </em>de LaTex, se ve de la siguiente forma:</p><pre id="6ae85db9-2076-4f24-b965-4c76667c6bc2" class="code code-wrap"><code>\begin{document}
+	Hola Mundo
+\end{document}</code></pre><p id="80f3c8f1-64be-47ea-a79b-1bf5b5749c6a" class="">Para ver el resultado en Overleaf, le damos al boton recompile. Es recomendable activar la opcion de autocompilar:</p><figure id="ae54434a-42f4-4c8e-8de7-74bf4e3fe4c7" class="image"><a href="t%2038.gif"><img style="width:1368px" src="t%2038.gif"/></a></figure><p id="bd45d20a-321c-46f3-bb54-15056b8ee430" class="">Con ello ya podrémos escribir en el documento.</p><h2 id="d50db4ee-b8eb-4d01-a24a-8d28ad21125d" class="">Modo texto vs modo matemático</h2><h3 id="66d80ee7-b365-456d-9193-bb0aebac60d8" class="">Modo Texto</h3><p id="fbf6c193-9205-47a9-9e6c-96e1aae5d470" class="">Corresponde al texto escrito directamente dentro del <code>\begin{document}   \end{document}</code></p><p id="5c75286a-3060-4fe9-9211-509e8a8675ff" class="">Vamos a comenzar escribiendo el documento por secciones, es decir, haremos un titulo para introducción, un título para resultados, etc. Para ello, podemos usar el comando:</p><div id="3e5e5b9d-e790-45ef-8624-ff064d167e57" class="column-list"><div id="3167956c-831b-43b8-b615-eddb5a6e7508" style="width:50%" class="column"><pre id="e37c0693-dd7c-4b91-9b29-5d1e6ee8d13d" class="code code-wrap"><code>\section{Introducción}</code></pre><figure id="18e05a46-8bc3-428a-b38f-2061c25c44f1" class="image"><a href="Untitled%2028.png"><img style="width:375px" src="Untitled%2028.png"/></a></figure></div><div id="abaead15-b089-432d-821f-a46ce225dde2" style="width:50%" class="column"><pre id="6987cf28-68e0-44b1-beb8-2e5a48806dc9" class="code code-wrap"><code>\section*{Introducción}</code></pre><figure id="140e0a97-9bd0-4910-9707-7eb04806fd83" class="image"><a href="Untitled%2029.png"><img style="width:360px" src="Untitled%2029.png"/></a></figure></div></div><p id="4909a313-f3ee-41a4-b24e-a949ef2cd26e" class="">Note que la única diferencia entre los dos comandos es un asterisco. En LaTex, por defecto se enumeran los elementos, sin embargo, usando un asterisco se le puede indicar a LaTex que no se necesita numeración. Este truco funciona para cualquier elemento en LaTex.</p><p id="1cf03b45-348b-424a-8ff6-aa7c8ac08267" class="">Dentro de la introducción podemos escribir algo así:</p><pre id="7365d449-1b4f-4dfb-a976-dcda238c6410" class="code code-wrap"><code>\section*{Introducción}
+Describe el funcionamiento del método con: demostración u origen. Un resumen muy breve del funcionamiento del método. Lo más importante de este fragmento es que entienda y pueda utilizar esto para estudiar para su parcial.\\
+Presenta otros métodos vistos en clase y explica la diferencia funcional de estos. Recuerde que en el parcial se pueden preguntar cualquiera de los métodos vistos en clase, no olvide incluirlos acá.</code></pre><p id="c114d570-b1ba-4d0a-9a34-9dcb98245418" class="">El <code>\\</code> se usa para agregar una nueva linea (enter)</p><figure id="0fd21cd7-be48-41b2-a3e2-83f0a8d4fcac" class="image"><a href="Untitled%2030.png"><img style="width:692px" src="Untitled%2030.png"/></a></figure><ul id="28ef7ac1-2a7a-4e39-8a5c-5a7b13733ff3" class="toggle"><li><details open=""><summary>Como va el código hasta el momento</summary><pre id="980cd7e5-2113-48df-ae40-0c9672563cd1" class="code code-wrap"><code>\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}  % Imágenes y gráficas
+\usepackage{amsmath}   % Ecuaciones y fórmulas
+\usepackage{ragged2e}  % Alinear texto
+\usepackage{parskip}   % Sangría
+\usepackage{vmargin}   % Márgenes
+\setpapersize{A4}      % Tamaño del papel
+\setmargins{3cm}       % margen izquierdo
+{1cm}                  % margen superior
+{15cm}                 % anchura del texto
+{22.42cm}              % altura del texto
+{80pt}                 % altura de los encabezados
+{1cm}                  % espacio entre el texto y los encabezados
+{0pt}                  % altura del pie de página
+{1cm}                  % espacio entre el texto y el pie de página
+\begin{document}
+    \section*{Introducción}
+    Describe el funcionamiento del método con: demostración u origen. Un resumen muy breve del funcionamiento del método. Lo más importante de este fragmento es que entienda y pueda utilizar esto para estudiar para su parcial.\\
+    Presenta otros métodos vistos en clase y explica la diferencia funcional de estos. Recuerde que en el parcial se pueden preguntar cualquiera de los métodos vistos en clase, no olvide incluirlos acá.
+\end{document}</code></pre><p id="0e78d6d1-37ff-4344-bcf9-3d2d441cbeb7" class="">
+</p></details></li></ul><p id="09391ac7-2956-41a1-bac6-172e65004a68" class="">Podemos seguir escribiendo secciones, por ejemplo:</p><pre id="d0e8e83c-94af-455e-ae27-a468afdbbbad" class="code code-wrap"><code>\section*{Aplicabilidad}
+
+Propone y explica cómo podría ser implementado el método en problemas de ingeniería. De entre 2 y 3 ejemplos de cómo podría ser aplicado lo visto en clase y explique su importancia. 
+
+\section*{Comparación}
+
+Explica ventajas o desventajas del método o métodos solicitados respecto a otros métodos. En caso de no encontrar otros métodos describa que defectos encontró en su funcionamiento y explicar cómo podría ser mejorado el método. 
+
+\section*{Análisis}
+
+Explica por qué se dieron los resultados, tanto el error como el número de iteraciones son herramientas para explicar los resultados. Se puede graficar la forma de convergencia o la variación entre resultados. Si es necesario involucre la física del sistema para explicar a profundidad lo ocurrido. 
+
+\section*{Resultados}
+
+Presente de forma eficiente por medio de gráficas o tablas los resultados obtenidos. Compile en el menor número de gráficas (y/o tablas) los resultados y su forma de obtenerlos, a partir de lo cual explique de forma clara y concisa lo presentado. Es importante que exponga la lógica de los resultados mediante sus conocimientos como ingeniero. 
+
+\section*{Conclusiones}
+
+Concluya respecto a lo presentado anteriormente: eficiencia del método, métodos alternativos óptimos para el problema, forma de convergencia, gráficas, lógica ingenieril o física, etc…</code></pre><figure id="288d15b2-e760-4c91-b2d9-f37985492473" class="image"><a href="Untitled%2031.png"><img style="width:783px" src="Untitled%2031.png"/></a></figure><p id="4889eb7c-6169-4bc6-9fb6-491f63ad7b8c" class="">Hasta el momento, el documento ya tiene una forma mas o menos definida, sin embargo, en LaTex podremos tener control total. En este caso agregaremos un encabezado y un pie de página al documento.</p><p id="64841c32-01a3-4e06-9be7-30824f3bd177" class="">Los encabezados de LaTex los agregamos con un paquete extra llamado <code>fancyhdr</code>, por lo tanto, en el preambulo de nuestro documento agregamos:</p><pre id="55d64682-94b8-481e-beb7-68cb0512716d" class="code code-wrap"><code>\usepackage{fancyhdr} % Para encabezado</code></pre><p id="65446ea9-bac5-4c2f-8e4e-87d998614abb" class="">Luego, justo antes de inciar el <em>environment </em><code><em>document</em></code><em> </em>comenzamos a definir el encabezado:</p><pre id="aaba51a1-569a-44fa-8c0f-f50d7a572e3e" class="code code-wrap"><code>\lhead{} %Encabezado izquierda
+\rhead{} %Encabezado derecha
+\chead{} %Encabezado centro
+\lfoot{} %Pie de página izquierdo
+\cfoot{} %Pie de página centro
+\rfoot{} %Pie de página derecho</code></pre><p id="6b08b4ae-c107-45d1-8109-4bfed8706f53" class="">Dentro de esas llaves podemos poner texto, imagenes, etc.</p><p id="219c52b2-fc5b-4c11-89d8-b2c9983460d9" class="">Para este ejemplo, pondremos:</p><pre id="451599e0-3a7e-48b0-970f-d15a66b65ec4" class="code code-wrap"><code>\lhead{Arturo Rodriguez: 201718348}
+\chead{\small{\textbf{Tarea 1} \\Modelación y Análisis Numérico}}
+\rhead{da.rodriguezh@uniandes.edu.co}
+\lfoot{Tarea 1}
+\cfoot{}
+\rfoot{MAN}</code></pre><p id="cede3baf-034b-4b5f-8beb-eb080288a2f7" class="">Si corremos el documento así, no va a cambiar nada en el documento. Para que el encabezado aparezca, en el comienzo del documento debemos agregar el siguiente comando.</p><figure id="5abc8340-664d-49a0-bee7-821d13e9b3b2" class="image"><a href="Untitled%2032.png"><img style="width:748px" src="Untitled%2032.png"/></a></figure><p id="04d66080-d8bb-4d29-9d36-295d56a5417c" class="">El encabezado no es la gran cosa, podemos mejroralo aún mas</p><pre id="81d91bcd-7072-4103-832f-4e55da4d369c" class="code code-wrap"><code>\lhead{\includegraphics[width=3cm]{logoUniandes.pdf}\\Arturo Rodriguez: 201718348\\\today}
+\chead{\large{\textbf{Tarea 1}}}
+\rhead{da.rodriguezh@uniandes.edu.co\\ICYA 2001 - MAN}
+\lfoot{Tarea 1}
+\cfoot{}
+\rfoot{}
+\headsep 1.5em
+\renewcommand{\footrulewidth}{0.4pt}</code></pre><p id="ce901c8a-8773-4c5c-906b-bf7932a9bc21" class="">En la parte del encabezado izquierdo agregamos una imagen. Esta imagen estará adjunta. Si quieres saber mas de como agregar imágenes en LaTex visita <a href="Insertar%20ima%CC%81genes%20en%20LaTex%20814860231ad9402c9efbef3ceb6068d1.html"><img class="icon" src="https://cdn0.iconfinder.com/data/icons/files-documents-set-2-1/128/file_3_document_extension_file_format_tex_latex-512.png"/>Insertar imágenes en LaTex</a>. Ademas usamos el comando <code>\today</code> que retorna la fecha de cuando se corre el documento. Usamos el comando <code>\large</code> que hace que el texto entre los parentesis { } sea mas grande. Por ultimo, cambiamos el valor de <code>\footrulewidth</code> a 0.4pt. Esto hace que aparezca una linea negra en el pie de página. El resultado es el siguiente:</p><figure id="a0065d0f-013b-4bd1-9adf-44f7880c1c35" class="image"><a href="Untitled%2033.png"><img style="width:605px" src="Untitled%2033.png"/></a></figure><ul id="d53e44bb-924a-4ca3-b498-2c84ee4b4b2f" class="toggle"><li><details open=""><summary>Como va el código hasta el momento</summary><pre id="91fab73d-d46c-4d04-921f-c5950fc64e94" class="code code-wrap"><code>\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}  % Imágenes y gráficas
+\usepackage{amsmath}   % Ecuaciones y fórmulas
+\usepackage{ragged2e}  % Alinear texto
+\usepackage{parskip}   % Sangría
+\usepackage{vmargin}   % Márgenes
+\setpapersize{A4}      % Tamaño del papel
+\setmargins{3cm}       % margen izquierdo
+{1cm}                  % margen superior
+{15cm}                 % anchura del texto
+{22.42cm}              % altura del texto
+{80pt}                 % altura de los encabezados
+{1cm}                  % espacio entre el texto y los encabezados
+{0pt}                  % altura del pie de página
+{1cm}                  % espacio entre el texto y el pie de página
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\lhead{\includegraphics[width=3cm]{logoUniandes.pdf}\\Arturo Rodriguez: 201718348\\\today}
+\chead{\large{\textbf{Tarea 1}}}
+\rhead{da.rodriguezh@uniandes.edu.co\\ICYA 2001 - MAN}
+\lfoot{Tarea 1}
+\cfoot{}
+\rfoot{}
+\headsep 1.5em
+\renewcommand{\footrulewidth}{0.4pt}
+\begin{document}
+    \pagestyle{fancy}
+    \section*{Introducción}
+    Describe el funcionamiento del método con: demostración u origen. Un resumen muy breve del funcionamiento del método. Lo más importante de este fragmento es que entienda y pueda utilizar esto para estudiar para su parcial.\\
+    Presenta otros métodos vistos en clase y explica la diferencia funcional de estos. Recuerde que en el parcial se pueden preguntar cualquiera de los métodos vistos en clase, no olvide incluirlos acá.
+    \section*{Aplicabilidad}
+
+    Propone y explica cómo podría ser implementado el método en problemas de ingeniería. De entre 2 y 3 ejemplos de cómo podría ser aplicado lo visto en clase y explique su importancia. 
+    
+    \section*{Comparación}
+    
+    Explica ventajas o desventajas del método o métodos solicitados respecto a otros métodos. En caso de no encontrar otros métodos describa que defectos encontró en su funcionamiento y explicar cómo podría ser mejorado el método. 
+    
+    \section*{Análisis}
+    
+    Explica por qué se dieron los resultados, tanto el error como el número de iteraciones son herramientas para explicar los resultados. Se puede graficar la forma de convergencia o la variación entre resultados. Si es necesario involucre la física del sistema para explicar a profundidad lo ocurrido. 
+    
+    \section*{Resultados}
+    
+    Presente de forma eficiente por medio de gráficas o tablas los resultados obtenidos. Compile en el menor número de gráficas (y/o tablas) los resultados y su forma de obtenerlos, a partir de lo cual explique de forma clara y concisa lo presentado. Es importante que exponga la lógica de los resultados mediante sus conocimientos como ingeniero. 
+    
+    \section*{Conclusiones}
+    
+    Concluya respecto a lo presentado anteriormente: eficiencia del método, métodos alternativos óptimos para el problema, forma de convergencia, gráficas, lógica ingenieril o física, etc… 
+\end{document}</code></pre></details></li></ul><p id="87e320a4-9e7c-4393-941f-098bf936dc35" class="">Note que la fecha aparece en inglés. Para soluciona esto, vamos a poner LaTex en español.</p><p id="cf9e6390-56f1-4ac5-96d4-f684a0fe6a34" class="">Agregamos el paquete babel y en las configuraciones indicamos que queremos español:</p><pre id="6c97c0da-d314-4854-b0e4-3657cf485347" class="code code-wrap"><code>\usepackage[spanish]{babel}</code></pre><p id="35cde36a-cc19-4b85-ad79-81aa8bbd6c42" class="">Y listo! La fecha ya aparece en español.</p><p id="51f0267f-5d3c-40ff-ab37-9ca460a5ed48" class="">Cuando se cambia el lenguaje a español ocurren ciertas cosas con el nombre de tablas que causarán problemas mas adelante, por lo tanto, justo debajo ed babel es recomendable escribir las siguiente linea:</p><pre id="591732ee-eaf5-4b39-ba7c-756f4c6ebe96" class="code code-wrap"><code>\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}</code></pre><p id="5597db80-3d8e-4490-aeb7-6a084743fe65" class="">Esto hace que las tablas pasen de llamarse &quot;Cuadro&quot; a &quot;Tabla&quot;. En el tutorial <a href="Insertar%20tablas%20en%20LaTex%205b17260d0dcd4d8f9625aa51b5559524.html"><img class="icon" src="https://cdn0.iconfinder.com/data/icons/files-documents-set-2-1/128/file_3_document_extension_file_format_tex_latex-512.png"/>Insertar tablas en LaTex</a> hay ejemplos con este comportamiento.</p><ul id="e2c1bfb8-f16b-45e3-9fa6-639553b35822" class="toggle"><li><details open=""><summary>Como va el código hasta el momento</summary><pre id="c4f38571-08f4-4f5e-ba0c-5f51f81b3129" class="code code-wrap"><code>\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}  % Imágenes y gráficas
+\usepackage{amsmath}   % Ecuaciones y fórmulas
+\usepackage{ragged2e}  % Alinear texto
+\usepackage{parskip}   % Sangría
+\usepackage{vmargin}   % Márgenes
+\setpapersize{A4}      % Tamaño del papel
+\setmargins{3cm}       % margen izquierdo
+{1cm}                  % margen superior
+{15cm}                 % anchura del texto
+{22.42cm}              % altura del texto
+{80pt}                 % altura de los encabezados
+{1cm}                  % espacio entre el texto y los encabezados
+{0pt}                  % altura del pie de página
+{1cm}                  % espacio entre el texto y el pie de página
+\usepackage[spanish]{babel}
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\lhead{\includegraphics[width=3cm]{logoUniandes.pdf}\\Arturo Rodriguez: 201718348\\\today}
+\chead{\large{\textbf{Tarea 1}}}
+\rhead{da.rodriguezh@uniandes.edu.co\\ICYA 2001 - MAN}
+\lfoot{Tarea 1}
+\cfoot{}
+\rfoot{}
+\headsep 1.5em
+\renewcommand{\footrulewidth}{0.4pt}
+\begin{document}
+    \pagestyle{fancy}
+    \section*{Introducción}
+    Describe el funcionamiento del método con: demostración u origen. Un resumen muy breve del funcionamiento del método. Lo más importante de este fragmento es que entienda y pueda utilizar esto para estudiar para su parcial.\\
+    Presenta otros métodos vistos en clase y explica la diferencia funcional de estos. Recuerde que en el parcial se pueden preguntar cualquiera de los métodos vistos en clase, no olvide incluirlos acá.
+    \section*{Aplicabilidad}
+
+    Propone y explica cómo podría ser implementado el método en problemas de ingeniería. De entre 2 y 3 ejemplos de cómo podría ser aplicado lo visto en clase y explique su importancia. 
+    
+    \section*{Comparación}
+    
+    Explica ventajas o desventajas del método o métodos solicitados respecto a otros métodos. En caso de no encontrar otros métodos describa que defectos encontró en su funcionamiento y explicar cómo podría ser mejorado el método. 
+    
+    \section*{Análisis}
+    
+    Explica por qué se dieron los resultados, tanto el error como el número de iteraciones son herramientas para explicar los resultados. Se puede graficar la forma de convergencia o la variación entre resultados. Si es necesario involucre la física del sistema para explicar a profundidad lo ocurrido. 
+    
+    \section*{Resultados}
+    
+    Presente de forma eficiente por medio de gráficas o tablas los resultados obtenidos. Compile en el menor número de gráficas (y/o tablas) los resultados y su forma de obtenerlos, a partir de lo cual explique de forma clara y concisa lo presentado. Es importante que exponga la lógica de los resultados mediante sus conocimientos como ingeniero. 
+    
+    \section*{Conclusiones}
+    
+    Concluya respecto a lo presentado anteriormente: eficiencia del método, métodos alternativos óptimos para el problema, forma de convergencia, gráficas, lógica ingenieril o física, etc… 
+\end{document}</code></pre></details></li></ul><p id="8d3cc92a-7f88-4d80-8601-cf5f87c2f008" class="">Hasta aquí se crea la plantilla para tareas de clase. En los archivos adjuntos encontrarán un .zip con el codigo fuente y la imagen del logo de la universidad. Si desea iniciar desde esta plantailla basta con subir el .zip en Overleaf.</p><figure id="caf3ed2c-3edb-4c07-9ba1-60561132ba97" class="image"><a href="Untitled%2034.png"><img style="width:255px" src="Untitled%2034.png"/></a></figure><h3 id="37033500-d9e6-4a5a-be06-d763c2b31316" class="">Modo Matemático</h3><p id="02a10394-7c35-4105-9509-aba018abd6f8" class="">En el modo matemático podremos escribir ecuaciones. El modo matemático se activa con el símbolo $ así:</p><p id="d9aa21ca-68d6-4640-9f2a-dadf7990234c" class="">Si ponemos esto justo debajo de la seccion de análisis</p><pre id="89f5c966-12b4-41e3-99c5-69f66a0f2932" class="code code-wrap"><code>Esto es texto normal $3x+2y=1$ y esto vuelve a ser texto. Si queremos hacer énfasis en una ecuación podemos usar matemática en bloque. $$R=\frac{2}{3}\cos(\theta\pi)$$</code></pre><figure id="08010840-1bc2-4e1e-b9fe-fbad6f93dd36" class="image"><a href="Untitled%2035.png"><img style="width:658px" src="Untitled%2035.png"/></a></figure><p id="d8f82d2a-0db8-40af-968d-febd0aed2027" class="">El modo matemático tiene muchas opciones para escribir ecuaciones, para ello, hay un tutorial específico en <a href="%5BResumen%20u%CC%81til%5D%20Comandos%20de%20LaTex%20y%20listado%20de%20si%CC%81%207c8c7d439bd1411baecfdc623ffc231c.html"><img class="icon" src="https://cdn0.iconfinder.com/data/icons/files-documents-set-2-1/128/file_3_document_extension_file_format_tex_latex-512.png"/>[Resumen útil] Comandos de LaTex y listado de símbolos útiles</a>.</p><h2 id="5230cb1c-c06e-45e9-9f5a-a49eb423e7de" class=""><em>Environments </em>en LaTex</h2><p id="a2568788-aa2d-43d1-80cd-3e0b7c4092f0" class="">Los Environments son espacios de código de latex que tienen un comportamiento especial. Se usan con el comando</p><pre id="e9de4a1a-db8b-4eb1-9de7-3d0a6ac0c831" class="code code-wrap"><code>\begin{environment}
+	cuerpo
+\end{environment}</code></pre><p id="8761defe-152b-427a-81a0-e1223abf5329" class="">A continuación va una lista de los environments mas usados</p><div id="41f4499a-09cd-4fa1-8c82-79e61b2885d9" class="column-list"><div id="31b22ce6-e872-4912-a9d9-bc1d88927cee" style="width:50%" class="column"><pre id="e6e649ae-2bf1-4444-a0fe-8b0f317eec66" class="code code-wrap"><code>\begin{enumerate}
+	\item Soy el primer item
+	\item soy el segundo, quisiera ser el primero
+\end{enumerate}</code></pre></div><div id="20d635cb-6fb2-4c7a-9cbb-88da0dd8a05a" style="width:50%" class="column"><figure id="2feca947-6866-4eb4-a704-3247de017355" class="image"><a href="Untitled%2036.png"><img style="width:343px" src="Untitled%2036.png"/></a></figure></div></div><div id="7dab2613-f7eb-4ea8-96b7-9a71788c17f3" class="column-list"><div id="7756baa5-e367-48cd-b35a-2d9e03bf242b" style="width:50%" class="column"><pre id="457a9508-e8f2-4102-89b8-824c46594fa4" class="code code-wrap"><code>\begin{equation}
+	F = ma
+\end{equation}</code></pre></div><div id="2df87a1e-0f48-4cff-9f6f-2f040a002ddc" style="width:50%" class="column"><figure id="9ce7cfad-3e2e-4c4c-9569-27044b8873c3" class="image"><a href="Untitled%2037.png"><img style="width:648px" src="Untitled%2037.png"/></a></figure><p id="7a125988-eeb8-478d-84eb-861a6dba3d66" class="">Note que la ecuación se enumeró. Es diferente a la matematica en bloque.</p></div></div><pre id="a6521302-305b-42f8-8b23-1abdee257a91" class="code code-wrap"><code>\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{rutaArchivo.extension}
+	\caption{Superficie tridimensional}
+	\label{fig:figurauno}
+\end{figure}</code></pre><figure id="6e96d5d8-32ec-4445-91d6-f86da5e57205" class="image"><a href="Untitled%2038.png"><img style="width:448px" src="Untitled%2038.png"/></a></figure><pre id="8c118982-7839-4c87-b9f8-2563c65f19a4" class="code code-wrap"><code>\begin{pmatrix}
+			C_{11} &amp; C_{12} &amp; 0\\
+			C_{12} &amp; C_{11} &amp; 0\\
+			0 &amp; 0 &amp; C_{66}\\
+\end{pmatrix}</code></pre><figure id="cd9bba8a-3354-42c6-8d5e-efcce5ee3468" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo fence="true">(</mo><mtable rowspacing="0.1600em" columnalign="center center center" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><msub><mi>C</mi><mn>11</mn></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><msub><mi>C</mi><mn>12</mn></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><msub><mi>C</mi><mn>12</mn></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><msub><mi>C</mi><mn>11</mn></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><msub><mi>C</mi><mn>66</mn></msub></mstyle></mtd></mtr></mtable><mo fence="true">)</mo></mrow><annotation encoding="application/x-tex">\begin{pmatrix}
+			C_{11} &amp; C_{12} &amp; 0\\
+			C_{12} &amp; C_{11} &amp; 0\\
+			0 &amp; 0 &amp; C_{66}\\
+\end{pmatrix}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.60004em;vertical-align:-1.55002em;"></span><span class="minner"><span class="mopen"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05002em;"><span style="top:-2.2500000000000004em;"><span class="pstrut" style="height:3.1550000000000002em;"></span><span class="delimsizinginner delim-size4"><span>⎝</span></span></span><span style="top:-3.3970000000000002em;"><span class="pstrut" style="height:3.1550000000000002em;"></span><span style="height:0.016em;width:0.875em;"><svg width='0.875em' height='0.016em' style='width:0.875em' viewBox='0 0 875 16' preserveAspectRatio='xMinYMin'><path d='M291 0 H417 V16 H291z M291 0 H417 V16 H291z'/></svg></span></span><span style="top:-4.05002em;"><span class="pstrut" style="height:3.1550000000000002em;"></span><span class="delimsizinginner delim-size4"><span>⎛</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.55002em;"><span></span></span></span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em;"><span style="top:-4.21em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">11</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.0099999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">12</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-1.8099999999999994em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.5500000000000007em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em;"><span style="top:-4.21em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">12</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.0099999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">11</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-1.8099999999999994em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.5500000000000007em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em;"><span style="top:-4.21em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span></span></span><span style="top:-3.0099999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span></span></span><span style="top:-1.8099999999999994em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">66</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.5500000000000007em;"><span></span></span></span></span></span></span></span><span class="mclose"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05002em;"><span style="top:-2.2500000000000004em;"><span class="pstrut" style="height:3.1550000000000002em;"></span><span class="delimsizinginner delim-size4"><span>⎠</span></span></span><span style="top:-3.3970000000000002em;"><span class="pstrut" style="height:3.1550000000000002em;"></span><span style="height:0.016em;width:0.875em;"><svg width='0.875em' height='0.016em' style='width:0.875em' viewBox='0 0 875 16' preserveAspectRatio='xMinYMin'><path d='M457 0 H583 V16 H457z M457 0 H583 V16 H457z'/></svg></span></span><span style="top:-4.05002em;"><span class="pstrut" style="height:3.1550000000000002em;"></span><span class="delimsizinginner delim-size4"><span>⎞</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.55002em;"><span></span></span></span></span></span></span></span></span></span></span></span></div></figure><div id="50ce3837-1cd6-46ff-9f8a-519a32f88525" class="column-list"><div id="e908a748-ee23-44f5-bf37-6346e96ae756" style="width:50%" class="column"><pre id="af3b1455-0bc8-496f-bd7d-d3fbc095d6ad" class="code code-wrap"><code>\begin{table}[h]
+   \caption{Tabla de muestra}
+    \label{tab:tabla1}
+    \centering
+    \begin{tabular}{|c|c|c|}\hline
+     cell1 &amp; cell2 &amp; cell3 \\ \hline
+     cell4 &amp; cell5 &amp; cell6 \\  \hline
+     cell7 &amp; cell8 &amp; cell9 \\\hline
+    \end{tabular}
+    \end{table}</code></pre></div><div id="0d4dccac-2208-4833-90d0-7f86198121ba" style="width:50%" class="column"><figure id="4be0fb70-cab8-451a-a4ec-aba3e9cf2244" class="image"><a href="Untitled%2039.png"><img style="width:271px" src="Untitled%2039.png"/></a></figure></div></div><h2 id="8cfdefe8-ce5d-41d2-a13c-4892d6f5cf19" class="">Exportar a pdf</h2><p id="90451b54-e20c-429e-b931-b15042868163" class="">Cuando el docuemento esta listo, se puede descargar desde Overleaf en el boton de descarga en el panel del documento.</p><figure id="84eb70f8-7ffe-47b9-926d-e3371b1712c8" class="image"><a href="t%2039.gif"><img style="width:1368px" src="t%2039.gif"/></a></figure><figure id="dd446ec2-cdda-4715-8793-05dfec6aa140" class="image"><a href="Untitled%2040.png"><img style="width:819px" src="Untitled%2040.png"/></a></figure></div></article></body></html>
