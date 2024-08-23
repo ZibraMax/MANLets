@@ -1,190 +1,340 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-<head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-44PZ80H95P"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-44PZ80H95P"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
 
-	gtag('config', 'G-44PZ80H95P');
-	</script>
-	<meta name="viewport" content="width=device-width, initial-scale=0.5,user-scalable=no" id="viewport">
-  <script src="https://kit.fontawesome.com/2416ed6962.js" crossorigin="anonymous"></script>
-	<meta charset="utf-8">
-	<title>MANLets</title>
-	<link rel="shortcut icon" type="image/x-icon" href="../../favicon/favicon.ico">
-	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-	<link rel="stylesheet" href="https://unpkg.com/picnic">
-<link rel="stylesheet" media='(prefers-color-scheme: dark)' href="../../css/picnic.min.css"/>
-	<link rel="stylesheet" href="../../css/estilos_nuevo.css">
-	<script type="text/javascript" src="../../js/math.js"></script>
-	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css"/> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js"></script>
-    <script type="text/javascript" src="../../js/math-expressions.js"></script>
+			gtag("config", "G-44PZ80H95P");
+		</script>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=0.5,user-scalable=no"
+			id="viewport"
+		/>
+		<script
+			src="../../build/fontawesome.js"
+			crossorigin="anonymous"
+		></script>
+		<meta charset="utf-8" />
+		<title>MANLets</title>
+		<link
+			rel="shortcut icon"
+			type="image/x-icon"
+			href="../../favicon/favicon.ico"
+		/>
+		<script src="../../build/plotly-latest.min.js"></script>
+		<link rel="stylesheet" href="../../build/light.picnic.min.css" />
+		<link
+			rel="stylesheet"
+			media="(prefers-color-scheme: dark)"
+			href="../../css/picnic.min.css"
+		/>
+		<link rel="stylesheet" href="../../css/estilos_nuevo.css" />
+		<script type="text/javascript" src="../../js/math.js"></script>
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+		<script
+			id="MathJax-script"
+			async
+			src="../../build/tex-mml-chtml.js"
+		></script>
+		<link rel="stylesheet" href="../../build/mathquill.css" />
+		<script src="../../build/jquery.min.js"></script>
+		<script src="../../build/mathquill.js"></script>
+		<script
+			type="text/javascript"
+			src="../../js/math-expressions.js"
+		></script>
 
-    <script src="../../js/jquery.toolbar.min.js"></script>
-    <link href="../../css/jquery.toolbar.css" rel="stylesheet" />
-</head>
-<body style="margin: 20px">
-	<article class="card">
-		<header>
-			<h1><a href="../index.html" class="fas fa-arrow-left"></a> <a href="../../index.html" class="fas fa-home"></a> MANLets - Sección Dorada</h1>
-		</header>
-		<footer>
-			<div class="fila">
-				
-			<div class="columnaTercios">
-				<table style="width: 100%">
-					<thead>
-						<th>
-							Parametro
-						</th>
-						<th>
-							Valor
-						</th>
-					</thead>
-					<tbody>
-					<tr>
-						<td>
-							<span class="stack">$$f(x)=$$</span>
-						</td>
-						<td id="cuelloBotella">
-							<span id="math-field" class="mathquill-math-field" style="width: 78%">2\sin (x)-\frac{(x^2)}{10}</span><button id="cositasLindas" type="button" class="btn btn-default" style="margin-left: 10px; width: 18%">\(f\)</button>
-						 	<div id="toolbar-options" class="hidden">
-								<a type="button" class="" onClick='input("\\sqrt")'>\(\sqrt{x}\)</a>
-								<a type="button" class="" onClick='input("\\nthroot")'>\(\sqrt[n]{x}\)</a>
-							    <a type="button" class="" onClick= 'input("log")'>\(\ln\)</a>
-							    <a type="button" class="" onClick='input("^")'>\(x^n\)</a>
-							    <a type="button" class="" onClick='input("\\frac")'>\(\frac{a}{b}\)</a>
-							    <a type="button" class="" onClick='input("(")'>\(()\)</a>
-							    <a type="button" class="" onClick='input("sin")'>\(\sin\)</a>
-							    <a type="button" class="" onClick='input("cos")'>\(\cos\)</a>
-							    <a type="button" class="" onClick='input("tan")'>\(\tan\)</a>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span class="stack">$$x_0=$$</span>
-							
-						</td>
-						<td>
-							<input type="text" id="sliderx0" value='1' onchange="actualizarX0(this.value)"  class="stack">
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span class="stack">$$x_l=$$</span>
-						</td>
-						<td>
-							<input type="text" id="sliderxf" value='4' onchange="actualizarXf(this.value)"  class="stack">
-						</td>
-					</tr>
-					</tbody>
-					<thead>
-						<tr>
-							<th>
-								<button onclick="resolver()" class="stack icon-paper-plane" style="text-align: center;">Calcular</button>
-							</th>
-							<th>
-								<label style="width: 40%">
-								  <input id="maximizarRadio" type='radio' checked name="radiodemo" onchange="triggerBotones(false)">
-								  <span class="checkable">Máximo⠀⠀</span>
-								</label>
-								<label style="width: 40%">
-								  <input id="minimizarRadio" type='radio' name="radiodemo" onchange="triggerBotones(false)">
-								  <span class="checkable">Mínimo</span>
-								</label>
-							</th>
-						</tr>
-						<tr style="text-align: center;">
-							<td style="align-content: center;">
-								<button id="iteraciones" onclick="anteriorIteracion()" class="succes icon-paper-plane" >< Iteracion Anterior</button>
-							</td>
-							<td style="align-content: center;">
-								<button id="iteraciones" onclick="siguienteIteracion()" class="warning icon-paper-plane" >Iteracion Siguiente > </button>
-							</td>
-						</tr>
-						<tr>
-							<td colspan="2">
-								<span id="pretty">$$$$</span>
-							</td>
-						</tr>
-					</thead>
-				</table>
-				<table style="font-size: 13px; width: 100%">
-			  <thead>
-			    <tr style="text-align: center;">
-			      <th><span>\(x_l\)</span></th>
-			      <th><span>\(x_u\)</span></th>
-			      <th><span>\(d\)</span></th>
-			      <th><span>\(f(x_1)\)</span></th>
-			      <th><span>\(f(x_2)\)</span></th>
-			      <th><span>\(x_{opt}\)</span></th>
-			      <th><span>\(e\%\)</span></th>
-			    </tr>
-			  </thead>
-			  <tbody>
+		<script src="../../js/jquery.toolbar.min.js"></script>
+		<link href="../../css/jquery.toolbar.css" rel="stylesheet" />
+	</head>
+	<body style="margin: 20px">
+		<article class="card">
+			<header>
+				<h1>
+					<a href="../index.html" class="fas fa-arrow-left"></a>
+					<a href="../../index.html" class="fas fa-home"></a> MANLets
+					- Sección Dorada
+				</h1>
+			</header>
+			<footer>
+				<div class="fila">
+					<div class="columnaTercios">
+						<table style="width: 100%">
+							<thead>
+								<th>Parametro</th>
+								<th>Valor</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<span class="stack">$$f(x)=$$</span>
+									</td>
+									<td id="cuelloBotella">
+										<span
+											id="math-field"
+											class="mathquill-math-field"
+											style="width: 78%"
+											>2\sin (x)-\frac{(x^2)}{10}</span
+										><button
+											id="cositasLindas"
+											type="button"
+											class="btn btn-default"
+											style="
+												margin-left: 10px;
+												width: 18%;
+											"
+										>
+											\(f\)
+										</button>
+										<div
+											id="toolbar-options"
+											class="hidden"
+										>
+											<a
+												type="button"
+												class=""
+												onClick='input("\\sqrt")'
+												>\(\sqrt{x}\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("\\nthroot")'
+												>\(\sqrt[n]{x}\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("log")'
+												>\(\ln\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("^")'
+												>\(x^n\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("\\frac")'
+												>\(\frac{a}{b}\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("(")'
+												>\(()\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("sin")'
+												>\(\sin\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("cos")'
+												>\(\cos\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("tan")'
+												>\(\tan\)</a
+											>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="stack">$$x_0=$$</span>
+									</td>
+									<td>
+										<input
+											type="text"
+											id="sliderx0"
+											value="1"
+											onchange="actualizarX0(this.value)"
+											class="stack"
+										/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="stack">$$x_l=$$</span>
+									</td>
+									<td>
+										<input
+											type="text"
+											id="sliderxf"
+											value="4"
+											onchange="actualizarXf(this.value)"
+											class="stack"
+										/>
+									</td>
+								</tr>
+							</tbody>
+							<thead>
+								<tr>
+									<th>
+										<button
+											onclick="resolver()"
+											class="stack icon-paper-plane"
+											style="text-align: center"
+										>
+											Calcular
+										</button>
+									</th>
+									<th>
+										<label style="width: 40%">
+											<input
+												id="maximizarRadio"
+												type="radio"
+												checked
+												name="radiodemo"
+												onchange="triggerBotones(false)"
+											/>
+											<span class="checkable"
+												>Máximo⠀⠀</span
+											>
+										</label>
+										<label style="width: 40%">
+											<input
+												id="minimizarRadio"
+												type="radio"
+												name="radiodemo"
+												onchange="triggerBotones(false)"
+											/>
+											<span class="checkable"
+												>Mínimo</span
+											>
+										</label>
+									</th>
+								</tr>
+								<tr style="text-align: center">
+									<td style="align-content: center">
+										<button
+											id="iteraciones"
+											onclick="anteriorIteracion()"
+											class="succes icon-paper-plane"
+										>
+											< Iteracion Anterior
+										</button>
+									</td>
+									<td style="align-content: center">
+										<button
+											id="iteraciones"
+											onclick="siguienteIteracion()"
+											class="warning icon-paper-plane"
+										>
+											Iteracion Siguiente >
+										</button>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<span id="pretty">$$$$</span>
+									</td>
+								</tr>
+							</thead>
+						</table>
+						<table style="font-size: 13px; width: 100%">
+							<thead>
+								<tr style="text-align: center">
+									<th><span>\(x_l\)</span></th>
+									<th><span>\(x_u\)</span></th>
+									<th><span>\(d\)</span></th>
+									<th><span>\(f(x_1)\)</span></th>
+									<th><span>\(f(x_2)\)</span></th>
+									<th><span>\(x_{opt}\)</span></th>
+									<th><span>\(e\%\)</span></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td id="-1,xl">0</td>
+									<td id="-1,xu">0</td>
+									<td id="-1,fxl">0</td>
+									<td id="-1,fxu">0</td>
+									<td id="-1,xr">0</td>
+									<td id="-1,fxr">0</td>
+									<td id="-1,e">0</td>
+								</tr>
 
-			    <tr>
-			      <td id="-1,xl">0</td>
-			      <td id="-1,xu">0</td>
-			      <td id="-1,fxl">0</td>
-			      <td id="-1,fxu">0</td>
-			      <td id="-1,xr">0</td>
-			      <td id="-1,fxr">0</td>
-			      <td id="-1,e">0</td>
-			    </tr>
+								<tr>
+									<td id="1,xl">0</td>
+									<td id="1,xu">0</td>
+									<td id="1,fxl">0</td>
+									<td id="1,fxu">0</td>
+									<td id="1,xr">0</td>
+									<td id="1,fxr">0</td>
+									<td id="1,e">0</td>
+								</tr>
 
-			    <tr>
-			      <td id="1,xl">0</td>
-			      <td id="1,xu">0</td>
-			      <td id="1,fxl">0</td>
-			      <td id="1,fxu">0</td>
-			      <td id="1,xr">0</td>
-			      <td id="1,fxr">0</td>
-			      <td id="1,e">0</td>
-			    </tr>
-
-			    <tr>
-			      <td id="+1,xl">0</td>
-			      <td id="+1,xu">0</td>
-			      <td id="+1,fxl">0</td>
-			      <td id="+1,fxu">0</td>
-			      <td id="+1,xr">0</td>
-			      <td id="+1,fxr">0</td>
-			      <td id="+1,e">0</td>
-			    </tr>
-			  </tbody>
-			</table>
-			</div>
-		<div class="columnaTercios" style=" border: 2px solid gray; border-radius: 8px;margin: 5px;">
-			<div id="grafica">
-			</div>
-		</div>
-		<div class="columnaTercios" style="border: 2px solid gray; border-radius: 8px;margin: 5px;">
-			<div id="grafica2"></div>
-		</div>
-		</div>
-		<div>
-			<a data-tooltip="Reportar Bug" href="mailto:da.rodriguezh@uniandes.edu.co?cc=arturo@asections.com&subject=BUG%20APPLETS&body=Hola! Encontre un bug: A continuacion te mando un screenshot y una descripcion de lo que pas'o" class="floatButtonBug tooltip-left">
-			<i class="fa fa-bug my-float"></i>
-			</a>
-		</div>
-		<div id="btns">
-			<a class=" floatButton" onclick="anteriorIteracion()">
-				<i class="fa fa-angle-left my-float"></i>
-			</a>
-			<a class="floatButton1" onclick="siguienteIteracion()">
-			<i class="fa fa-angle-right my-float"></i>
-			</a>
-		</div>
-</footer>
-	<script type="text/javascript" src="../../js/SeccionDorada.js"></script>
-</body>
+								<tr>
+									<td id="+1,xl">0</td>
+									<td id="+1,xu">0</td>
+									<td id="+1,fxl">0</td>
+									<td id="+1,fxu">0</td>
+									<td id="+1,xr">0</td>
+									<td id="+1,fxr">0</td>
+									<td id="+1,e">0</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div
+						class="columnaTercios"
+						style="
+							border: 2px solid gray;
+							border-radius: 8px;
+							margin: 5px;
+						"
+					>
+						<div id="grafica"></div>
+					</div>
+					<div
+						class="columnaTercios"
+						style="
+							border: 2px solid gray;
+							border-radius: 8px;
+							margin: 5px;
+						"
+					>
+						<div id="grafica2"></div>
+					</div>
+				</div>
+				<div>
+					<a
+						data-tooltip="Reportar Bug"
+						href="mailto:da.rodriguezh@uniandes.edu.co?cc=arturo@asections.com&subject=BUG%20APPLETS&body=Hola! Encontre un bug: A continuacion te mando un screenshot y una descripcion de lo que pas'o"
+						class="floatButtonBug tooltip-left"
+					>
+						<i class="fa fa-bug my-float"></i>
+					</a>
+				</div>
+				<div id="btns">
+					<a class="floatButton" onclick="anteriorIteracion()">
+						<i class="fa fa-angle-left my-float"></i>
+					</a>
+					<a class="floatButton1" onclick="siguienteIteracion()">
+						<i class="fa fa-angle-right my-float"></i>
+					</a>
+				</div>
+			</footer>
+		</article>
+		<script type="text/javascript" src="../../js/SeccionDorada.js"></script>
+	</body>
 </html>

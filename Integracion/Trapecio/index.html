@@ -1,157 +1,304 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-<head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-44PZ80H95P"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-44PZ80H95P"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
 
-	gtag('config', 'G-44PZ80H95P');
-	</script>
+			gtag("config", "G-44PZ80H95P");
+		</script>
 
-	<!-- Viewport -->
-	<meta name="viewport" content="width=device-width, initial-scale=0.5,user-scalable=no" id="viewport">
+		<!-- Viewport -->
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=0.5,user-scalable=no"
+			id="viewport"
+		/>
 
-	<!-- Iconos -->
-  <script src="https://kit.fontawesome.com/2416ed6962.js" crossorigin="anonymous"></script>
-	<meta charset="utf-8">
+		<!-- Iconos -->
+		<script
+			src="../../build/fontawesome.js"
+			crossorigin="anonymous"
+		></script>
+		<meta charset="utf-8" />
 
+		<!-- Titulo -->
+		<title>Applets</title>
 
-	<!-- Titulo -->
-	<title>Applets</title>
+		<!-- Favicon -->
+		<link
+			rel="shortcut icon"
+			type="image/x-icon"
+			href="../../favicon/favicon.ico"
+		/>
+		<script type="text/javascript">
+			var problema = "TP";
+		</script>
 
-	<!-- Favicon -->
-	<link rel="shortcut icon" type="image/x-icon" href="../../favicon/favicon.ico">
-	<script type="text/javascript">var problema = 'TP';</script>
+		<!-- Plotly -->
+		<script src="../../build/plotly-latest.min.js"></script>
 
-	<!-- Plotly -->
-	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+		<!-- Picnic y css-->
+		<link rel="stylesheet" href="../../build/light.picnic.min.css" />
+		<link
+			rel="stylesheet"
+			media="(prefers-color-scheme: dark)"
+			href="../../css/picnic.min.css"
+		/>
+		<link href="../../css/jquery.toolbar.css" rel="stylesheet" />
 
-	<!-- Picnic y css-->
-	<link rel="stylesheet" href="https://unpkg.com/picnic">
-<link rel="stylesheet" media='(prefers-color-scheme: dark)' href="../../css/picnic.min.css"/>
-	<link href="../../css/jquery.toolbar.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/estilos_nuevo.css" />
 
-	<link rel="stylesheet" href="../../css/estilos_nuevo.css">
+		<!-- Math.js-->
+		<script type="text/javascript" src="../../js/math.js"></script>
 
-	<!-- Math.js-->
-	<script type="text/javascript" src="../../js/math.js"></script>
+		<!-- MathJax para LaTex -->
+		<script
+			id="MathJax-script"
+			async
+			src="../../build/tex-mml-chtml.js"
+		></script>
 
-	<!-- MathJax para LaTex -->
-	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css"/> 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js"></script>
-	<script type="text/javascript" src="../../js/math-expressions.js"></script>
-	<script src="../../js/jquery.toolbar.min.js"></script>
-</head>
-<body style="margin: 20px">
-	<article class="card">
-		<header>
-			<h1><a href="../index.html" class="fas fa-arrow-left"></a> <a href="../../index.html" class="fas fa-home"></a> MANLets - Trapecio</h1>
-		</header>
-		<footer>
-			<div class="fila">
-				<div class="columnaMedios" style=" border: 2px solid gray; border-radius: 8px;margin: 5px;">
-					<div id="grafica"></div>
+		<link rel="stylesheet" href="../../build/mathquill.css" />
+		<script src="../../build/jquery.min.js"></script>
+		<script src="../../build/mathquill.js"></script>
+		<script
+			type="text/javascript"
+			src="../../js/math-expressions.js"
+		></script>
+		<script src="../../js/jquery.toolbar.min.js"></script>
+	</head>
+	<body style="margin: 20px">
+		<article class="card">
+			<header>
+				<h1>
+					<a href="../index.html" class="fas fa-arrow-left"></a>
+					<a href="../../index.html" class="fas fa-home"></a> MANLets
+					- Trapecio
+				</h1>
+			</header>
+			<footer>
+				<div class="fila">
+					<div
+						class="columnaMedios"
+						style="
+							border: 2px solid gray;
+							border-radius: 8px;
+							margin: 5px;
+						"
+					>
+						<div id="grafica"></div>
+					</div>
+					<div class="columnaMedios">
+						<table style="width: 100%">
+							<thead>
+								<th>Parámetro</th>
+								<th>Valor</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<span class="stack">$$f(x)=$$</span>
+									</td>
+									<td id="cuelloBotella">
+										<span
+											id="math-field"
+											class="mathquill-math-field"
+											style="width: 78%"
+											>-12x^5-6x^3+10</span
+										><button
+											id="cositasLindas"
+											type="button"
+											class="btn btn-default"
+											style="
+												margin-left: 10px;
+												width: 18%;
+											"
+										>
+											\(f\)
+										</button>
+										<div
+											id="toolbar-options"
+											class="hidden"
+										>
+											<a
+												type="button"
+												class=""
+												onClick='input("\\sqrt")'
+												>\(\sqrt{x}\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("\\nthroot")'
+												>\(\sqrt[n]{x}\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("log")'
+												>\(\ln\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("^")'
+												>\(x^n\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("\\frac")'
+												>\(\frac{a}{b}\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("(")'
+												>\(()\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("sin")'
+												>\(\sin\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("cos")'
+												>\(\cos\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("tan")'
+												>\(\tan\)</a
+											>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="stack">$$a=$$</span>
+									</td>
+									<td>
+										<input
+											type="text"
+											id="sliderx0"
+											value="0"
+											oninput="actualizarIntervalo()"
+											class="stack"
+										/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="stack">$$b=$$</span>
+									</td>
+									<td>
+										<input
+											type="text"
+											id="sliderxf"
+											value="1"
+											oninput="actualizarIntervalo()"
+											class="stack"
+										/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span
+											class="stack"
+											style="text-align: center"
+											>Número de segmentos</span
+										>
+									</td>
+									<td>
+										<input
+											type="number"
+											id="numeroSegmentos"
+											value="3"
+											oninput="actualizarSegmentos(parseFloat(this.value))"
+											class="stack"
+										/>
+									</td>
+								</tr>
+							</tbody>
+							<thead>
+								<tr>
+									<th colspan="2">
+										<button
+											onclick="resolver('TP')"
+											class="stack icon-paper-plane"
+											style="text-align: center"
+										>
+											Calcular
+										</button>
+									</th>
+								</tr>
+								<tr style="text-align: center">
+									<td style="align-content: center">
+										<button
+											onclick="menosPuntos();actualizarInterfazSegmentos()"
+											class="succes icon-paper-plane"
+										>
+											< Disminuir Puntos
+										</button>
+									</td>
+									<td style="align-content: center">
+										<button
+											onclick="masPuntos();actualizarInterfazSegmentos()"
+											class="warning icon-paper-plane"
+										>
+											Aumentar Puntos >
+										</button>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<span id="pretty"
+											>$$\color{black}\int_{0}^{1}{-12x^5-6x^3+10}{dx}=$$</span
+										>
+									</td>
+								</tr>
+							</thead>
+						</table>
+					</div>
 				</div>
-				<div class="columnaMedios">
-					<table style="width: 100%">
-						<thead>
-							<th>
-								Parámetro
-							</th>
-							<th>
-								Valor
-							</th>
-						</thead>
-						<tbody>
-						<tr>
-							<td>
-								<span class="stack">$$f(x)=$$</span>
-							</td>
-							<td id="cuelloBotella">
-				              <span id="math-field" class="mathquill-math-field" style="width: 78%">-12x^5-6x^3+10</span><button id="cositasLindas" type="button" class="btn btn-default" style="margin-left: 10px; width: 18%">\(f\)</button>
-				              <div id="toolbar-options" class="hidden">
-				                <a type="button" class="" onClick='input("\\sqrt")'>\(\sqrt{x}\)</a>
-				                <a type="button" class="" onClick='input("\\nthroot")'>\(\sqrt[n]{x}\)</a>
-				                  <a type="button" class="" onClick= 'input("log")'>\(\ln\)</a>
-				                  <a type="button" class="" onClick='input("^")'>\(x^n\)</a>
-				                  <a type="button" class="" onClick='input("\\frac")'>\(\frac{a}{b}\)</a>
-				                  <a type="button" class="" onClick='input("(")'>\(()\)</a>
-				                  <a type="button" class="" onClick='input("sin")'>\(\sin\)</a>
-				                  <a type="button" class="" onClick='input("cos")'>\(\cos\)</a>
-				                  <a type="button" class="" onClick='input("tan")'>\(\tan\)</a>
-				              </div>
-				            </td>
-						</tr>
-						<tr>
-							<td>
-								<span class="stack">$$a=$$</span>
-								
-							</td>
-							<td>
-								<input type="text" id="sliderx0" value='0' oninput="actualizarIntervalo()"  class="stack">
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<span class="stack">$$b=$$</span>
-							</td>
-							<td>
-								<input type="text" id="sliderxf" value='1' oninput="actualizarIntervalo()"  class="stack">
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<span class="stack" style="text-align: center;">Número de segmentos</span>
-							</td>
-							<td>
-								<input type="number" id="numeroSegmentos" value='3' oninput="actualizarSegmentos(parseFloat(this.value))"  class="stack">
-							</td>
-						</tr>
-						</tbody>
-						<thead>
-							<tr>
-								<th colspan="2" >
-									<button onclick="resolver('TP')" class="stack icon-paper-plane" style="text-align: center;">Calcular</button>
-								</th>
-							</tr>
-							<tr style="text-align: center;">
-								<td style="align-content: center;">
-									<button onclick="menosPuntos();actualizarInterfazSegmentos()" class="succes icon-paper-plane" >< Disminuir Puntos</button>
-								</td>
-								<td style="align-content: center;">
-									<button onclick="masPuntos();actualizarInterfazSegmentos()" class="warning icon-paper-plane" >Aumentar Puntos > </button>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2">
-									<span id="pretty">$$\color{black}\int_{0}^{1}{-12x^5-6x^3+10}{dx}=$$</span>
-								</td>
-							</tr>
-						</thead>
-					</table>
-			</div>
-		</div>
-		<div id="btns">
-			<a class="floatButton" onclick="menosPuntos();actualizarInterfazSegmentos()">
-			<i class="fa fa-angle-left my-float"></i>
-			</a>
-			<a class="floatButton1" onclick="masPuntos();actualizarInterfazSegmentos()">
-			<i class="fa fa-angle-right my-float"></i>
-			</a>
-		</div>
-		<div>
-    <a data-tooltip="Reportar Bug" href="mailto:da.rodriguezh@uniandes.edu.co?cc=arturo@asections.com&subject=BUG%20APPLETS&body=Hola! Encontre un bug: A continuacion te mando un screenshot y una descripcion de lo que pas'o" class="floatButtonBug tooltip-left">
-    <i class="fa fa-bug my-float"></i>
-    </a>
-  </div>
-</footer>
-	<script type="text/javascript" src="../../js/Integracion.js"></script>
-</body>
+				<div id="btns">
+					<a
+						class="floatButton"
+						onclick="menosPuntos();actualizarInterfazSegmentos()"
+					>
+						<i class="fa fa-angle-left my-float"></i>
+					</a>
+					<a
+						class="floatButton1"
+						onclick="masPuntos();actualizarInterfazSegmentos()"
+					>
+						<i class="fa fa-angle-right my-float"></i>
+					</a>
+				</div>
+				<div>
+					<a
+						data-tooltip="Reportar Bug"
+						href="mailto:da.rodriguezh@uniandes.edu.co?cc=arturo@asections.com&subject=BUG%20APPLETS&body=Hola! Encontre un bug: A continuacion te mando un screenshot y una descripcion de lo que pas'o"
+						class="floatButtonBug tooltip-left"
+					>
+						<i class="fa fa-bug my-float"></i>
+					</a>
+				</div>
+			</footer>
+		</article>
+		<script type="text/javascript" src="../../js/Integracion.js"></script>
+	</body>
 </html>

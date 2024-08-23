@@ -1,151 +1,318 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es-ES">
-<head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-44PZ80H95P"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-44PZ80H95P"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
 
-	gtag('config', 'G-44PZ80H95P');
-	</script>
+			gtag("config", "G-44PZ80H95P");
+		</script>
 
-	<!-- Viewport -->
-	<meta name="viewport" content="width=device-width, initial-scale=0.5,user-scalable=no" id="viewport">
+		<!-- Viewport -->
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=0.5,user-scalable=no"
+			id="viewport"
+		/>
 
-	<!-- Iconos -->
-  <script src="https://kit.fontawesome.com/2416ed6962.js" crossorigin="anonymous"></script>
-	<meta charset="utf-8">
+		<!-- Iconos -->
+		<script
+			src="../../build/fontawesome.js"
+			crossorigin="anonymous"
+		></script>
+		<meta charset="utf-8" />
 
-	<!-- Titulo -->
-	<title>Applets</title>
+		<!-- Titulo -->
+		<title>Applets</title>
 
-	<!-- Favicon -->
-	<link rel="shortcut icon" type="image/x-icon" href="../../favicon/favicon.ico">
+		<!-- Favicon -->
+		<link
+			rel="shortcut icon"
+			type="image/x-icon"
+			href="../../favicon/favicon.ico"
+		/>
 
-	<!-- Plotly -->
-	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+		<!-- Plotly -->
+		<script src="../../build/plotly-latest.min.js"></script>
 
-	<!-- Picnic y css-->
-	<link rel="stylesheet" href="https://unpkg.com/picnic">
-<link rel="stylesheet" media='(prefers-color-scheme: dark)' href="../../css/picnic.min.css"/>
-	<link rel="stylesheet" href="../../css/estilos_nuevo.css">
+		<!-- Picnic y css-->
+		<link rel="stylesheet" href="../../build/light.picnic.min.css" />
+		<link
+			rel="stylesheet"
+			media="(prefers-color-scheme: dark)"
+			href="../../css/picnic.min.css"
+		/>
+		<link rel="stylesheet" href="../../css/estilos_nuevo.css" />
 
-	<!-- Math.js-->
-	<script type="text/javascript" src="../../js/math.js"></script>
+		<!-- Math.js-->
+		<script type="text/javascript" src="../../js/math.js"></script>
 
-	<!-- MathJax para LaTex -->
-	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<!-- MathJax para LaTex -->
+		<script
+			id="MathJax-script"
+			async
+			src="../../build/tex-mml-chtml.js"
+		></script>
 
+		<link rel="stylesheet" href="../../build/mathquill.css" />
+		<script src="../../build/jquery.min.js"></script>
+		<script src="../../build/mathquill.js"></script>
+		<script
+			type="text/javascript"
+			src="../../js/math-expressions.js"
+		></script>
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css"/> 
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js"></script>
-	  <script type="text/javascript" src="../../js/math-expressions.js"></script>
-
-	  <script src="../../js/jquery.toolbar.min.js"></script>
-	  <link href="../../css/jquery.toolbar.css" rel="stylesheet" />
-</head>
-<body style="margin: 20px">
-	<article class="card">
-		<header>
-			<h1><a href="../index.html" class="fas fa-arrow-left"></a> <a href="../../index.html" class="fas fa-home"></a> MANLets - EDO Orden 1</h1>
-		</header>
-		<footer>
-			<div class="fila">
-				<div class="columnaMedios" style=" border: 2px solid gray; border-radius: 8px;margin: 5px;">
-					<div id="grafica"></div>
+		<script src="../../js/jquery.toolbar.min.js"></script>
+		<link href="../../css/jquery.toolbar.css" rel="stylesheet" />
+	</head>
+	<body style="margin: 20px">
+		<article class="card">
+			<header>
+				<h1>
+					<a href="../index.html" class="fas fa-arrow-left"></a>
+					<a href="../../index.html" class="fas fa-home"></a> MANLets
+					- EDO Orden 1
+				</h1>
+			</header>
+			<footer>
+				<div class="fila">
+					<div
+						class="columnaMedios"
+						style="
+							border: 2px solid gray;
+							border-radius: 8px;
+							margin: 5px;
+						"
+					>
+						<div id="grafica"></div>
+					</div>
+					<div class="columnaMedios">
+						<table style="width: 100%">
+							<tbody>
+								<tr>
+									<td colspan="1">
+										<span class="stack"
+											>$$\frac{dy}{dx}=$$</span
+										>
+									</td>
+									<td id="cuelloBotella" colspan="3">
+										<span
+											id="math-field"
+											class="mathquill-math-field"
+											style="width: 78%"
+											>4e^{0.8x}-0.5y</span
+										><button
+											id="cositasLindas"
+											type="button"
+											class="btn btn-default"
+											style="
+												margin-left: 10px;
+												width: 18%;
+											"
+										>
+											\(f\)
+										</button>
+										<div
+											id="toolbar-options"
+											class="hidden"
+										>
+											<a
+												type="button"
+												class=""
+												onClick='input("\\sqrt")'
+												>\(\sqrt{x}\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("\\nthroot")'
+												>\(\sqrt[n]{x}\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("log")'
+												>\(\ln\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("^")'
+												>\(x^n\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("\\frac")'
+												>\(\frac{a}{b}\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("(")'
+												>\(()\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("sin")'
+												>\(\sin\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("cos")'
+												>\(\cos\)</a
+											>
+											<a
+												type="button"
+												class=""
+												onClick='input("tan")'
+												>\(\tan\)</a
+											>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="stack">$$x_i=$$</span>
+									</td>
+									<td>
+										<input
+											type="text"
+											id="xi"
+											value="0"
+											oninput="triggerBotones(false)"
+											class="stack"
+										/>
+									</td>
+									<td>
+										<span class="stack">$$y_i=$$</span>
+									</td>
+									<td>
+										<input
+											type="text"
+											id="yi"
+											value="2"
+											oninput="triggerBotones(false)"
+											class="stack"
+										/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span
+											class="stack"
+											style="text-align: center"
+											>$$h=$$</span
+										>
+									</td>
+									<td>
+										<input
+											type="text"
+											id="h"
+											value="1"
+											oninput="triggerBotones(false)"
+											class="stack"
+										/>
+									</td>
+									<td colspan="2">
+										<button
+											onclick="resolver()"
+											class="stack icon-paper-plane"
+											style="text-align: center"
+										>
+											Calcular
+										</button>
+									</td>
+								</tr>
+								<tr style="text-align: center">
+									<td
+										style="align-content: center"
+										colspan="2"
+									>
+										<button
+											id="iteraciones"
+											onclick="menosPuntos();"
+											class="succes icon-paper-plane"
+										>
+											< Iteración Anterior
+										</button>
+									</td>
+									<td
+										style="align-content: center"
+										colspan="2"
+									>
+										<button
+											id="iteraciones"
+											onclick="masPuntos();"
+											class="warning icon-paper-plane"
+										>
+											Iteración Siguiente >
+										</button>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="4">
+										<span id="pretty"></span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						Seleccione el método:
+						<select
+							style="width: 20%; margin: 5px"
+							id="metodo"
+							onchange="actualizarTabla()"
+						>
+							<option>Euler</option>
+							<option>Heun</option>
+							<option>Punto Medio</option>
+							<option>Ralston</option>
+							<option>3er Orden</option>
+							<option>4to Orden</option>
+						</select>
+						<table
+							id="tabla"
+							style="font-size: 13px; width: 100%"
+						></table>
+					</div>
 				</div>
-				<div class="columnaMedios">
-					<table style="width: 100%">
-						<tbody>
-						<tr>
-							<td colspan="1">
-								<span class="stack">$$\frac{dy}{dx}=$$</span>
-							</td>
-							<td id="cuelloBotella" colspan="3">
-				              <span id="math-field" class="mathquill-math-field" style="width: 78%">4e^{0.8x}-0.5y</span><button id="cositasLindas" type="button" class="btn btn-default" style="margin-left: 10px; width: 18%">\(f\)</button>
-				              <div id="toolbar-options" class="hidden">
-				                <a type="button" class="" onClick='input("\\sqrt")'>\(\sqrt{x}\)</a>
-				                <a type="button" class="" onClick='input("\\nthroot")'>\(\sqrt[n]{x}\)</a>
-				                  <a type="button" class="" onClick= 'input("log")'>\(\ln\)</a>
-				                  <a type="button" class="" onClick='input("^")'>\(x^n\)</a>
-				                  <a type="button" class="" onClick='input("\\frac")'>\(\frac{a}{b}\)</a>
-				                  <a type="button" class="" onClick='input("(")'>\(()\)</a>
-				                  <a type="button" class="" onClick='input("sin")'>\(\sin\)</a>
-				                  <a type="button" class="" onClick='input("cos")'>\(\cos\)</a>
-				                  <a type="button" class="" onClick='input("tan")'>\(\tan\)</a>
-				              </div>
-				            </td>
-						</tr>
-						<tr>
-							<td>
-								<span class="stack">$$x_i=$$</span>
-							</td>
-							<td>
-								<input type="text" id="xi" value='0' oninput="triggerBotones(false)"  class="stack">
-							</td>
-							<td>
-								<span class="stack">$$y_i=$$</span>
-							</td>
-							<td>
-								<input type="text" id="yi" value='2' oninput="triggerBotones(false)"  class="stack">
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<span class="stack" style="text-align: center;">$$h=$$</span>
-							</td>
-							<td>
-								<input type="text" id="h" value='1' oninput="triggerBotones(false)"  class="stack">
-							</td>
-							<td colspan="2" >
-								<button onclick="resolver()" class="stack icon-paper-plane" style="text-align: center;">Calcular</button>
-							</td>
-						</tr>
-						<tr style="text-align: center;">
-							<td style="align-content: center;" colspan="2">
-								<button id='iteraciones' onclick="menosPuntos();" class="succes icon-paper-plane" >< Iteración Anterior</button>
-							</td>
-							<td style="align-content: center;" colspan="2">
-								<button id='iteraciones' onclick="masPuntos();" class="warning icon-paper-plane" >Iteración Siguiente > </button>
-							</td>
-						</tr>
-						<tr>
-							<td colspan="4">
-								<span id="pretty"></span>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				Seleccione el método: <select style="width: 20%;margin: 5px;" id="metodo" onchange="actualizarTabla()">
-					<option>Euler</option>
-					<option>Heun</option>
-					<option>Punto Medio</option>
-					<option>Ralston</option>
-					<option>3er Orden</option>
-					<option>4to Orden</option>
-				</select>
-				<table id="tabla" style="font-size: 13px; width: 100%;">
-					
-				</table>
-			</div>
-		</div>
-		<div id="btns">
-			<a id='iteraciones' class="floatButton" onclick="menosPuntos()">
-			<i class="fa fa-angle-left my-float"></i>
-			</a>
-			<a id='iteraciones' class="floatButton1" onclick="masPuntos()">
-			<i class="fa fa-angle-right my-float"></i>
-			</a>
-		</div>
-		<div>
-            <a data-tooltip="Reportar Bug" href="mailto:da.rodriguezh@uniandes.edu.co&subject=BUG%20APPLETS&body=Hola! Encontre un bug: A continuacion te mando un screenshot y una descripcion de lo que pasó" class="floatButtonBug tooltip-left">
-    <i class="fa fa-bug my-float"></i>
-    </a>
-  </div>
-</footer>
-	<script type="text/javascript" src="../../js/EDO1.js"></script>
-</body>
+				<div id="btns">
+					<a
+						id="iteraciones"
+						class="floatButton"
+						onclick="menosPuntos()"
+					>
+						<i class="fa fa-angle-left my-float"></i>
+					</a>
+					<a
+						id="iteraciones"
+						class="floatButton1"
+						onclick="masPuntos()"
+					>
+						<i class="fa fa-angle-right my-float"></i>
+					</a>
+				</div>
+				<div>
+					<a
+						data-tooltip="Reportar Bug"
+						href="mailto:da.rodriguezh@uniandes.edu.co&subject=BUG%20APPLETS&body=Hola! Encontre un bug: A continuacion te mando un screenshot y una descripcion de lo que pasó"
+						class="floatButtonBug tooltip-left"
+					>
+						<i class="fa fa-bug my-float"></i>
+					</a>
+				</div>
+			</footer>
+		</article>
+		<script type="text/javascript" src="../../js/EDO1.js"></script>
+	</body>
 </html>

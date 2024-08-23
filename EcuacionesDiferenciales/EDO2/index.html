@@ -1,148 +1,286 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-<head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44PZ80H95P"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-44PZ80H95P"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
 
-    gtag('config', 'G-44PZ80H95P');
-    </script>
+			gtag("config", "G-44PZ80H95P");
+		</script>
 
-    <!-- Viewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=0.5,user-scalable=no" id="viewport">
+		<!-- Viewport -->
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=0.5,user-scalable=no"
+			id="viewport"
+		/>
 
-    <!-- Iconos -->
-  <script src="https://kit.fontawesome.com/2416ed6962.js" crossorigin="anonymous"></script>
-    <meta charset="utf-8">
+		<!-- Iconos -->
+		<script
+			src="../../build/fontawesome.js"
+			crossorigin="anonymous"
+		></script>
+		<meta charset="utf-8" />
 
-    <!-- Titulo -->
-    <title>Applets</title>
+		<!-- Titulo -->
+		<title>Applets</title>
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="../../favicon/favicon.ico">
+		<!-- Favicon -->
+		<link
+			rel="shortcut icon"
+			type="image/x-icon"
+			href="../../favicon/favicon.ico"
+		/>
 
-    <!-- Plotly -->
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+		<!-- Plotly -->
+		<script src="../../build/plotly-latest.min.js"></script>
 
-    <!-- Picnic y css-->
-    <link rel="stylesheet" href="https://unpkg.com/picnic">
-<link rel="stylesheet" media='(prefers-color-scheme: dark)' href="../../css/picnic.min.css"/>
-    <link rel="stylesheet" href="../../css/estilos_nuevo.css">
+		<!-- Picnic y css-->
+		<link rel="stylesheet" href="../../build/light.picnic.min.css" />
+		<link
+			rel="stylesheet"
+			media="(prefers-color-scheme: dark)"
+			href="../../css/picnic.min.css"
+		/>
+		<link rel="stylesheet" href="../../css/estilos_nuevo.css" />
 
-    <!-- Math.js-->
-    <script type="text/javascript" src="../../js/math.js"></script>
+		<!-- Math.js-->
+		<script type="text/javascript" src="../../js/math.js"></script>
 
-    <!-- MathJax para LaTex -->
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<!-- MathJax para LaTex -->
+		<script
+			id="MathJax-script"
+			async
+			src="../../build/tex-mml-chtml.js"
+		></script>
 
+		<link rel="stylesheet" href="../../build/mathquill.css" />
+		<script src="../../build/jquery.min.js"></script>
+		<script src="../../build/mathquill.js"></script>
+		<script
+			type="text/javascript"
+			src="../../js/math-expressions.js"
+		></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css"/> 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js"></script>
-      <script type="text/javascript" src="../../js/math-expressions.js"></script>
+		<script src="../../js/jquery.toolbar.min.js"></script>
+		<link href="../../css/jquery.toolbar.css" rel="stylesheet" />
+	</head>
+	<body style="margin: 20px">
+		<article class="card">
+			<header>
+				<h1>
+					<a href="../index.html" class="fas fa-arrow-left"></a>
+					<a href="../../index.html" class="fas fa-home"></a> MANLets
+					- EDO Orden 2
+				</h1>
+			</header>
+			<footer>
+				<div class="fila" style="margin: 5px">
+					<span
+						id="math-fieldDDU"
+						class="mathquill-math-field span-math-field"
+						style="float: left; width: 15%"
+						>1</span
+					>
+					<span class="stack" style="float: left; width: auto"
+						>\(\hspace{0.5cm}\cdot\frac{d^2U}{dx^2}+\hspace{0.5cm}\)</span
+					>
+					<span
+						id="math-fieldDU"
+						class="mathquill-math-field span-math-field"
+						style="float: left; width: 15%"
+						>0</span
+					>
+					<span class="stack" style="float: left; width: auto"
+						>\(\hspace{0.5cm}\cdot\frac{dU}{dx}+\hspace{0.5cm}\)</span
+					>
+					<span
+						id="math-fieldU"
+						class="mathquill-math-field span-math-field"
+						style="float: left; width: 15%"
+						>-0.01</span
+					>
+					<span class="stack" style="float: left; width: auto"
+						>\(\hspace{0.5cm}\cdot U+\hspace{0.5cm}\)</span
+					>
+					<span
+						id="math-fieldd"
+						class="mathquill-math-field span-math-field"
+						style="float: left; width: 15%"
+						>0.01(20)</span
+					>
+					<span class="stack" style="float: left; width: auto"
+						>\(\hspace{0.5cm}=0\)</span
+					>
+				</div>
+				<hr />
+				<div class="fila">
+					<div class="columnaMedios">
+						<table style="width: 100%">
+							<tbody>
+								<tr style="text-align: center">
+									<td>
+										<span
+											class="stack"
+											style="text-align: center"
+											>$$L=$$</span
+										>
+									</td>
+									<td>
+										<input
+											type="text"
+											id="L"
+											value="10"
+											oninput="triggerBotones(false)"
+											class="stack"
+										/>
+									</td>
+									<td>
+										<span
+											class="stack"
+											style="text-align: center"
+											>Número de nodos</span
+										>
+									</td>
+									<td>
+										<input
+											type="text"
+											id="n"
+											value="6"
+											oninput="triggerBotones(false)"
+											class="stack"
+										/>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">$$x=0$$</td>
+									<td colspan="2">$$x=L$$</td>
+								</tr>
 
-      <script src="../../js/jquery.toolbar.min.js"></script>
-      <link href="../../css/jquery.toolbar.css" rel="stylesheet" />
-</head>
-<body style="margin: 20px">
-    <article class="card">
-        <header>
-            <h1><a href="../index.html" class="fas fa-arrow-left"></a> <a href="../../index.html" class="fas fa-home"></a> MANLets - EDO Orden 2</h1>
-        </header>
-        <footer>
-            <div class="fila" style="margin: 5px;">
-                <span id="math-fieldDDU" class="mathquill-math-field span-math-field" style="float: left;width: 15%">1</span>
-                <span class="stack" style="float: left;width: auto;">\(\hspace{0.5cm}\cdot\frac{d^2U}{dx^2}+\hspace{0.5cm}\)</span>
-                <span id="math-fieldDU" class="mathquill-math-field span-math-field" style="float: left;width: 15%">0</span>
-                <span class="stack" style="float: left;width: auto;">\(\hspace{0.5cm}\cdot\frac{dU}{dx}+\hspace{0.5cm}\)</span>
-                <span id="math-fieldU" class="mathquill-math-field span-math-field" style="float: left;width: 15%">-0.01</span>
-                <span class="stack" style="float: left;width: auto;">\(\hspace{0.5cm}\cdot U+\hspace{0.5cm}\)</span>
-                <span id="math-fieldd" class="mathquill-math-field span-math-field" style="float: left;width: 15%">0.01(20)</span>
-                <span class="stack" style="float: left;width: auto;">\(\hspace{0.5cm}=0\)</span>
-            </div>
-            <hr>
-            <div class="fila">
-                <div class="columnaMedios">
-                    <table style="width: 100%">
-                        <tbody>
-                            <tr style="text-align: center;">
-                                <td >
-                                    <span class="stack" style="text-align: center;">$$L=$$</span>
-                                </td>
-                                <td >
-                                    <input type="text" id="L" value='10' oninput="triggerBotones(false)"  class="stack">
-                                </td>
-                                <td >
-                                    <span class="stack" style="text-align: center;">Número de nodos</span>
-                                </td>
-                                <td >
-                                    <input type="text" id="n" value='6' oninput="triggerBotones(false)"  class="stack">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    $$x=0$$
-                                </td>
-                                <td colspan="2">
-                                    $$x=L$$
-                                </td>
-                            </tr>
-                            
-                            <tr style="text-align: center;">
-                                <td colspan="2">
-                                    <label onchange="updateizq()">
-                                        <input type='radio' checked name="radiodemo">
-                                        <span class="checkable">Escencial</span>
-                                        <input id="izq" type='radio' name="radiodemo">
-                                        <label for="izq" class="checkable">Natural</label>
-                                    </label>
-                                </td>
-                                <td colspan="2">
-                                    <label onchange="updateder()">
-                                        <input type='radio' checked name="radiodemo2">
-                                        <span class="checkable">Escencial</span>
-                                        <input id="der" type='radio' name="radiodemo2">
-                                        <label for="der" class="checkable">Natural</label>
-                                    </label>
-                                </td>
-                            <tr >
-                                <td>
-                                    <span id="spanizq" class="stack" style="text-align: center;">$$U=$$</span>
-                                </td>
-                                <td>
-                                    <input type="text" id="valorizq" value='40' oninput="triggerBotones(false)"  class="stack">
-                                </td>
-                                <td>
-                                    <span id="spander" class="stack" style="text-align: center;">$$U=$$</span>
-                                </td>
-                                <td>
-                                    <input type="text" id="valorder" value='200' oninput="triggerBotones(false)"  class="stack">
-                                </td>
-                            </tr>
-                            <tr style="text-align: center;">
-                                <td colspan="4">
-                                    <button onclick="resolver();" class="succes icon-paper-plane" style="width: 100%;">Calcular</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                <div id="SistemaEcuaciones">
-                    
-                </div>
-            </div>
-            <div class="columnaMedios" style=" border: 2px solid gray; border-radius: 8px;margin: 5px;">
-                <div id="grafica"></div>
-            </div>
-        </div>
-        <div>
-            <a data-tooltip="Reportar Bug" href="mailto:da.rodriguezh@uniandes.edu.co&subject=BUG%20APPLETS&body=Hola! Encontre un bug: A continuacion te mando un screenshot y una descripcion de lo que pasó" class="floatButtonBug tooltip-left">
-            <i class="fa fa-bug my-float"></i>
-            </a>
-        </div>
-</footer>
-    <script type="text/javascript" src="../../js/EDO2.js"></script>
-</body>
+								<tr style="text-align: center">
+									<td colspan="2">
+										<label onchange="updateizq()">
+											<input
+												type="radio"
+												checked
+												name="radiodemo"
+											/>
+											<span class="checkable"
+												>Escencial</span
+											>
+											<input
+												id="izq"
+												type="radio"
+												name="radiodemo"
+											/>
+											<label for="izq" class="checkable"
+												>Natural</label
+											>
+										</label>
+									</td>
+									<td colspan="2">
+										<label onchange="updateder()">
+											<input
+												type="radio"
+												checked
+												name="radiodemo2"
+											/>
+											<span class="checkable"
+												>Escencial</span
+											>
+											<input
+												id="der"
+												type="radio"
+												name="radiodemo2"
+											/>
+											<label for="der" class="checkable"
+												>Natural</label
+											>
+										</label>
+									</td>
+								</tr>
+
+								<tr>
+									<td>
+										<span
+											id="spanizq"
+											class="stack"
+											style="text-align: center"
+											>$$U=$$</span
+										>
+									</td>
+									<td>
+										<input
+											type="text"
+											id="valorizq"
+											value="40"
+											oninput="triggerBotones(false)"
+											class="stack"
+										/>
+									</td>
+									<td>
+										<span
+											id="spander"
+											class="stack"
+											style="text-align: center"
+											>$$U=$$</span
+										>
+									</td>
+									<td>
+										<input
+											type="text"
+											id="valorder"
+											value="200"
+											oninput="triggerBotones(false)"
+											class="stack"
+										/>
+									</td>
+								</tr>
+								<tr style="text-align: center">
+									<td colspan="4">
+										<button
+											onclick="resolver();"
+											class="succes icon-paper-plane"
+											style="width: 100%"
+										>
+											Calcular
+										</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div id="SistemaEcuaciones"></div>
+					</div>
+					<div
+						class="columnaMedios"
+						style="
+							border: 2px solid gray;
+							border-radius: 8px;
+							margin: 5px;
+						"
+					>
+						<div id="grafica"></div>
+					</div>
+				</div>
+				<div>
+					<a
+						data-tooltip="Reportar Bug"
+						href="mailto:da.rodriguezh@uniandes.edu.co&subject=BUG%20APPLETS&body=Hola! Encontre un bug: A continuacion te mando un screenshot y una descripcion de lo que pasó"
+						class="floatButtonBug tooltip-left"
+					>
+						<i class="fa fa-bug my-float"></i>
+					</a>
+				</div>
+			</footer>
+		</article>
+		<script type="text/javascript" src="../../js/EDO2.js"></script>
+	</body>
 </html>

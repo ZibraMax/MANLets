@@ -1,187 +1,339 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-<head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-44PZ80H95P"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-44PZ80H95P"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
 
-	gtag('config', 'G-44PZ80H95P');
-	</script>
-	<meta name="viewport" content="width=device-width, initial-scale=0.5,user-scalable=no" id="viewport">
-  <script src="https://kit.fontawesome.com/2416ed6962.js" crossorigin="anonymous"></script>
-	<meta charset="utf-8">
-	<title>MANLets</title>
-	<link rel="shortcut icon" type="image/x-icon" href="../../favicon/favicon.ico">
-	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-	<link rel="stylesheet" href="https://unpkg.com/picnic">
-<link rel="stylesheet" media='(prefers-color-scheme: dark)' href="../../css/picnic.min.css"/>
-	<link rel="stylesheet" href="../../css/estilos_nuevo.css">
-	<script type="text/javascript" src="../../js/math.js"></script>
-	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css"/> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js"></script>
-    <script type="text/javascript" src="../../js/math-expressions.js"></script>
+			gtag("config", "G-44PZ80H95P");
+		</script>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=0.5,user-scalable=no"
+			id="viewport"
+		/>
+		<script
+			src="../../build/fontawesome.js"
+			crossorigin="anonymous"
+		></script>
+		<meta charset="utf-8" />
+		<title>MANLets</title>
+		<link
+			rel="shortcut icon"
+			type="image/x-icon"
+			href="../../favicon/favicon.ico"
+		/>
+		<script src="../../build/plotly-latest.min.js"></script>
+		<link rel="stylesheet" href="../../build/light.picnic.min.css" />
+		<link
+			rel="stylesheet"
+			media="(prefers-color-scheme: dark)"
+			href="../../css/picnic.min.css"
+		/>
+		<link rel="stylesheet" href="../../css/estilos_nuevo.css" />
+		<script type="text/javascript" src="../../js/math.js"></script>
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+		<script
+			id="MathJax-script"
+			async
+			src="../../build/tex-mml-chtml.js"
+		></script>
+		<link rel="stylesheet" href="../../build/mathquill.css" />
+		<script src="../../build/jquery.min.js"></script>
+		<script src="../../build/mathquill.js"></script>
+		<script
+			type="text/javascript"
+			src="../../js/math-expressions.js"
+		></script>
 
-    <script src="../../js/jquery.toolbar.min.js"></script>
-    <link href="../../css/jquery.toolbar.css" rel="stylesheet" />
+		<script src="../../js/jquery.toolbar.min.js"></script>
+		<link href="../../css/jquery.toolbar.css" rel="stylesheet" />
+	</head>
+	<body style="margin: 20px">
+		<article class="card">
+			<header>
+				<h1>
+					<a href="../index.html" class="fas fa-arrow-left"></a>
+					<a href="../../index.html" class="fas fa-home"></a> MANLets
+					- Máxima Inclinación
+				</h1>
+			</header>
+			<footer>
+				<div class="columnaMedios" style="height: 40%">
+					<!--Parametros-->
+					<table style="width: 100%">
+						<tbody>
+							<tr>
+								<td>
+									<span class="stack">\(f(x,y)=\)</span>
+								</td>
+								<td id="cuelloBotella">
+									<span
+										id="math-field"
+										class="mathquill-math-field"
+										>2xy+2x-x^2-2y^2</span
+									>
+									<div id="toolbar-options" class="hidden">
+										<a
+											type="button"
+											class=""
+											onClick='input("\\sqrt")'
+											>\(\sqrt{x}\)</a
+										>
+										<a
+											type="button"
+											class=""
+											onClick='input("\\nthroot")'
+											>\(\sqrt[n]{x}\)</a
+										>
+										<a
+											type="button"
+											class=""
+											onClick='input("log")'
+											>\(\ln\)</a
+										>
+										<a
+											type="button"
+											class=""
+											onClick='input("^")'
+											>\(x^n\)</a
+										>
+										<a
+											type="button"
+											class=""
+											onClick='input("\\frac")'
+											>\(\frac{a}{b}\)</a
+										>
+										<a
+											type="button"
+											class=""
+											onClick='input("(")'
+											>\(()\)</a
+										>
+										<a
+											type="button"
+											class=""
+											onClick='input("sin")'
+											>\(\sin\)</a
+										>
+										<a
+											type="button"
+											class=""
+											onClick='input("cos")'
+											>\(\cos\)</a
+										>
+										<a
+											type="button"
+											class=""
+											onClick='input("tan")'
+											>\(\tan\)</a
+										>
+									</div>
+								</td>
+								<td style="text-align: center">
+									<button
+										id="cositasLindas"
+										type="button"
+										class="btn btn-default"
+									>
+										\(f\)
+									</button>
+									<span id="niter" style="width: 70%"></span>
+								</td>
+								<td style="text-align: center">
+									<span id="error"></span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="stack">$$x_a=$$</span>
+								</td>
+								<td>
+									<input
+										type="text"
+										id="x0"
+										value="-5"
+										class="stack"
+										oninput="triggerBotones(false)"
+									/>
+								</td>
+								<td>
+									<span class="stack">$$x_b=$$</span>
+								</td>
+								<td>
+									<input
+										type="text"
+										id="xf"
+										value="5"
+										class="stack"
+										oninput="triggerBotones(false)"
+									/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="stack">$$y_a=$$</span>
+								</td>
+								<td>
+									<input
+										type="text"
+										id="y0"
+										value="-5"
+										class="stack"
+										oninput="triggerBotones(false)"
+									/>
+								</td>
+								<td>
+									<span class="stack">$$y_b=$$</span>
+								</td>
+								<td>
+									<input
+										type="text"
+										id="yf"
+										value="5"
+										class="stack"
+										oninput="triggerBotones(false)"
+									/>
+								</td>
+							</tr>
 
-</head>
-<body style="margin: 20px">
-	<article class="card">
-		<header>
-			<h1><a href="../index.html" class="fas fa-arrow-left"></a> <a href="../../index.html" class="fas fa-home"></a> MANLets - Máxima Inclinación</h1>
-		</header>
-		<footer>
-			<div class="columnaMedios" style="height: 40%">
-				<!--Parametros-->
-				<table style="width: 100%">
-					<tbody>
-					<tr>
-						<td >
-							<span class="stack">\(f(x,y)=\)</span>
-						</td>
-						<td id="cuelloBotella">
-							<span id="math-field" class="mathquill-math-field">2xy+2x-x^2-2y^2</span>
-						 	<div id="toolbar-options" class="hidden">
-								<a type="button" class="" onClick='input("\\sqrt")'>\(\sqrt{x}\)</a>
-								<a type="button" class="" onClick='input("\\nthroot")'>\(\sqrt[n]{x}\)</a>
-							    <a type="button" class="" onClick= 'input("log")'>\(\ln\)</a>
-							    <a type="button" class="" onClick='input("^")'>\(x^n\)</a>
-							    <a type="button" class="" onClick='input("\\frac")'>\(\frac{a}{b}\)</a>
-							    <a type="button" class="" onClick='input("(")'>\(()\)</a>
-							    <a type="button" class="" onClick='input("sin")'>\(\sin\)</a>
-							    <a type="button" class="" onClick='input("cos")'>\(\cos\)</a>
-							    <a type="button" class="" onClick='input("tan")'>\(\tan\)</a>
-							</div>
-						</td>
-						<td style="text-align: center;">
-							<button id="cositasLindas" type="button" class="btn btn-default">\(f\)</button>
-							<span id="niter" style="width: 70%"></span>
-						</td>
-						<td style="text-align: center;">
-							<span id="error"></span>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span class="stack">$$x_a=$$</span>
-							
-						</td>
-						<td>
-							<input type="text" id="x0" value='-5' class="stack" oninput="triggerBotones(false)">
-						</td>
-						<td>
-							<span class="stack">$$x_b=$$</span>
-						</td>
-						<td>
-							<input type="text" id="xf" value='5' class="stack" oninput="triggerBotones(false)">
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span class="stack">$$y_a=$$</span>
-						</td>
-						<td>
-							<input type="text" id="y0" value='-5' class="stack" oninput="triggerBotones(false)">
-						</td>
-						<td>
-							<span class="stack">$$y_b=$$</span>
-						</td>
-						<td>
-							<input type="text" id="yf" value='5' class="stack" oninput="triggerBotones(false)">
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-							<span class="stack">$$x_0=$$</span>
-						</td>
-						<td>
-							<input type="text" id="x_0" value='-1' class="stack" oninput="triggerBotones(false)">
-						</td>
-						<td>
-							<span class="stack">$$y_0=$$</span>
-						</td>
-						<td>
-							<input type="text" id="y_0" value='1' class="stack" oninput="triggerBotones(false)">
-						</td>
-					</tr>
-					</tbody>
-					<thead>
-						<tr>
-							<th>
-								<button id="iteraciones" onclick="anteriorIteracion()" class="succes icon-paper-plane" > Anterior </button>
-							</th>
-							<th>
-								<button data-tooltip="Este procedimiento puede tardar unos segundos debido a la cantidad de calculos." onclick="calcular()" class="tooltip-top stack icon-paper-plane" style="text-align: center;">Calcular <i class="fas fa-exclamation-triangle"></i></button>
-							</th>
-							<th>
-								<label style="width: 40%">
-								  <input id="maximizarRadio" type='radio' checked name="radiodemo" onchange="triggerBotones(false)">
-								  <span class="checkable">Máximo⠀⠀</span>
-								</label>
-								<label style="width: 40%">
-								  <input id="minimizarRadio" type='radio' name="radiodemo" onchange="triggerBotones(false)">
-								  <span class="checkable">Mínimo</span>
-								</label>
-							</th>
-							<th >
-								<button id="iteraciones" onclick="siguienteIteracion()" class="warning icon-paper-plane" >Siguiente</button>
-							</th>
-						</tr>
-						<tr>
-							<td colspan="4">
-								<span id="pretty1"></span>
-							</td>
-						</tr>
-					</thead>
-				</table>
-			</div>
-
-			<div class="columnaMedios">
-				<!--Grafica General-->
-				<div id="graficaGeneral">
-					
+							<tr>
+								<td>
+									<span class="stack">$$x_0=$$</span>
+								</td>
+								<td>
+									<input
+										type="text"
+										id="x_0"
+										value="-1"
+										class="stack"
+										oninput="triggerBotones(false)"
+									/>
+								</td>
+								<td>
+									<span class="stack">$$y_0=$$</span>
+								</td>
+								<td>
+									<input
+										type="text"
+										id="y_0"
+										value="1"
+										class="stack"
+										oninput="triggerBotones(false)"
+									/>
+								</td>
+							</tr>
+						</tbody>
+						<thead>
+							<tr>
+								<th>
+									<button
+										id="iteraciones"
+										onclick="anteriorIteracion()"
+										class="succes icon-paper-plane"
+									>
+										Anterior
+									</button>
+								</th>
+								<th>
+									<button
+										data-tooltip="Este procedimiento puede tardar unos segundos debido a la cantidad de calculos."
+										onclick="calcular()"
+										class="tooltip-top stack icon-paper-plane"
+										style="text-align: center"
+									>
+										Calcular
+										<i
+											class="fas fa-exclamation-triangle"
+										></i>
+									</button>
+								</th>
+								<th>
+									<label style="width: 40%">
+										<input
+											id="maximizarRadio"
+											type="radio"
+											checked
+											name="radiodemo"
+											onchange="triggerBotones(false)"
+										/>
+										<span class="checkable">Máximo⠀⠀</span>
+									</label>
+									<label style="width: 40%">
+										<input
+											id="minimizarRadio"
+											type="radio"
+											name="radiodemo"
+											onchange="triggerBotones(false)"
+										/>
+										<span class="checkable">Mínimo</span>
+									</label>
+								</th>
+								<th>
+									<button
+										id="iteraciones"
+										onclick="siguienteIteracion()"
+										class="warning icon-paper-plane"
+									>
+										Siguiente
+									</button>
+								</th>
+							</tr>
+							<tr>
+								<td colspan="4">
+									<span id="pretty1"></span>
+								</td>
+							</tr>
+						</thead>
+					</table>
 				</div>
 
-			</div>
-
-			<div class="columnaMedios">
-				<!--Grafica Gradiente-->
-				<div id="graficaGradiente">
-					
+				<div class="columnaMedios">
+					<!--Grafica General-->
+					<div id="graficaGeneral"></div>
 				</div>
 
-			</div>
-
-			<div class="columnaMedios">
-				<!--Grafica Direccion Gradiente-->
-				<div id="graficaDireccion">
-					
+				<div class="columnaMedios">
+					<!--Grafica Gradiente-->
+					<div id="graficaGradiente"></div>
 				</div>
 
-			</div>
+				<div class="columnaMedios">
+					<!--Grafica Direccion Gradiente-->
+					<div id="graficaDireccion"></div>
+				</div>
 
-		<!-- Botones Celular -->
-		<div id="btns">
-			<a class="floatButton" onclick="anteriorIteracion()">
-			<i class="fa fa-angle-left my-float"></i>
-			</a>
-			<a class="floatButton1" onclick="siguienteIteracion()">
-			<i class="fa fa-angle-right my-float"></i>
+				<!-- Botones Celular -->
+				<div id="btns">
+					<a class="floatButton" onclick="anteriorIteracion()">
+						<i class="fa fa-angle-left my-float"></i>
+					</a>
+					<a class="floatButton1" onclick="siguienteIteracion()">
+						<i class="fa fa-angle-right my-float"></i>
+					</a>
+				</div>
+			</footer>
+		</article>
+		<div>
+			<a
+				data-tooltip="Reportar Bug"
+				href="mailto:da.rodriguezh@uniandes.edu.co?cc=arturo@asections.com&subject=BUG%20APPLETS&body=Hola! Encontre un bug: A continuacion te mando un screenshot y una descripcion de lo que pas'o"
+				class="floatButtonBug tooltip-left"
+			>
+				<i class="fa fa-bug my-float"></i>
 			</a>
 		</div>
-		</footer>
-		<div>
-    <a data-tooltip="Reportar Bug" href="mailto:da.rodriguezh@uniandes.edu.co?cc=arturo@asections.com&subject=BUG%20APPLETS&body=Hola! Encontre un bug: A continuacion te mando un screenshot y una descripcion de lo que pas'o" class="floatButtonBug tooltip-left">
-    <i class="fa fa-bug my-float"></i>
-    </a>
-  </div>
-	<script type="text/javascript" src="../../js/Optimizacion_gradiente.js"></script>
-</body>
+		<script
+			type="text/javascript"
+			src="../../js/Optimizacion_gradiente.js"
+		></script>
+	</body>
 </html>
